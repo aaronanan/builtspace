@@ -21,6 +21,8 @@ import Login from "./components/Login"
 import { onError } from "./libs/errorLib";
 import Signup from "./components/Signup";
 
+//new stuff
+import QRGen from "./components/QRGen";
 
 
 Amplify.configure(awsconfig);
@@ -64,6 +66,7 @@ function App() {
             <Route path='/format' component={Format} />
             <Route path='/profile' component={Profile} />
             <Route path='/login' component={Login} />
+            <Route path='/qrgen' component={QRGen} />
             <Route exact path="/signup">
               <Signup />
             </Route>
