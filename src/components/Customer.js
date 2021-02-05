@@ -27,7 +27,8 @@ function Customer(props) {
 
 
 const customers_list = customers.map(customer => (
-<div id={customer_id} style={{padding: '1em'}}>
+  <>
+{/* <div id={customer_id} style={{padding: '1em'}}>
 <li id="customer_id">
   <b>Customer ID:</b> {String(customer.customer_id).padStart(4, '0')}
 </li>
@@ -37,7 +38,9 @@ const customers_list = customers.map(customer => (
 <li id="email">
   <b>Organization:</b>: {customer.org_name}
 </li>
-</div>
+</div> */}
+
+</>
 ));
 
 

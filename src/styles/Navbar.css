@@ -1,0 +1,23 @@
+.navbar_logo{
+    width: auto;
+    height: 60px;
+}
+
+li :hover{
+    background-color: #00a14b;
+}
+
+li a{
+    border-radius: 10px;
+    border: 1px solid #00a14b;
+    margin: 2px;
+}
+
+li a:hover{
+    color: white;
+}
+
+.navdiv{
+    border-bottom: medium !important;
+    border-color: #00a14b;
+}

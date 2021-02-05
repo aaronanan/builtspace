@@ -4,11 +4,17 @@ import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link, useHistory } from "react-router-dom";
 import { Auth  } from "aws-amplify";
-
+import "../styles/Navbar.css";
 
 import { useAppContext } from "../libs/contextLib";
 
-
+{/* <div> <ul className="navbar-nav mr-auto"> <li class="nav-item"> 
+    <a className="nav-link" variant="outline-info" size="nav" onClick={handleLogout}>Logout{ userEmail } 
+  </a> 
+</li> 
+</ul> 
+</div>
+ */}
 
 
 const Navbar = () => {
@@ -60,42 +66,78 @@ const Navbar = () => {
   // };
 
 
-  const ActionButtons = (
-    <div className="actionButtons">
-        <Link to="/new_customer">
-          <img className="imgNav" alt="plus" src={ require('../plus_icon.png')} />
-        </Link>
-
-        <Link to="/find_customer">
-          <img className="imgNav" alt="qr" src={require('../qr_code.png')} />
-        </Link>
-    </div>
-  );
-
   const notLoggedIn = (
     <>
-      <LinkContainer to="/login">
-        <Button variant="outline-info" size="nav">Login </Button>
-      </LinkContainer>
-      <LinkContainer to="/signup">
-        <Button variant="outline-info" size="nav">Sign-Up </Button>
-      </LinkContainer>
+    <nav className="navbar container-fluid navbar-expand-lg navbar-light bg-light justify-content-between">
+        <a className="navbar-brand" href="#">
+          <img className="navbar_logo" src="company_logo.png" alt=""></img>
+        </a>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse pull-right" id="navbarSupportedContent">
+        <ul className="navbar-nav mr-auto">
+          <li class="nav-item">
+              <LinkContainer to="/login">
+                <a className="nav-link" variant="outline-info" size="nav">Login</a>
+              </LinkContainer>
+              </li>
+              <li class="nav-item">
+              <LinkContainer to="/signup">
+                <a className="nav-link" variant="outline-info" size="nav">Sign-Up</a>
+              </LinkContainer>
+              </li>
+          </ul>
+        </div>
+              
+              </nav>
     </>
   );
 
   const loggedIn = (
     <>
-    <Button variant="outline-info" size="nav" onClick={handleLogout}>Logout || { userEmail } </Button>
-    <LinkContainer to="/customers">
-      <Button variant="outline-info" size="nav">Customers </Button>
-    </LinkContainer>
-    <LinkContainer to="/orders">
-      <Button variant="outline-info" size="nav">Orders </Button>
-    </LinkContainer>
-    <LinkContainer to="/format">
-      <Button variant="outline-info" size="nav">Format </Button>
-    </LinkContainer>
-    {ActionButtons}
+    <div className="container-fluid">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+        <a className="navbar-brand" href="#">
+          <img className="navbar_logo" src="company_logo.png" alt=""></img>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav mr-auto">
+            <li class="nav-item">
+              <LinkContainer to="/customers">
+                <a className="nav-link" variant="outline-info" size="nav">Customers</a>
+              </LinkContainer>
+            </li>
+            <li class="nav-item">
+              <LinkContainer to="/orders">
+                <a className="nav-link" variant="outline-info" size="nav">Orders</a>
+              </LinkContainer>
+            </li>
+            <li class="nav-item">
+              <LinkContainer to="/format">
+                <a className="nav-link" variant="outline-info" size="nav">Format</a>
+              </LinkContainer>
+            </li>
+            <li class="nav-item">
+              <LinkContainer to="/new_customer">
+                <a className="nav-link" alt="plus">New Customer</a>
+              </LinkContainer>
+            </li>
+            <li class="nav-item">
+              <LinkContainer to="/find_customer">
+                <a className="nav-link" alt="qr" >Find Customer</a>
+              </LinkContainer>
+            </li>
+            </ul>
+        </div>
+        
+      </nav>
+      </div>
     </>
   );
 
