@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios';
 import Button from 'react-bootstrap/Button'
 import awsconfig from '../aws-exports';
-
+import "../styles/form.css";
 
 // TODO: Store multiple values in one state instead of having state for each field
 // This form currently accepts input for Organization, Customer Name and Status and passes the rest of the data fields as blank/null
@@ -63,17 +63,9 @@ function Form(props) {
 
   return (
     <>
-    <div className="formWrapper">
-    <div className="customerFormPage">
-    <div className="newCustomerForm">
-      <div>
-        <h5>Add a New Customer</h5>
-      </div>
     <form onSubmit={handleSubmit}>
-      <h2 className="label-wrapper">
+      {/* <h2 className="label-wrapper">
       </h2>
-        <ul>
-            <li>
         <input
           className="inputField"
           value={name}
@@ -83,8 +75,6 @@ function Form(props) {
           autoComplete="off"
           placeholder="Customer Name"
         ></input>
-        </li>
-        <li>
         <input
           className="inputField"
           value={orgName}
@@ -93,74 +83,148 @@ function Form(props) {
           name="org_name"
           autoComplete="off"
           placeholder="Organization"
-        />
-        </li>
-        <li> 
+        ></input>
         <label>Customer Status</label>
         <select className="inputField" 
-        onChange={e => setStatus(e.target.value)} defaultValue="Customer Status">
-          <option value="Active">Active</option>
-          <option value="On-Boarding">On-Boarding</option>
-          <option value="Inactive">Inactive</option>
+            onChange={e => setStatus(e.target.value)} defaultValue="Customer Status">
+              <option value="Active">Active</option>
+              <option value="On-Boarding">On-Boarding</option>
+              <option value="Inactive">Inactive</option>
         </select>
-        </li>
         <div style={{textAlign: "center"}}>
-        <Button
-        type="submit">
-          Create Customer
-        </Button>
+          <Button type="submit">
+            Create Customer
+          </Button>
+        </div> */}
+        <div className="row">
+
+        <div className="col"></div>
+        <div className="col-8">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col"></div>
+            <div className="col"><p className="h2 formLabel">Create a Customer</p></div>
+            <div className="col"></div>
+          </div>
+          <br></br>
+          <br></br>
+          <div className="row">
+
+            <div className="col">
+              <div className="row">
+                <div className="col-3">
+                  <p>Organization</p>
+                </div>
+                <div className="col">
+                  <input className="form-control"></input>
+                </div>
+              </div>
+            </div>
+
+            <div className="col">
+              <div className="row">
+                <div className="col-3">
+                  <p>Status</p>
+                </div>
+                <div className="col">
+                  <select className="form-control inputField" 
+                    onChange={e => setStatus(e.target.value)} defaultValue="Customer Status">
+                    <option value="Active">Active</option>
+                    <option value="On-Boarding">On-Boarding</option>
+                    <option value="Inactive">Inactive</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          <br></br>
+          <div className="row">
+            <div className="col">
+              <div className="row">
+                <div className="col-3"><p>Address</p></div>
+                <div className="col"><input className="form-control"></input></div>
+              </div>
+            </div>
+            
+            <div className="col">
+              <div className="row">
+                <div className="col-3"><p>City</p></div>
+                <div className="col"><input className="form-control"></input></div>
+              </div>
+            </div>
+
+          </div>
+          <br></br>
+          <div className="row">
+            <div className="col">
+              <div className="row">
+                <div className="col-3"><p>State/Province</p></div>
+                <div className="col"><input className="form-control"></input></div>
+              </div>
+            </div>
+            
+            <div className="col">
+              <div className="row">
+                <div className="col-3"><p>Country</p></div>
+                <div className="col"><input className="form-control"></input></div>
+              </div>
+            </div>
+
+          </div>
+          <br></br>
+          <div className="row">
+          <div className="col">
+              <div className="row">
+                <div className="col-3"><p>Contact Name</p></div>
+                <div className="col"><input className="form-control"></input></div>
+              </div>
+            </div>
+            
+            <div className="col">
+              <div className="row">
+                <div className="col-3"><p>Postal Code</p></div>
+                <div className="col"><input className="form-control"></input></div>
+              </div>
+            </div>
+
+
+          </div>
+          <br></br>
+          <div className="row">
+          <div className="col">
+              <div className="row">
+                <div className="col-3">Email</div>
+                <div className="col"><input className="form-control"></input></div>
+              </div>
+            </div>
+            
+            <div className="col">
+              <div className="row">
+                <div className="col-3">Contact Phone</div>
+                <div className="col"><input className="form-control"></input></div>
+              </div>
+            </div>
+
+
+          </div>
+          <br></br>
+          <div className="row">
+            <div className="col">
+              <a className="btn btn-md btn-primary btn-theme-form">Create</a>
+            </div>
+            
+            <div className="col">
+              <a className="btn btn-md btn-secondary btn-secondary-form">Cancel</a>
+            </div>
+
+          </div>
         </div>
-        </ul>
+        </div>
+        <div className="col"></div>
+        </div>
     </form>
-    {/* <form>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputEmail4">Email</label>
-      <input type="email" class="form-control" id="inputEmail4" placeholder="Email"></input>
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputPassword4">Password</label>
-      <input type="password" class="form-control" id="inputPassword4" placeholder="Password"></input>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="inputAddress">Address</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St"></input>
-  </div>
-  <div class="form-group">
-    <label for="inputAddress2">Address 2</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor"></input>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputCity">City</label>
-      <input type="text" class="form-control" id="inputCity"></input>
-    </div>
-    <div class="form-group col-md-4">
-      <label for="inputState">State</label>
-      <select id="inputState" class="form-control">
-        <option selected>Choose...</option>
-        <option>...</option>
-      </select>
-    </div>
-    <div class="form-group col-md-2">
-      <label for="inputZip">Zip</label>
-      <input type="text" class="form-control" id="inputZip"></input>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck">
-      <label class="form-check-label" for="gridCheck">
-        Check me out
-      </label></input>
-    </div>
-  </div>
-  <button type="submit" class="btn btn-primary">Sign in</button>
-</form> */}
-    </div>
-    </div>
-    </div>
+    
     </>
   );
 }
