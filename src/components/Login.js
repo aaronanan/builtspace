@@ -7,6 +7,7 @@ import { useAppContext } from "../libs/contextLib";
 import { useFormFields } from "../libs/hooksLib";
 import { onError } from "../libs/errorLib";
 import "../styles/Login.css";
+import { Container, Row, Button } from "react-bootstrap";
 
 export default function Login() {
   const history = useHistory();
@@ -14,7 +15,7 @@ export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const [fields, handleFieldChange] = useFormFields({
     email: "",
-    password: ""
+    password: "",
   });
 
   function validateForm() {
@@ -25,7 +26,7 @@ export default function Login() {
     event.preventDefault();
 
     setIsLoading(true);
-    
+
     try {
       await Auth.signIn(fields.email, fields.password);
       userHasAuthenticated(true);
@@ -37,35 +38,94 @@ export default function Login() {
   }
 
   return (
-    <div className="Login">
-      <Form onSubmit={handleSubmit}>
-        <Form.Group size="lg" controlId="email">
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            autoFocus
-            type="email"
-            value={fields.email}
-            onChange={handleFieldChange}
-          />
-        </Form.Group>
-        <Form.Group size="lg" controlId="password">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            value={fields.password}
-            onChange={handleFieldChange}
-          />
-        </Form.Group>
-        <LoaderButton
-          block
-          size="lg"
-          type="submit"
-          isLoading={isLoading}
-          disabled={!validateForm()}
-        >
-          Login
-        </LoaderButton>
-      </Form>
-    </div>
+    // <div className="Login">
+    //   <Form onSubmit={handleSubmit}>
+    //     <Form.Group size="lg" controlId="email">
+    //       <Form.Label>Email</Form.Label>
+    //       <Form.Control
+    //         autoFocus
+    //         type="email"
+    //         value={fields.email}
+    //         onChange={handleFieldChange}
+    //       />
+    //     </Form.Group>
+    //     <Form.Group size="lg" controlId="password">
+    //       <Form.Label>Password</Form.Label>
+    //       <Form.Control
+    //         type="password"
+    //         value={fields.password}
+    //         onChange={handleFieldChange}
+    //       />
+    //     </Form.Group>
+    //     <LoaderButton
+    //       block
+    //       size="lg"
+    //       type="submit"
+    //       isLoading={isLoading}
+    //       disabled={!validateForm()}
+    //     >
+    //       Login
+    //     </LoaderButton>
+    //   </Form>
+    // </div>
+    <Container className="Login">
+      <div className="custom-login">
+        <Row className="justify-content-center">
+          <strong>
+            <h2 id="logs">Login</h2>
+          </strong>
+        </Row>
+
+        <Form onSubmit={handleSubmit}>
+          <Form.Group size="lg" controlId="email">
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              autoFocus
+              type="email"
+              placeholder="example@gmail.com"
+              value={fields.email}
+              onChange={handleFieldChange}
+            />
+          </Form.Group>
+          <Form.Group size="lg" controlId="password">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Enter password"
+              value={fields.password}
+              onChange={handleFieldChange}
+            />
+          </Form.Group>
+          <Button
+            variant="success"
+            block
+            size="lg"
+            type="submit"
+            isLoading={isLoading}
+            disabled={!validateForm()}
+          >
+            Login
+          </Button>
+        </Form>
+
+        <Row className="row-gap">
+          <a
+            href={process.env.PUBLIC_URL + "/signup"}
+            className="link-decoration-control"
+          >
+            Don't have an account yet?
+          </a>
+        </Row>
+
+        <Row className="row-gap">
+          <a
+            href={process.env.PUBLIC_URL + "/forgotPass"}
+            className="link-decoration-control"
+          >
+            Forgot Password?
+          </a>
+        </Row>
+      </div>
+    </Container>
   );
 }

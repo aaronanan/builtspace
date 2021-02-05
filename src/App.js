@@ -11,7 +11,7 @@ import { Auth } from "aws-amplify";
 import Form from './components/Form';
 import Orders from './components/Orders';
 import Customers from './components/Customers';
-import NavBar from './components/Navbar';
+import NavBar2 from './components/Navbar';
 import { Route, Switch } from 'react-router-dom';
 import Customer from "./components/Customer";
 import CreateOrder from "./components/CreateOrder";
@@ -24,6 +24,8 @@ import Signup from "./components/Signup";
 //new stuff
 import QRGen from "./components/QRGen";
 import Homepage from "./componentsv2/Homepage"
+import NavBar from './componentsv2/Navbar';
+import CustomerReg from './componentsv2/CustomerReg';
 
 
 Amplify.configure(awsconfig);
@@ -57,7 +59,8 @@ function App() {
     !isAuthenticating && (
     <div className="App">
         <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
-        {/* <NavBar /> */}
+        <NavBar />
+        {/* <NavBar2 /> */}
           <Switch>
             <Route path='/home' component={Homepage} />
             <Route path='/customers' component={Customers} />
@@ -69,6 +72,8 @@ function App() {
             <Route path='/profile' component={Profile} />
             <Route path='/login' component={Login} />
             <Route path='/qrgen' component={QRGen} />
+            //New stuff
+              <Route path='/customer_reg' component={CustomerReg} />
             <Route exact path="/signup">
               <Signup />
             </Route>
