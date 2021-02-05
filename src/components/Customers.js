@@ -19,6 +19,7 @@ function Customers(props) {
 
     function sortCustomers(){
       var i;
+      console.log()
       if (deactivatedCustomers <= 0){
       for(i=0; i< customers.length; i++) {
         if(customers[i].cus_status === "Inactive") {
