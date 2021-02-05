@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import Button from 'react-bootstrap/Button'
+import {Button, Container, Row, Col} from 'react-bootstrap'
 import awsconfig from '../aws-exports';
 import './CustomerReg.css'
 
@@ -58,6 +58,8 @@ function Registration(props) {
       .then(function (response) {
           if (response.status == 200){
               alert("Thank you for successfully submitting your order!")
+          }else{
+              alert("There was an error in your information")
           }
       })
       .catch(function (error) {
@@ -77,23 +79,28 @@ function Registration(props) {
       <div className='createTitle'>
         <h5>Create a New Customer</h5>
       </div>
+      <Container>
     <form onSubmit={handleSubmit}>
-      <h2 className="label-wrapper">
-      </h2>
-        <ul>
-            <li>
-        <input
-          className="inputField"
-          value={name}
-          onChange={e => setName(e.target.value)}
-          type="text"
-          name="contact_name"
-          autoComplete="off"
-          placeholder="Customer Name"
-        ></input>
-        </li>
-        <li>
-        <input
+    <Container>
+  <Row>
+    <Col xs={2}><div>
+<label className="cusName">Customer Name :</label></div>
+</Col>
+    <Col xs={4}>            
+            <div  style={{marginLeft:'-15%'}}>
+            <input className="inputField"
+            value={name}
+            onChange={e => setName(e.target.value)}
+            type="text"
+            name="contact_name"
+            autoComplete="off"
+            placeholder="Customer Name"
+          ></input>
+              </div> </Col>
+    <Col xs={2}><div><label className="cusName">Organization Name :</label></div></Col>
+    <Col xs={4}>  
+       <div style={{marginLeft:'-10%'}}>
+       <input
           className="inputField"
           value={orgName}
           onChange={e => setOrgName(e.target.value)}
@@ -101,18 +108,12 @@ function Registration(props) {
           name="org_name"
           autoComplete="off"
           placeholder="Organization"
-        />
-        </li>
-        <li> 
-        <label>Customer Status</label>
-        <select className="inputField" 
-        onChange={e => setStatus(e.target.value)} defaultValue="Customer Status">
-          <option value="Active">Active</option>
-          <option value="Pending">Pending</option>
-          <option value="Inactive">Inactive</option>
-        </select>
-        </li>
-        <li>
+        /></div> </Col>
+  </Row>
+  <Row>
+    <Col xs={2}><div><label className="cusName">Customer Email :</label></div></Col>
+    <Col xs={4}>  
+    <div  style={{marginLeft:'-15%'}}>
         <input
           className="inputField"
           value={Email}
@@ -121,27 +122,66 @@ function Registration(props) {
           name="org_name"
           autoComplete="off"
           placeholder="Email address"
-        />
-        </li>
-        <li>
-        <input
+        /></div></Col>
+    <Col xs={2}><div><label className="cusName">Customer Phone :</label></div></Col>
+    <Col xs={4}>  
+    <div  style={{marginLeft:'-10%'}}><input
           className="inputField"
           value={Phone}
           onChange={e => setPhone(e.target.value)}
           type="text"
           name="org_name"
           autoComplete="off"
-          placeholder="Phone number"
-        />
-        </li>
+          placeholder="Phone number" /></div></Col>
+
+  </Row>
+
+  <Row>
+    <Col xs={4}><div><label className="cusName">Customer Status :</label></div></Col>
+    <Col xs={2} style={{marginLeft:'-21%'}}>  <div>
+        <select className="inputField" 
+        onChange={e => setStatus(e.target.value)} defaultValue="Customer Status">
+          <option value="Active">Active</option>
+          <option value="Pending">Pending</option>
+          <option value="Inactive">Inactive</option>
+        </select>   
+        </div></Col>
+    {/* <Col>3 of 3</Col> */}
+  </Row>
+
+
+  {/* <Row>
+    <Col>3</Col>
+    <Col>2 of 3</Col>
+    <Col>3 of 3</Col>
+  </Row>
+  <Row>
+    <Col>3</Col>
+    <Col>2 of 3</Col>
+    <Col>3 of 3</Col>
+  </Row>
+  <Row>
+    <Col>3</Col>
+    <Col>2 of 3</Col>
+    <Col>3 of 3</Col>
+  </Row> */}
+</Container>
+       
+    
+ 
+      
+        
+      
+                
         <div style={{textAlign: "center"}}>
         <Button
-        type="submit">
+        type="submit" variant="success">
           Create Customer
         </Button>
         </div>
-        </ul>
+    
     </form>
+    </Container>
     </div>
     </div>
     </div>
