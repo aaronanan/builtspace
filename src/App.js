@@ -20,6 +20,7 @@ import Profile from "./components/Profile";
 import Login from "./components/Login"
 import { onError } from "./libs/errorLib";
 import Signup from "./components/Signup";
+import Registration from "./componentsv2/CustomerReg";
 
 //new stuff
 import QRGen from "./components/QRGen";
@@ -57,7 +58,7 @@ function App() {
     !isAuthenticating && (
     <div className="App">
         <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
-        {/* <NavBar /> */}
+        {/* Homepage /> */}
           <Switch>
             <Route path='/home' component={Homepage} />
             <Route path='/customers' component={Customers} />
@@ -69,6 +70,8 @@ function App() {
             <Route path='/profile' component={Profile} />
             <Route path='/login' component={Login} />
             <Route path='/qrgen' component={QRGen} />
+            <Route path='/registration' component={Registration} />
+
             <Route exact path="/signup">
               <Signup />
             </Route>
