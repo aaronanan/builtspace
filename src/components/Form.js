@@ -26,14 +26,14 @@ function Form(props) {
         "cus_status": status,
         "contact_name": name, 
         "ship_address": {
-          "Address": "dasfadsf",
-          "City": "sadfasdf",
-          "prov": "adsfasdf",
+          "Address": "",
+          "City": "",
+          "prov": "",
           "post_code": "",
           "country": ""
         },
-        "pref_des": "dfadf",
-        "org_id": "fadf",
+        "pref_des": "",
+        "org_id": "",
         "serial_prefix": "",
         "contact_person": {
           "email": "",

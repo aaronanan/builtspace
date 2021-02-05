@@ -23,6 +23,7 @@ import Signup from "./components/Signup";
 
 //new stuff
 import QRGen from "./components/QRGen";
+import Homepage from "./componentsv2/Homepage"
 
 
 Amplify.configure(awsconfig);
@@ -56,8 +57,9 @@ function App() {
     !isAuthenticating && (
     <div className="App">
         <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
-        <NavBar />
+        {/* <NavBar /> */}
           <Switch>
+            <Route path='/home' component={Homepage} />
             <Route path='/customers' component={Customers} />
             <Route path='/orders' component={Orders} />
             <Route path='/new_customer' component={Form} />
