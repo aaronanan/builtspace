@@ -79,7 +79,6 @@ function Registration(props) {
       <div className='createTitle'>
         <h5>Create a New Customer</h5>
       </div>
-      <Container>
     <form onSubmit={handleSubmit}>
     <Container>
   <Row>
@@ -166,13 +165,7 @@ function Registration(props) {
     <Col>3 of 3</Col>
   </Row> */}
 </Container>
-       
-    
- 
-      
-        
-      
-                
+          
         <div style={{textAlign: "center"}}>
         <Button
         type="submit" variant="success">
@@ -181,7 +174,6 @@ function Registration(props) {
         </div>
     
     </form>
-    </Container>
     </div>
     </div>
     </div>
