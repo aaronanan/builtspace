@@ -58,9 +58,8 @@ function App() {
     !isAuthenticating && (
     <div className="App">
         <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
-        {/* Homepage /> */}
+        < Homepage /> 
           <Switch>
-            <Route path='/home' component={Homepage} />
             <Route path='/customers' component={Customers} />
             <Route path='/orders' component={Orders} />
             <Route path='/new_customer' component={Form} />

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios';
 import Button from 'react-bootstrap/Button'
 import awsconfig from '../aws-exports';
-
+import './CustomerReg.css'
 
 // TODO: Store multiple values in one state instead of having state for each field
 // This form currently accepts input for Organization, Customer Name and Status and passes the rest of the data fields as blank/null
@@ -17,6 +17,9 @@ function Registration(props) {
   const [name, setName] = useState("");
   const [orgName, setOrgName] = useState("");
   const [status, setStatus] = useState("Active");
+  const [Email, setEmail] = useState("");
+  const [Phone, setPhone] = useState("");
+
 
     
     function handleSubmit(e) {
@@ -25,20 +28,21 @@ function Registration(props) {
         "org_name": orgName,
         "cus_status": status,
         "contact_name": name, 
+        "contact_person": {
+            "email":Email,
+            "phone":Phone
+        },
         "ship_address": {
-          "Address": "",
-          "City": "",
-          "prov": "",
-          "post_code": "",
-          "country": ""
+          "Address": "redda",
+          "City": "Gotha",
+          "prov": "BC",
+          "post_code": "123",
+          "country": "canada"
         },
         "pref_des": "",
         "org_id": "",
         "serial_prefix": "",
-        "contact_person": {
-          "email": "",
-          "phone": ""
-        },
+        
         "sales_contact": {
           "name": "sdafsadf",
           "email": "",
@@ -52,6 +56,9 @@ function Registration(props) {
         }
       })
       .then(function (response) {
+          if (response.status == 200){
+              alert("Thank you for successfully submitting your order!")
+          }
       })
       .catch(function (error) {
         console.log(error);
@@ -59,14 +66,16 @@ function Registration(props) {
       setName("");
       setOrgName("");
       setStatus(status);
+      setEmail("");
+      setPhone("");
     }
 
   return (
     <div className="formWrapper">
     <div className="customerFormPage">
     <div className="newCustomerForm">
-      <div>
-        <h5>Add a New Customer</h5>
+      <div className='createTitle'>
+        <h5>Create a New Customer</h5>
       </div>
     <form onSubmit={handleSubmit}>
       <h2 className="label-wrapper">
@@ -99,9 +108,31 @@ function Registration(props) {
         <select className="inputField" 
         onChange={e => setStatus(e.target.value)} defaultValue="Customer Status">
           <option value="Active">Active</option>
-          <option value="On-Boarding">On-Boarding</option>
+          <option value="Pending">Pending</option>
           <option value="Inactive">Inactive</option>
         </select>
+        </li>
+        <li>
+        <input
+          className="inputField"
+          value={Email}
+          onChange={e => setEmail(e.target.value)}
+          type="text"
+          name="org_name"
+          autoComplete="off"
+          placeholder="Email address"
+        />
+        </li>
+        <li>
+        <input
+          className="inputField"
+          value={Phone}
+          onChange={e => setPhone(e.target.value)}
+          type="text"
+          name="org_name"
+          autoComplete="off"
+          placeholder="Phone number"
+        />
         </li>
         <div style={{textAlign: "center"}}>
         <Button
