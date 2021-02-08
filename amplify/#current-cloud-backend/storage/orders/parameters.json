@@ -1,7 +1,0 @@
-{
-    "tableName": "orders",
-    "partitionKeyName": "order_id",
-    "partitionKeyType": "N",
-    "sortKeyName": "customer_id",
-    "sortKeyType": "N"
-}
