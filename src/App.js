@@ -24,6 +24,8 @@ import Signup from "./components/Signup";
 //new stuff
 import QRGen from "./components/QRGen";
 import Homepage from "./componentsv2/Homepage"
+import QrGen from "./componentsv2/QrGen"
+
 
 
 Amplify.configure(awsconfig);
@@ -33,12 +35,12 @@ function App() {
   console.log(URL)
   const [isAuthenticated, userHasAuthenticated] = useState(true);
   const [isAuthenticating, setIsAuthenticating] = useState(true);
- 
+
   // Call the onLoad function only once on page load
   useEffect(() => {
     onLoad();
   }, []);
-  
+
   // Check if user is signed in
   async function onLoad() {
     try {
@@ -60,6 +62,7 @@ function App() {
         {/* <NavBar /> */}
           <Switch>
             <Route path='/home' component={Homepage} />
+            <Route path='/qr' component={QrGen} />
             <Route path='/customers' component={Customers} />
             <Route path='/orders' component={Orders} />
             <Route path='/new_customer' component={Form} />
