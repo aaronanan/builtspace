@@ -65,48 +65,41 @@ const customers_list = customers.map(customer => (
     }
     handleSubmit()
     return (
-      // <>
-      // </>
-        <div>
-          <h3 style={{textAlign: "center"}}>Search for Customer ID</h3>
-            {/* <form on={handleSubmit}>
-        <ul style={{textAlign:"center"}}>
-            <li>
-        <input
-          className="inputField"
-          type="text"
-          name="customer_id"
-          autoComplete="off"
-          placeholder="Customer ID"
-          pattern="[0-9]+"
-          required
-        ></input>
-        </li>
-        <Button type="submit">
-          Search
-        </Button>
-        </ul>
-        {message}
-        {searched ?    <CreateOrder data={customers} /> : '' }
-    </form> */}
 
-        <table>
-          <thead>
-          </thead>
-          <tbody>
-            <tr>
-            <td>
-            <ul>
-          {customers_list}
-       </ul>
-         </td>
-         <td>
-            <Order
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col">
+              <h2>Customer Name</h2>
+              <p>Customer ID</p>
+              <p>Customer Contact</p>
+              <p>Delivery Method</p>
+              <p>Received via</p>
+            </div>
+            <div className="col">
+              <h2>John Smith</h2>
+              <p>A2343242</p>
+              <p>6044444444</p>
+              <p> ""DROPDOWN MENU ""</p>
+              <p> ""DROPDOWN MENU ""</p>
+            </div>
+            <div className="col">
+              <p></p>
+              <p></p>
+              <p>something@gmail.com</p>
+              <p> quantity</p>
+              <p>QR design code</p>
+            </div>
+            <div className="col">
+              <p> STATUS</p>
+              <input></input>
+              <input></input>
+            </div>
+          </div>            
+          {/* {customers_list} */}
+       
+            {/* <Order
             customer_id={customer_id} />
-            </td>
-            </tr>
-            </tbody>
-            </table>
+            */}
       
        </div>
     );
