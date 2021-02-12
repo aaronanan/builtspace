@@ -83,7 +83,10 @@ function Customers(props) {
             query: { customer_id: `${customer.customer_id}` }
           }} className="btn btn-secondary btn-sm">Orders and More Info</Link>
           </td>
-          <td id="submitOrder"><a className="btn btn-sm btn-primary btn-theme">Submit an Order</a></td>
+          <td id="submitOrder"><Link to={{
+            pathname: `/create_order/${customer.customer_id}`,
+            query: { customer_id: `${customer.customer_id}` }
+          }} className="btn btn-sm btn-primary btn-theme">Submit an Order</Link></td>
         </tr>
       )}
       </tbody>

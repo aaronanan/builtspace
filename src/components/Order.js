@@ -32,7 +32,8 @@ function Order(props) {
           <td>{order.num_urls}</td>
           <td>{String(order.creation_date).slice(0, 10)}</td>
           {/* <td><Button onClick={handleShow} className="btn btn-secondary btn-sm">View</Button></td> */}
-          <td>{(order.urls)}</td>
+          {/* <td>{(order.urls)}</td> */}
+          <td><a className="btn btn-primary">go to php</a></td>
         </tr>
       )}
       </tbody>
@@ -59,26 +60,13 @@ function Order(props) {
         });
     };
 
-
+    getSpecificOrders()
   return (
       <div>
-
-      {/* <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>URL List</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>{url_list}</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal> */}
-          {/* <button type='button' onClick={() => clearOrders()}>Clear Orders</button> */}
-          <Button variant="warning"
+        {/* { <Button variant="warning"
         onClick={getSpecificOrders}>
           Get Orders
-        </Button>
+        </Button> */}
         <td>
         <ul>
             {orders_list}

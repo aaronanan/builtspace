@@ -1,20 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { nanoid } from "nanoid";
 import axios from 'axios';
 import Order from './Order'
-import CreateOrder from "./CreateOrder";
-import Button from 'react-bootstrap/Button'
+
 import awsconfig from '../aws-exports';
 
 
 // This component is tied with the CreateOrder component to select a customer ID then make orders for it
 
 function Customer(props) {
-
+    const customer_id = parseInt(props.location.query.customer_id);
     const [customers, setCustomers] = useState([0]);
     const [message, setMessage] = useState('');
     const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
-    const customer_id = 'customer-' + nanoid();
     const [id, setId] = useState(0);
     const [searched, setSearch] = useState(false)
 
@@ -28,9 +25,9 @@ function Customer(props) {
 
 const customers_list = customers.map(customer => (
   <>
-{/* <div id={customer_id} style={{padding: '1em'}}>
+<div id={customer_id} style={{padding: '1em'}}>
 <li id="customer_id">
-  <b>Customer ID:</b> {String(customer.customer_id).padStart(4, '0')}
+  <b>Customer ID:</b> {customer_id}
 </li>
 <li id="contact_name">
   <b>Name:</b> {customer.contact_name}
@@ -38,17 +35,16 @@ const customers_list = customers.map(customer => (
 <li id="email">
   <b>Organization:</b>: {customer.org_name}
 </li>
-</div> */}
+</div>
 
 </>
 ));
 
 
-      function handleSubmit(e) {
-        e.preventDefault();
-      axios.get(URL + '/customers/' + e.target[0].value, 
+      function handleSubmit() {
+      axios.get(URL + '/customers/' + customer_id, 
         {
-        "customer_id": e.target[0].value, 
+        "customer_id": customer_id 
         })
       .then(function (response) {
 
@@ -58,18 +54,22 @@ const customers_list = customers.map(customer => (
             setCustomers([])
         }else {
             setMessage('')
+            console.log(response.data)
             setCustomers([response.data.Item])
             setId(response.data.Item.customer_id)
             setSearch(true);        }
-      })
+        })
       .catch(function (error) {
         console.log(error);
       });
     }
+    handleSubmit()
     return (
+      // <>
+      // </>
         <div>
           <h3 style={{textAlign: "center"}}>Search for Customer ID</h3>
-            <form onSubmit={handleSubmit}>
+            {/* <form on={handleSubmit}>
         <ul style={{textAlign:"center"}}>
             <li>
         <input
@@ -88,7 +88,7 @@ const customers_list = customers.map(customer => (
         </ul>
         {message}
         {searched ?    <CreateOrder data={customers} /> : '' }
-    </form>
+    </form> */}
 
         <table>
           <thead>
@@ -102,7 +102,7 @@ const customers_list = customers.map(customer => (
          </td>
          <td>
             <Order
-            customer_id={id} />
+            customer_id={customer_id} />
             </td>
             </tr>
             </tbody>

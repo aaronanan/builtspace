@@ -13,7 +13,7 @@ import Orders from './components/Orders';
 import Customers from './components/Customers';
 import NavBar from './components/Navbar';
 import { Route, Switch } from 'react-router-dom';
-import Customer from "./components/Customer";
+import Create_order from "./components/create_order";
 import CreateOrder from "./components/CreateOrder";
 import Format from "./components/Format";
 import Profile from "./components/Profile";
@@ -59,8 +59,8 @@ function App() {
             <Route path='/customers' component={Customers} />
             <Route path='/orders' component={Orders} />
             <Route path='/new_customer' component={Form} />
-            <Route path='/find_customer' component={Customer} />
-            <Route path='/create_order' component={CreateOrder} />
+            <Route path='/create_order' component={Create_order} />
+            <Route path='/creating_order' component={CreateOrder} />
             <Route path='/format' component={Format} />
             <Route path='/profile' component={Profile} />
             <Route path='/login' component={Login} />
