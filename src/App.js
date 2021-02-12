@@ -62,7 +62,7 @@ function App() {
             <Route path='/find_customer' component={Customer} />
             <Route path='/create_order' component={CreateOrder} />
             <Route path='/format' component={Format} />
-            <Route path='/profile' component={Profile} />
+            <Route path='/profile/' component={Profile} />
             <Route path='/login' component={Login} />
             <Route exact path="/signup">
               <Signup />

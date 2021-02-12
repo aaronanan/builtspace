@@ -22,7 +22,7 @@ function Orders(props) {
 
       <div className="col"></div>
       <div className="col-11">
-        <div className="container-fluid">
+        <div className="container-fluid overflow-scroll">
         <div className="row">
           <div className="col-6">
             <div class="input-group input-group-md mb-3">
@@ -38,21 +38,25 @@ function Orders(props) {
           <Table size="sm" striped bordered hover>
           <thead>
             <tr>
-              <th>Customer ID</th>
-              <th>Status</th>
-              <th>Amount of URLs</th>
-              <th>Date Created</th>
               <th>Order ID</th>
+              <th>Customer ID</th>
+              <th>Organization</th>
+              <th># URLs</th>
+              <th>Status</th>
+              <th>Date Created</th>
+              <th>Date Updated</th>
             </tr>
           </thead>
           <tbody>
           {orders.map(order =>
             <tr>
-              <td>{String(order.customer_id).padStart(4, '0')}</td>
-              <td>{order.status}</td>
-              <td>{order.num_urls}</td>
-              <td>{String(order.creation_date).slice(0, 10)}</td>
               <td id="order_id">{order.order_id}</td>
+              <td>{String(order.customer_id).padStart(4, '0')}</td>
+              <td>TODO link to db</td>
+              <td>{order.num_urls}</td>
+              <td>{order.status}</td>
+              <td>{String(order.creation_date).slice(0, 10)}</td>
+              <td>{String(order.lastupdate_date).slice(0, 10)}</td>
             </tr>
           )}
           </tbody>
