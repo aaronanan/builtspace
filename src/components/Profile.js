@@ -14,26 +14,34 @@ function Profile(props) {
   
   const [orders, setOrders] = useState([0]);
   const [customers, setCustomers] = useState([0]);
+  const [customer, setCustomer] = useState([0]);
+
   const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
 
   useEffect(getOrders, []);
   useEffect(getCustomers, []);
-  console.log(customers)
+  // useEffect(getCustomer, []);
 
-  const getCustomer = (x) => {
-    for (let item of customers) {
-      if (item.customer_id == x ) {
-        return item
-      }
-    }
-  }
 
-  const customer = getCustomer(customer_id)
-  console.log("hello world",customer)
+  // const getCustomer = (x) => {
+  //   for (let item of customers) {
+  //     if (item.customer_id == x ) {
+  //       // customer = item;
+  //       // console.log(item)
+  //       return item
+  //     }
+  //   }
+  // }
+
+  // customer = getCustomer(customer_id)
+
+  // useEffect(getCustomer(customer_id), []);
+
 
   const customer_details = (
     <>  
-      {/* <el>{customer.org_name}</el> */}
+      <el>{customer.org_name}</el>
+      {/* <input type="button" onClick={() => {console.log(customer, customer.contact_person.email)}}/> */}
       <div className="d-flex flex-column pt-2 justify-content-center">
         <div className="p-2"><h3>Organization</h3></div>
         <div className="p-2"><h4>Customer ID</h4></div>
@@ -42,19 +50,19 @@ function Profile(props) {
       <div>
         <li>
           <ul><b>Shipping</b></ul>
-          <ul>Address:</ul>
+          <ul>Address: </ul>
           <ul>City:</ul>
           <ul>Prov/State:</ul>
           <ul>Postal code:</ul>
-          <ul>Country:</ul>
+          <ul>Country: </ul>
         </li>
       </div>
 
       <div>
         <li>
           <ul><b>Contact</b></ul>
-          <ul>Name:</ul>
-          <ul>Email:</ul>
+          <ul>Name: {customer.contact_name}</ul>
+          <ul>Email: {customer.cus_status}</ul>
           <ul>Phone:</ul>
         </li>
       </div>
@@ -155,6 +163,13 @@ function Profile(props) {
       // console.log(response.data.Items);
       const newCustomers = response.data.Items
       setCustomers(newCustomers);
+
+      for (let item of newCustomers) {
+        if (item.customer_id == customer_id) {
+          setCustomer(item)
+        }
+      }
+
       return response.data.Items
     })
     .catch(function (error) {
