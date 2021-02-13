@@ -1,16 +1,10 @@
-.loginForm{
-  margin-top: 100px;
-}
-
-.loginBtn{
-  left: 50%;
-  width: 50%;
-  margin-left: 25%;
-  background-color: #00B060 !important;
-  border: none !important;
-}
-
-.loginTag {
-  text-decoration: none;
-  border-bottom: 1px solid #00B060;
-}
+@media all and (min-width: 480px) {
+    .Login {
+      padding: 60px 0;
+    }
+  
+    .Login form {
+      margin: 0 auto;
+      max-width: 320px;
+    }
+  }

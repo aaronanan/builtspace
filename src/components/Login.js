@@ -37,56 +37,35 @@ export default function Login() {
   }
 
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col col-lg-4"></div>
-        <div className="col col-lg-4">
-          <div className="row">
-                <div className="col"></div>
-                <div className="col formLogLabel">
-                  <p className="h2">Sign in</p>
-                </div>
-                <div className="col"></div>
-            <div className="container-fluid">
-            <Form className="loginForm" onSubmit={handleSubmit}>
-              <Form.Group size="lg" controlId="email">
-                <Form.Label>Email</Form.Label>
-                <Form.Control
-                  autoFocus
-                  type="email"
-                  value={fields.email}
-                  onChange={handleFieldChange}
-                />
-              </Form.Group>
-              <Form.Group size="lg" controlId="password">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                  type="password"
-                  value={fields.password}
-                  onChange={handleFieldChange}
-                />
-              </Form.Group>
-              <LoaderButton
-                className="btn btn-md loginBtn"
-                type="submit"
-                isLoading={isLoading}
-              >
-                Login
-              </LoaderButton>
-            </Form>
-            </div>
-          </div>
-          <br></br>
-          <div className="row">
-            <a className="loginTag">Forgot Email?</a>
-          </div>
-          <div className="row">
-            <a className="loginTag">Don't have an account yet?</a>
-          </div>
-
-        </div>
-        <div className="col col-lg-4"></div>
-      </div>
+    <div className="Login">
+      <Form onSubmit={handleSubmit}>
+        <Form.Group size="lg" controlId="email">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            autoFocus
+            type="email"
+            value={fields.email}
+            onChange={handleFieldChange}
+          />
+        </Form.Group>
+        <Form.Group size="lg" controlId="password">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            value={fields.password}
+            onChange={handleFieldChange}
+          />
+        </Form.Group>
+        <LoaderButton
+          block
+          size="lg"
+          type="submit"
+          isLoading={isLoading}
+          disabled={!validateForm()}
+        >
+          Login
+        </LoaderButton>
+      </Form>
     </div>
   );
 }

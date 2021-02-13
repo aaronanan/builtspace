@@ -1,17 +1,10 @@
-.submitBtn{
-  left: 50%;
-  width: 70%;
-  margin-left: 25%;
-}
-
-.formContainer{
-  margin-top: 20px;
-}
-
-.formLabel{
-  margin-bottom: 50px;
-}
-.registered {
-  text-decoration: none;
-  border-bottom: 1px solid #00B060;
-}
+@media all and (min-width: 480px) {
+    .Signup {
+      padding: 60px 0;
+    }
+  
+    .Signup form {
+      margin: 0 auto;
+      max-width: 320px;
+    }
+  }
