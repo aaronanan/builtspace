@@ -37,19 +37,23 @@ export default function Login() {
   }
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid wrapper">
+      <div className="container login-card bg-light">
       <div className="row">
-        <div className="col col-lg-4"></div>
-        <div className="col col-lg-4">
+        <div className="col">
+        <img className="navbar_logo" src="company_logo.png" alt=""></img>
+        </div>
+        <div className="col">
+          
           <div className="row">
-                <div className="col"></div>
-                <div className="col formLogLabel">
-                  <p className="h2">Sign in</p>
-                </div>
-                <div className="col"></div>
-            <div className="container-fluid">
+            <div className="container-fluid text-center">
+            <p className="h2">Welcome Back!</p>
+            </div>
+          </div>
+          <div className="row">
+            <div className="container">
             <Form className="loginForm" onSubmit={handleSubmit}>
-              <Form.Group size="lg" controlId="email">
+              <Form.Group size="md" controlId="email">
                 <Form.Label>Email</Form.Label>
                 <Form.Control
                   autoFocus
@@ -58,7 +62,7 @@ export default function Login() {
                   onChange={handleFieldChange}
                 />
               </Form.Group>
-              <Form.Group size="lg" controlId="password">
+              <Form.Group size="md" controlId="password">
                 <Form.Label>Password</Form.Label>
                 <Form.Control
                   type="password"
@@ -83,10 +87,13 @@ export default function Login() {
           <div className="row">
             <a className="loginTag">Don't have an account yet?</a>
           </div>
-
         </div>
-        <div className="col col-lg-4"></div>
+
+
+
+      </div>
       </div>
     </div>
+
   );
 }
