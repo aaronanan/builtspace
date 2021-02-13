@@ -10,6 +10,7 @@ const axios = require('axios').default;
 function Orders(props) {
 
     const [orders, setOrders] = useState([0]);
+    let search = ""
     const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
 
 
@@ -29,7 +30,7 @@ function Orders(props) {
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="inputGroup-sizing-sm">Search</span>
                 </div>
-                <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
+                <input onChange={handleChange} type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
             </div>
           </div>
         </div>
@@ -69,11 +70,28 @@ function Orders(props) {
     );
 
     function getOrders() {
+      console.log(search)
         axios.get(URL + '/orders')
         .then(function (response) {
           // console.log(response.data.Items);
           const newOrders = response.data.Items
-          setOrders(newOrders);
+          let filteredOrders = []
+          console.log(search)
+          if (search !== ""){
+            console.log("here")
+            newOrders.forEach(element => {
+              console.log(element)
+              if (parseInt(element.customer_id) === parseInt(search)){
+                filteredOrders.push(element)
+              }
+            }); 
+            if (filteredOrders.length === 0){
+              filteredOrders.push({customer_id:"No match found"})
+            }
+          } else {
+            filteredOrders = newOrders
+          }
+          setOrders(filteredOrders);
           // console.log(newOrders);
           // setMessage(newOrders[0].message)
           return response.data.Items
@@ -82,7 +100,10 @@ function Orders(props) {
           console.log(error);
         });
     };
-
+     function handleChange(e){
+       search = e.target.value
+       getOrders()
+     }
   return (
       <div>
         {orders_list}
