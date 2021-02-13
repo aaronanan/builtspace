@@ -76,14 +76,14 @@ const Navbar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse pull-right" id="navbarSupportedContent">
+        <div className="collapse navbar-collapse pull-right" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
-          <li class="nav-item">
+          <li className="nav-item">
               <LinkContainer to="/login">
                 <a className="nav-link" variant="outline-info" size="nav">Login</a>
               </LinkContainer>
               </li>
-              <li class="nav-item">
+              <li className="nav-item">
               <LinkContainer to="/signup">
                 <a className="nav-link" variant="outline-info" size="nav">Sign-Up</a>
               </LinkContainer>
@@ -102,33 +102,33 @@ const Navbar = () => {
         <a className="navbar-brand" href="#">
           <img className="navbar_logo" src="company_logo.png" alt=""></img>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div classname="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav mr-auto">
-            <li class="nav-item">
+            <li className="nav-item">
               <LinkContainer to="/customers">
                 <a className="nav-link" variant="outline-info" size="nav">Customers</a>
               </LinkContainer>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <LinkContainer to="/orders">
                 <a className="nav-link" variant="outline-info" size="nav">Orders</a>
               </LinkContainer>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <LinkContainer to="/format">
                 <a className="nav-link" variant="outline-info" size="nav">Format</a>
               </LinkContainer>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <LinkContainer to="/new_customer">
                 <a className="nav-link" alt="plus">New Customer</a>
               </LinkContainer>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <LinkContainer to="/find_customer">
                 <a className="nav-link" alt="qr" >Find Customer</a>
               </LinkContainer>
