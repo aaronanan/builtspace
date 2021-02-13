@@ -63,13 +63,13 @@ function Customers(props) {
 
     const customer_table = (
       <table className="table table-sm table-hover table-striped">
-      <thead>
+      <thead className="thead-green">
         <tr>
-          <th>ID</th>
-          <th>Organization</th>
-          <th>Status</th>
-          <th>More Info</th>
-          <th>New Order</th>
+          <th className="text-center">ID</th>
+          <th className="text-center">Organization</th>
+          <th className="text-center">Status</th>
+          <th className="text-center">More Info</th>
+          <th className="text-center">New Order</th>
         </tr>
       </thead>
       <tbody>
@@ -80,18 +80,18 @@ function Customers(props) {
           return true;
         }).map(customer => 
         <tr>
-          <td id="customer_id">{String(customer.customer_id).padStart(4, '0')}</td>
-          <td id="name">{customer.org_name}</td>
-          <td id="email">{customer.cus_status}</td>
-          <td><Link to={{
+          <td  className="text-center" id="customer_id">{String(customer.customer_id).padStart(4, '0')}</td>
+          <td className="text-center" id="name">{customer.org_name}</td>
+          <td className="text-center" id="email">{customer.cus_status}</td>
+          <td className="text-center"><Link to={{
             pathname: `/profile`,
             query: { customer_id: `${customer.customer_id}` }
-          }} className="btn btn-secondary btn-sm">Orders and More Info</Link>
+          }} className="btn btn-secondary btn-sm btn-middle">Orders and More Info</Link>
           </td>
-          <td id="submitOrder"><Link to={{
+          <td className="text-center" id="submitOrder"><Link to={{
             pathname: `/create_order/${customer.customer_id}`,
             query: { customer_id: `${customer.customer_id}` }
-          }} className="btn btn-sm btn-primary btn-theme">Submit an Order</Link></td>
+          }} className="btn btn-sm btn-primary btn-theme btn-middle">Submit an Order</Link></td>
         </tr>
       )}
       </tbody>
@@ -108,11 +108,11 @@ function Customers(props) {
         <br></br>
         <div className="row justify-content-center">
           <div className="col-sm-9">
-          <div class="input-group input-group-md mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-sm">Search</span>
+          <div className="input-group input-group-md mb-3">
+            <div className="input-group-prepend">
+              <span className="input-group-text" id="inputGroup-sizing-sm">Search</span>
             </div>
-            <input onChange={handleChange} type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
+            <input onChange={handleChange} type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
             </div>
           </div>
           <div className="col-sm-3">

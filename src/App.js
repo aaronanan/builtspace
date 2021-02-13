@@ -27,7 +27,6 @@ Amplify.configure(awsconfig);
 
 function App() {
   const URL = awsconfig.aws_cloud_logic_custom.endpoint;
-  console.log(URL)
   const [isAuthenticated, userHasAuthenticated] = useState(true);
   const [isAuthenticating, setIsAuthenticating] = useState(true);
  

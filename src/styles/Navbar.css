@@ -5,6 +5,7 @@
 
 li :hover{
     background-color: #00a14b;
+    color: white !important;
 }
 
 li a{
@@ -20,4 +21,9 @@ li a:hover{
 .navdiv{
     border-bottom: medium !important;
     border-color: #00a14b;
+}
+
+tbody tr:hover{
+    background-color: #00a14b !important;
+    color: white !important;
 }

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import Order from './Order'
-
 import awsconfig from '../aws-exports';
+import { Link } from "react-router-dom";
+import "../styles/Profile.css";
 
 
 
@@ -44,32 +45,71 @@ function Profile(props) {
     });
     const customers_list = customers.map(customer => (
       <>
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
-          <div className="col-4 cus_details">
-            <p>Customer Details</p>
-            <p>Org. Name: {customer.org_name}</p>
-            <p>Customer ID: {customer.customer_id}</p>
+          <div className="col-3 cus_details">
+            <div className="row">
+              <div className="col">
+            <p className="font-weight-bold">Customer Details</p>
+            <p>Org. Name:</p>
+            <p>Customer ID:</p>
             <br></br>
-            <p>Shipping:</p>
+            <p className="font-weight-bold">Shipping</p>
             <p>Address: </p>
             <p>City:</p>
             <p>Prov/State: </p>
             <p>Postal Code: </p>
             <p>Country: </p>
             <br></br>
-            <p>Contact:</p>
+            <p className="font-weight-bold">Contact</p>
             <p>Name: </p>
-            {/* <p>Email: {customer.contact_person["email"]}</p>
-            <p>Phone: {customer.contact_person.phone}</p> */}
-            <p>BuiltSpace Sales Contact: </p>
+            <p>Email:</p>
+            <p>Phone: </p>
+            <p className="font-weight-bold">BuiltSpace Sales Contact</p>
             <p>Name: </p>
             {/* <p>Emp ID: {customer.partner_id}</p>
             <p>Email: {customer.partner_contact}</p> */}
+              </div>
+              <div className="col">
+              <p> '</p>
+              <p>{customer.org_name}</p>
+              <p>{customer.customer_id}</p>
+              <br></br>
+              <p className="font-weight-bold">'</p>
+              <p>TEMP</p>
+              <p>TEMP</p>
+              <p>TEMP</p>
+              <p>TEMP</p>
+              <p>TEMP</p>
+              <br></br>
+              <p className="font-weight-bold">'</p>
+              <p>TEMP</p>
+              <p>TEMP</p>
+              <p>PTEMP</p>
+              <p className="font-weight-bold">'</p>
+              <p>TEMP</p>
+              {/* <p>Emp ID: {customer.partner_id}</p>
+              <p>Email: {customer.partner_contact}</p> */}
+              </div>
+            </div>
           </div>
-          <div className="col-8">
-          <Order
-            customer_id={customer_id} />
+          <div className="col-9 order_div">
+            <div className="row">
+              <div className="container-fluid ord_table">
+              <Order
+              customer_id={customer_id} />
+              </div>
+            </div>
+            <div className="row">
+              <div className="col"></div>
+              <div className="col">
+              <Link to={{
+                pathname: `/create_order/${customer.customer_id}`,
+                query: { customer_id: `${customer.customer_id}` }
+              }} className="btn btn-md btn-primary btn-profile">New Order</Link>
+              </div>
+              <div className="col"></div>
+            </div>
           </div>
         </div>
 

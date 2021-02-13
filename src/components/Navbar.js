@@ -8,13 +8,7 @@ import "../styles/Navbar.css";
 
 import { useAppContext } from "../libs/contextLib";
 
-{/* <div> <ul className="navbar-nav mr-auto"> <li class="nav-item"> 
-    <a className="nav-link" variant="outline-info" size="nav" onClick={handleLogout}>Logout{ userEmail } 
-  </a> 
-</li> 
-</ul> 
-</div>
- */}
+
 
 
 const Navbar = () => {
@@ -90,8 +84,8 @@ const Navbar = () => {
               </li>
           </ul>
         </div>
-              
-              </nav>
+        
+    </nav>
     </>
   );
 
@@ -106,7 +100,7 @@ const Navbar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div classname="collapse navbar-collapse" id="navbarNav">
+        <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
               <LinkContainer to="/customers">
@@ -123,19 +117,14 @@ const Navbar = () => {
                 <a className="nav-link" variant="outline-info" size="nav">Format</a>
               </LinkContainer>
             </li>
-            <li className="nav-item">
-              <LinkContainer to="/new_customer">
-                <a className="nav-link" alt="plus">New Customer</a>
-              </LinkContainer>
-            </li>
-            <li className="nav-item">
-              <LinkContainer to="/find_customer">
-                <a className="nav-link" alt="qr" >Find Customer</a>
-              </LinkContainer>
-            </li>
             </ul>
         </div>
-        
+        <div> <ul className="navbar-nav mr-auto"> <li className="nav-item"> 
+          <a className="nav-link" variant="outline-info" size="nav" onClick={handleLogout}>Logout{ userEmail } 
+          </a> 
+        </li> 
+        </ul> 
+        </div>
       </nav>
       </div>
     </>

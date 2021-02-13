@@ -25,7 +25,7 @@ function Orders(props) {
       <div className="col-11">
         <div className="container-fluid">
         <div className="row">
-          <div className="col-6">
+          <div className="col-12">
             <div class="input-group input-group-md mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="inputGroup-sizing-sm">Search</span>
@@ -37,24 +37,25 @@ function Orders(props) {
         <div className="row">
           <div className="col-12">
           <Table size="sm" striped bordered hover>
-          <thead>
+          <thead className="thead-green">
             <tr>
-              <th>Customer ID</th>
-              <th>Status</th>
-              <th>Amount of URLs</th>
-              <th>Date Created</th>
-              <th>Order ID</th>
+              <th className="text-center">Customer ID</th>
+              <th className="text-center">Status</th>
+              <th className="text-center">Amount of URLs</th>
+              <th className="text-center">Date Created</th>
+              <th className="text-center">Order ID</th>
             </tr>
           </thead>
           <tbody>
           {orders.map(order =>
-            <tr>
-              <td>{String(order.customer_id).padStart(4, '0')}</td>
-              <td>{order.status}</td>
-              <td>{order.num_urls}</td>
-              <td>{String(order.creation_date).slice(0, 10)}</td>
-              <td id="order_id">{order.order_id}</td>
-            </tr>
+        
+              <tr>
+                <td className="text-center">{String(order.customer_id).padStart(4, '0')}</td>
+                <td className="text-center">{order.status}</td>
+                <td className="text-center">{order.num_urls}</td>
+                <td className="text-center">{String(order.creation_date).slice(0, 10)}</td>
+                <td className="text-center" id="order_id">{order.order_id}</td>
+              </tr>
           )}
           </tbody>
           </Table>
@@ -70,17 +71,12 @@ function Orders(props) {
     );
 
     function getOrders() {
-      console.log(search)
         axios.get(URL + '/orders')
         .then(function (response) {
-          // console.log(response.data.Items);
           const newOrders = response.data.Items
           let filteredOrders = []
-          console.log(search)
           if (search !== ""){
-            console.log("here")
             newOrders.forEach(element => {
-              console.log(element)
               if (parseInt(element.customer_id) === parseInt(search)){
                 filteredOrders.push(element)
               }
