@@ -19,6 +19,7 @@ function Customers(props) {
     const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
     const [customers, setCustomers] = useState([0]);
     const [firstTable, setFirstTable] = useState(true);
+    let search = ""
 
     function sortCustomers(){
       var i;
@@ -32,21 +33,25 @@ function Customers(props) {
     }
   }
 
-  function filter(arr) {
-      for(let i=0; i<arr.length; i++) {
-        if(arr[i].cus_status === "Inactive") {
-          delete customers[i];
-        }
-      }
-  }
-
   function getCustomers() {
     axios.get(URL + '/customers')
     .then(function (response) {
       // console.log(response.data.Items);
+      let filteredCustomers = []
       const newCustomers = response.data.Items
-      filter(newCustomers);
-      setCustomers(newCustomers);
+      if (search !== ""){
+        newCustomers.forEach(element => {
+          if (element.org_name === search) {
+            filteredCustomers.push(element);
+          }
+        });
+        // if (filteredCustomers.length === 0){
+        //   filteredCustomers.push({org_name: "No Match Found!"})
+        // }
+      } else {
+        filteredCustomers = newCustomers;
+      }
+      setCustomers(filteredCustomers);
       return response.data.Items
     })
     .catch(function (error) {
@@ -79,7 +84,7 @@ function Customers(props) {
           <td id="name">{customer.org_name}</td>
           <td id="email">{customer.cus_status}</td>
           <td><Link to={{
-            pathname: `/profile/${customer.customer_id}`,
+            pathname: `/profile`,
             query: { customer_id: `${customer.customer_id}` }
           }} className="btn btn-secondary btn-sm">Orders and More Info</Link>
           </td>
@@ -92,7 +97,10 @@ function Customers(props) {
       </tbody>
       </table>
     )
-
+    function handleChange(e){
+      search = e.target.value;
+      getCustomers();
+    }
     sortCustomers();
     return (
       <>
@@ -104,7 +112,7 @@ function Customers(props) {
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputGroup-sizing-sm">Search</span>
             </div>
-            <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
+            <input onChange={handleChange} type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
             </div>
           </div>
           <div className="col-sm-3">
