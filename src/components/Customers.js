@@ -4,10 +4,7 @@ import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import { Link } from "react-router-dom";
-import { LinkContainer } from 'react-router-bootstrap';
 import awsconfig from '../aws-exports';
-import "../styles/Customers.css";
-
 
 // TODO: Add button/option that takes customer ID and displays orders for that ID, instead of having to manually search for customer ID in another page
 
@@ -57,14 +54,14 @@ function Customers(props) {
     useEffect(getCustomers, []);
 
     const customer_table = (
-      <table className="table table-sm table-hover table-striped">
+      <Table size="sm" striped bordered hover>
       <thead>
         <tr>
           <th>ID</th>
+          <th>Customer Name</th>
           <th>Organization</th>
           <th>Status</th>
           <th>More Info</th>
-          <th>New Order</th>
         </tr>
       </thead>
       <tbody>
@@ -76,50 +73,58 @@ function Customers(props) {
         }).map(customer => 
         <tr>
           <td id="customer_id">{String(customer.customer_id).padStart(4, '0')}</td>
+          <td id="name">{customer.contact_name}</td>
           <td id="name">{customer.org_name}</td>
           <td id="email">{customer.cus_status}</td>
           <td><Link to={{
             pathname: `/profile/${customer.customer_id}`,
             query: { customer_id: `${customer.customer_id}` }
-          }} className="btn btn-secondary btn-sm">Orders and More Info</Link>
-          </td>
-          <td id="submitOrder"><a className="btn btn-sm btn-primary btn-theme">Submit an Order</a></td>
+          }} className="btn btn-secondary btn-sm">Profile</Link></td>
         </tr>
       )}
       </tbody>
-      </table>
+    </Table>
+    )
+
+
+    const deactivatedCustomer_table = (
+      <Table size="sm" striped bordered hover>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Customer Name</th>
+          <th>Organization</th>
+          <th>Status</th>
+          <th>More Info</th>
+        </tr>
+      </thead>
+      <tbody>
+      {deactivatedCustomers.map(customer => 
+        <tr>
+          <td id="customer_id">{String(customer.customer_id).padStart(4, '0')}</td>
+          <td id="name">{customer.contact_name}</td>
+          <td id="name">{customer.org_name}</td>
+          <td id="email">{customer.cus_status}</td>
+          <td><Link to={{
+            pathname: `/profile/${customer.customer_id}`,
+            query: { customer_id: `${customer.customer_id}`}
+          }} className="btn btn-secondary btn-sm">Profile</Link></td>
+    
+        </tr>
+      )}
+      </tbody>
+    </Table>
     )
 
     sortCustomers();
     return (
-      <>
-      <div className="container">
-        <br></br>
-        <div className="row justify-content-center">
-          <div className="col-sm-9">
-          <div class="input-group input-group-md mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-sm">Search</span>
+          <div>
+            <div className="toggleCustomers">
+            <Button variant="danger" className="toggleButton"
+            onClick={() => setFirstTable(!firstTable)} >Toggle Inactive Customers</Button>
             </div>
-            <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
-            </div>
+          { firstTable ? customer_table: deactivatedCustomer_table }
           </div>
-          <div className="col-sm-3">
-            <LinkContainer to="/new_customer">
-              <a className="btn btn-primary  btn-theme">Create a New Customer</a>
-            </LinkContainer>
-        </div>
-        </div>
-        <br></br>
-        <div className="row justify-content-center">
-          <div className="col-12">
-            { customer_table }
-          </div>
-        </div>
-
-      </div>
-          
-      </>
   );
 }
 

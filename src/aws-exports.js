@@ -6,7 +6,7 @@ const awsmobile = {
     "aws_cloud_logic_custom": [
         {
             "name": "qrv1API",
-            "endpoint": "https://a05rzy45k0.execute-api.ca-central-1.amazonaws.com/deploy",
+            "endpoint": "https://u2hap2bjqi.execute-api.ca-central-1.amazonaws.com/prod",
             "region": "ca-central-1"
         }
     ],
