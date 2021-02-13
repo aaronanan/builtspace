@@ -25,6 +25,8 @@ label {
 
   body {
       font-size: 16px;
+      background-color: #00B060;
+      color: #00B060;
   }
 
 .inputField {

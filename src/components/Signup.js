@@ -97,43 +97,132 @@ export default function Signup() {
 
   function renderForm() {
     return (
-      <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="email" size="lg">
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            autoFocus
-            type="email"
-            value={fields.email}
-            onChange={handleFieldChange}
-          />
-        </Form.Group>
-        <Form.Group controlId="password" size="lg">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            value={fields.password}
-            onChange={handleFieldChange}
-          />
-        </Form.Group>
-        <Form.Group controlId="confirmPassword" size="lg">
-          <Form.Label>Confirm Password</Form.Label>
-          <Form.Control
-            type="password"
-            onChange={handleFieldChange}
-            value={fields.confirmPassword}
-          />
-        </Form.Group>
-        <LoaderButton
-          block
-          size="lg"
-          type="submit"
-          variant="success"
-          isLoading={isLoading}
-          disabled={!validateForm()}
-        >
-          Signup
-        </LoaderButton>
-      </Form>
+      <>
+      <div className="container-fluid formContainer">
+        <div className="row">
+        <div className="col"></div>
+        <div className="col-6">
+          <br></br>
+          <br></br>
+          <div className="row">
+            <div className="container-fluid">
+              <div className="row">
+                <div className="col-5"></div>
+                <div className="col-3 formLabel">
+                  <h2>Sign Up</h2>
+                </div>
+                <div className="col-5"></div>
+              </div>
+            <Form onSubmit={handleSubmit}>
+              <div className="row">
+                <div className="col col-4">
+                  <p>Employee ID</p>
+                </div>
+                <div className="col col-8">
+                  <Form.Group className="form-group" controlId="email" size="lg">
+                    <Form.Control
+                      autoFocus
+                      type="email"
+                      value={fields.email}
+                      onChange={handleFieldChange}
+                    />
+                  </Form.Group>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col col-4">
+                  <p>Username</p>
+                </div>
+                <div className="col col-8">
+                  <Form.Group className="form-group" controlId="email" size="lg">
+                    <Form.Control
+                      autoFocus
+                      type="email"
+                      value={fields.email}
+                      onChange={handleFieldChange}
+                    />
+                  </Form.Group>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col col-4">
+                  <p>Company Email</p>
+                </div>
+                <div className="col col-8">
+                  <Form.Group className="form-group" controlId="email" size="lg">
+                    <Form.Control
+                      autoFocus
+                      type="email"
+                      value={fields.email}
+                      onChange={handleFieldChange}
+                    />
+                  </Form.Group>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col col-4">
+                  <p>Password</p>
+                </div>
+                <div className="col col-8">
+                  <Form.Group controlId="password" size="lg">
+                  <Form.Control
+                    type="password"
+                    value={fields.password}
+                    onChange={handleFieldChange}
+                  />
+                </Form.Group>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col col-4">
+                  <p>Confirm Password</p>
+                </div>
+                <div className="col col-8">
+                  <Form.Group controlId="confirmPassword" size="lg">
+                    <Form.Control
+                      type="password"
+                      onChange={handleFieldChange}
+                      value={fields.confirmPassword}
+                    />
+                  </Form.Group>
+                </div>
+              </div>
+              <br></br>
+              <div className="row">
+                <div className="col col-5">
+                  <LoaderButton
+                  className="btn btn-md submitBtn"
+                  type="submit"
+                  variant="success"
+                  isLoading={isLoading}
+                >
+                  Signup
+                </LoaderButton>
+                </div>
+                <div className="col col-2"></div>
+                <div className="col col-5">
+                <LoaderButton
+                  className="btn btn-md btn-secondary submitBtn"
+                  
+                >
+                  Cancel
+                </LoaderButton>
+                </div>
+              </div>
+              
+              
+            </Form>
+            </div>
+          </div>
+          <br></br>
+          <div className="row">
+            <a className="registered">Already have an account?</a>
+          </div>
+        </div>
+        <div className="col"></div>
+      </div>
+      </div>
+      </>
     );
   }
 
