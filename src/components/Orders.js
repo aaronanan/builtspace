@@ -76,8 +76,9 @@ function Orders(props) {
           const newOrders = response.data.Items
           let filteredOrders = []
           if (search !== ""){
+            search = search.toString()
             newOrders.forEach(element => {
-              if (parseInt(element.customer_id) === parseInt(search)){
+              if (element.customer_id.toString().includes(search) || element.order_id.toString().includes(search)){
                 filteredOrders.push(element)
               }
             }); 

@@ -41,20 +41,11 @@ function Customers(props) {
       let filteredCustomers = []
       const newCustomers = response.data.Items
       if (search !== ""){
-
         newCustomers.forEach(element => {
-          if (selected === "Organization"){
-            if (element.org_name === search) {
+            search = search.toString().toUpperCase()
+            if (element.customer_id.toString().includes(search) || element.org_name.toUpperCase().includes(search) ) {
               filteredCustomers.push(element);
             }
-          }
-          if (selected === "ID"){
-            if (element.customer_id === search) {
-              filteredCustomers.push(element);
-            }
-          }
-          
-          
         });
       } else {
         filteredCustomers = newCustomers;
@@ -107,8 +98,7 @@ function Customers(props) {
     )
     function handleChange(e){
         search = e.target.value;
-
-      getCustomers();
+        getCustomers();
     }
 
     sortCustomers();
@@ -117,20 +107,13 @@ function Customers(props) {
       <div className="container">
         <br></br>
         <div className="row justify-content-center">
-          <div className="col-5">
+          <div className="col-9">
           <div className="input-group input-group-md mb-3">
             <div className="input-group-prepend">
               <span className="input-group-text" id="inputGroup-sizing-sm">Search</span>
             </div>
             <input onChange={handleChange} type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" ></input>
             </div>
-          </div>
-          <div className="col-4">
-          <select id="inputState" class="form-control">
-            <option selected>Search In...</option>
-            <option>ID</option>
-            <option>Organization</option>
-          </select>
           </div>
           <div className="col-3">
             <LinkContainer to="/new_customer">

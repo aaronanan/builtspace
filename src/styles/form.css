@@ -20,3 +20,13 @@
     margin-top: 15%;
 }
 
+table ,th{
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;}
+
+td{
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+}
