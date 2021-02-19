@@ -103,7 +103,7 @@ function Form(props) {
         <div className="container-fluid">
           <div className="row">
             <div className="col"></div>
-            <div className="col"><p className="h2 formLabel">Create a Customer</p></div>
+            <div className="col-8 text-center"><p className="h2 formLabel">Create a Customer</p></div>
             <div className="col"></div>
           </div>
           <br></br>
@@ -112,7 +112,7 @@ function Form(props) {
 
             <div className="col">
               <div className="row">
-                <div className="col-3">
+                <div className="col-4">
                   <p>Organization</p>
                 </div>
                 <div className="col">
@@ -159,7 +159,7 @@ function Form(props) {
           <div className="row">
             <div className="col">
               <div className="row">
-                <div className="col-3"><p>State/Province</p></div>
+                <div className="col-4"><p>State/Province</p></div>
                 <div className="col"><input className="form-control"></input></div>
               </div>
             </div>
@@ -176,14 +176,14 @@ function Form(props) {
           <div className="row">
           <div className="col">
               <div className="row">
-                <div className="col-3"><p>Contact Name</p></div>
+                <div className="col-5"><p>Contact Name</p></div>
                 <div className="col"><input className="form-control"></input></div>
               </div>
             </div>
             
             <div className="col">
               <div className="row">
-                <div className="col-3"><p>Postal Code</p></div>
+                <div className="col-4"><p>Postal Code</p></div>
                 <div className="col"><input className="form-control"></input></div>
               </div>
             </div>
@@ -201,7 +201,7 @@ function Form(props) {
             
             <div className="col">
               <div className="row">
-                <div className="col-3">Contact Phone</div>
+                <div className="col-5">Contact Phone</div>
                 <div className="col"><input className="form-control"></input></div>
               </div>
             </div>
@@ -209,12 +209,13 @@ function Form(props) {
 
           </div>
           <br></br>
+          <br></br>
           <div className="row">
-            <div className="col">
+            <div className="col text-center">
               <a className="btn btn-md btn-primary btn-theme-form">Create</a>
             </div>
             
-            <div className="col">
+            <div className="col text-center">
               <a className="btn btn-md btn-secondary btn-secondary-form" href="/Customers">Cancel</a>
             </div>
 

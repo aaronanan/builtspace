@@ -2,18 +2,21 @@
     background-color: #00B060 !important;
     border: none !important;
     color: white !important;
-    left: 25%;
-    margin-left: 50%;
-    width: 30%;
+    width: 50%;
 }
 
 .btn-secondary-form{
     color: white !important;
-    left: 25%;
-    margin-left: 50%;
-    width: 30%;
+    width: 50%;
+}
+.btn-secondary-form:hover{
+    width: 55%;
+}
+.btn-theme-form:hover{
+    width: 55%;
 }
 
 .formLabel{
     margin-top: 15%;
 }
+
