@@ -7,7 +7,8 @@ function NavbarHome() {
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Navbar.Brand href="home"><img src={logo} width="150px"></img></Navbar.Brand>
+        {/* <Navbar.Brand href="home"><img src={logo} width="150px"></img></Navbar.Brand> */}
+        <Navbar.Brand href="home">BuiltSpace</Navbar.Brand>
 
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
