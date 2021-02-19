@@ -66,7 +66,7 @@ const Navbar = () => {
         <a className="navbar-brand" href="#">
           <img className="navbar_logo" src="company_logo.png" alt=""></img>
         </a>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
 
@@ -83,7 +83,7 @@ const Navbar = () => {
               </LinkContainer>
               </li>
           </ul>
-        </div>
+        </div> */}
         
     </nav>
     </>
