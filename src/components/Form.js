@@ -215,7 +215,7 @@ function Form(props) {
             </div>
             
             <div className="col">
-              <a className="btn btn-md btn-secondary btn-secondary-form">Cancel</a>
+              <a className="btn btn-md btn-secondary btn-secondary-form" href="/Customers">Cancel</a>
             </div>
 
           </div>

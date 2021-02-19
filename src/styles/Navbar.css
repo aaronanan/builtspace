@@ -11,11 +11,12 @@ li :hover{
 li a{
     border-radius: 10px;
     border: 1px solid #00a14b;
-    margin: 2px;
+    margin: 4px;
 }
 
 li a:hover{
-    color: white;
+    color: white !important;
+    
 }
 
 .navdiv{
@@ -27,3 +28,8 @@ tbody tr:hover{
     background-color: #00a14b !important;
     color: white !important;
 }
+.nav-link{
+    text-align: center;
+    width: 100px;
+}
+

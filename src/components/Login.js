@@ -40,14 +40,14 @@ export default function Login() {
     <div className="container-fluid wrapper">
       <div className="container login-card bg-light">
       <div className="row">
-        <div className="col">
-        <img className="navbar_logo" src="company_logo.png" alt=""></img>
+        <div className="col text-center">
+        <img className="login_logo" src="logo.png" alt=""></img>
         </div>
         <div className="col">
-          
+          <br></br>
           <div className="row">
             <div className="container-fluid text-center">
-            <p className="h2">Welcome Back!</p>
+            <p className="h2 form_header">Welcome Back!</p>
             </div>
           </div>
           <div className="row">
@@ -82,10 +82,7 @@ export default function Login() {
           </div>
           <br></br>
           <div className="row">
-            <a className="loginTag">Forgot Email?</a>
-          </div>
-          <div className="row">
-            <a className="loginTag">Don't have an account yet?</a>
+            <a className="loginTag" href="/signup">Don't have an account yet?</a>
           </div>
         </div>
 

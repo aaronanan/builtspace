@@ -39,11 +39,11 @@ function Orders(props) {
           <Table size="sm" striped bordered hover>
           <thead className="thead-green">
             <tr>
-              <th className="text-center">Customer ID</th>
+              <th className="text-center left_radius">Customer ID</th>
               <th className="text-center">Status</th>
               <th className="text-center">Amount of URLs</th>
               <th className="text-center">Date Created</th>
-              <th className="text-center">Order ID</th>
+              <th className="text-center right_radius">Order ID</th>
             </tr>
           </thead>
           <tbody>

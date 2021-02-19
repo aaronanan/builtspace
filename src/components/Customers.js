@@ -19,7 +19,8 @@ function Customers(props) {
     const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
     const [customers, setCustomers] = useState([0]);
     const [firstTable, setFirstTable] = useState(true);
-    let search = ""
+    let search = "";
+    let selected = "Organization";
 
     function sortCustomers(){
       var i;
@@ -40,14 +41,21 @@ function Customers(props) {
       let filteredCustomers = []
       const newCustomers = response.data.Items
       if (search !== ""){
+
         newCustomers.forEach(element => {
-          if (element.org_name === search) {
-            filteredCustomers.push(element);
+          if (selected === "Organization"){
+            if (element.org_name === search) {
+              filteredCustomers.push(element);
+            }
           }
+          if (selected === "ID"){
+            if (element.customer_id === search) {
+              filteredCustomers.push(element);
+            }
+          }
+          
+          
         });
-        // if (filteredCustomers.length === 0){
-        //   filteredCustomers.push({org_name: "No Match Found!"})
-        // }
       } else {
         filteredCustomers = newCustomers;
       }
@@ -65,11 +73,11 @@ function Customers(props) {
       <table className="table table-sm table-hover table-striped">
       <thead className="thead-green">
         <tr>
-          <th className="text-center">ID</th>
+          <th className="text-center left_radius">ID</th>
           <th className="text-center">Organization</th>
           <th className="text-center">Status</th>
           <th className="text-center">More Info</th>
-          <th className="text-center">New Order</th>
+          <th className="text-center right_radius">New Order</th>
         </tr>
       </thead>
       <tbody>
@@ -98,24 +106,33 @@ function Customers(props) {
       </table>
     )
     function handleChange(e){
-      search = e.target.value;
+        search = e.target.value;
+
       getCustomers();
     }
+
     sortCustomers();
     return (
       <>
       <div className="container">
         <br></br>
         <div className="row justify-content-center">
-          <div className="col-sm-9">
+          <div className="col-5">
           <div className="input-group input-group-md mb-3">
             <div className="input-group-prepend">
               <span className="input-group-text" id="inputGroup-sizing-sm">Search</span>
             </div>
-            <input onChange={handleChange} type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
+            <input onChange={handleChange} type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" ></input>
             </div>
           </div>
-          <div className="col-sm-3">
+          <div className="col-4">
+          <select id="inputState" class="form-control">
+            <option selected>Search In...</option>
+            <option>ID</option>
+            <option>Organization</option>
+          </select>
+          </div>
+          <div className="col-3">
             <LinkContainer to="/new_customer">
               <a className="btn btn-primary  btn-theme">Create a New Customer</a>
             </LinkContainer>

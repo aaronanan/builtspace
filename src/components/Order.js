@@ -15,11 +15,11 @@ function Order(props) {
       <table className="table table-bordered table-sm  hover">
         <thead className="thead-green">
           <tr>
-            <th className="text-center">Order ID</th>
+            <th className="text-center left_radius">Order ID</th>
             <th className="text-center">Status</th>
             <th className="text-center">Amount</th>
             <th className="text-center">Date Created</th>
-            <th className="text-center">URL LIST</th>
+            <th className="text-center right_radius">URL LIST</th>
           </tr>
         </thead>
         <tbody>

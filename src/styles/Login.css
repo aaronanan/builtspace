@@ -27,3 +27,14 @@
   height: 70vh;
 }
 
+.login_logo{
+  width: auto;
+  height: 100%;
+  margin-top: 30px;
+ 
+  background : transparent !important;
+}
+
+.form_header{
+  font-weight: 600 !important;
+}
