@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import Table from 'react-bootstrap/Table';
-import Button from 'react-bootstrap/Button'
 import awsconfig from '../aws-exports';
-
 
 // TODO: Integrate unused Modal code to display URLs for a specific order, requires new //GET /orders/order_id endpoint
 
@@ -14,29 +12,30 @@ function Order(props) {
 
 
     const orders_list = (
-      <Table striped bordered hover>
-        <thead>
+      <table className="table table-bordered table-sm  hover">
+        <thead className="thead-green">
           <tr>
-            <th>Order ID</th>
-            <th>Status</th>
-            <th>Amount</th>
-            <th>Date Created</th>
-            <th>URL LIST</th>
+            <th className="text-center left_radius">Order ID</th>
+            <th className="text-center">Status</th>
+            <th className="text-center">Amount</th>
+            <th className="text-center">Date Created</th>
+            <th className="text-center right_radius">URL LIST</th>
           </tr>
         </thead>
         <tbody>
       {orders.map(order =>
         <tr>
-          <td>{order.order_id}</td>
-          <td>{order.status}</td>
-          <td>{order.num_urls}</td>
-          <td>{String(order.creation_date).slice(0, 10)}</td>
+          <td className="text-center">{order.order_id}</td>
+          <td className="text-center">{order.status}</td>
+          <td className="text-center">{order.num_urls}</td>
+          <td className="text-center">{String(order.creation_date).slice(0, 10)}</td>
           {/* <td><Button onClick={handleShow} className="btn btn-secondary btn-sm">View</Button></td> */}
-          <td>{(order.urls)}</td>
+          {/* <td>{(order.urls)}</td> */}
+          <td className="text-center"><a className="btn btn-primary btn-order">GO TO</a></td>
         </tr>
       )}
       </tbody>
-    </Table>
+    </table>
     );
 
     
@@ -59,32 +58,11 @@ function Order(props) {
         });
     };
 
-
+    getSpecificOrders()
   return (
-      <div>
-
-      {/* <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>URL List</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>{url_list}</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal> */}
-          {/* <button type='button' onClick={() => clearOrders()}>Clear Orders</button> */}
-          <Button variant="warning"
-        onClick={getSpecificOrders}>
-          Get Orders
-        </Button>
-        <td>
         <ul>
             {orders_list}
         </ul>
-        </td>
-        </div>
     );
 }
 

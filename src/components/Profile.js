@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Table from 'react-bootstrap/Table';
+import axios from 'axios';
+import Order from './Order'
 import awsconfig from '../aws-exports';
+import { Link } from "react-router-dom";
+// import "../styles/Profile.css";
+
 
 
 const axios = require('axios').default;
@@ -8,189 +12,117 @@ const axios = require('axios').default;
 // TODO: Add more customer info fields, add axios.post request to update customer info
 
 function Profile(props) {
+    let customer_id = parseInt(props.location.query.customer_id);
+    const [customers, setCustomers] = useState([0]);
+    const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
 
-  var customer_id = parseInt(props.location.query.customer_id);
-  // console.log(customer_id);
-  
-  const [orders, setOrders] = useState([0]);
-  const [customers, setCustomers] = useState([0]);
-  const [customer, setCustomer] = useState([0]);
+    // let [org_name,address,city,prov,postalcode,country,name,email,phone] = ["","","","","","","","",""]
 
-  const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
+    useEffect(() => {
+      setCustomers([0]);
+    }, []);
 
-  useEffect(getOrders, []);
-  useEffect(getCustomers, []);
-  // useEffect(getCustomer, []);
-
-
-  // const getCustomer = (x) => {
-  //   for (let item of customers) {
-  //     if (item.customer_id == x ) {
-  //       // customer = item;
-  //       // console.log(item)
-  //       return item
-  //     }
-  //   }
-  // }
-
-  // customer = getCustomer(customer_id)
-
-  // useEffect(getCustomer(customer_id), []);
-
-
-  const customer_details = (
-    <>  
-      <el>{customer.org_name}</el>
-      {/* <input type="button" onClick={() => {console.log(customer, customer.contact_person.email)}}/> */}
-      <div className="d-flex flex-column pt-2 justify-content-center">
-        <div className="p-2"><h3>Organization</h3></div>
-        <div className="p-2"><h4>Customer ID</h4></div>
-      </div>
-
-      <div>
-        <li>
-          <ul><b>Shipping</b></ul>
-          <ul>Address: </ul>
-          <ul>City:</ul>
-          <ul>Prov/State:</ul>
-          <ul>Postal code:</ul>
-          <ul>Country: </ul>
-        </li>
-      </div>
-
-      <div>
-        <li>
-          <ul><b>Contact</b></ul>
-          <ul>Name: {customer.contact_name}</ul>
-          <ul>Email: {customer.cus_status}</ul>
-          <ul>Phone:</ul>
-        </li>
-      </div>
-
-      <div>
-        <li>
-          <ul><b>BuiltSpace sales contact</b></ul>
-          <ul>Name:</ul>
-          <ul>Employee ID:</ul>
-          <ul>Email:</ul>
-        </li>
-      </div>
-    </>
-  )
-
-  const orders_list = (
-    <>
-    <br></br>
-    <div className="row">
-
-    <div className="col"></div>
-    <div className="col-11">
-      <div className="container-fluid">
-      <div className="row">
-        <div className="col">
-          <div class="input-group input-group-md mb-3 pb-4">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">Search</span>
-              </div>
-              <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
-          </div>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-12">
-        <table className="table table-sm table-hover table-striped">
-        <thead>
-          <tr>
-            <th>Order ID</th>
-            <th># URLs</th>
-            <th>Status</th>
-            <th>Date Created</th>
-            <th>Date Updated</th>
-          </tr>
-        </thead>
-        <tbody>
-        {orders.map(order =>
-          <tr>
-            <td id="order_id">{order.order_id}</td>
-            <td>{order.num_urls}</td>
-            <td>{order.status}</td>
-            <td>{String(order.creation_date).slice(0, 10)}</td>
-            <td>{String(order.lastupdate_date).slice(0, 10)}</td>
-          </tr>
-        )}
-        </tbody>
-        </table>
-
-        </div>
-      </div>
-      </div>
-
-    </div>
-    <div className="col"></div>
-    </div>
-  </>
-  );
-
-
-
-  // axios.get(URL + '/customers/' + customer_id)
-  // .then(function (response) {
-  //   console.log(response);
-  // })
-  // .catch(function (error) {
-  //   console.log(error);
-  // });
-  
-
-  function getOrders() {
-    axios.get(URL + '/orders')
+    axios.get(URL + '/customers/' + customer_id, 
+      {
+      "customer_id": customer_id 
+      })
     .then(function (response) {
-      // console.log(response.data.Items);
-      const newOrders = response.data.Items
-      setOrders(newOrders);
-      // console.log(newOrders);
-      // setMessage(newOrders[0].message)
-      return response.data.Items
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  };
+      setCustomers([response.data.Item])
+      // console.log(customers[0])
 
-  function getCustomers() {
-    axios.get(URL + '/customers')
-    .then(function (response) {
-      // console.log(response.data.Items);
-      const newCustomers = response.data.Items
-      setCustomers(newCustomers);
-
-      for (let item of newCustomers) {
-        if (item.customer_id == customer_id) {
-          setCustomer(item)
-        }
+        // let org_name = response.data.Item.contact_name
+        // let name= response.data.Item.contact_name
+        // let email = response.data.Item.contact_person.email
+        // let phone = response.data.Item.contact_person.phone
+        // let address = response.data.Item.ship_address.Address
+        // let ity = response.data.Item.ship_address.City
+        // let country = response.data.Item.ship_address.country
+        // let postalcode = response.data.Item.ship_address.post_code
+        // let prov = response.data.Item.ship_address.prov
+        
       }
-
-      return response.data.Items
-    })
+      )
     .catch(function (error) {
       console.log(error);
     });
-  };
-
-  return (
-    <div className="container-fluid">
-      <div>
+    const customers_list = customers.map(customer => (
+      <>
+      <div className="container-fluid">
         <div className="row">
-          <div className="col-3 bg-success px-2 rounded">
-            { customer_details }
+          <div className="col-3 cus_details">
+            <div className="row">
+              <div className="col">
+            <p className="font-weight-bold">Customer Details</p>
+            <p>Org. Name:</p>
+            <p>Customer ID:</p>
+            <br></br>
+            <p className="font-weight-bold">Shipping</p>
+            <p>Address: </p>
+            <p>City:</p>
+            <p>Prov/State: </p>
+            <p>Postal Code: </p>
+            <p>Country: </p>
+            <br></br>
+            <p className="font-weight-bold">Contact</p>
+            <p>Name: </p>
+            <p>Email:</p>
+            <p>Phone: </p>
+            <p className="font-weight-bold">BuiltSpace Sales Contact</p>
+            <p>Name: </p>
+            {/* <p>Emp ID: {customer.partner_id}</p>
+            <p>Email: {customer.partner_contact}</p> */}
+              </div>
+              <div className="col">
+              <p> '</p>
+              <p>{customer.org_name}</p>
+              <p>{customer.customer_id}</p>
+              <br></br>
+              <p className="font-weight-bold">'</p>
+              <p>TEMP</p>
+              <p>TEMP</p>
+              <p>TEMP</p>
+              <p>TEMP</p>
+              <p>TEMP</p>
+              <br></br>
+              <p className="font-weight-bold">'</p>
+              <p>TEMP</p>
+              <p>TEMP</p>
+              <p>PTEMP</p>
+              <p className="font-weight-bold">'</p>
+              <p>TEMP</p>
+              {/* <p>Emp ID: {customer.partner_id}</p>
+              <p>Email: {customer.partner_contact}</p> */}
+              </div>
+            </div>
           </div>
-          <div className="col">
-            { orders_list }
+          <div className="col-9 order_div">
+            <div className="row">
+              <div className="container-fluid ord_table">
+              <Order
+              customer_id={customer_id} />
+              </div>
+            </div>
+            <div className="row">
+              <div className="col"></div>
+              <div className="col">
+              <Link to={{
+                pathname: `/create_order/${customer.customer_id}`,
+                query: { customer_id: `${customer.customer_id}` }
+              }} className="btn btn-md btn-primary btn-profile">New Order</Link>
+              </div>
+              <div className="col"></div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
 
+      </div>
+    
+    </>
+    ));
+  return (
+      <>
+      {customers_list}
+      </>
   );
 }
 

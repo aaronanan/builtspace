@@ -19,6 +19,8 @@ function Customers(props) {
     const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
     const [customers, setCustomers] = useState([0]);
     const [firstTable, setFirstTable] = useState(true);
+    let search = "";
+    let selected = "Organization";
 
     function sortCustomers(){
       var i;
@@ -32,21 +34,23 @@ function Customers(props) {
     }
   }
 
-  function filter(arr) {
-      for(let i=0; i<arr.length; i++) {
-        if(arr[i].cus_status === "Inactive") {
-          delete customers[i];
-        }
-      }
-  }
-
   function getCustomers() {
     axios.get(URL + '/customers')
     .then(function (response) {
       // console.log(response.data.Items);
+      let filteredCustomers = []
       const newCustomers = response.data.Items
-      filter(newCustomers);
-      setCustomers(newCustomers);
+      if (search !== ""){
+        newCustomers.forEach(element => {
+            search = search.toString().toUpperCase()
+            if (element.customer_id.toString().includes(search) || element.org_name.toUpperCase().includes(search) ) {
+              filteredCustomers.push(element);
+            }
+        });
+      } else {
+        filteredCustomers = newCustomers;
+      }
+      setCustomers(filteredCustomers);
       return response.data.Items
     })
     .catch(function (error) {
@@ -58,13 +62,13 @@ function Customers(props) {
 
     const customer_table = (
       <table className="table table-sm table-hover table-striped">
-      <thead>
+      <thead className="thead-green">
         <tr>
-          <th>ID</th>
-          <th>Organization</th>
-          <th>Status</th>
-          <th>More Info</th>
-          <th>New Order</th>
+          <th className="text-center left_radius">ID</th>
+          <th className="text-center">Organization</th>
+          <th className="text-center">Status</th>
+          <th className="text-center">More Info</th>
+          <th className="text-center right_radius">New Order</th>
         </tr>
       </thead>
       <tbody>
@@ -75,20 +79,27 @@ function Customers(props) {
           return true;
         }).map(customer => 
         <tr>
-          <td id="customer_id">{String(customer.customer_id).padStart(4, '0')}</td>
-          <td id="name">{customer.org_name}</td>
-          <td id="email">{customer.cus_status}</td>
-          <td><Link to={{
-            pathname: `/profile/${customer.customer_id}`,
+          <td  className="text-center" id="customer_id">{String(customer.customer_id).padStart(4, '0')}</td>
+          <td className="text-center" id="name">{customer.org_name}</td>
+          <td className="text-center" id="email">{customer.cus_status}</td>
+          <td className="text-center"><Link to={{
+            pathname: `/profile`,
             query: { customer_id: `${customer.customer_id}` }
-          }} className="btn btn-secondary btn-sm">Orders and More Info</Link>
+          }} className="btn btn-secondary btn-sm btn-middle">Orders and More Info</Link>
           </td>
-          <td id="submitOrder"><a className="btn btn-sm btn-primary btn-theme">Submit an Order</a></td>
+          <td className="text-center" id="submitOrder"><Link to={{
+            pathname: `/create_order/${customer.customer_id}`,
+            query: { customer_id: `${customer.customer_id}` }
+          }} className="btn btn-sm btn-primary btn-theme btn-middle">Submit an Order</Link></td>
         </tr>
       )}
       </tbody>
       </table>
     )
+    function handleChange(e){
+        search = e.target.value;
+        getCustomers();
+    }
 
     sortCustomers();
     return (
@@ -96,15 +107,15 @@ function Customers(props) {
       <div className="container">
         <br></br>
         <div className="row justify-content-center">
-          <div className="col-sm-9">
-          <div class="input-group input-group-md mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-sm">Search</span>
+          <div className="col-9">
+          <div className="input-group input-group-md mb-3">
+            <div className="input-group-prepend">
+              <span className="input-group-text" id="inputGroup-sizing-sm">Search</span>
             </div>
-            <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
+            <input onChange={handleChange} type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" ></input>
             </div>
           </div>
-          <div className="col-sm-3">
+          <div className="col-3">
             <LinkContainer to="/new_customer">
               <a className="btn btn-primary  btn-theme">Create a New Customer</a>
             </LinkContainer>
