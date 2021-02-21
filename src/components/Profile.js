@@ -7,8 +7,6 @@ import { Link } from "react-router-dom";
 
 
 
-const axios = require('axios').default;
-
 // TODO: Add more customer info fields, add axios.post request to update customer info
 
 function Profile(props) {
@@ -125,7 +123,5 @@ function Profile(props) {
       </>
   );
 }
-
-
 
 export default Profile;
