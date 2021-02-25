@@ -5,7 +5,6 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { Link, useHistory } from "react-router-dom";
 import { Auth  } from "aws-amplify";
 import "../styles/Navbar.css";
-
 import { useAppContext } from "../libs/contextLib";
 
 
@@ -110,11 +109,6 @@ const Navbar = () => {
             <li className="nav-item">
               <LinkContainer to="/orders">
                 <a className="nav-link" variant="outline-info" size="nav">Orders</a>
-              </LinkContainer>
-            </li>
-            <li className="nav-item">
-              <LinkContainer to="/format">
-                <a className="nav-link" variant="outline-info" size="nav">Format</a>
               </LinkContainer>
             </li>
             </ul>

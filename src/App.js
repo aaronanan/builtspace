@@ -15,7 +15,6 @@ import NavBar from './components/Navbar';
 import { Route, Switch } from 'react-router-dom';
 import Create_order from "./components/create_order";
 import CreateOrder from "./components/CreateOrder";
-import Format from "./components/Format";
 import Profile from "./components/Profile";
 import Login from "./components/Login"
 import { onError } from "./libs/errorLib";
@@ -60,7 +59,6 @@ function App() {
             <Route path='/new_customer' component={Form} />
             <Route path='/create_order' component={Create_order} />
             <Route path='/creating_order' component={CreateOrder} />
-            <Route path='/format' component={Format} />
             <Route path='/profile' component={Profile} />
             <Route path='/login' component={Login} />
             <Route exact path="/signup">

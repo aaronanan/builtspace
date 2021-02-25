@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios';
 import Table from 'react-bootstrap/Table';
 import awsconfig from '../aws-exports';
-
+import CopyToClipboard from 'react-copy-to-clipboard';
 // TODO: Integrate unused Modal code to display URLs for a specific order, requires new //GET /orders/order_id endpoint
 
 function Order(props) {
@@ -29,21 +29,16 @@ function Order(props) {
           <td className="text-center">{order.status}</td>
           <td className="text-center">{order.num_urls}</td>
           <td className="text-center">{String(order.creation_date).slice(0, 10)}</td>
-          {/* <td><Button onClick={handleShow} className="btn btn-secondary btn-sm">View</Button></td> */}
-          {/* <td>{(order.urls)}</td> */}
-          <td className="text-center"><a className="btn btn-primary btn-order">GO TO</a></td>
+          <td className="text-center"><CopyToClipboard text={order.urls ? order.urls.join(",\n") : ""}><a className="btn btn-primary btn-theme">Copy URLs to Clipboard</a></CopyToClipboard></td>
         </tr>
       )}
       </tbody>
     </table>
     );
-
     
     function getSpecificOrders() {
-      // console.log(props.customer_id);
         axios.get(URL + '/orders/' + props.customer_id)
         .then(function (response) {
-          // console.log(response);
           const newOrders = response.data
           var i;
           for (i = 0; i < newOrders.length; i++) {
