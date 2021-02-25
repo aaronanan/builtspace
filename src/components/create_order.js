@@ -28,13 +28,10 @@ function Customer(props) {
     function postOrder(e){
       
       e.preventDefault();
-      console.log(e)
-      console.log(e)
-      console.log(e)
       axios.post(URL + '/orders', 
         {
         customer_id: customer_id,
-        num_urls: 201,
+        num_urls: parseInt(e.target[1].value),
         })
       .then(function (response) {
         console.log(response);
@@ -95,7 +92,7 @@ const customers_list = customers.map(customer => (
           name="quantity"
           autoComplete="off"
           pattern="[0-9]+"
-          required>43</input>
+          ></input>
         </div>
       </div>
       <div className="form-row">
