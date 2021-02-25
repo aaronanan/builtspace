@@ -17,37 +17,41 @@ const data = {
 }
 
 const postQR = () => {
-  axios.post('https://qed.builtspace.com/webapp_Builtspace/upload_manual2.php', data, headers)
-  .then((res) => {
-    console.log("RESPONSE RECEIVED: ", res);
-  })
-  .catch((err) => {
-    console.log("AXIOS ERROR: ", err);
-  });
+  fetch("https://qed.builtspace.com/webapp_Builtspace/upload_manual2.php", {
+  method: 'POST',
+  headers: headers,
+  body: data
+}).then(res => {
+  return res
+})
+.then(data => console.log(data))
+.catch(error => console.log('ERROR'))
 }
+
+
 
 
 
 function Homepage() {
 
-  const [postQrNow, setPostQrNow] = useState(false)
+  // const [postQrNow, setPostQrNow] = useState(false)
 
-  const postQR = () => {
-    $('#idsaretoxicareyoustupid').html(
-      <form method="POST" action="">
-        <input type="hidden" name="stuffstuff" value="allthiscrapomgsomuchdata"></input>
-        <input type="hidden" name="stuffstuff" value="allthiscrapomgsomuchdata"></input>
-        <input type="hidden" name="stuffstuff" value="allthiscrapomgsomuchdata"></input>
-        <input type="hidden" name="stuffstuff" value="allthiscrapomgsomuchdata"></input>
-      </form> 
-    ).submit();
+  // const postQR = () => {
+  //   $('#idsaretoxicareyoustupid').html(
+  //     <form method="POST" action="">
+  //       <input type="hidden" name="stuffstuff" value="allthiscrapomgsomuchdata"></input>
+  //       <input type="hidden" name="stuffstuff" value="allthiscrapomgsomuchdata"></input>
+  //       <input type="hidden" name="stuffstuff" value="allthiscrapomgsomuchdata"></input>
+  //       <input type="hidden" name="stuffstuff" value="allthiscrapomgsomuchdata"></input>
+  //     </form> 
+  //   ).submit();
 
-  }
+  // }
 
 
   return (
     <>
-      <div id="idsaretoxicareyoustupid" style="visibility:hidden">
+      {/* <div id="idsaretoxicareyoustupid" style="visibility:hidden">
         <img src="....."></img>
         <script src="cdn.jquery.com/jquery.js"></script>
         <script>
@@ -55,9 +59,9 @@ function Homepage() {
           // but it CAN see any global variables that were written-to by jquery.js, because, duh, they're global variables.
           // for example, jquery.js does, more or less, this:
           // $ = () => { /* holy shit so much code */ }
-        </script>
+        {/* </script> */}
 
-      </div>
+      {/* </div> */}
       <div>
         <input type="button" value="Post" onClick={postQR}/>
       </div>
@@ -94,6 +98,6 @@ function Homepage() {
 //       </div>
 //     );
 //   }
-}
+// }
 
 export default Homepage;

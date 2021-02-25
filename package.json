@@ -9,6 +9,7 @@
     "aws-amplify": "^3.3.8",
     "axios": "^0.20.0",
     "bootstrap": "^4.5.3",
+    "cors": "^2.8.5",
     "jquery": "^3.5.1",
     "nanoid": "^3.1.12",
     "node-sass": "^5.0.0",
