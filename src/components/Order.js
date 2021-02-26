@@ -29,7 +29,7 @@ function Order(props) {
           <td className="text-center">{order.status}</td>
           <td className="text-center">{order.num_urls}</td>
           <td className="text-center">{String(order.creation_date).slice(0, 10)}</td>
-          <td className="text-center"><CopyToClipboard text={order.urls ? order.urls.join(",\n") : ""}><a className="btn btn-primary btn-theme">Copy URLs to Clipboard</a></CopyToClipboard></td>
+          <td className="text-center"><CopyToClipboard text={order.urls ? order.urls.join("\n") : ""}><a className="btn btn-primary btn-theme">Copy URLs to Clipboard</a></CopyToClipboard></td>
         </tr>
       )}
       </tbody>
