@@ -59,12 +59,8 @@ function App() {
             <Route path='/new_customer' component={Form} />
             <Route path='/create_order' component={Create_order} />
             <Route path='/creating_order' component={CreateOrder} />
-<<<<<<< HEAD
-            <Route path='/profile' component={Profile} />
-=======
-            <Route path='/format' component={Format} />
+            {/* <Route path='/format' component={Format} /> */}
             <Route path='/profile/' component={Profile} />
->>>>>>> henrik-joseph
             <Route path='/login' component={Login} />
             <Route exact path="/signup">
               <Signup />
