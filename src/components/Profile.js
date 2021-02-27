@@ -3,7 +3,7 @@ import axios from 'axios';
 import Order from './Order'
 import awsconfig from '../aws-exports';
 import { Link } from "react-router-dom";
-import "../styles/Profile.css";
+// import "../styles/Profile.css";
 
 
 
