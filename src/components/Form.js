@@ -19,7 +19,7 @@ function Form(props) {
   const [status, setStatus] = useState("Active");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
-  const [province, setprovince] = useState("");
+  const [province, setProvince] = useState("");
   const [country, setCountry] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const [ContactEmail, setContactEmail] = useState("");
@@ -71,6 +71,7 @@ function Form(props) {
       setAddress("");
       setCity("");
       setCountry("");
+      setProvince("");
     }
 
   return (
