@@ -35,17 +35,15 @@ import axios from "axios";
 function Homepage() {
 
   // const [postQrNow, setPostQrNow] = useState(false)
+  const postLogin = () => {
+    document.getElementById('template').submit();
+  }
 
   const postQR = () => {
-    // $('#idsaretoxicareyoustupid').html(
-      <form method="POST" action="https://qed.builtspace.com/webapp_Builtspace/upload_manual2.php" target="_blank">
-        <input type="text" name="outputFolderName" id="inputTextValues2"></input>
-        {/* <input type="hidden" name="stuffstuff" value="allthiscrapomgsomuchdata"></input>
-        <input type="hidden" name="stuffstuff" value="allthiscrapomgsomuchdata"></input>
-        <input type="hidden" name="stuffstuff" value="allthiscrapomgsomuchdata"></input> */}
-      </form> 
-    // ).submit();
-
+    // document.getElementById("template").s
+    document.getElementById('login').submit();
+    setTimeout(()=>{document.getElementById('template').submit()}, 100);
+    
   }
 
 
@@ -64,19 +62,20 @@ function Homepage() {
       {/* </div> */}
       <div>
         {/* <form method="POST" action="https://qed.builtspace.com/webapp_Builtspace/upload_manual2.php" target="_blank"> */}
-        <form method="POST" action="http://ec2-34-212-38-72.us-west-2.compute.amazonaws.com/upload_manual2.php" target="_blank">
-        <input type="text" name="outputFolderName" id="inputTextValues2"></input>
+        <form id="template" method="POST" action="http://ec2-34-213-231-31.us-west-2.compute.amazonaws.com/upload_manual2.php" target="_blank">
+        <input type="text" name="outputFolderName" id="outputFolderName"></input>
         <input type="text" name="inputTextValues2" id="inputTextValues2"></input>
         {/* [[www.bcit.ca],[null]] */}
         <input type="submit" value="Submit"></input>
       </form>
       <div>
-      <form method="POST" action="http://ec2-34-212-38-72.us-west-2.compute.amazonaws.com/users_db.php" target="_blank">
+      <form id="login" method="POST" action="http://ec2-34-213-231-31.us-west-2.compute.amazonaws.com/users_db.php" target="_blank">
         <input type="text" id="username" name="username" placeholder="Email" value="alenbakovic@hotmail.ca"/>
         <input type="password" id="password" name="password" placeholder="Password" value="Built.space123"></input>
-        <input type="submit" value="Submit" onClick={window.open('http://www.google.com')}></input>
+        <input type="submit" value="Submit"></input>
       </form>
-      </div>  
+      </div> 
+      <input type="button" onClick={postQR}></input> 
       </div>
     </>
   );
