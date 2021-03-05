@@ -10,7 +10,10 @@
     width: 50%;
 }
 .btn-secondary-form:hover{
-    width: 55%;
+    width: 50%;
+    text-decoration: none;
+    color: white !important;
+
 }
 .btn-theme-form:hover{
     width: 55%;

@@ -250,7 +250,7 @@ function Form(props) {
           <br></br>
           <div className="row">
           <div className="col text-center">
-          <Button type="submit">
+          <Button className="btn btn-success" type="submit">
             Create Customer
           </Button>
         </div>
@@ -258,9 +258,11 @@ function Form(props) {
               <a className="btn btn-md btn-primary btn-theme-form" >Create</a>
             </div> */}
             
-            <div className="col text-center">
+            <div className="col-5">
               <a className="btn btn-md btn-secondary btn-secondary-form" href="/Customers">Cancel</a>
             </div>
+
+     
 
           </div>
         </div>
