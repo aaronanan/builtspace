@@ -132,7 +132,7 @@ function Form(props) {
                 <div className="col-4">
                   <p>Organization</p>
                 </div>
-                <div className="col">
+                <div className="col-6">
                   <input className="form-control"
                   value={orgName}
                   onChange={e => setOrgName(e.target.value)}></input>
@@ -145,7 +145,7 @@ function Form(props) {
                 <div className="col-3">
                   <p>Status</p>
                 </div>
-                <div className="col">
+                <div className="col-4">
                   <select className="form-control inputField" 
                     onChange={e => setStatus(e.target.value)} defaultValue="Customer Status">
                     <option value="Active">Active</option>
@@ -162,7 +162,7 @@ function Form(props) {
             <div className="col">
               <div className="row">
                 <div className="col-3"><p>Address</p></div>
-                <div className="col"><input className="form-control"
+                <div className="col-6"><input className="form-control"
                 value={address}
                 onChange={e => setAddress(e.target.value)}
                   ></input></div>
@@ -172,7 +172,7 @@ function Form(props) {
             <div className="col">
               <div className="row">
                 <div className="col-3"><p>City</p></div>
-                <div className="col"><input className="form-control"
+                <div className="col-7"><input className="form-control"
                 value={city}
                 onChange={e => setCity(e.target.value)}></input></div>
               </div>
