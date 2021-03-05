@@ -1,627 +1,148 @@
 {
   "providers": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-qrv1-prod-145525-authRole",
-      "UnauthRoleArn": "arn:aws:iam::417665359238:role/amplify-qrv1-prod-145525-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::417665359238:role/amplify-qrv1-prod-145525-authRole",
+      "AuthRoleName": "amplify-reactamplifiedv2-dev-91249-authRole",
+      "UnauthRoleArn": "arn:aws:iam::294151973366:role/amplify-reactamplifiedv2-dev-91249-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::294151973366:role/amplify-reactamplifiedv2-dev-91249-authRole",
       "Region": "ca-central-1",
-      "DeploymentBucketName": "amplify-qrv1-prod-145525-deployment",
-      "UnauthRoleName": "amplify-qrv1-prod-145525-unauthRole",
-      "StackName": "amplify-qrv1-prod-145525",
-      "StackId": "arn:aws:cloudformation:ca-central-1:417665359238:stack/amplify-qrv1-prod-145525/7a30b160-303a-11eb-9d88-0ae6915c75a8",
-      "AmplifyAppId": "d2l16h18rfkp4s"
-    }
-  },
-  "function": {
-    "qrv1Lambda": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [],
-      "output": {
-        "Region": "ca-central-1",
-        "Arn": "arn:aws:lambda:ca-central-1:417665359238:function:qrv1Lambda-prod",
-        "Name": "qrv1Lambda-prod",
-        "LambdaExecutionRole": "qrv1LambdaRole165d2359-prod"
-      },
-      "lastPushTimeStamp": "2020-12-05T22:32:11.739Z",
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-qrv1-prod-145525-deployment/amplify-cfn-templates/function/qrv1Lambda-cloudformation-template.json",
-        "logicalId": "functionqrv1Lambda"
-      },
-      "lastBuildTimeStamp": "2020-12-04T19:42:32.519Z",
-      "lastPackageTimeStamp": "2020-12-04T19:42:32.994Z",
-      "distZipFilename": "qrv1Lambda-354e2f58354c326a6135-build.zip",
-      "lastPushDirHash": "GGTdijLEvmPxYf9mxOO/YvnUkxs="
-    },
-    "createOrder": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "qrv1Lambda",
-          "attributes": [
-            "Name"
-          ]
-        },
-        {
-          "category": "api",
-          "resourceName": "qrv1API",
-          "attributes": [
-            "ApiName",
-            "ApiId"
-          ]
-        }
-      ],
-      "output": {
-        "Region": "ca-central-1",
-        "Arn": "arn:aws:lambda:ca-central-1:417665359238:function:createOrder-prod",
-        "Name": "createOrder-prod",
-        "LambdaExecutionRole": "qrv1LambdaRolee5898588-prod"
-      },
-      "lastPushTimeStamp": "2020-12-05T22:32:11.743Z",
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-qrv1-prod-145525-deployment/amplify-cfn-templates/function/createOrder-cloudformation-template.json",
-        "logicalId": "functioncreateOrder"
-      },
-      "lastBuildTimeStamp": "2020-12-05T08:46:22.373Z",
-      "lastPackageTimeStamp": "2020-12-05T08:46:23.420Z",
-      "distZipFilename": "createOrder-7a6d516572767a635752-build.zip",
-      "lastPushDirHash": "MAU87KO5dX9/lslVUJdufHiEm3Q="
-    },
-    "createCustomer": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "qrv1Lambda",
-          "attributes": [
-            "Name"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "createOrder",
-          "attributes": [
-            "Name"
-          ]
-        },
-        {
-          "category": "api",
-          "resourceName": "qrv1API",
-          "attributes": [
-            "ApiName",
-            "ApiId"
-          ]
-        }
-      ],
-      "output": {
-        "Region": "ca-central-1",
-        "Arn": "arn:aws:lambda:ca-central-1:417665359238:function:createCustomer-prod",
-        "Name": "createCustomer-prod",
-        "LambdaExecutionRole": "qrv1LambdaRolebd249009-prod"
-      },
-      "lastPushTimeStamp": "2020-12-05T22:32:11.747Z",
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-qrv1-prod-145525-deployment/amplify-cfn-templates/function/createCustomer-cloudformation-template.json",
-        "logicalId": "functioncreateCustomer"
-      },
-      "lastBuildTimeStamp": "2020-12-05T08:46:22.379Z",
-      "lastPackageTimeStamp": "2020-12-05T08:46:22.727Z",
-      "distZipFilename": "createCustomer-5149696f534d45364430-build.zip",
-      "lastPushDirHash": "cYRzwF8GPpxBno+1ZrMIBVrgngI="
-    },
-    "getCustomers": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "qrv1Lambda",
-          "attributes": [
-            "Name"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "createOrder",
-          "attributes": [
-            "Name"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "createCustomer",
-          "attributes": [
-            "Name"
-          ]
-        },
-        {
-          "category": "api",
-          "resourceName": "qrv1API",
-          "attributes": [
-            "ApiName",
-            "ApiId"
-          ]
-        },
-        {
-          "category": "storage",
-          "resourceName": "customers",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        }
-      ],
-      "output": {
-        "Region": "ca-central-1",
-        "Arn": "arn:aws:lambda:ca-central-1:417665359238:function:getCustomers-prod",
-        "Name": "getCustomers-prod",
-        "LambdaExecutionRole": "qrv1LambdaRole89c5a965-prod"
-      },
-      "lastPushTimeStamp": "2020-12-05T22:32:11.752Z",
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-qrv1-prod-145525-deployment/amplify-cfn-templates/function/getCustomers-cloudformation-template.json",
-        "logicalId": "functiongetCustomers"
-      },
-      "lastBuildTimeStamp": "2020-12-05T08:46:22.384Z",
-      "lastPackageTimeStamp": "2020-12-05T08:46:22.526Z",
-      "distZipFilename": "getCustomers-4756656c4e5437763868-build.zip",
-      "lastPushDirHash": "sgO0qan2zkoNgvCDpUoEKKcAjvc="
-    },
-    "deleteCustomer": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "qrv1Lambda",
-          "attributes": [
-            "Name"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "createOrder",
-          "attributes": [
-            "Name"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "createCustomer",
-          "attributes": [
-            "Name"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "getCustomers",
-          "attributes": [
-            "Name"
-          ]
-        },
-        {
-          "category": "api",
-          "resourceName": "qrv1API",
-          "attributes": [
-            "ApiName",
-            "ApiId"
-          ]
-        },
-        {
-          "category": "storage",
-          "resourceName": "customers",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        }
-      ],
-      "output": {
-        "Region": "ca-central-1",
-        "Arn": "arn:aws:lambda:ca-central-1:417665359238:function:deleteCustomer-prod",
-        "Name": "deleteCustomer-prod",
-        "LambdaExecutionRole": "qrv1LambdaRole80aa2f9c-prod"
-      },
-      "lastPushTimeStamp": "2020-12-05T22:32:11.758Z",
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-qrv1-prod-145525-deployment/amplify-cfn-templates/function/deleteCustomer-cloudformation-template.json",
-        "logicalId": "functiondeleteCustomer"
-      },
-      "lastBuildTimeStamp": "2020-12-05T08:46:22.388Z",
-      "lastPackageTimeStamp": "2020-12-05T08:46:22.540Z",
-      "distZipFilename": "deleteCustomer-4a6649315a78744e7344-build.zip",
-      "lastPushDirHash": "0+n7mvLpR+fqISlI0aneroQA074="
-    },
-    "getOrders": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [],
-      "output": {
-        "Region": "ca-central-1",
-        "Arn": "arn:aws:lambda:ca-central-1:417665359238:function:getOrders-prod",
-        "Name": "getOrders-prod",
-        "LambdaExecutionRole": "qrv1LambdaRolef1aeb4fb-prod"
-      },
-      "lastPushTimeStamp": "2020-12-05T22:32:11.761Z",
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-qrv1-prod-145525-deployment/amplify-cfn-templates/function/getOrders-cloudformation-template.json",
-        "logicalId": "functiongetOrders"
-      },
-      "lastBuildTimeStamp": "2020-12-04T19:42:32.546Z",
-      "lastPackageTimeStamp": "2020-12-04T19:42:33.211Z",
-      "distZipFilename": "getOrders-312b74514c7663527365-build.zip",
-      "lastPushDirHash": "bXqx0xhSSZoZd9emK3ZMEA7Lc1E="
-    },
-    "getCustomer": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "qrv1Lambda",
-          "attributes": [
-            "Name"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "createOrder",
-          "attributes": [
-            "Name"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "createCustomer",
-          "attributes": [
-            "Name"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "getCustomers",
-          "attributes": [
-            "Name"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "deleteCustomer",
-          "attributes": [
-            "Name"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "getOrders",
-          "attributes": [
-            "Name"
-          ]
-        },
-        {
-          "category": "api",
-          "resourceName": "qrv1API",
-          "attributes": [
-            "ApiName",
-            "ApiId"
-          ]
-        },
-        {
-          "category": "storage",
-          "resourceName": "customers",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        }
-      ],
-      "output": {
-        "Region": "ca-central-1",
-        "Arn": "arn:aws:lambda:ca-central-1:417665359238:function:getCustomer-prod",
-        "Name": "getCustomer-prod",
-        "LambdaExecutionRole": "qrv1LambdaRole9a9c525a-prod"
-      },
-      "lastPushTimeStamp": "2020-12-05T22:32:11.765Z",
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-qrv1-prod-145525-deployment/amplify-cfn-templates/function/getCustomer-cloudformation-template.json",
-        "logicalId": "functiongetCustomer"
-      },
-      "lastBuildTimeStamp": "2020-12-05T08:46:22.392Z",
-      "lastPackageTimeStamp": "2020-12-05T08:46:22.545Z",
-      "distZipFilename": "getCustomer-7a3230783070716f5844-build.zip",
-      "lastPushDirHash": "pyHmRj7xHAPq8JubzhKy1V/2t3Q="
-    },
-    "updateCustomer": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "qrv1Lambda",
-          "attributes": [
-            "Name"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "createOrder",
-          "attributes": [
-            "Name"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "createCustomer",
-          "attributes": [
-            "Name"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "getCustomers",
-          "attributes": [
-            "Name"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "deleteCustomer",
-          "attributes": [
-            "Name"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "getOrders",
-          "attributes": [
-            "Name"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "getCustomer",
-          "attributes": [
-            "Name"
-          ]
-        },
-        {
-          "category": "api",
-          "resourceName": "qrv1API",
-          "attributes": [
-            "ApiName",
-            "ApiId"
-          ]
-        },
-        {
-          "category": "storage",
-          "resourceName": "customers",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        }
-      ],
-      "output": {
-        "Region": "ca-central-1",
-        "Arn": "arn:aws:lambda:ca-central-1:417665359238:function:updateCustomer-prod",
-        "Name": "updateCustomer-prod",
-        "LambdaExecutionRole": "qrv1LambdaRole18d53d24-prod"
-      },
-      "lastPushTimeStamp": "2020-12-05T22:32:11.769Z",
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-qrv1-prod-145525-deployment/amplify-cfn-templates/function/updateCustomer-cloudformation-template.json",
-        "logicalId": "functionupdateCustomer"
-      },
-      "lastBuildTimeStamp": "2020-12-05T08:46:22.396Z",
-      "lastPackageTimeStamp": "2020-12-05T08:46:22.549Z",
-      "distZipFilename": "updateCustomer-77446b4c6f6231546961-build.zip",
-      "lastPushDirHash": "0ohlIhT1QQ89H3OGMhrBA3i2JwM="
-    },
-    "updateOrder": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [],
-      "output": {
-        "Region": "ca-central-1",
-        "Arn": "arn:aws:lambda:ca-central-1:417665359238:function:updateOrder-prod",
-        "Name": "updateOrder-prod",
-        "LambdaExecutionRole": "qrv1LambdaRole66ce4cba-prod"
-      },
-      "lastPushTimeStamp": "2020-12-05T22:32:11.774Z",
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-qrv1-prod-145525-deployment/amplify-cfn-templates/function/updateOrder-cloudformation-template.json",
-        "logicalId": "functionupdateOrder"
-      },
-      "lastBuildTimeStamp": "2020-12-04T19:42:32.560Z",
-      "lastPackageTimeStamp": "2020-12-04T19:42:33.247Z",
-      "distZipFilename": "updateOrder-6f4531314d686e6b7057-build.zip",
-      "lastPushDirHash": "GzKm7eTAc/SR/WTi6MeLodX7kvo="
+      "DeploymentBucketName": "amplify-reactamplifiedv2-dev-91249-deployment",
+      "UnauthRoleName": "amplify-reactamplifiedv2-dev-91249-unauthRole",
+      "StackName": "amplify-reactamplifiedv2-dev-91249",
+      "StackId": "arn:aws:cloudformation:ca-central-1:294151973366:stack/amplify-reactamplifiedv2-dev-91249/035f9080-7dd6-11eb-b33e-021b2f374ad0",
+      "AmplifyAppId": "d28zxoeko35191"
     }
   },
   "api": {
-    "qrv1API": {
+    "reactamplifiedv2": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 365,
+              "description": "react-app-v2"
+            }
+          },
+          "additionalAuthenticationProviders": []
+        },
+        "GraphQLAPIIdOutput": "6aalh2ciprb37nqe4dawxyytpq",
+        "GraphQLAPIEndpointOutput": "https://weqllwatzfhl3cr72qmyovp6ca.appsync-api.ca-central-1.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-odtl4edkdzgjlch5jdr7svqfme"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-reactamplifiedv2-dev-91249-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apireactamplifiedv2"
+      },
+      "lastPushTimeStamp": "2021-03-05T22:20:47.002Z",
+      "lastPushDirHash": "ORy5Nrj1mywMqCwypijmOyUV6u0="
+    },
+    "api8e784251": {
       "service": "API Gateway",
       "providerPlugin": "awscloudformation",
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "qrv1Lambda",
+          "resourceName": "reactamplifiedv2e4bd485d",
           "attributes": [
             "Name",
             "Arn"
           ]
         }
       ],
-      "output": {
-        "ApiName": "qrv1API",
-        "RootUrl": "https://u2hap2bjqi.execute-api.ca-central-1.amazonaws.com/prod",
-        "ApiId": "u2hap2bjqi"
-      },
-      "lastPushTimeStamp": "2020-12-05T22:32:11.777Z",
       "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-qrv1-prod-145525-deployment/amplify-cfn-templates/api/qrv1API-cloudformation-template.json",
-        "logicalId": "apiqrv1API"
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-reactamplifiedv2-dev-91249-deployment/amplify-cfn-templates/api/api8e784251-cloudformation-template.json",
+        "logicalId": "apiapi8e784251"
       },
-      "lastPushDirHash": "bhMXgaziVh05XZMYpfw4dAXkJBI="
-    }
-  },
-  "hosting": {
-    "amplifyhosting": {
-      "service": "amplifyhosting",
-      "type": "cicd"
+      "lastPushTimeStamp": "2021-03-05T22:20:47.019Z",
+      "output": {
+        "ApiName": "api8e784251",
+        "RootUrl": "https://6jkbl6caei.execute-api.ca-central-1.amazonaws.com/dev",
+        "ApiId": "6jkbl6caei"
+      },
+      "lastPushDirHash": "7hkJvJIDjBXu3OIb9E+t1sVK8JA="
     }
   },
   "storage": {
-    "customers": {
+    "dynamo98f0de1a": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-reactamplifiedv2-dev-91249-deployment/amplify-cfn-templates/storage/dynamo98f0de1a-cloudformation-template.json",
+        "logicalId": "storagedynamo98f0de1a"
+      },
+      "lastPushTimeStamp": "2021-03-05T22:20:47.019Z",
       "output": {
-        "PartitionKeyName": "customer_id",
+        "PartitionKeyName": "id",
         "Region": "ca-central-1",
-        "Arn": "arn:aws:dynamodb:ca-central-1:417665359238:table/customers-prod",
-        "StreamArn": "arn:aws:dynamodb:ca-central-1:417665359238:table/customers-prod/stream/2020-11-26T22:57:52.969",
+        "Arn": "arn:aws:dynamodb:ca-central-1:294151973366:table/dynamo98f0de1a-dev",
+        "StreamArn": "arn:aws:dynamodb:ca-central-1:294151973366:table/dynamo98f0de1a-dev/stream/2021-03-05T22:18:21.403",
         "PartitionKeyType": "N",
-        "Name": "customers-prod"
+        "Name": "dynamo98f0de1a-dev"
       },
-      "lastPushTimeStamp": "2020-12-05T22:32:11.781Z",
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-qrv1-prod-145525-deployment/amplify-cfn-templates/storage/customers-cloudformation-template.json",
-        "logicalId": "storagecustomers"
-      }
-    },
-    "urls": {
-      "service": "DynamoDB",
+      "lastPushDirHash": "lzG2VhhCYZxQExg2bN1+PqGpLPE="
+    }
+  },
+  "function": {
+    "reactamplifiedv2e4bd485d": {
+      "build": true,
       "providerPlugin": "awscloudformation",
-      "output": {
-        "PartitionKeyName": "url",
-        "SortKeyName": "cust_id",
-        "SortKeyType": "N",
-        "Region": "ca-central-1",
-        "Arn": "arn:aws:dynamodb:ca-central-1:417665359238:table/urls-prod",
-        "StreamArn": "arn:aws:dynamodb:ca-central-1:417665359238:table/urls-prod/stream/2020-11-26T22:57:52.769",
-        "PartitionKeyType": "S",
-        "Name": "urls-prod"
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "dynamo98f0de1a",
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "attributeEnvMap": {
+            "Name": "TABLE_NAME",
+            "Arn": "TABLE_ARN"
+          }
+        }
+      ],
+      "lastBuildTimeStamp": "2021-03-05T22:18:01.859Z",
+      "lastPackageTimeStamp": "2021-03-05T22:18:03.950Z",
+      "distZipFilename": "reactamplifiedv2e4bd485d-6f42486e313939427a31-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-reactamplifiedv2-dev-91249-deployment",
+        "s3Key": "amplify-builds/reactamplifiedv2e4bd485d-6f42486e313939427a31-build.zip"
       },
-      "lastPushTimeStamp": "2020-12-05T22:32:11.786Z",
       "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-qrv1-prod-145525-deployment/amplify-cfn-templates/storage/urls-cloudformation-template.json",
-        "logicalId": "storageurls"
-      }
-    },
-    "builtOrders": {
-      "service": "DynamoDB",
-      "providerPlugin": "awscloudformation",
-      "output": {
-        "PartitionKeyName": "order_id-cust_id",
-        "SortKeyName": "date_created",
-        "SortKeyType": "S",
-        "Region": "ca-central-1",
-        "Arn": "arn:aws:dynamodb:ca-central-1:417665359238:table/builtOrders-prod",
-        "StreamArn": "arn:aws:dynamodb:ca-central-1:417665359238:table/builtOrders-prod/stream/2020-11-26T22:57:53.219",
-        "PartitionKeyType": "S",
-        "Name": "builtOrders-prod"
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-reactamplifiedv2-dev-91249-deployment/amplify-cfn-templates/function/reactamplifiedv2e4bd485d-cloudformation-template.json",
+        "logicalId": "functionreactamplifiedv2e4bd485d"
       },
-      "lastPushTimeStamp": "2020-12-05T22:32:11.788Z",
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-qrv1-prod-145525-deployment/amplify-cfn-templates/storage/builtOrders-cloudformation-template.json",
-        "logicalId": "storagebuiltOrders"
-      }
-    },
-    "spaceOrders": {
-      "service": "DynamoDB",
-      "providerPlugin": "awscloudformation",
+      "lastPushTimeStamp": "2021-03-05T22:20:47.019Z",
       "output": {
-        "PartitionKeyName": "cust_idorder_id",
-        "SortKeyName": "date_created",
-        "SortKeyType": "S",
         "Region": "ca-central-1",
-        "Arn": "arn:aws:dynamodb:ca-central-1:417665359238:table/spaceOrders-prod",
-        "StreamArn": "arn:aws:dynamodb:ca-central-1:417665359238:table/spaceOrders-prod/stream/2020-11-26T22:57:53.256",
-        "PartitionKeyType": "S",
-        "Name": "spaceOrders-prod"
+        "Arn": "arn:aws:lambda:ca-central-1:294151973366:function:reactamplifiedv2e4bd485d-dev",
+        "Name": "reactamplifiedv2e4bd485d-dev",
+        "LambdaExecutionRole": "reactamplifiedv2LambdaRoleb232ac6b-dev"
       },
-      "lastPushTimeStamp": "2020-12-05T22:32:11.792Z",
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-qrv1-prod-145525-deployment/amplify-cfn-templates/storage/spaceOrders-cloudformation-template.json",
-        "logicalId": "storagespaceOrders"
-      }
-    },
-    "sysVars": {
-      "service": "DynamoDB",
-      "providerPlugin": "awscloudformation",
-      "output": {
-        "PartitionKeyName": "tableVars",
-        "Region": "ca-central-1",
-        "Arn": "arn:aws:dynamodb:ca-central-1:417665359238:table/sysVars-prod",
-        "StreamArn": "arn:aws:dynamodb:ca-central-1:417665359238:table/sysVars-prod/stream/2020-11-26T22:57:52.844",
-        "PartitionKeyType": "S",
-        "Name": "sysVars-prod"
-      },
-      "lastPushTimeStamp": "2020-12-05T22:32:11.795Z",
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-qrv1-prod-145525-deployment/amplify-cfn-templates/storage/sysVars-cloudformation-template.json",
-        "logicalId": "storagesysVars"
-      }
+      "lastPushDirHash": "TahAVdbXKllG7FNfcOZhxsXnqVI="
     }
   },
   "auth": {
-    "qrv1d412f63e": {
+    "cognito91b88082": {
       "service": "Cognito",
+      "serviceType": "managed",
       "providerPlugin": "awscloudformation",
-      "dependsOn": [],
-      "customAuth": false,
-      "output": {
-        "UserPoolId": "ca-central-1_6MCN0Shm4",
-        "AppClientIDWeb": "133jalu4m6a0lgct5ido91mugk",
-        "AppClientID": "7lf0aa0ep7e1kuqo9pkq943dgr",
-        "IdentityPoolId": "ca-central-1:3ab9e410-4c8a-47a2-899b-f6d1ced082f5",
-        "IdentityPoolName": "qrv1d412f63e_identitypool_d412f63e__prod",
-        "UserPoolName": "qrv1d412f63e_userpool_d412f63e",
-        "AppClientSecret": "1lpr3jrtkggtbjfbhf04oubgh32koen4ho18njjcff7c7jf9cnc2"
-      },
-      "lastPushTimeStamp": "2020-12-05T22:32:11.798Z",
       "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-qrv1-prod-145525-deployment/amplify-cfn-templates/auth/qrv1d412f63e-cloudformation-template.yml",
-        "logicalId": "authqrv1d412f63e"
-      }
-    },
-    "userPoolGroups": {
-      "service": "Cognito-UserPool-Groups",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "auth",
-          "resourceName": "qrv1d412f63e",
-          "attributes": [
-            "UserPoolId",
-            "AppClientIDWeb",
-            "AppClientID",
-            "IdentityPoolId"
-          ]
-        }
-      ],
-      "lastPushTimeStamp": "2020-12-05T22:32:11.812Z",
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-qrv1-prod-145525-deployment/amplify-cfn-templates/auth/template.json",
-        "logicalId": "authuserPoolGroups"
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-reactamplifiedv2-dev-91249-deployment/amplify-cfn-templates/auth/cognito91b88082-cloudformation-template.yml",
+        "logicalId": "authcognito91b88082"
       },
+      "lastPushTimeStamp": "2021-03-05T22:20:47.019Z",
       "output": {
-        "userGroupRole": "arn:aws:iam::417665359238:role/ca-central-1_6MCN0Shm4-userGroupRole",
-        "adminGroupRole": "arn:aws:iam::417665359238:role/ca-central-1_6MCN0Shm4-adminGroupRole"
+        "UserPoolId": "ca-central-1_3zrbfZ9KL",
+        "AppClientIDWeb": "747uv6p2l1ib7g7cqljl34k4cq",
+        "AppClientID": "2pb9j1nbunb14s899kpd7go9id",
+        "IdentityPoolId": "ca-central-1:134a9597-5a57-41ca-9300-335f450979ee",
+        "IdentityPoolName": "reactamplifiedv2_identitypool_074e57ad__dev",
+        "UserPoolName": "reactamplifiedv2_userpool_074e57ad"
       },
-      "lastPushDirHash": "iKAze3GDZnRoKvfp88Y0S3P/zU0="
+      "lastPushDirHash": "OjY9Xc8NNwoF+GZKSJ1RvLLrcHs="
     }
   }
 }

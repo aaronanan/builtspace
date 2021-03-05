@@ -3,40 +3,28 @@
 
 const awsmobile = {
     "aws_project_region": "ca-central-1",
+    "aws_appsync_graphqlEndpoint": "https://weqllwatzfhl3cr72qmyovp6ca.appsync-api.ca-central-1.amazonaws.com/graphql",
+    "aws_appsync_region": "ca-central-1",
+    "aws_appsync_authenticationType": "API_KEY",
+    "aws_appsync_apiKey": "da2-odtl4edkdzgjlch5jdr7svqfme",
     "aws_cloud_logic_custom": [
         {
-            "name": "qrv1API",
-            "endpoint": "https://u2hap2bjqi.execute-api.ca-central-1.amazonaws.com/prod",
+            "name": "api8e784251",
+            "endpoint": "https://6jkbl6caei.execute-api.ca-central-1.amazonaws.com/dev",
             "region": "ca-central-1"
         }
     ],
     "aws_dynamodb_all_tables_region": "ca-central-1",
     "aws_dynamodb_table_schemas": [
         {
-            "tableName": "customers-prod",
-            "region": "ca-central-1"
-        },
-        {
-            "tableName": "urls-prod",
-            "region": "ca-central-1"
-        },
-        {
-            "tableName": "builtOrders-prod",
-            "region": "ca-central-1"
-        },
-        {
-            "tableName": "spaceOrders-prod",
-            "region": "ca-central-1"
-        },
-        {
-            "tableName": "sysVars-prod",
+            "tableName": "dynamo98f0de1a-dev",
             "region": "ca-central-1"
         }
     ],
-    "aws_cognito_identity_pool_id": "ca-central-1:3ab9e410-4c8a-47a2-899b-f6d1ced082f5",
+    "aws_cognito_identity_pool_id": "ca-central-1:134a9597-5a57-41ca-9300-335f450979ee",
     "aws_cognito_region": "ca-central-1",
-    "aws_user_pools_id": "ca-central-1_6MCN0Shm4",
-    "aws_user_pools_web_client_id": "133jalu4m6a0lgct5ido91mugk",
+    "aws_user_pools_id": "ca-central-1_3zrbfZ9KL",
+    "aws_user_pools_web_client_id": "747uv6p2l1ib7g7cqljl34k4cq",
     "oauth": {}
 };
 
