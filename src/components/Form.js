@@ -14,9 +14,18 @@ function Form(props) {
 
   const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
 
-  const [name, setName] = useState("");
+  const [ContactName, setContactName] = useState("");
   const [orgName, setOrgName] = useState("");
   const [status, setStatus] = useState("Active");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [province, setprovince] = useState("");
+  const [country, setCountry] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [ContactEmail, setContactEmail] = useState("");
+  const [ContactPhone, setContactPhone] = useState("");
+
+
 
     
     function handleSubmit(e) {
@@ -24,20 +33,20 @@ function Form(props) {
       axios.post(URL + '/customers', {
         "org_name": orgName,
         "cus_status": status,
-        "contact_name": name, 
+        "contact_name": ContactName, 
         "ship_address": {
-          "Address": "dasfadsf",
-          "City": "sadfasdf",
-          "prov": "adsfasdf",
-          "post_code": "",
-          "country": ""
+          "Address": address,
+          "City": city,
+          "prov": province,
+          "post_code": postalCode,
+          "country": country
         },
         "pref_des": "dfadf",
         "org_id": "fadf",
         "serial_prefix": "",
         "contact_person": {
-          "email": "",
-          "phone": ""
+          "email": ContactEmail,
+          "phone": ContactPhone
         },
         "sales_contact": {
           "name": "sdafsadf",
@@ -56,9 +65,12 @@ function Form(props) {
       .catch(function (error) {
         console.log(error);
       });
-      setName("");
+      setContactName("");
       setOrgName("");
       setStatus(status);
+      setAddress("");
+      setCity("");
+      setCountry("");
     }
 
   return (
@@ -116,7 +128,9 @@ function Form(props) {
                   <p>Organization</p>
                 </div>
                 <div className="col">
-                  <input className="form-control"></input>
+                  <input className="form-control"
+                  value={orgName}
+                  onChange={e => setOrgName(e.target.value)}></input>
                 </div>
               </div>
             </div>
@@ -143,14 +157,19 @@ function Form(props) {
             <div className="col">
               <div className="row">
                 <div className="col-3"><p>Address</p></div>
-                <div className="col"><input className="form-control"></input></div>
+                <div className="col"><input className="form-control"
+                value={address}
+                onChange={e => setAddress(e.target.value)}
+                  ></input></div>
               </div>
             </div>
             
             <div className="col">
               <div className="row">
                 <div className="col-3"><p>City</p></div>
-                <div className="col"><input className="form-control"></input></div>
+                <div className="col"><input className="form-control"
+                value={city}
+                onChange={e => setCity(e.target.value)}></input></div>
               </div>
             </div>
 
