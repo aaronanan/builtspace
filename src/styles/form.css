@@ -34,9 +34,9 @@ td{
     border-right: none !important;
 }
 
-.form-control{
-    width: 100px;
-
-
-
+#field_title{
+    font-weight: 700;
+    font-size: 16px;
 }
+
+
