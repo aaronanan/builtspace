@@ -129,7 +129,7 @@ function Form(props) {
 
             <div className="col">
               <div className="row">
-                <div className="col-5">
+                <div className="col-4">
                   <p>Organization</p>
                 </div>
                 <div className="col-7">
@@ -142,7 +142,7 @@ function Form(props) {
 
             <div className="col">
               <div className="row">
-                <div className="col-5">
+                <div className="col-4">
                   <p>Status</p>
                 </div>
                 <div className="col-7">
@@ -161,7 +161,7 @@ function Form(props) {
           <div className="row">
             <div className="col">
               <div className="row">
-                <div className="col-5"><p>Address</p></div>
+                <div className="col-4"><p>Address</p></div>
                 <div className="col-7"><input className="form-control"
                 value={address}
                 onChange={e => setAddress(e.target.value)}
@@ -171,7 +171,7 @@ function Form(props) {
             
             <div className="col">
               <div className="row">
-                <div className="col-5"><p>City</p></div>
+                <div className="col-4"><p>City</p></div>
                 <div className="col-7"><input className="form-control"
                 value={city}
                 onChange={e => setCity(e.target.value)}></input></div>
@@ -183,7 +183,7 @@ function Form(props) {
           <div className="row">
             <div className="col">
               <div className="row">
-                <div className="col-5"><p>State/Province</p></div>
+                <div className="col-4"><p>State/Province</p></div>
                 <div className="col-7"><input className="form-control"
                 value={province}
                 onChange={e => setProvince(e.target.value)}></input></div>
@@ -192,7 +192,7 @@ function Form(props) {
             
             <div className="col">
               <div className="row">
-                <div className="col-5"><p>Country</p></div>
+                <div className="col-4"><p>Country</p></div>
                 <div className="col-7"><input className="form-control"
                 value={country}
                 onChange={e => setCountry(e.target.value)}></input></div>
@@ -204,7 +204,7 @@ function Form(props) {
           <div className="row">
           <div className="col">
               <div className="row">
-                <div className="col-5"><p>Contact Name</p></div>
+                <div className="col-4"><p>Contact Name</p></div>
                 <div className="col-7"><input className="form-control"
                 value={ContactName}
                 onChange={e => setContactName(e.target.value)}></input></div>
@@ -213,7 +213,7 @@ function Form(props) {
             
             <div className="col">
               <div className="row">
-                <div className="col-5"><p>Postal Code</p></div>
+                <div className="col-4"><p>Postal Code</p></div>
                 <div className="col-7"><input className="form-control"
                 value={postalCode}
                 onChange={e => setPostalCode(e.target.value)}
@@ -227,7 +227,7 @@ function Form(props) {
           <div className="row">
           <div className="col">
               <div className="row">
-                <div className="col-5">Email</div>
+                <div className="col-4">Email</div>
                 <div className="col-7"><input className="form-control"
                 value={ContactEmail}
                 onChange={e => setContactEmail(e.target.value)}
@@ -237,7 +237,7 @@ function Form(props) {
             
             <div className="col">
               <div className="row">
-                <div className="col-5">Contact Phone</div>
+                <div className="col-4">Contact Phone</div>
                 <div className="col-7"><input className="form-control"
                 value={ContactPhone}
                 onChange={e => setContactPhone(e.target.value)}></input></div>
