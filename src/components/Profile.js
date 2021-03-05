@@ -10,7 +10,16 @@ import { Link } from "react-router-dom";
 // TODO: Add more customer info fields, add axios.post request to update customer info
 
 function Profile(props) {
-    let customer_id = parseInt(props.location.query.customer_id);
+    let customer_id = 4
+
+    if ("query" in props.location) {
+      customer_id = parseInt(props.location.query.customer_id);
+    } 
+
+    
+    useEffect(() => {
+      console.log(props)
+    }, []);
     const [customers, setCustomers] = useState([0]);
     const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
     const [conName, setContactName] = useState([0]);
@@ -29,6 +38,7 @@ function Profile(props) {
       setCustomers([0]);
     }, []);
 
+    useEffect(()=> {
     axios.get(URL + '/customers/' + customer_id, 
       {
       "customer_id": customer_id 
@@ -61,6 +71,7 @@ function Profile(props) {
     .catch(function (error) {
       console.log(error);
     });
+  }, [])
     const customers_list = customers.map(customer => (
       <>
       <div className="container-fluid mg-20">
