@@ -111,21 +111,19 @@ const Navbar = () => {
                 <a className="nav-link" variant="outline-info" size="nav">Orders</a>
               </LinkContainer>
             </li>
-            </ul>
+          </ul>
         </div>
-        <div> <ul className="navbar-nav mr-auto"> <li className="nav-item"> 
-          <a className="nav-link" variant="outline-info" size="nav" onClick={handleLogout}>Logout{ userEmail } 
-          </a> 
-        </li> 
-        </ul> 
+        <div> 
+          <ul className="navbar-nav mr-auto"> 
+            <li className="nav-item"> 
+              <a className="nav-link" variant="outline-info" size="nav" onClick={handleLogout}>Logout{ userEmail }</a> 
+            </li> 
+          </ul> 
         </div>
       </nav>
-      </div>
+    </div>
     </>
   );
-
-
-
 
   return (
     
@@ -134,4 +132,5 @@ const Navbar = () => {
     </ButtonToolbar>
   );
 }
+
 export default Navbar;
