@@ -15,7 +15,7 @@ export default function Login() {
   const [fields, handleFieldChange] = useFormFields({
     email: "",
     password: ""
-  });
+  }); 
 
   function validateForm() {
     return fields.email.length > 0 && fields.password.length > 0;
