@@ -72,6 +72,10 @@ function Form(props) {
       setCity("");
       setCountry("");
       setProvince("");
+      setPostalCode("");
+      setContactName("");
+      setContactEmail("");
+      setContactPhone(""); 
     }
 
   return (
@@ -180,14 +184,18 @@ function Form(props) {
             <div className="col">
               <div className="row">
                 <div className="col-4"><p>State/Province</p></div>
-                <div className="col"><input className="form-control"></input></div>
+                <div className="col"><input className="form-control"
+                value={province}
+                onChange={e => setProvince(e.target.value)}></input></div>
               </div>
             </div>
             
             <div className="col">
               <div className="row">
                 <div className="col-3"><p>Country</p></div>
-                <div className="col"><input className="form-control"></input></div>
+                <div className="col"><input className="form-control"
+                value={country}
+                onChange={e => setCountry(e.target.value)}></input></div>
               </div>
             </div>
 
@@ -197,14 +205,19 @@ function Form(props) {
           <div className="col">
               <div className="row">
                 <div className="col-5"><p>Contact Name</p></div>
-                <div className="col"><input className="form-control"></input></div>
+                <div className="col"><input className="form-control"
+                value={ContactName}
+                onChange={e => setContactName(e.target.value)}></input></div>
               </div>
             </div>
             
             <div className="col">
               <div className="row">
                 <div className="col-4"><p>Postal Code</p></div>
-                <div className="col"><input className="form-control"></input></div>
+                <div className="col"><input className="form-control"
+                value={postalCode}
+                onChange={e => setPostalCode(e.target.value)}
+                ></input></div>
               </div>
             </div>
 
@@ -215,14 +228,19 @@ function Form(props) {
           <div className="col">
               <div className="row">
                 <div className="col-3">Email</div>
-                <div className="col"><input className="form-control"></input></div>
+                <div className="col"><input className="form-control"
+                value={ContactEmail}
+                onChange={e => setContactEmail(e.target.value)}
+                ></input></div>
               </div>
             </div>
             
             <div className="col">
               <div className="row">
                 <div className="col-5">Contact Phone</div>
-                <div className="col"><input className="form-control"></input></div>
+                <div className="col"><input className="form-control"
+                value={ContactPhone}
+                onChange={e => setContactPhone(e.target.value)}></input></div>
               </div>
             </div>
 
@@ -231,9 +249,14 @@ function Form(props) {
           <br></br>
           <br></br>
           <div className="row">
-            <div className="col text-center">
-              <a className="btn btn-md btn-primary btn-theme-form">Create</a>
-            </div>
+          <div className="col text-center">
+          <Button type="submit">
+            Create Customer
+          </Button>
+        </div>
+            {/* <div className="col text-center">
+              <a className="btn btn-md btn-primary btn-theme-form" >Create</a>
+            </div> */}
             
             <div className="col text-center">
               <a className="btn btn-md btn-secondary btn-secondary-form" href="/Customers">Cancel</a>
