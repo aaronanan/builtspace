@@ -1,0 +1,1 @@
+export const access_token = 'u7XAWyOamG8uP6qcW4PtfaXhFJXEXNTX6lqE3NGR'

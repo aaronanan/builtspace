@@ -4,7 +4,7 @@ import awsconfig from '../aws-exports';
 import { Link } from "react-router-dom";
 import { LinkContainer } from 'react-router-bootstrap';
 import "../styles/Customers.css";
-
+import { access_token } from "../aws-token" 
 const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
 
 function Customers() {
@@ -17,10 +17,9 @@ function Customers() {
   useEffect(sortCustomers, [search])
 
   function getCustomers() {
-    const access_token = 'u7XAWyOamG8uP6qcW4PtfaXhFJXEXNTX6lqE3NGR'
     axios.get(URL + '/customers' , {
       headers: {
-        'x-api-key': `${access_token}`
+        'x-api-key': access_token
       }
     })
     .then(function (response) {

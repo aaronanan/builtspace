@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import awsconfig from '../aws-exports';
-
+import { access_token } from "../aws-token" 
 // const axios = require('axios').default;
 const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
 
@@ -21,7 +21,11 @@ function Orders() {
   useEffect(sortOrders, [search])
 
   function getCustomers() {
-    axios.get(URL + '/customers')
+    axios.get(URL + '/customers' , {
+      headers: {
+        'x-api-key': access_token
+      }
+    })
     .then(function (response) {
       const dbCustomers = response.data.Items
       setCustomers(dbCustomers)
@@ -32,7 +36,11 @@ function Orders() {
   }
 
   function getOrders() {
-    axios.get(URL + '/orders')
+    axios.get(URL + '/orders', {
+      headers: {
+        'x-api-key': access_token
+      }
+    })
     .then(function (response) {
       const dbOrders = response.data.Items
       setOrders(dbOrders)

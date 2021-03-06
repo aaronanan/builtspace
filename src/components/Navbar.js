@@ -62,7 +62,7 @@ const Navbar = () => {
   const notLoggedIn = (
     <>
     <nav className="navbar container-fluid navbar-expand-lg navbar-light bg-light justify-content-between">
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand" href="/customers">
           <img className="navbar_logo" src="company_logo.png" alt=""></img>
         </a>
         {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -92,7 +92,7 @@ const Navbar = () => {
     <>
     <div className="container-fluid">
       <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand" href="/customers">
           <img className="navbar_logo" src="company_logo.png" alt=""></img>
         </a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
