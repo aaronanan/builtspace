@@ -17,7 +17,12 @@ function Customers() {
   useEffect(sortCustomers, [search])
 
   function getCustomers() {
-    axios.get(URL + '/customers')
+    const access_token = 'u7XAWyOamG8uP6qcW4PtfaXhFJXEXNTX6lqE3NGR'
+    axios.get(URL + '/customers' , {
+      headers: {
+        'x-api-key': `${access_token}`
+      }
+    })
     .then(function (response) {
       const dbCustomers = response.data.Items
       setCustomers(dbCustomers)
