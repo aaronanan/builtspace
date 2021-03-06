@@ -13,30 +13,18 @@ const awsmobile = {
     "aws_dynamodb_all_tables_region": "ca-central-1",
     "aws_dynamodb_table_schemas": [
         {
-            "tableName": "customers-prod",
+            "tableName": "customers-deploy",
             "region": "ca-central-1"
         },
         {
-            "tableName": "urls-prod",
-            "region": "ca-central-1"
-        },
-        {
-            "tableName": "builtOrders-prod",
-            "region": "ca-central-1"
-        },
-        {
-            "tableName": "spaceOrders-prod",
-            "region": "ca-central-1"
-        },
-        {
-            "tableName": "sysVars-prod",
+            "tableName": "sysVars-deploy",
             "region": "ca-central-1"
         }
     ],
-    "aws_cognito_identity_pool_id": "ca-central-1:3ab9e410-4c8a-47a2-899b-f6d1ced082f5",
+    "aws_cognito_identity_pool_id": "ca-central-1:fa2da488-3f3d-40b9-9e6b-eec9a9f5a794",
     "aws_cognito_region": "ca-central-1",
-    "aws_user_pools_id": "ca-central-1_6MCN0Shm4",
-    "aws_user_pools_web_client_id": "133jalu4m6a0lgct5ido91mugk",
+    "aws_user_pools_id": "ca-central-1_nw8mLuXyy",
+    "aws_user_pools_web_client_id": "2d9mj328jtlql4tal8cst6db8c",
     "oauth": {}
 };
 

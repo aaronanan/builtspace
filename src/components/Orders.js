@@ -82,7 +82,12 @@ function Orders(props) {
     );
 
     function getCustomers(ord) {
-      axios.get(URL + '/customers')
+      const access_token = 'u7XAWyOamG8uP6qcW4PtfaXhFJXEXNTX6lqE3NGR'
+      axios.get(URL + '/customers' , {
+        headers: {
+          'x-api-key': `${access_token}`
+        }
+      })
       .then(function (response) {
         // console.log(response.data.Items);
         const newCustomers = response.data.Items
