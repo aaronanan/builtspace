@@ -119,7 +119,7 @@ function Customers() {
                   <td className="text-center" id="email">{customer.cus_status}</td>
                   <td className="text-center">
                     <Link style={{backgroundColor:"lightgrey"}} to={{
-                    pathname: `/profile`,
+                    pathname: `/profile/${customer.customer_id}`,
                     query: { customer_id: `${customer.customer_id}` }}} 
                     className="btn btn-secondary btn-sm btn-middle">Orders and More Info</Link>
                   </td>

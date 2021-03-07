@@ -3,6 +3,8 @@ import axios from 'axios';
 import Table from 'react-bootstrap/Table';
 import awsconfig from '../aws-exports';
 import CopyToClipboard from 'react-copy-to-clipboard';
+import { access_token } from "../aws-token" 
+
 // TODO: Integrate unused Modal code to display URLs for a specific order, requires new //GET /orders/order_id endpoint
 
 const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
@@ -14,7 +16,11 @@ function Order(props) {
   useEffect(getSpecificOrders, [])
 
   function getSpecificOrders() {
-    axios.get(URL + '/orders/' + props.customer_id)
+    axios.get(URL + '/orders/' + props.customer_id, {
+      headers: {
+        'x-api-key': access_token
+      }
+    })
     .then(function (response) {
       const newOrders = response.data
       var i;

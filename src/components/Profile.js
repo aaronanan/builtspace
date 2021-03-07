@@ -3,6 +3,7 @@ import axios from 'axios';
 import Order from './Order'
 import awsconfig from '../aws-exports';
 import { Link } from "react-router-dom";
+import { access_token } from "../aws-token" 
 // import "../styles/Profile.css";
 
 const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
@@ -10,63 +11,32 @@ const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
 // TODO: Add more customer info fields, add axios.post request to update customer info
 
 function Profile(props) {
+  let customer_id = parseInt(props.location.pathname.replace( /^\D+/g, ''))
 
-  let customer_id = parseInt(props.location.query.customer_id);
-  const [customers, setCustomers] = useState([0]);
-  const [conName, setContactName] = useState([0]);
-  const [email, setContactEmail] = useState([0]);
-  const [phone, setContactPhone] = useState([0]);
-  const [address, setAddress] = useState([0]);
-  const [city, setCity] = useState([0]);
-  const [prov, setProv] = useState([0]);
-  const [postal, SetPostal] = useState([0]);
-  const [country, setCountry] = useState([0]);
-  const [empName, setEmpName] = useState([0]);
-  const [empEmail, setEmpEmail] = useState([0]);
-  // let [org_name,address,city,prov,postalcode,country,name,email,phone] = ["","","","","","","","",""]
+  const [customer, setCustomer] = useState([]);
 
   useEffect(getCustomers, [])
 
-  function getCustomers () {  
-    axios.get(URL + '/customers/' + customer_id, 
-      {
-      "customer_id": customer_id 
-      })
-    .then(function (response) {
-      const dbCustomer = response.data.Item
-      setCustomers([dbCustomer]);
-      console.log(response.data.Item)
-      setAddress([response.data.Item.ship_address.Address]);
-      setCity([response.data.Item.ship_address.City]);
-      setProv([response.data.Item.ship_address.prov]);
-      SetPostal([response.data.Item.ship_address.post_code]);
-      setCountry([response.data.Item.ship_address.country]);
-      setContactName([response.data.Item.contact_name]);
-      setContactEmail([response.data.Item.contact_person.email]);
-      setContactPhone([response.data.Item.contact_person.phone]);
-      setEmpName([response.data.Item.partner_contact.name])
-      setEmpEmail([response.data.Item.partner_contact.email])
-        // let org_name = response.data.Item.contact_name
-        // let name= response.data.Item.contact_name
-        // let email = response.data.Item.contact_person.email
-        // let phone = response.data.Item.contact_person.phone
-        // let address = response.data.Item.ship_address.Address
-        // let ity = response.data.Item.ship_address.City
-        // let country = response.data.Item.ship_address.country
-        // let postalcode = response.data.Item.ship_address.post_code
-        // let prov = response.data.Item.ship_address.prov
+  function getCustomers () {
+    axios.get(URL + '/customers/' + customer_id, {
+      headers: {
+        'x-api-key': access_token
       }
-      )
+    })  
+    .then(function (response) {
+      setCustomer([response.data.Item])
+      }
+    )
     .catch(function (error) {
       console.log(error);
     });
   }
 
-  const customers_list = customers.map(customer => (
+  const customers_list = customer.map(customer => (
     <>
     <div className="container-fluid mg-20">
       <div className="row mg-20">
-        <div className="col-md-3 cus_details mg-20">
+        <div className="col-md-3 cus_details mg-20" style={{backgroundColor:"lightgrey"}}>
           <div className="row">
             <div className="col-12 text-center">
               <p className="font-weight-bold">Customer Details</p>
@@ -98,7 +68,7 @@ function Profile(props) {
               <p>Address:</p>
             </div>
             <div className="col-md-6 text-center">
-              {address ? address : "Loading.."}
+              {customer.ship_address.Address ? customer.ship_address.Address : "Loading.."}
             </div>
           </div>
           <div className="row">
@@ -106,7 +76,7 @@ function Profile(props) {
               <p>City:</p>
             </div>
             <div className="col-md-6 text-center">
-              {city ? city : "Loading.."}
+              {customer.ship_address.City ? customer.ship_address.City : "Loading.."}
             </div>
           </div>
           <div className="row">
@@ -114,7 +84,7 @@ function Profile(props) {
               <p>Prov/State:</p>
             </div>
             <div className="col-md-6 text-center">
-              {prov ? prov : "Loading.."}
+              {customer.ship_address.prov ? customer.ship_address.prov : "Loading.."}
             </div>
           </div>
           <div className="row">
@@ -122,7 +92,7 @@ function Profile(props) {
               <p>Postal Code:</p>
             </div>
             <div className="col-md-6 text-center">
-              {postal ? postal : "Loading.."}
+              {customer.ship_address.post_code ? customer.ship_address.post_code : "Loading.."}
           </div>
         </div>
         <div className="row">
@@ -130,7 +100,7 @@ function Profile(props) {
             <p>Country</p>
           </div>
           <div className="col-md-6 text-center">
-            {country ? country : "Loading.."}
+            {customer.ship_address.country ? customer.ship_address.country : "Loading.."}
           </div>
         </div>
         <div className="row">
@@ -143,7 +113,7 @@ function Profile(props) {
             <p>Name:</p>
           </div>
           <div className="col-md-6 text-center">
-            {conName ? conName : "Loading.."}
+            {customer.contact_name ? customer.contact_name : "Loading.."}
           </div>
         </div>
         <div className="row">
@@ -151,7 +121,7 @@ function Profile(props) {
             <p>Email:</p>
           </div>
           <div className="col-md-6 text-center">
-            {email ? email : "Loading.."}
+            {customer.contact_person.email ? customer.contact_person.email : "Loading.."}
           </div>
         </div>
         <div className="row">
@@ -159,7 +129,7 @@ function Profile(props) {
             <p>Phone:</p>
           </div>
           <div className="col-md-6 text-center">
-            {phone ? phone : "Loading.."}
+            {customer.contact_person.phone ? customer.contact_person.phone : "Loading.."}
           </div>
         </div>
         <div className="row">
@@ -172,7 +142,7 @@ function Profile(props) {
             <p>Name:</p>
           </div>
           <div className="col-md-6 text-center">
-            {empName ? empName : "Loading.."}
+            {customer.sales_contact.name ? customer.sales_contact.name : "Loading.."}
           </div>
         </div>
         <div className="row">
@@ -188,7 +158,7 @@ function Profile(props) {
               <p>Email:</p>
             </div>
             <div className="col-md-6 text-center">
-              {empEmail ? empEmail : "Loading.."}
+              {customer.sales_contact.email ? customer.sales_contact.email : "Loading.."}
             </div>
           </div>
               {/* <div className="col">
@@ -235,6 +205,7 @@ function Profile(props) {
             </div> */}
             
           </div>
+
           <div className="col-md-9 order_div">
             <div className="row">
               <div className="container-fluid ord_table">
@@ -252,8 +223,10 @@ function Profile(props) {
             <div className="col"></div>
           </div>
         </div>
+          
       </div>
     </div>
+
     </>
     ));
 
