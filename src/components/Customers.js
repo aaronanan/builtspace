@@ -5,15 +5,15 @@ import { Link } from "react-router-dom";
 import { LinkContainer } from 'react-router-bootstrap';
 import "../styles/Customers.css";
 import { access_token } from "../aws-token" 
-const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
 
 function Customers() {
 
-  const [customers, setCustomers] = useState([0]);
-  const [filteredCustomers, setFilteredCustomers] = useState([0]);
+  const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
+  const [customers, setCustomers] = useState([]);
+  const [filteredCustomers, setFilteredCustomers] = useState([]);
   const [search, setSearch] = useState("");
 
-  useEffect(getCustomers, [])
+  
   useEffect(sortCustomers, [search])
 
   function getCustomers() {
@@ -23,7 +23,7 @@ function Customers() {
       }
     })
     .then(function (response) {
-      const dbCustomers = response.data.Items
+      const dbCustomers = orderCustomers(response.data.Items)
       setCustomers(dbCustomers)
       setFilteredCustomers(dbCustomers)
     })
@@ -32,11 +32,27 @@ function Customers() {
     });
   }
 
+  function orderCustomers(list) {
+    let ids = [];
+    let sorted = [];
+    for (let c in list) {
+      ids.push(list[c].customer_id)
+    }
+    ids.sort((a, b)=>{return b - a})
+    sorted = [...ids]
+    for (let i in list) {
+      sorted[ids.indexOf(list[i].customer_id)] = list[i];
+    }
+    return sorted
+  }
+
   function sortCustomers() {
     let newFilteredCustomers = []
     if (search !== ""){
       customers.forEach(element => {
-          if (element.customer_id.toString().padStart(4, '0').includes(search) || element.org_name.toUpperCase().includes(search) ) {
+          if (element.customer_id.toString().includes(search) 
+          || element.org_name.toUpperCase().includes(search) 
+          || element.contact_name.toUpperCase().includes(search)) {
             newFilteredCustomers.push(element);
           }
       });
@@ -52,9 +68,14 @@ function Customers() {
   function handleChange(e){
     setSearch(e.target.value.toString().toUpperCase())
   }
+  
 
-  const customers_list = (
-    <div className="container">
+  useEffect(getCustomers, [])
+  
+
+
+  return (
+      <div className="container">
       <br></br>
       
       <div className="row justify-content-center">
@@ -62,8 +83,9 @@ function Customers() {
           <div className="input-group input-group-md mb-3">
             <div className="input-group-prepend">
               <span className="input-group-text" id="inputGroup-sizing-sm">Search</span>
+              {/* <input type="button" className="input-group-text" value="Search" /> */}
             </div>
-            <input onChange={handleChange} type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="ID or Organization"></input>
+            <input onChange={handleChange} type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
           </div>
         </div>
         <div className="col-3">
@@ -81,6 +103,7 @@ function Customers() {
             <thead className="thead-green">
               <tr>
                 <th className="text-center left_radius">ID</th>
+                <th className="text-center">Name</th>
                 <th className="text-center">Organization</th>
                 <th className="text-center">Status</th>
                 <th className="text-center">More Info</th>
@@ -90,46 +113,30 @@ function Customers() {
             <tbody>
               {filteredCustomers.map(customer => 
                 <tr>
-                  <td className="text-center" id="customer_id">{String(customer.customer_id).padStart(4, '0')}</td>
+                  <td className="text-center" id="customer_id">{String(customer.customer_id)}</td>
+                  <td className="text-center">{customer.contact_name}</td>
                   <td className="text-center" id="name">{customer.org_name}</td>
                   <td className="text-center" id="email">{customer.cus_status}</td>
-                  <td className="text-center"><Link to={{
+                  <td className="text-center">
+                    <Link style={{backgroundColor:"lightgrey"}} to={{
                     pathname: `/profile`,
-                    query: { customer_id: `${customer.customer_id}` }
-                    }} className="btn btn-secondary btn-sm btn-middle">Orders and More Info</Link></td>
+                    query: { customer_id: `${customer.customer_id}` }}} 
+                    className="btn btn-secondary btn-sm btn-middle">Orders and More Info</Link>
+                  </td>
                   <td className="text-center" id="submitOrder"><Link to={{
                     pathname: `/create_order/${customer.customer_id}`,
                     query: { customer_id: `${customer.customer_id}` }
-                    }} className="btn btn-sm btn-primary btn-theme btn-middle">Submit an Order</Link></td>
+                    }} className="btn btn-sm btn-primary btn-theme btn-middle">Submit an Order</Link>
+                  </td>
                 </tr>
               )}
             </tbody>
           </table>
         </div>
       </div>
-
-    </div>
-  )
-
-  return (
-    <>
-      { customers_list }
-    </>
+    </div>    
   );
 }
 
 
 export default Customers;
-
-
-// function sortCustomers(){
-//   var i;
-//   if (deactivatedCustomers <= 0){
-//   for(i=0; i< customers.length; i++) {
-//     if(customers[i].cus_status === "Inactive") {
-//       deactivatedCustomers.push(customers[i]);
-//       delete customers[i];
-//     }
-//    }
-//   }
-// }
