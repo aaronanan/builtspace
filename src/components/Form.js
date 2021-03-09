@@ -49,13 +49,13 @@ function Form(props) {
           "phone": ContactPhone
         },
         "sales_contact": {
-          "name": "sdafsadf",
+          "sales_name": "sdafsadf",
           "email": "",
           "phone": ""
         },
         "partner_id": "",
         "partner_contact": {
-          "name": "",
+          "par_name": "",
           "email": "",
           "phone": ""
         }

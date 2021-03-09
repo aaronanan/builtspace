@@ -76,6 +76,7 @@ function Orders() {
       temp_obj["status"] = mergedListOfDict[i].cus_status
       temp_obj["date_created"] = String(mergedListOfDict[i].creation_date).slice(0, 10)
       temp_obj["last_updated"] = String(mergedListOfDict[i].lastupdate_date).slice(0, 10)
+      temp_obj["urls_name"] = mergedListOfDict[i].urls
       modified_orders.push(Object.values(temp_obj))
     }
     setData(modified_orders)
@@ -141,7 +142,7 @@ function Orders() {
   //     }
   //   }
   // }, 
-  "Customer ID", "Name", "Organization", "# URLs", "Status", "Date Created", "Date Updated"];
+  "Customer ID", "Name", "Organization", "# URLs", "Status", "Date Created", "Date Updated", "URLS"];
 
 
   const options = {

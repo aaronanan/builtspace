@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { LinkContainer } from 'react-router-bootstrap';
 import "../styles/Customers.css";
 import { access_token } from "../aws-token" 
+import EditIcon from '@material-ui/icons/Edit';
 
 function Customers() {
 
@@ -107,7 +108,8 @@ function Customers() {
                 <th className="text-center">Organization</th>
                 <th className="text-center">Status</th>
                 <th className="text-center">More Info</th>
-                <th className="text-center right_radius">New Order</th>
+                <th className="text-center">New Order</th>
+                <th className="text-center right_radius"></th>
               </tr>
             </thead>
             <tbody>
@@ -121,13 +123,14 @@ function Customers() {
                     <Link style={{backgroundColor:"lightgrey"}} to={{
                     pathname: `/profile/${customer.customer_id}`,
                     query: { customer_id: `${customer.customer_id}` }}} 
-                    className="btn btn-secondary btn-sm btn-middle">Orders and More Info</Link>
+                    className="btn btn-secondary btn-sm btn-middle">More Info</Link>
                   </td>
                   <td className="text-center" id="submitOrder"><Link to={{
                     pathname: `/create_order/${customer.customer_id}`,
                     query: { customer_id: `${customer.customer_id}` }
                     }} className="btn btn-sm btn-primary btn-theme btn-middle">Submit an Order</Link>
                   </td>
+                  <td className="text-center"><Link><EditIcon /></Link></td>
                 </tr>
               )}
             </tbody>

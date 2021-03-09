@@ -6,11 +6,11 @@ import { Link, useHistory } from "react-router-dom";
 import { Auth  } from "aws-amplify";
 import "../styles/Navbar.css";
 import { useAppContext } from "../libs/contextLib";
+// import { Nav, Form, FormControl } from "react-bootstrap";
+import { Nav, Navbar, Form, FormControl } from 'react-bootstrap';
+import BuiltspaceLogo from '../assets/company_logo.png'
 
-
-
-
-const Navbar = () => {
+const Navbar_home = () => {
 
   const { userHasAuthenticated } = useAppContext();
   const isAuthenticated = useAppContext().isAuthenticated;
@@ -127,10 +127,26 @@ const Navbar = () => {
 
   return (
     
-    <ButtonToolbar className="custom-btn-toolbar">
-    { isAuthenticated  ? loggedIn : notLoggedIn }
-    </ButtonToolbar>
+    // <ButtonToolbar className="custom-btn-toolbar">
+    // { isAuthenticated  ? loggedIn : notLoggedIn }
+    // </ButtonToolbar>
+
+    // loggedIn 
+    
+    
+    // <>
+    // test
+    // </>
+
+    <Navbar bg="light" variant="light">
+    <Navbar.Brand href="#home"><img className="navbar_logo" src={BuiltspaceLogo} alt=""></img></Navbar.Brand>
+    <Nav style={{marginLeft:"auto"}}>
+      <li className="nav-item"><Nav.Link href="/customers">Customers</Nav.Link></li>
+      <li className="nav-item"><Nav.Link href="/orders">Orders</Nav.Link></li>
+      <li className="nav-item"><Nav.Link href="/login">Logout</Nav.Link></li>
+    </Nav>
+  </Navbar>
   );
 }
 
-export default Navbar;
+export default Navbar_home;

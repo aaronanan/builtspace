@@ -20,6 +20,7 @@ import Login from "./components/Login"
 import { onError } from "./libs/errorLib";
 import Signup from "./components/Signup";
 
+import EditCustomer from "./components/EditCustomer"
 
 
 Amplify.configure(awsconfig);
@@ -57,10 +58,11 @@ function App() {
             <Route path='/customers' component={Customers} />
             <Route path='/orders' component={Orders} />
             <Route path='/new_customer' component={Form} />
+            <Route path='/edit' component={EditCustomer} />
             <Route path='/create_order' component={Create_order} />
             <Route path='/creating_order' component={CreateOrder} />
             {/* <Route path='/format' component={Format} /> */}
-            <Route path='/profile/' component={Profile} />
+            <Route path='/profile' component={Profile} />
             <Route path='/login' component={Login} />
             <Route exact path="/signup">
               <Signup />

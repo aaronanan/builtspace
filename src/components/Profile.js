@@ -36,7 +36,7 @@ function Profile(props) {
     <>
     <div className="container-fluid mg-20">
       <div className="row mg-20">
-        <div className="col-md-3 cus_details mg-20" style={{backgroundColor:"lightgrey"}}>
+        <div className="col-md-3 cus_details mg-20" style={{backgroundColor:"lightgrey", marginLeft:"15px", maxWidth:"300px"}}>
           <div className="row">
             <div className="col-12 text-center">
               <p className="font-weight-bold">Customer Details</p>
@@ -142,7 +142,7 @@ function Profile(props) {
             <p>Name:</p>
           </div>
           <div className="col-md-6 text-center">
-            {customer.sales_contact.name ? customer.sales_contact.name : "Loading.."}
+            {customer.sales_contact.sales_name ? customer.sales_contact.sales_name : "Loading.."}
           </div>
         </div>
         <div className="row">
@@ -205,8 +205,8 @@ function Profile(props) {
             </div> */}
             
           </div>
-
-          <div className="col-md-9 order_div">
+          {/* <div> */}
+          <div className="col-md-9 order_div" style={{maxWidth:"1200px", marginRight:"auto", marginLeft:"auto"}}>
             <div className="row">
               <div className="container-fluid ord_table">
                 <Order customer_id={customer_id} />
@@ -223,6 +223,7 @@ function Profile(props) {
             <div className="col"></div>
           </div>
         </div>
+        {/* </div> */}
           
       </div>
     </div>
