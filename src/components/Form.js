@@ -24,6 +24,17 @@ function Form(props) {
   const [postalCode, setPostalCode] = useState("");
   const [ContactEmail, setContactEmail] = useState("");
   const [ContactPhone, setContactPhone] = useState("");
+  const [pref_des, setPrefDes] = useState("");
+  const [org_id, setOrgId] = useState("");
+  const [serial_prefix, setSerialPrefix] = useState("");
+  const [sales_cont_name, setSalesContName] = useState("");
+  const [sales_cont_email, setSalesContEmail] = useState("");
+  const [sales_cont_phone, setSalesContPhone] = useState("");
+  const [partner_id, setPartnerId] = useState("");
+  const [partner_name, setPartnerName] = useState("");
+  const [partner_email, setPartnerEmail] = useState("");
+  const [partner_phone, setPartnerPhone] = useState("");
+
 
 
 
@@ -41,23 +52,23 @@ function Form(props) {
           "post_code": postalCode,
           "country": country
         },
-        "pref_des": "dfadf",
-        "org_id": "fadf",
-        "serial_prefix": "",
+        "pref_des": pref_des,
+        "org_id": org_id,
+        "serial_prefix": serial_prefix,
         "contact_person": {
           "email": ContactEmail,
           "phone": ContactPhone
         },
         "sales_contact": {
-          "name": "sdafsadf",
-          "email": "",
-          "phone": ""
+          "name": sales_cont_name,
+          "email": sales_cont_email,
+          "phone": sales_cont_phone
         },
-        "partner_id": "",
+        "partner_id": partner_id,
         "partner_contact": {
-          "name": "",
-          "email": "",
-          "phone": ""
+          "name": partner_name,
+          "email": partner_email,
+          "phone": partner_phone
         }
       })
       .then(function (response) {
@@ -76,6 +87,16 @@ function Form(props) {
       setContactName("");
       setContactEmail("");
       setContactPhone(""); 
+      setPrefDes("");
+      setOrgId("");
+      setSerialPrefix("");
+      setSalesContName("");
+      setSalesContEmail("");
+      setSalesContPhone("");
+      setPartnerId("");
+      setPartnerName("");
+      setPartnerEmail("");
+      setPartnerPhone("");
     }
 
   return (
@@ -97,7 +118,7 @@ function Form(props) {
             <div className="col">
               <div className="row">
                 <div className="col-4">
-                  <p id="field_title">Organization</p>
+                  <p id="field_title">Organization Name</p>
                 </div>
                 <div className="col-7">
                   <input className="form-control"
@@ -110,18 +131,16 @@ function Form(props) {
             <div className="col">
               <div className="row">
                 <div className="col-4">
-                  <p id="field_title">Status</p>
+                  <p id="field_title">Organization ID</p>
                 </div>
                 <div className="col-7">
-                  <select className="form-control inputField" 
-                    onChange={e => setStatus(e.target.value)} defaultValue="Customer Status">
-                    <option value="Active">Active</option>
-                    <option value="On-Boarding">On-Boarding</option>
-                    <option value="Inactive">Inactive</option>
-                  </select>
+                  <input className="form-control"
+                  value={org_id}
+                  onChange={e => setOrgId(e.target.value)}></input>
                 </div>
               </div>
             </div>
+
             
           </div>
           <br></br>
@@ -165,8 +184,40 @@ function Form(props) {
                 onChange={e => setCountry(e.target.value)}></input></div>
               </div>
             </div>
-
           </div>
+
+          <br></br>
+          <div className="row">
+            <div className="col">
+              <div className="row">
+                <div className="col-4">
+                  <p id="field_title">Status</p>
+                </div>
+                <div className="col-7">
+                  <select className="form-control inputField" 
+                    onChange={e => setStatus(e.target.value)} defaultValue="Customer Status">
+                    <option value="Active">Active</option>
+                    <option value="On-Boarding">On-Boarding</option>
+                    <option value="Inactive">Inactive</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div className="col">
+              <div className="row">
+                <div className="col-4">
+                  <p id="field_title">Serial Prefix</p>
+                </div>
+                <div className="col-7">
+                  <input className="form-control"
+                  value={serial_prefix}
+                  onChange={e => setSerialPrefix(e.target.value)}></input>
+                </div>
+              </div>
+            </div>
+            </div>
+
+
           <br></br>
           <div className="row">
           <div className="col">
@@ -194,7 +245,7 @@ function Form(props) {
           <div className="row">
           <div className="col">
               <div className="row">
-                <div className="col-4"><p id="field_title">Email</p></div>
+                <div className="col-4"><p id="field_title">Contact Email</p></div>
                 <div className="col-7"><input className="form-control"
                 value={ContactEmail}
                 onChange={e => setContactEmail(e.target.value)}
@@ -210,9 +261,120 @@ function Form(props) {
                 onChange={e => setContactPhone(e.target.value)}></input></div>
               </div>
             </div>
-
-
           </div>
+
+          <br></br>
+          <div className="row">
+          <div className="col">
+              <div className="row">
+                <div className="col-4">
+                  <p id="field_title">Prefered Template</p>
+                </div>
+                <div className="col-7">
+                  <input className="form-control"
+                  value={pref_des}
+                  onChange={e => setPrefDes(e.target.value)}></input>
+                </div>
+              </div>
+            </div>
+            <div className="col">
+              <div className="row">
+                <div className="col-4">
+                  <p id="field_title">Sales Person Name</p>
+                </div>
+                <div className="col-7">
+                  <input className="form-control"
+                  value={sales_cont_name}
+                  onChange={e => setSalesContName(e.target.value)}></input>
+                </div>
+              </div>
+            </div>
+            </div>
+
+            <br></br>
+          <div className="row">
+          <div className="col">
+              <div className="row">
+                <div className="col-4">
+                  <p id="field_title">Sales Person Email</p>
+                </div>
+                <div className="col-7">
+                  <input className="form-control"
+                  value={sales_cont_email}
+                  onChange={e => setSalesContEmail(e.target.value)}></input>
+                </div>
+              </div>
+            </div>
+            <div className="col">
+              <div className="row">
+                <div className="col-4">
+                  <p id="field_title">Sales Person Phone</p>
+                </div>
+                <div className="col-7">
+                  <input className="form-control"
+                  value={sales_cont_phone}
+                  onChange={e => setSalesContPhone(e.target.value)}></input>
+                </div>
+              </div>
+            </div>
+            </div>
+
+            <br></br>
+          <div className="row">
+          <div className="col">
+              <div className="row">
+                <div className="col-4">
+                  <p id="field_title">Partner ID</p>
+                </div>
+                <div className="col-7">
+                  <input className="form-control"
+                  value={partner_id}
+                  onChange={e => setPartnerId(e.target.value)}></input>
+                </div>
+              </div>
+            </div>
+            <div className="col">
+              <div className="row">
+                <div className="col-4">
+                  <p id="field_title">Partner Name</p>
+                </div>
+                <div className="col-7">
+                  <input className="form-control"
+                  value={partner_name}
+                  onChange={e => setPartnerName(e.target.value)}></input>
+                </div>
+              </div>
+            </div>
+            </div>
+
+            <br></br>
+          <div className="row">
+          <div className="col">
+              <div className="row">
+                <div className="col-4">
+                  <p id="field_title">Partner Email</p>
+                </div>
+                <div className="col-7">
+                  <input className="form-control"
+                  value={partner_email}
+                  onChange={e => setPartnerEmail(e.target.value)}></input>
+                </div>
+              </div>
+            </div>
+            <div className="col">
+              <div className="row">
+                <div className="col-4">
+                  <p id="field_title">Partner Phone</p>
+                </div>
+                <div className="col-7">
+                  <input className="form-control"
+                  value={partner_phone}
+                  onChange={e => setPartnerPhone(e.target.value)}></input>
+                </div>
+              </div>
+            </div>
+            </div>
+
           <br></br>
           <br></br>
           <div className="row">
@@ -221,9 +383,7 @@ function Form(props) {
             Create Customer
           </Button>
         </div>
-            {/* <div className="col text-center">
-              <a className="btn btn-md btn-primary btn-theme-form" >Create</a>
-            </div> */}
+            
             
             <div className="col-5">
               <a className="btn btn-md btn-secondary btn-secondary-form" href="/Customers">Cancel</a>
