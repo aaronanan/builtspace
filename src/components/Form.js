@@ -34,9 +34,24 @@ function Form(props) {
   const [partner_name, setPartnerName] = useState("");
   const [partner_email, setPartnerEmail] = useState("");
   const [partner_phone, setPartnerPhone] = useState("");
+  
 
 
-
+  function musicianRegisterModal() {
+    // Get the modal
+    document.getElementById("registerModal").style.display = "block";
+  }
+  
+  function closeModal() {
+    window.location.replace(process.env.PUBLIC_URL + '/customers')
+  }
+  
+  window.onclick = function(event) {
+    let modal = document.getElementById("registerModal")
+    if (event.target == modal) {
+      window.location.replace(process.env.PUBLIC_URL + '/customers');
+    }
+  }
 
     
     function handleSubmit(e) {
@@ -379,17 +394,23 @@ function Form(props) {
           <br></br>
           <div className="row">
           <div className="col text-center">
-          <Button className="btn btn-success" type="submit">
-            Create Customer
+          <Button className="btn btn-success" type="submit" onClick={(e) => {musicianRegisterModal() }} >
+           Create Customer
           </Button>
         </div>
+        {/* onClick={redirect} */}
             
             
             <div className="col-5">
               <a className="btn btn-md btn-secondary btn-secondary-form" href="/Customers">Cancel</a>
             </div>
 
-     
+            <div id="registerModal" class="registerModal">
+        <div class="registerModal-content">
+          <span class="close" onClick={closeModal}>&times;</span>
+          <p class="registerModalText">Account succesfully registered.</p>
+        </div>
+      </div>
 
           </div>
         </div>
