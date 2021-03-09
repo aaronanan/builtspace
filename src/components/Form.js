@@ -81,40 +81,7 @@ function Form(props) {
   return (
     <>
     <form onSubmit={handleSubmit}>
-      {/* <h2 className="label-wrapper">
-      </h2>
-        <input
-          className="inputField"
-          value={name}
-          onChange={e => setName(e.target.value)}
-          type="text"
-          name="contact_name"
-          autoComplete="off"
-          placeholder="Customer Name"
-        ></input>
-        <input
-          className="inputField"
-          value={orgName}
-          onChange={e => setOrgName(e.target.value)}
-          type="text"
-          name="org_name"
-          autoComplete="off"
-          placeholder="Organization"
-        ></input>
-        <label>Customer Status</label>
-        <select className="inputField" 
-            onChange={e => setStatus(e.target.value)} defaultValue="Customer Status">
-              <option value="Active">Active</option>
-              <option value="On-Boarding">On-Boarding</option>
-              <option value="Inactive">Inactive</option>
-        </select>
-        <div style={{textAlign: "center"}}>
-          <Button type="submit">
-            Create Customer
-          </Button>
-        </div> */}
         <div className="row">
-
         <div className="col"></div>
         <div className="col-8">
         <div className="container-fluid">
