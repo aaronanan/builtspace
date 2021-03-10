@@ -142,7 +142,7 @@ function Orders() {
   //     }
   //   }
   // }, 
-  "Customer ID", "Name", "Organization", "# URLs", "Status", "Date Created", "Date Updated", "URLS"];
+  "Customer ID", "Name", "Organization", "# URLs", "Status", "Date Created", "Date Updated"];
 
 
   const options = {

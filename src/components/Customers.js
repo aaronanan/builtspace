@@ -89,7 +89,7 @@ function Customers() {
             <input onChange={handleChange} type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
           </div>
         </div>
-        <div className="col-3">
+        <div>
           <LinkContainer to="/new_customer">
             <a className="btn btn-primary  btn-theme">Create a New Customer</a>
           </LinkContainer>
@@ -113,8 +113,8 @@ function Customers() {
               </tr>
             </thead>
             <tbody>
-              {filteredCustomers.map(customer => 
-                <tr>
+              {filteredCustomers.map((customer, index) => 
+                <tr key={index}>
                   <td className="text-center" id="customer_id">{String(customer.customer_id)}</td>
                   <td className="text-center">{customer.contact_name}</td>
                   <td className="text-center" id="name">{customer.org_name}</td>
@@ -130,7 +130,8 @@ function Customers() {
                     query: { customer_id: `${customer.customer_id}` }
                     }} className="btn btn-sm btn-primary btn-theme btn-middle">Submit an Order</Link>
                   </td>
-                  <td className="text-center"><Link><EditIcon /></Link></td>
+                  <td className="text-center"><Link to={{
+                    pathname: `/edit/${customer.customer_id}`}}><EditIcon /></Link></td>
                 </tr>
               )}
             </tbody>
