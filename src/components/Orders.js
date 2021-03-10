@@ -3,7 +3,8 @@ import axios from 'axios';
 import awsconfig from '../aws-exports';
 
 // const axios = require('axios').default;
-const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
+
+// const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
 
 // TODO: Display URLs for a specific order on this page, requires new //GET /orders/order_id endpoint, could make the Order ID a link to URL list
 

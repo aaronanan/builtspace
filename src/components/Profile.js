@@ -5,7 +5,7 @@ import awsconfig from '../aws-exports';
 import { Link } from "react-router-dom";
 // import "../styles/Profile.css";
 
-const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
+// const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
 
 // TODO: Add more customer info fields, add axios.post request to update customer info
 

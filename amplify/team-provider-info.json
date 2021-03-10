@@ -1,0 +1,32 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-builtspacetest-dev-113823-authRole",
+      "UnauthRoleArn": "arn:aws:iam::294151973366:role/amplify-builtspacetest-dev-113823-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::294151973366:role/amplify-builtspacetest-dev-113823-authRole",
+      "Region": "ca-central-1",
+      "DeploymentBucketName": "amplify-builtspacetest-dev-113823-deployment",
+      "UnauthRoleName": "amplify-builtspacetest-dev-113823-unauthRole",
+      "StackName": "amplify-builtspacetest-dev-113823",
+      "StackId": "arn:aws:cloudformation:ca-central-1:294151973366:stack/amplify-builtspacetest-dev-113823/5acf81e0-7dea-11eb-995b-0616dfb48966",
+      "AmplifyAppId": "d85zconbfrpkr"
+    },
+    "categories": {
+      "auth": {
+        "builtspacetest62b549ba": {
+          "userPoolId": "ca-central-1_wxvWPM13c",
+          "userPoolName": "BuiltSpaceQrOrdersUserPool",
+          "webClientId": "3sf7sd8eraurbce7ulciopoaq9",
+          "nativeClientId": "3sf7sd8eraurbce7ulciopoaq9",
+          "identityPoolId": "ca-central-1:4febfa74-9d5e-481b-a589-c0dec538bef0",
+          "identityPoolName": "BuiltSpaceQrOrdersIdentityPool",
+          "allowUnauthenticatedIdentities": false,
+          "authRoleArn": "arn:aws:iam::294151973366:role/Cognito_BuiltSpaceQrOrdersIdentityPoolAuth_Role",
+          "authRoleName": "Cognito_BuiltSpaceQrOrdersIdentityPoolAuth_Role",
+          "unauthRoleArn": "arn:aws:iam::294151973366:role/Cognito_BuiltSpaceQrOrdersIdentityPoolUnauth_Role",
+          "unauthRoleName": "Cognito_BuiltSpaceQrOrdersIdentityPoolUnauth_Role"
+        }
+      }
+    }
+  }
+}

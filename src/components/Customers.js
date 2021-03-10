@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import awsconfig from '../aws-exports';
+import Amplify, { API } from 'aws-amplify'
 import { Link } from "react-router-dom";
 import { LinkContainer } from 'react-router-bootstrap';
 import "../styles/Customers.css";
 
-const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
+// const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
+const URL = "https://vlybrdvr31.execute-api.ca-central-1.amazonaws.com/test"
 
 function Customers() {
 

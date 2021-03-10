@@ -5,7 +5,7 @@ import awsconfig from '../aws-exports';
 import CopyToClipboard from 'react-copy-to-clipboard';
 // TODO: Integrate unused Modal code to display URLs for a specific order, requires new //GET /orders/order_id endpoint
 
-const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
+// onst URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
 
 function Order(props) {
 

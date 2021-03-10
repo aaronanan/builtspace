@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import './styles/App.css';
-import Amplify from 'aws-amplify';
+import Amplify, { API } from 'aws-amplify'
+import {AmplifyAutheticator, AmplifySignIn } from '@aws-amplify/ui-react'
 import awsconfig from './aws-exports';
 import { AppContext } from "./libs/contextLib";
 import { Auth } from "aws-amplify";
@@ -23,9 +24,20 @@ import Signup from "./components/Signup";
 
 
 Amplify.configure(awsconfig);
+Amplify.configure({
+  API: {
+    endpoints: [
+      {
+        name: "api_endpoint",
+        endpoint: "https://vlybrdvr31.execute-api.ca-central-1.amazonaws.com/test"
+      }
+    ]
+  }
+});
 
 function App() {
-  const URL = awsconfig.aws_cloud_logic_custom.endpoint;
+  const URL = API
+  console.log(API)
   const [isAuthenticated, userHasAuthenticated] = useState(true);
   const [isAuthenticating, setIsAuthenticating] = useState(true);
  
@@ -36,6 +48,7 @@ function App() {
   
   // Check if user is signed in
   async function onLoad() {
+    console.log(API)
     try {
       await Auth.currentSession();
       userHasAuthenticated(true);

@@ -1,0 +1,11 @@
+{
+  "auth": {
+    "builtspacetest62b549ba": {
+      "service": "Cognito",
+      "serviceType": "imported",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
