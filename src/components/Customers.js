@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import awsconfig from '../aws-exports';
-import Amplify, { API } from 'aws-amplify'
+import { Auth } from 'aws-amplify'
 import { Link } from "react-router-dom";
 import { LinkContainer } from 'react-router-bootstrap';
 import "../styles/Customers.css";
 
-// const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
 const URL = "https://vlybrdvr31.execute-api.ca-central-1.amazonaws.com/test"
 
 function Customers() {
@@ -19,9 +17,14 @@ function Customers() {
   useEffect(sortCustomers, [search])
 
   function getCustomers() {
-    axios.get(URL + '/customers')
+    axios.get(URL + '/customers', {
+      headers: {
+        'Authorization': Auth.user.signInUserSession.idToken.jwtToken
+      }
+    })
     .then(function (response) {
-      const dbCustomers = response.data.Items
+      console.log(JSON.parse(response.data.body))
+      const dbCustomers = JSON.parse(response.data.body).Items
       setCustomers(dbCustomers)
       setFilteredCustomers(dbCustomers)
     })

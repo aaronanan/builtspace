@@ -34,7 +34,7 @@ const Navbar = () => {
   async function handleLogout() {
     await Auth.signOut();
     userHasAuthenticated(false);
-    history.push('/login')
+    history.push('/')
     setUserEmail('');
   }
 
