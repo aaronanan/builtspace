@@ -55,10 +55,11 @@ function App() {
         <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
         <NavBar />
           <Switch>
-            <Route path='/customers' component={Customers} />
+            <Route exact path='/' component={Customers} />
+            <Route exact path='/customers' component={Customers} />
             <Route path='/orders' component={Orders} />
             <Route path='/new_customer' component={Form} />
-            <Route path='/edit' component={EditCustomer} />
+            <Route path='/customer/edit' component={EditCustomer} />
             <Route path='/create_order' component={Create_order} />
             <Route path='/creating_order' component={CreateOrder} />
             {/* <Route path='/format' component={Format} /> */}

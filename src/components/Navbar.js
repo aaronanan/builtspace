@@ -139,10 +139,12 @@ const Navbar_home = () => {
     // </>
 
     <Navbar bg="light" variant="light">
-    <Navbar.Brand href="#home"><img className="navbar_logo" src={BuiltspaceLogo} alt=""></img></Navbar.Brand>
+    <Navbar.Brand href="/customers"><img className="navbar_logo" src={BuiltspaceLogo} alt=""></img></Navbar.Brand>
+    <Nav>
+      <li style={{marginLeft:"10px"}} className="nav-item"><Nav.Link href="/customers">Customers</Nav.Link></li>
+      <li style={{marginLeft:"10px"}} className="nav-item"><Nav.Link href="/orders">Orders</Nav.Link></li>
+    </Nav>
     <Nav style={{marginLeft:"auto"}}>
-      <li className="nav-item"><Nav.Link href="/customers">Customers</Nav.Link></li>
-      <li className="nav-item"><Nav.Link href="/orders">Orders</Nav.Link></li>
       <li className="nav-item"><Nav.Link href="/login">Logout</Nav.Link></li>
     </Nav>
   </Navbar>

@@ -131,7 +131,7 @@ function Customers() {
                     }} className="btn btn-sm btn-primary btn-theme btn-middle">Submit an Order</Link>
                   </td>
                   <td className="text-center"><Link to={{
-                    pathname: `/edit/${customer.customer_id}`}}><EditIcon /></Link></td>
+                    pathname: `/customer/edit/${customer.customer_id}`}}><EditIcon /></Link></td>
                 </tr>
               )}
             </tbody>

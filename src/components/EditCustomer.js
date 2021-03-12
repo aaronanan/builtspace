@@ -4,6 +4,9 @@ import axios from "axios"
 import { access_token, URL } from "../aws-token" 
 import "../styles/editCustomer.css"
 import { Button } from "react-bootstrap"
+import { Link } from "react-router-dom";
+// var cors = require('cors')
+// axios.use(cors())
 
 const EditCustomer = (props) => {
 
@@ -18,19 +21,80 @@ const EditCustomer = (props) => {
 
 
     function getCustomers () {
-    axios.get(URL + '/customers/' + customer_id, {
-        headers: {
-        'x-api-key': access_token
-        }
-    })  
-    .then(function (response) {
-        setCustomer([response.data.Item])
-        setField(response.data.Item.contact_name)
-        }
-    )
-    .catch(function (error) {
-        console.log(error);
-    });
+        axios.get(URL + '/customers/' + customer_id, {
+            headers: {
+            'x-api-key': access_token
+            }
+        })  
+        .then(function (response) {
+            setCustomer([response.data.Item])
+            setField(response.data.Item.contact_name)
+            }
+        )
+        .catch(function (error) {
+            console.log(error);
+        });
+    }
+
+    function updateCustomer () {
+        axios.put(URL + '/customers', 
+        {
+            "customer_id": 35,
+            "contact_name": "Nicole Alca",
+            "org_name": "BuiltSpace",
+            "org_id": "5",
+            "contact_person": {
+                "email": "test@email.com",
+                "phone": "123"
+            },
+            "cus_status": "Pending",
+            "partner_id": "3",
+            "partner_contact": {
+                "email": "hehe@email.com",
+                "phone": "123",
+                "par_name": "hehe"
+            },
+            "sales_contact": {
+                "email": "hehe@email.com",
+                "sales_name": "hehe",
+                "phone": "123"
+            },
+            "ship_address": {
+                "Address": "222 East",
+                "City": "City",
+                "country": "Country",
+                "post_code": "123 123",
+                "prov": "CD"
+            }
+          }, {
+            headers: {
+                'x-api-key': access_token
+            },
+        })  
+        .then(function (response) {
+            console.log("test", response);
+            // window.location.reload();
+            }
+        )
+        .catch(function (error) {
+            console.log(error);
+        });
+    }
+
+    function deleteCustomer () {
+        axios.delete(URL + '/customers/' + customer_id, {
+            headers: {
+            'x-api-key': access_token
+            }
+        })  
+        .then(function (response) {
+            console.log("test", response);
+            // window.location.reload();
+            }
+        )
+        .catch(function (error) {
+            console.log(error);
+        });
     }
         
     const customers_list = customer.map((cus, index) => 
@@ -86,8 +150,8 @@ const EditCustomer = (props) => {
 
         <div>
             <div style={{textAlign:"center", paddingBottom:"200px", backgroundColor:"white", paddingTop:"20px"}}>
-                <Button style={{width:"150px"}} className="btn btn-success">Save Changes</Button>
-                <Button style={{width:"150px", marginLeft:'50px'}} className="btn btn-danger">Delete</Button>
+                <Button style={{width:"150px"}} onClick={updateCustomer} className="btn btn-success">Save Changes</Button>
+                <a href="/customers"><Button style={{width:"150px", marginLeft:'50px'}} onClick={deleteCustomer} className="btn btn-danger">Delete</Button></a>
                 <Button style={{marginLeft:'50px', width:"150px"}} className="btn btn-md btn-secondary">Cancel</Button>
             </div>
         </div>

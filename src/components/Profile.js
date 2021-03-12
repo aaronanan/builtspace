@@ -4,7 +4,9 @@ import Order from './Order'
 import awsconfig from '../aws-exports';
 import { Link } from "react-router-dom";
 import { access_token } from "../aws-token" 
-// import "../styles/Profile.css";
+import "../styles/Profile.css";
+import { TextField, Button } from '@material-ui/core';
+import PublishIcon from '@material-ui/icons/Publish';
 
 const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
 
@@ -14,6 +16,7 @@ function Profile(props) {
   let customer_id = parseInt(props.location.pathname.replace( /^\D+/g, ''))
 
   const [customer, setCustomer] = useState([]);
+  const [numUrls, setNumUrls] = useState([]);
 
   useEffect(getCustomers, [])
 
@@ -32,11 +35,31 @@ function Profile(props) {
     });
   }
 
-  const customers_list = customer.map(customer => (
+  function postOrder(){
+      // console.log(numUrls)
+    // e.preventDefault();
+    axios.post(URL + '/orders', 
+      {
+      customer_id: customer_id,
+      num_urls: numUrls,
+      })
+    .then(function (response) {
+      console.log(response);
+      window.location.reload();
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    
+  }
+
+  const customers_list = customer.map((customer, index) => (
     <>
-    <div className="container-fluid mg-20">
-      <div className="row mg-20">
-        <div className="col-md-3 cus_details mg-20" style={{backgroundColor:"lightgrey", marginLeft:"15px", maxWidth:"300px"}}>
+    <div className="container-fluid" key={index}>
+    {/* <div style={{width:"1000px"}}>  */}
+      <div className="row" key={index}>
+      {/* // className="col-md-3 cus_details mg-20"  */}
+        <div sclassName="col-md-3 cus_details mg-20" style={{backgroundColor:"lightgrey", width:"300px", marginLeft:"15px", borderRadius:"10px", padding:"20px"}}>
           <div className="row">
             <div className="col-12 text-center">
               <p className="font-weight-bold">Customer Details</p>
@@ -161,58 +184,27 @@ function Profile(props) {
               {customer.sales_contact.email ? customer.sales_contact.email : "Loading.."}
             </div>
           </div>
-              {/* <div className="col">
-            <p className="font-weight-bold">Customer Details</p>
-            <p>Org. Name:</p>
-            <p>Customer ID:</p>
-            <br></br>
-            <p className="font-weight-bold">Shipping</p>
-            <p>Address: </p>
-            <p>City:</p>
-            <p>Prov/State: </p>
-            <p>Postal Code: </p>
-            <p>Country: </p>
-            <br></br>
-            <p className="font-weight-bold">Contact</p>
-            <p>Name: </p>
-            <p>Email:</p>
-            <p>Phone: </p>
-            <p className="font-weight-bold">BuiltSpace Sales Contact</p>
-            <p>Name: </p>
-            <p>Emp ID: </p>
-            <p>Email: </p>
-              </div>
-              <div className="col">
-              <p> '</p>
-              <p>{customer.org_name}</p>
-              <p>{customer.customer_id}</p>
-              <br></br>
-              <p className="font-weight-bold">'</p>
-              <p>TEMP</p>
-              <p>TEMP</p>
-              <p>TEMP</p>
-              <p>TEMP</p>
-              <p>TEMP</p>
-              <br></br>
-              <p className="font-weight-bold">'</p>
-              <p>TEMP</p>
-              <p>TEMP</p>
-              <p>PTEMP</p>
-              <p className="font-weight-bold">'</p>
-              <p>TEMP</p>
-              <p>Emp ID:</p>
-              <p>Email:</p>
-            </div> */}
             
           </div>
           {/* <div> */}
-          <div className="col-md-9 order_div" style={{maxWidth:"1200px", marginRight:"auto", marginLeft:"auto"}}>
+
+          <div className="col-md-9 order_div" key={index}>
             <div className="row">
-              <div className="container-fluid ord_table">
+              <div className="container-fluid">
+                  <div style={{textAlign:"center", marginBottom:"20px"}}> 
+                    <TextField type="number" onChange={(e)=>{setNumUrls(e.target.value)}} label="Quantity" defaultValue="256" variant="outlined" inputProps={{
+                      style: {
+                        height: "45px",
+                        // width: "100px",
+                        padding: '0 14px',
+                      },
+                    }}/>
+                    <Button onClick={postOrder} variant="outlined" color="primary" style={{height:"45px", backgroundColor:"#00B060", color:"white"}}>Submit</Button> 
+                  </div>
                 <Order customer_id={customer_id} />
               </div>
             </div>
-            <div className="row">
+            {/* <div className="row">
               <div className="col"></div>
               <div className="col">
               <Link to={{
@@ -221,18 +213,19 @@ function Profile(props) {
               }} className="btn btn-md btn-primary btn-profile">New Order</Link>
               </div>
             <div className="col"></div>
-          </div>
+          </div> */}
         </div>
-        {/* </div> */}
+        </div>
           
       </div>
-    </div>
+    {/* </div> */}
 
     </>
     ));
 
   return (
       <>
+      {/* <input /> */}
       {customers_list}
       </>
   );
