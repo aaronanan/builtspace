@@ -12,7 +12,6 @@ import Form from './components/Form';
 import Orders from './components/Orders';
 import Customers from './components/Customers';
 import NavBar from './components/Navbar';
-
 import Create_order from "./components/create_order";
 import CreateOrder from "./components/CreateOrder";
 import Profile from "./components/Profile";
@@ -23,19 +22,9 @@ import Signup from "./components/Signup";
 
 
 Amplify.configure(awsconfig);
-Amplify.configure({
-  API: {
-    endpoints: [
-      {
-        name: "api_endpoint",
-        endpoint: "https://vlybrdvr31.execute-api.ca-central-1.amazonaws.com/test"
-      }
-    ]
-  }
-});
 
 function App() {
-  const [isAuthenticated, userHasAuthenticated] = useState(true);
+  const [isAuthenticated, userHasAuthenticated] = useState(false);
   const [isAuthenticating, setIsAuthenticating] = useState(true);
  
   // Call the onLoad function only once on page load
@@ -80,8 +69,24 @@ function App() {
     </div>
     )
   );
+  isAuthenticating && (
+    <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
+    <NavBar />
+      <Switch>
+        <Route path='/customers' component={Customers} />
+        <Route path='/orders' component={Orders} />
+        <Route path='/new_customer' component={Form} />
+        <Route path='/create_order' component={Create_order} />
+        <Route path='/creating_order' component={CreateOrder} />
+        <Route path='/profile/' component={Profile} />
+        {/* <Route path='/login' component={Login} />
+        <Route exact path="/signup">
+          <Signup />
+        </Route> */}
+      </Switch>
+    </AppContext.Provider>
+  )
+
 }
 
-export default withAuthenticator(App, {
-  
-});
+export default App

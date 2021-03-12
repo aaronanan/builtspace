@@ -23,8 +23,7 @@ function Customers() {
       }
     })
     .then(function (response) {
-      console.log(JSON.parse(response.data.body))
-      const dbCustomers = JSON.parse(response.data.body).Items
+      const dbCustomers = response.data.Items
       setCustomers(dbCustomers)
       setFilteredCustomers(dbCustomers)
     })
@@ -90,7 +89,7 @@ function Customers() {
             </thead>
             <tbody>
               {filteredCustomers.map(customer => 
-                <tr>
+                <tr id="{customer_id + customer_name}">
                   <td className="text-center" id="customer_id">{String(customer.customer_id).padStart(4, '0')}</td>
                   <td className="text-center" id="name">{customer.org_name}</td>
                   <td className="text-center" id="email">{customer.cus_status}</td>

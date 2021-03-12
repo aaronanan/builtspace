@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Auth, Hub } from 'aws-amplify'
 import './styles/App.css';
+import NavBar from './components/Navbar'
+import Login from './components/Login'
+import { AppContext } from "./libs/contextLib";
 import Router from './Router'
 import Amplify from 'aws-amplify'
 import config from './aws-exports'
@@ -12,7 +15,8 @@ const initialFormState = {
   password: '',
   newPassword: '',
   confirmNewPassword: '',
-  error: ''
+  error: '',
+  isLoading: false
 }
 
 function App() {
@@ -48,76 +52,61 @@ function App() {
     });
   }
 
-  function onChange(e) {
-    e.persist()
-    updateFormState(() => ({ ...formState, [e.target.name]: e.target.value }))
+  function handleChange(event) {
+    event.persist()
+    updateFormState(() => ({ ...formState, [event.target.name]: event.target.value }))
   }
 
-  function signIn() {
-    const { username, password } = formState
-    Auth.signIn(username, password)
-    .then(user => {
-      if (user.challengeName === 'NEW_PASSWORD_REQUIRED') {
-        updateFormState(() => ({ ...formState, formType: 'changePassword' }))
-        updateUser(user)
-      } else {
-        updateFormState(() => ({ ...formState, formType: 'signedIn' }))
-      }
-    }).catch(e => {
-      console.log(e)
-      updateFormState(() => ({ ...formState, error: e.message }))
-    });
-  }
-
-  function changePassword() {
-    const { newPassword, confirmNewPassword } = formState
-    if (newPassword === confirmNewPassword) {
-      Auth.completeNewPassword(user, newPassword)
-      .then(() => {
-        updateFormState(() => ({ ...formState, formType: 'signedIn' }))
-      }).catch(e => {
-        console.log(e);
-        updateFormState(() => ({ ...formState, error: e.message }))
-      });
-    } else {
-      updateFormState(() => ({ ...formState, error: 'Password does not match'}))
-    }
-  }
+  
+  // return (
+  //   <div className="App">
+  //     { 
+  //       formType === 'signIn' && (
+  //         <div>
+  //           <input name="username" onChange={onChange} placeholder="username" />
+  //           <input name="password" onChange={onChange} type="password" placeholder="password" />
+  //           <button onClick={signIn}>Sign In</button>
+  //           { error != '' && (
+  //             <p>{ error }</p>
+  //           )}
+  //         </div>
+  //       )
+  //     }
+  //     { 
+  //       formType === 'changePassword' && (
+  //         <div>
+  //           <input name="newPassword" onChange={onChange} type="password" placeholder="password" />
+  //           <input name="confirmNewPassword" onChange={onChange} type="password" placeholder="confirm password" />
+  //           <button onClick={changePassword}>Change Password</button>
+  //           { error != '' && (
+  //             <p>{ error }</p>
+  //           )}
+  //         </div>
+  //       )
+  //     }
+  //    { 
+  //       formType === 'signedIn' && 
+  //       (
+  //         <Router />
+  //       )
+  //     }
+  //   </div>
+  // );
 
   return (
     <div className="App">
-      { 
-        formType === 'signIn' && (
-          <div>
-            <input name="username" onChange={onChange} placeholder="username" />
-            <input name="password" onChange={onChange} type="password" placeholder="password" />
-            <button onClick={signIn}>Sign In</button>
-            { error != '' && (
-              <p>{ error }</p>
-            )}
-          </div>
-        )
-      }
-      { 
-        formType === 'changePassword' && (
-          <div>
-            <input name="newPassword" onChange={onChange} type="password" placeholder="password" />
-            <input name="confirmNewPassword" onChange={onChange} type="password" placeholder="confirm password" />
-            <button onClick={changePassword}>Change Password</button>
-            { error != '' && (
-              <p>{ error }</p>
-            )}
-          </div>
-        )
-      }
-     { 
-        formType === 'signedIn' && 
-        (
-          <Router />
-        )
-      }
+      <NavBar />
+      { (formState.formType == 'signIn' || formType == 'changePassword') && (
+        <Login formState={formState} user={user} onChange={handleChange} updateFormState={updateFormState} />
+      )}
+      { formState.formType == 'signedIn' && (
+        <Router />
+      )}
     </div>
-  );
+
+
+  )
+
 }
 
 export default App

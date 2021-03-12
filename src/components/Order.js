@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
+import { Auth } from 'aws-amplify';
 import Table from 'react-bootstrap/Table';
 import awsconfig from '../aws-exports';
 import CopyToClipboard from 'react-copy-to-clipboard';
 // TODO: Integrate unused Modal code to display URLs for a specific order, requires new //GET /orders/order_id endpoint
 
 // onst URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
+const URL = "https://vlybrdvr31.execute-api.ca-central-1.amazonaws.com/test"
 
 function Order(props) {
 
@@ -14,7 +16,11 @@ function Order(props) {
   useEffect(getSpecificOrders, [])
 
   function getSpecificOrders() {
-    axios.get(URL + '/orders/' + props.customer_id)
+    axios.get(URL + '/orders/' + props.customer_id, {
+      headers: {
+        'Authorization': Auth.user.signInUserSession.idToken.jwtToken
+      }
+    })
     .then(function (response) {
       const newOrders = response.data
       var i;

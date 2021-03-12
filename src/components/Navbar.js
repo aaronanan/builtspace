@@ -3,19 +3,42 @@ import Button from 'react-bootstrap/Button';
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link, useHistory } from "react-router-dom";
-import { Auth  } from "aws-amplify";
+import { Auth, Hub  } from "aws-amplify";
 import "../styles/Navbar.css";
 import { useAppContext } from "../libs/contextLib";
 
-
-
-
-const Navbar = () => {
-
-  const { userHasAuthenticated } = useAppContext();
-  const isAuthenticated = useAppContext().isAuthenticated;
+const Navbar = (props) => {
+  const [isAuthenticated, userHasAuthenticated] = useState(false)
   const [userEmail, setUserEmail] = useState('');
   let history = useHistory();
+
+  // Call the onLoad function only once on page load
+  useEffect(() => {
+    onLoad();
+    setAuthListener();
+  }, []);
+  
+  // Check if user is signed in
+  async function onLoad() {
+    try {
+      await Auth.currentAuthenticatedUser();
+      userHasAuthenticated(true);
+    }
+    catch(err) {
+      if (err) {
+        userHasAuthenticated(false)
+    }}
+  }
+
+  async function setAuthListener() {
+    Hub.listen('auth', (data) => {
+      switch (data.payload.event) {
+        case 'signIn':
+          userHasAuthenticated(true)
+          break;
+      }
+    });
+  }
 
   //this function allows you to easily seach the local storage using Regex
   function findLocalItems (query) {
@@ -116,7 +139,7 @@ const Navbar = () => {
         <div> 
           <ul className="navbar-nav mr-auto"> 
             <li className="nav-item"> 
-              <a className="nav-link" variant="outline-info" size="nav" onClick={handleLogout}>Logout{ userEmail }</a> 
+              <a className="nav-link" variant="outline-info" size="nav" onClick={handleLogout}>Logout</a> 
             </li> 
           </ul> 
         </div>

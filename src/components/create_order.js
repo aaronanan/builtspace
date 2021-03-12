@@ -16,7 +16,8 @@ function Customer(props) {
     const [customers, setCustomers] = useState([0]);
     const [phone, setPhone] = useState([0]);
     const [email, setEmail] = useState([0]);
-    const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
+    // const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
+    const URL = "https://vlybrdvr31.execute-api.ca-central-1.amazonaws.com/test"
 
 
 

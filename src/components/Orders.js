@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import { Auth } from 'aws-amplify'
 import awsconfig from '../aws-exports';
 
-// const axios = require('axios').default;
-
 // const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
+const URL = "https://vlybrdvr31.execute-api.ca-central-1.amazonaws.com/test"
 
 // TODO: Display URLs for a specific order on this page, requires new //GET /orders/order_id endpoint, could make the Order ID a link to URL list
 
@@ -22,7 +22,11 @@ function Orders() {
   useEffect(sortOrders, [search])
 
   function getCustomers() {
-    axios.get(URL + '/customers')
+    axios.get(URL + '/customers', {
+      headers: {
+        'Authorization': Auth.user.signInUserSession.idToken.jwtToken
+      }
+    })
     .then(function (response) {
       const dbCustomers = response.data.Items
       setCustomers(dbCustomers)
@@ -33,7 +37,11 @@ function Orders() {
   }
 
   function getOrders() {
-    axios.get(URL + '/orders')
+    axios.get(URL + '/ordersnourl', {
+      headers: {
+        'Authorization': Auth.user.signInUserSession.idToken.jwtToken
+      }
+    })
     .then(function (response) {
       const dbOrders = response.data.Items
       setOrders(dbOrders)

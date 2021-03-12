@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import Order from './Order'
-import awsconfig from '../aws-exports';
+import Order from './Order';
+import { Auth } from 'aws-amplify';
 import { Link } from "react-router-dom";
 // import "../styles/Profile.css";
 
 // const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
+const URL = "https://vlybrdvr31.execute-api.ca-central-1.amazonaws.com/test"
 
 // TODO: Add more customer info fields, add axios.post request to update customer info
 
@@ -30,12 +31,14 @@ function Profile(props) {
   function getCustomers () {  
     axios.get(URL + '/customers/' + customer_id, 
       {
-      "customer_id": customer_id 
-      })
+      headers: {
+        'Authorization': Auth.user.signInUserSession.idToken.jwtToken
+      }
+    })
     .then(function (response) {
       const dbCustomer = response.data.Item
       setCustomers([dbCustomer]);
-      console.log(response.data.Item)
+      // console.log(response.data.Item)
       setAddress([response.data.Item.ship_address.Address]);
       setCity([response.data.Item.ship_address.City]);
       setProv([response.data.Item.ship_address.prov]);

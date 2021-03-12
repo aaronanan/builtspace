@@ -12,7 +12,8 @@ import "../styles/form.css";
 
 function Form(props) {
 
-  const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
+  // const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
+  const URL = "https://vlybrdvr31.execute-api.ca-central-1.amazonaws.com/test"
 
   const [ContactName, setContactName] = useState("");
   const [orgName, setOrgName] = useState("");
