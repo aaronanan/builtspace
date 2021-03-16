@@ -47,6 +47,34 @@ function Order(props) {
     // console.log(inputValues);
   }
 
+  function deleteOrder(event) {
+    const order_id = event.target.id
+    const creation_date = orders.find(order => order.order_id == event.target.id).creation_date
+    const confirmDelete = window.confirm(`Are you sure you want to delete Order ${order_id}?`)
+    if (confirmDelete == true) {
+      axios.delete(URL + '/orders/', {
+        data: {
+          order_id: order_id,
+          creation_date: creation_date
+        },
+        headers: {
+          'x-api-key': access_token
+        }
+      })
+      .then(function (response) {
+        if (response.status == 200) {
+          const newOrders = orders.filter((order) => {
+            return order != orders.find(order => order.order_id == order_id)
+          })
+          setOrders(newOrders);
+        }
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+    }
+  }
+
   const orders_list = (
     <div style={{marginRight:"auto", marginLeft:"auto", width:"700px"}}>
     <table className="table table-bordered table-sm  hover">
@@ -56,6 +84,7 @@ function Order(props) {
           <th className="text-center">Status</th>
           <th className="text-center">Amount</th>
           <th className="text-center">Date Created</th>
+          <th className="text-center"></th>
           <th className="text-center right_radius"></th>
         </tr>
       </thead>
@@ -71,6 +100,7 @@ function Order(props) {
             <td className="text-center"><Button onClick={()=>{generateCodes(order.order_id, order.num_urls, order.urls)}} variant="outlined" color="primary" style={{height:"35px", backgroundColor:"#00B060", color:"white"}} endIcon={<AutorenewIcon />}>Generate</Button> 
             </td>
             {/* <td className="text-center"><a className="btn btn-primary btn-theme" onClick={()=>{generateCodes(order.order_id, order.num_urls, order.urls)}}>Generate</a></td> */}
+            <td className="text-center"><button id={order.order_id} onClick={deleteOrder}>Delete</button></td>
           </tr>
         )}
       </tbody>
