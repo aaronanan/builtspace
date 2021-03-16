@@ -60,7 +60,7 @@ function Orders() {
     for (let orderItem of orders) {
       if (customerIDs.includes(orderItem.customer_id)) {
         let customerDict = customers[customerIDs.indexOf(orderItem.customer_id)]
-        let ordCusDict = Object.assign({}, orderItem, customerDict)
+        let ordCusDict = Object.assign({}, customerDict, orderItem)
         mergedListOfDict.push(ordCusDict)
       }
     }
