@@ -16,7 +16,7 @@ function Profile(props) {
   let customer_id = parseInt(props.location.pathname.replace( /^\D+/g, ''))
 
   const [customer, setCustomer] = useState([]);
-  const [numUrls, setNumUrls] = useState([]);
+  const [numUrls, setNumUrls] = useState(256);
 
   useEffect(getCustomers, [])
 
