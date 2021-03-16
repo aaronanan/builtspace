@@ -24,6 +24,9 @@ function Order(props) {
     })
     .then(function (response) {
       const newOrders = response.data
+      newOrders.sort(function(a, b) {
+        return a.order_id - b.order_id;
+      });
       setOrders(newOrders);
     })
     .catch(function (error) {
