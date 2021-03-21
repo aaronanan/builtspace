@@ -16,7 +16,6 @@ const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
 function Order(props) {
 
   const [orders, setOrders] = useState([0]);
-  const [status, setStatus] = useState("");
 
   useEffect(getSpecificOrders, [])
   // const folderName = "00" + props.customer_id.toString() + "-" + orders.order_id.toString();
@@ -83,7 +82,6 @@ function Order(props) {
   }
 
   function changeStatus(event) {
-    setStatus(event.target.value)
     const order_id = event.target.id
     const creation_date = orders.find(order => order.order_id == event.target.id).creation_date
     const status = event.target.value
