@@ -137,7 +137,7 @@ const Navbar_home = () => {
     // <>
     // test
     // </>
-
+    <div className="navbar_header">
     <Navbar bg="light" variant="light">
     <Navbar.Brand href="/customers"><img className="navbar_logo" src={BuiltspaceLogo} alt=""></img></Navbar.Brand>
     <Nav>
@@ -148,6 +148,7 @@ const Navbar_home = () => {
       <li className="nav-item"><Nav.Link href="/login">Logout</Nav.Link></li>
     </Nav>
   </Navbar>
+  </div>
   );
 }
 

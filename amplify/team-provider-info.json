@@ -20,6 +20,44 @@
           "appId": "d2xmkos6jccwcl",
           "type": "cicd"
         }
+      },
+      "function": {
+        "qrv1Lambda": {
+          "deploymentBucketName": "amplify-qrv1-deploy-173612-deployment",
+          "s3Key": "amplify-builds/qrv1Lambda-64667767747275503374-build.zip"
+        },
+        "createOrder": {
+          "deploymentBucketName": "amplify-qrv1-deploy-173612-deployment",
+          "s3Key": "amplify-builds/createOrder-6f61714f4e564d384173-build.zip"
+        },
+        "createCustomer": {
+          "deploymentBucketName": "amplify-qrv1-deploy-173612-deployment",
+          "s3Key": "amplify-builds/createCustomer-70694b5a695759656537-build.zip"
+        },
+        "getCustomers": {
+          "deploymentBucketName": "amplify-qrv1-deploy-173612-deployment",
+          "s3Key": "amplify-builds/getCustomers-4e56366342716e48556b-build.zip"
+        },
+        "deleteCustomer": {
+          "deploymentBucketName": "amplify-qrv1-deploy-173612-deployment",
+          "s3Key": "amplify-builds/deleteCustomer-6d37564c3058787a6974-build.zip"
+        },
+        "getOrders": {
+          "deploymentBucketName": "amplify-qrv1-deploy-173612-deployment",
+          "s3Key": "amplify-builds/getOrders-313248326149766f424b-build.zip"
+        },
+        "getCustomer": {
+          "deploymentBucketName": "amplify-qrv1-deploy-173612-deployment",
+          "s3Key": "amplify-builds/getCustomer-634377714a5a756d4c6b-build.zip"
+        },
+        "updateCustomer": {
+          "deploymentBucketName": "amplify-qrv1-deploy-173612-deployment",
+          "s3Key": "amplify-builds/updateCustomer-5072707544724a714e38-build.zip"
+        },
+        "updateOrder": {
+          "deploymentBucketName": "amplify-qrv1-deploy-173612-deployment",
+          "s3Key": "amplify-builds/updateOrder-5a32764b786a4d4c7354-build.zip"
+        }
       }
     }
   }

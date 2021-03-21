@@ -7,6 +7,8 @@ import { access_token } from "../aws-token"
 import "../styles/Profile.css";
 import { TextField, Button } from '@material-ui/core';
 import PublishIcon from '@material-ui/icons/Publish';
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
 
@@ -17,6 +19,7 @@ function Profile(props) {
 
   const [customer, setCustomer] = useState([]);
   const [numUrls, setNumUrls] = useState(256);
+  const [open, setOpen] = useState(false);
 
   useEffect(getCustomers, [])
 
@@ -36,163 +39,165 @@ function Profile(props) {
   }
 
   function postOrder(){
-      // console.log(numUrls)
-    // e.preventDefault();
-    axios.post(URL + '/orders', 
-      {
-      customer_id: customer_id,
-      num_urls: numUrls,
+    const confirmOrder = window.confirm(`Generate ${numUrls} URLs?`)
+    setOpen(true)
+    if (confirmOrder == true) {
+      axios.post(URL + '/orders', 
+        {
+          customer_id: customer_id,
+          num_urls: numUrls,
+        })
+      .then(function (response) {
+        console.log(response);
+        window.location.reload();
       })
-    .then(function (response) {
-      console.log(response);
-      window.location.reload();
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-    
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
   }
 
   const customers_list = customer.map((customer, index) => (
     <>
     <div className="container-fluid" key={index}>
-    {/* <div style={{width:"1000px"}}>  */}
       <div className="row" key={index}>
-      {/* // className="col-md-3 cus_details mg-20"  */}
-        <div sclassName="col-md-3 cus_details mg-20" style={{backgroundColor:"lightgrey", width:"300px", marginLeft:"15px", borderRadius:"10px", padding:"20px"}}>
+
+        <div className="col-md-3 cus_details mg-20 profile-sidebar">
           <div className="row">
             <div className="col-12 text-center">
-              <p className="font-weight-bold">Customer Details</p>
+              <p className="font-weight-bold profile-header">Customer Details</p>
             </div>
           </div>
           <div className="row">
             <div className="col-md-6">
-              <p>Org. Name:</p>
+              <p className="profile-info">Org. Name:</p>
             </div>
-            <div className="col-md-6 text-center">
+            <div className="col-md-6 profile-value">
               {customer.org_name ? customer.org_name : "Loading.."}
             </div>
           </div>
           <div className="row">
             <div className="col-md-6">
-              <p>Customer ID:</p>
+              <p className="profile-info">Customer ID:</p>
             </div>
-            <div className="col-md-6 text-center">
+            <div className="col-md-6 profile-value">
               {customer.customer_id ? customer.customer_id : "Loading.."}
             </div>
           </div>
           <div className="row">
             <div className="col-12 text-center">
-              <p className="font-weight-bold">Shipping</p>
+              <p className="font-weight-bold profile-header">Shipping</p>
             </div>
           </div>
           <div className="row">
             <div className="col-md-6">
-              <p>Address:</p>
+              <p className="profile-info">Address:</p>
             </div>
-            <div className="col-md-6 text-center">
+            <div className="col-md-6 profile-value">
               {customer.ship_address.Address ? customer.ship_address.Address : "Loading.."}
             </div>
           </div>
           <div className="row">
             <div className="col-md-6">
-              <p>City:</p>
+              <p className="profile-info">City:</p>
             </div>
-            <div className="col-md-6 text-center">
+            <div className="col-md-6 profile-value">
               {customer.ship_address.City ? customer.ship_address.City : "Loading.."}
             </div>
           </div>
           <div className="row">
             <div className="col-md-6">
-              <p>Prov/State:</p>
+              <p className="profile-info">Prov/State:</p>
             </div>
-            <div className="col-md-6 text-center">
+            <div className="col-md-6 profile-value">
               {customer.ship_address.prov ? customer.ship_address.prov : "Loading.."}
             </div>
           </div>
           <div className="row">
             <div className="col-md-6">
-              <p>Postal Code:</p>
+              <p className="profile-info">Postal Code:</p>
             </div>
-            <div className="col-md-6 text-center">
+            <div className="col-md-6 profile-value">
               {customer.ship_address.post_code ? customer.ship_address.post_code : "Loading.."}
           </div>
         </div>
         <div className="row">
           <div className="col-md-6">
-            <p>Country</p>
+            <p className="profile-info">Country</p>
           </div>
-          <div className="col-md-6 text-center">
+          <div className="col-md-6 profile-value">
             {customer.ship_address.country ? customer.ship_address.country : "Loading.."}
           </div>
         </div>
         <div className="row">
           <div className="col-12 text-center">
-            <p className="font-weight-bold">Contact</p>
+            <p className="font-weight-bold profile-header">Contact</p>
           </div>
         </div>
         <div className="row">
           <div className="col-md-6">
-            <p>Name:</p>
+            <p className="profile-info">Name:</p>
           </div>
-          <div className="col-md-6 text-center">
+          <div className="col-md-6 profile-value">
             {customer.contact_name ? customer.contact_name : "Loading.."}
           </div>
         </div>
         <div className="row">
           <div className="col-md-6">
-            <p>Email:</p>
+            <p className="profile-info">Email:</p>
           </div>
-          <div className="col-md-6 text-center">
+          <div className="col-md-6 profile-value">
             {customer.contact_person.email ? customer.contact_person.email : "Loading.."}
           </div>
         </div>
         <div className="row">
           <div className="col-md-6">
-            <p>Phone:</p>
+            <p className="profile-info">Phone:</p>
           </div>
-          <div className="col-md-6 text-center">
+          <div className="col-md-6 profile-value">
             {customer.contact_person.phone ? customer.contact_person.phone : "Loading.."}
           </div>
         </div>
         <div className="row">
           <div className="col-12 text-center">
-            <p className="font-weight-bold">BuiltSpace Sales Contact</p>
+            <p className="font-weight-bold profile-header">Sales Contact</p>
           </div>
         </div>
         <div className="row">
           <div className="col-md-6">
-            <p>Name:</p>
+            <p className="profile-info">Name:</p>
           </div>
-          <div className="col-md-6 text-center">
+          <div className="col-md-6 profile-value">
             {customer.sales_contact.sales_name ? customer.sales_contact.sales_name : "Loading.."}
           </div>
         </div>
         <div className="row">
           <div className="col-md-6">
-            <p>Emp. ID:</p>
+            <p className="profile-info">Emp. ID:</p>
           </div>
-          <div className="col-md-6 text-center">
+          <div className="col-md-6 profile-value">
             {customer.partner_id ? customer.partner_id : "Loading.."}
           </div>
         </div>
           <div className="row">
             <div className="col-md-6">
-              <p>Email:</p>
+              <p className="profile-info">Email:</p>
             </div>
-            <div className="col-md-6 text-center">
+            <div className="col-md-6 profile-value">
               {customer.sales_contact.email ? customer.sales_contact.email : "Loading.."}
             </div>
           </div>
             
           </div>
-          {/* <div> */}
 
           <div className="col-md-9 order_div" key={index}>
+          <Backdrop id="backdrop" open={open}>
+            <CircularProgress color="inherit" />
+          </Backdrop>
             <div className="row">
               <div className="container-fluid">
                   <div style={{textAlign:"center", marginBottom:"20px"}}> 
-                    <TextField type="number" onChange={(e)=>{setNumUrls(e.target.value)}} label="Quantity" defaultValue="256" variant="outlined" inputProps={{
+                    <TextField type="number" onChange={(e)=>{setNumUrls(e.target.value)}} label="Quantity of URLs" defaultValue="256" variant="outlined" inputProps={{
                       style: {
                         height: "45px",
                         // width: "100px",
@@ -218,14 +223,12 @@ function Profile(props) {
         </div>
           
       </div>
-    {/* </div> */}
 
     </>
     ));
 
   return (
       <>
-      {/* <input /> */}
       {customers_list}
       </>
   );

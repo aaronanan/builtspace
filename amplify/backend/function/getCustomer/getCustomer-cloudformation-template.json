@@ -49,6 +49,12 @@
     "storagecustomersArn": {
       "Type": "String",
       "Default": "storagecustomersArn"
+    },
+    "deploymentBucketName": {
+      "Type": "String"
+    },
+    "s3Key": {
+      "Type": "String"
     }
   },
   "Conditions": {
@@ -138,8 +144,12 @@
         "Layers": [],
         "Timeout": "25",
         "Code": {
-          "S3Bucket": "amplify-qrv1-deploy-173612-deployment",
-          "S3Key": "amplify-builds/getCustomer-3235644c6774566e4873-build.zip"
+          "S3Bucket": {
+            "Ref": "deploymentBucketName"
+          },
+          "S3Key": {
+            "Ref": "s3Key"
+          }
         }
       }
     },

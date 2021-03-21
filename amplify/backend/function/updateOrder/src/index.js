@@ -18,6 +18,7 @@ function updateRecord(order_id, event) {
 
   //merge the json objects
   let item_body = {...auto_fields, ...event.body }
+  console.log("test")
 
   
   //final params to DynamoDB
