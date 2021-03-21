@@ -84,20 +84,27 @@ function Order(props) {
 
   function changeStatus(event) {
     setStatus(event.target.value)
-    console.log(event.target)
     const order_id = event.target.id
     const creation_date = orders.find(order => order.order_id == event.target.id).creation_date
+    const status = event.target.value
     axios.put(URL + '/orders/', {
-      data: {
-        order_id: order_id,
-        creation_date: creation_date
-      },
-      headers: {
-        'x-api-key': access_token
-      }
+      order_id: order_id,
+      creation_date: creation_date,
+      order_status: status,
+    },{
+      headers: {'x-api-key': access_token}
     })
     .then(function (response) {
       console.log(response)
+      const updatedOrders = orders.map((order) => {
+        if (order.order_id == order_id) {
+          order.status = status
+          return order;
+        } else {
+          return order;
+        }
+      })
+      setOrders(updatedOrders)
     })
     .catch(function (error) {
       console.log(error)
