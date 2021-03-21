@@ -85,6 +85,15 @@ function Order(props) {
     const order_id = event.target.id
     const creation_date = orders.find(order => order.order_id == event.target.id).creation_date
     const status = event.target.value
+    const updatedOrders = orders.map((order) => {
+      if (order.order_id == order_id) {
+        order.status = status
+        return order;
+      } else {
+        return order;
+      }
+    })
+    setOrders(updatedOrders)
     axios.put(URL + '/orders/', {
       order_id: order_id,
       creation_date: creation_date,
@@ -94,15 +103,6 @@ function Order(props) {
     })
     .then(function (response) {
       console.log(response)
-      const updatedOrders = orders.map((order) => {
-        if (order.order_id == order_id) {
-          order.status = status
-          return order;
-        } else {
-          return order;
-        }
-      })
-      setOrders(updatedOrders)
     })
     .catch(function (error) {
       console.log(error)
