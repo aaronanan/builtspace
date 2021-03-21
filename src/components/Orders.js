@@ -38,7 +38,7 @@ function Orders() {
   }
 
   function getOrders() {
-    axios.get(URL + '/orders', {
+    axios.get(URL + '/orders-no-urls', {
       headers: {
         'x-api-key': access_token
       }
