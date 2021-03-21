@@ -33,3 +33,7 @@ tbody tr:hover{
     width: 100px;
 }
 
+.navbar_header {
+    /* background-color: whitesmoke; */
+    /* box-shadow:         3px 3px 5px 4px #ccc; */
+}

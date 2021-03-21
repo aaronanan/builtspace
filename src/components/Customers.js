@@ -91,7 +91,7 @@ function Customers() {
         </div>
         <div>
           <LinkContainer to="/new_customer">
-            <a className="btn btn-primary  btn-theme">Create a New Customer</a>
+            <a className="btn btn-primary  btn-theme">Create Customer</a>
           </LinkContainer>
         </div>
       </div>
@@ -131,7 +131,7 @@ function Customers() {
                     }} className="btn btn-sm btn-primary btn-theme btn-middle">Submit an Order</Link>
                   </td>
                   <td className="text-center"><Link to={{
-                    pathname: `/customer/edit/${customer.customer_id}`}}><EditIcon /></Link></td>
+                    pathname: `/customer/edit/${customer.customer_id}`}}><EditIcon style={{color:"grey"}}/></Link></td>
                 </tr>
               )}
             </tbody>

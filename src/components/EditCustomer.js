@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useState } from 'react';
-import { TextField } from '@material-ui/core';
+import { Input, TextField } from '@material-ui/core';
 import axios from "axios"
 import { access_token, URL } from "../aws-token" 
 import "../styles/editCustomer.css"
@@ -37,36 +37,36 @@ const EditCustomer = (props) => {
     }
 
     function updateCustomer () {
-        axios.put(URL + '/customers', 
-        {
-            "customer_id": 35,
-            "contact_name": "Nicole Alca",
-            "org_name": "BuiltSpace",
-            "org_id": "5",
-            "contact_person": {
-                "email": "test@email.com",
-                "phone": "123"
+        axios.put(URL + '/customers/' + customer_id, {
+            data: {
+                "customer_id": 35,
+                "contact_name": "Nicole Alca",
+                "org_name": "BuiltSpace",
+                "org_id": "5",
+                "contact_person": {
+                    "email": "test@email.com",
+                    "phone": "123"
+                },
+                "cus_status": "Pending",
+                "partner_id": "3",
+                "partner_contact": {
+                    "email": "hehe@email.com",
+                    "phone": "123",
+                    "par_name": "hehe"
+                },
+                "sales_contact": {
+                    "email": "hehe@email.com",
+                    "sales_name": "hehe",
+                    "phone": "123"
+                },
+                "ship_address": {
+                    "Address": "222 East",
+                    "City": "City",
+                    "country": "Country",
+                    "post_code": "123 123",
+                    "prov": "CD"
+                }
             },
-            "cus_status": "Pending",
-            "partner_id": "3",
-            "partner_contact": {
-                "email": "hehe@email.com",
-                "phone": "123",
-                "par_name": "hehe"
-            },
-            "sales_contact": {
-                "email": "hehe@email.com",
-                "sales_name": "hehe",
-                "phone": "123"
-            },
-            "ship_address": {
-                "Address": "222 East",
-                "City": "City",
-                "country": "Country",
-                "post_code": "123 123",
-                "prov": "CD"
-            }
-          }, {
             headers: {
                 'x-api-key': access_token
             },
@@ -82,19 +82,25 @@ const EditCustomer = (props) => {
     }
 
     function deleteCustomer () {
-        axios.delete(URL + '/customers/' + customer_id, {
-            headers: {
-            'x-api-key': access_token
-            }
-        })  
-        .then(function (response) {
-            console.log("test", response);
-            // window.location.reload();
-            }
-        )
-        .catch(function (error) {
-            console.log(error);
-        });
+        const confirmDelete = window.confirm(`Are you sure you want to delete Customer ${customer[0].contact_name}?`)
+        if (confirmDelete == true) {
+            axios.delete(URL + '/customers/' + customer_id, {
+                data: {
+                    customer_id: customer_id
+                },
+                headers: {
+                    'x-api-key': access_token
+                }
+            })  
+            .then(function (response) {
+                console.log(response);
+                document.getElementById("deletedCustomer").click();
+                }
+            )
+            .catch(function (error) {
+                console.log(error);
+            });
+        }
     }
         
     const customers_list = customer.map((cus, index) => 
@@ -151,8 +157,10 @@ const EditCustomer = (props) => {
         <div>
             <div style={{textAlign:"center", paddingBottom:"200px", backgroundColor:"white", paddingTop:"20px"}}>
                 <Button style={{width:"150px"}} onClick={updateCustomer} className="btn btn-success">Save Changes</Button>
-                <a href="/customers"><Button style={{width:"150px", marginLeft:'50px'}} onClick={deleteCustomer} className="btn btn-danger">Delete</Button></a>
+                {/* <a href="/customers"><Button style={{width:"150px", marginLeft:'50px'}} onClick={deleteCustomer} className="btn btn-danger">Delete</Button></a> */}
+                <Button style={{width:"150px", marginLeft:'50px'}} onClick={deleteCustomer} className="btn btn-danger">Delete</Button>
                 <Button style={{marginLeft:'50px', width:"150px"}} className="btn btn-md btn-secondary">Cancel</Button>
+                <a href="/customers"><Input type="hidden" id="deletedCustomer">Delete</Input></a>
             </div>
         </div>
 
