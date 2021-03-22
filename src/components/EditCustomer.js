@@ -9,16 +9,12 @@ import { Link } from "react-router-dom";
 // axios.use(cors())
 
 const EditCustomer = (props) => {
-
     const customer_id = parseInt(props.location.pathname.replace( /^\D+/g, ''));
 
     const [customer, setCustomer] = useState([]);
-
-    
-    const [field, setField] = useState();
+    // const [field, setField] = useState();
 
     useEffect(getCustomers, [])
-
 
     function getCustomers () {
         axios.get(URL + '/customers/' + customer_id, {
@@ -28,9 +24,8 @@ const EditCustomer = (props) => {
         })  
         .then(function (response) {
             setCustomer([response.data.Item])
-            setField(response.data.Item.contact_name)
-            }
-        )
+            // setField(response.data.Item.contact_name)
+        })
         .catch(function (error) {
             console.log(error);
         });
@@ -62,19 +57,26 @@ const EditCustomer = (props) => {
     //     "post_code": "123 123",
     //     "prov": "CD"
     function updateCustomer () {
-        axios.put(URL + "/customers/" + customer_id, {
-            data: {
-                customer_id: 41,
-                order_status: "sads",
-                contact_name: "sads",
-            },
+        axios.put(URL + "/customers/", {
+            customer_id: customer[0].customer_id,
+            cus_status: customer[0].cus_status,
+            pref_des: customer[0].pref_des,
+            org_id: customer[0].org_id,
+            org_name: customer[0].org_name,
+            contact_name: customer[0].contact_name,
+            contact_person: customer[0].contact_person,
+            ship_address: customer[0].ship_address,
+            partner_id: customer[0].partner_id,
+            partner_contact: customer[0].partner_contact,
+            sales_contact: customer[0].sales_contact
+        },{
             headers: {
                 'x-api-key': access_token
             },
         })  
         .then(function (response) {
             console.log("test", response);
-            // window.location.reload();
+            props.history.push('/profile/' + customer_id)
             }
         )
         .catch(function (error) {
