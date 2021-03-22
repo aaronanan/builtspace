@@ -44,7 +44,7 @@
         },
         "getOrders": {
           "deploymentBucketName": "amplify-qrv1-deploy-173612-deployment",
-          "s3Key": "amplify-builds/getOrders-313248326149766f424b-build.zip"
+          "s3Key": "amplify-builds/getOrders-766642635a6e54786667-build.zip"
         },
         "getCustomer": {
           "deploymentBucketName": "amplify-qrv1-deploy-173612-deployment",
@@ -52,7 +52,7 @@
         },
         "updateCustomer": {
           "deploymentBucketName": "amplify-qrv1-deploy-173612-deployment",
-          "s3Key": "amplify-builds/updateCustomer-5072707544724a714e38-build.zip"
+          "s3Key": "amplify-builds/updateCustomer-7434777041756f532b48-build.zip"
         },
         "updateOrder": {
           "deploymentBucketName": "amplify-qrv1-deploy-173612-deployment",

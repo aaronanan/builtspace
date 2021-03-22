@@ -91,7 +91,7 @@ function Customers() {
         </div>
         <div>
           <LinkContainer to="/new_customer">
-            <a className="btn btn-primary  btn-theme">Create Customer</a>
+            <a className="btn btn-primary btn-theme">Create Customer</a>
           </LinkContainer>
         </div>
       </div>
@@ -100,19 +100,17 @@ function Customers() {
 
       <div className="row justify-content-center">
         <div className="col-12">
-          <table className="table table-sm table-hover table-striped">
-            <thead className="thead-green">
-              <tr>
+        <table className="table table-sm table-hover table-striped">
+              <tr className="thead-green">
                 <th className="text-center left_radius">ID</th>
                 <th className="text-center">Name</th>
                 <th className="text-center">Organization</th>
                 <th className="text-center">Status</th>
+                <th className="text-center">Creation Date</th>
                 {/* <th className="text-center">More Info</th> */}
                 <th></th>
-                {/* <th></th> */}
-                <th></th>
+                <th className="text-center right_radius"></th>
               </tr>
-            </thead>
             <tbody>
               {filteredCustomers.map((customer, index) => 
                 <tr key={index}>
@@ -120,6 +118,7 @@ function Customers() {
                   <td className="text-center table-data">{customer.contact_name}</td>
                   <td className="text-center" id="name">{customer.org_name}</td>
                   <td className="text-center" id="email">{customer.cus_status}</td>
+                  <td className="text-center">{String(customer.creation_date).slice(0, 10)}</td>
                   <td className="text-center" style={{width:"100px"}}>
                     <Link to={{
                     pathname: `/profile/${customer.customer_id}`,

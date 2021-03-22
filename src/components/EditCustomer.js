@@ -30,32 +30,8 @@ const EditCustomer = (props) => {
             console.log(error);
         });
     }
-    // "customer_id": 35,
-    // "contact_name": "Nicole Alca",
-    // "org_name": "BuiltSpace",
-    // "org_id": "5",
-    // "contact_person": {
-    //     "email": "test@email.com",
-    //     "phone": "123"
-    // },
-    // "cus_status": "Pending",
-    // "partner_id": "3",
-    // "partner_contact": {
-    //     "email": "hehe@email.com",
-    //     "phone": "123",
-    //     "par_name": "hehe"
-    // },
-    // "sales_contact": {
-    //     "email": "hehe@email.com",
-    //     "sales_name": "hehe",
-    //     "phone": "123"
-    // },
-    // "ship_address": {
-    //     "Address": "222 East",
-    //     "City": "City",
-    //     "country": "Country",
-    //     "post_code": "123 123",
-    //     "prov": "CD"
+
+    
     function updateCustomer () {
         axios.put(URL + "/customers/", {
             customer_id: customer[0].customer_id,

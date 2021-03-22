@@ -111,7 +111,7 @@ function Order(props) {
 
   const orders_list = (
     <div style={{marginRight:"auto", marginLeft:"auto", width:"700px"}}>
-    <table className="table table-bordered table-sm  hover">
+    <table className="table table-bordered table-sm hover">
       <thead className="thead-green">
         <tr>
           <th className="text-center left_radius">Order ID</th>
@@ -155,7 +155,7 @@ function Order(props) {
     );
   return (
         <ul>
-          <form id="template" method="POST" action="http://ec2-34-219-23-64.us-west-2.compute.amazonaws.com/upload_manual2.php" target="_blank">
+          <form id="template" method="POST" action="http://ec2-35-162-209-60.us-west-2.compute.amazonaws.com/upload_manual2.php" target="_blank">
             <input type="hidden" name="outputFolderName" id="outputFolderName"></input>
             <input type="hidden" name="inputTextValues2" id="inputTextValues2"></input>
             {/* <input type="submit" value="Submit"></input> */}

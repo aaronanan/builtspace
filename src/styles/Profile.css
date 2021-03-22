@@ -25,6 +25,7 @@
 .thead-green{
     background-color: #00a14b !important;
     color: white !important;
+    /* border-top-right-radius: 20px; */
 }
 
 .btn-order{
