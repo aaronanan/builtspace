@@ -56,7 +56,7 @@
         },
         "updateOrder": {
           "deploymentBucketName": "amplify-qrv1-deploy-173612-deployment",
-          "s3Key": "amplify-builds/updateOrder-5a32764b786a4d4c7354-build.zip"
+          "s3Key": "amplify-builds/updateOrder-6b5343637a4954324f78-build.zip"
         }
       }
     }

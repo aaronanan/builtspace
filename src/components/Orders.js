@@ -4,6 +4,9 @@ import awsconfig from '../aws-exports';
 import { access_token } from "../aws-token" 
 import MUIDataTable from "mui-datatables";
 import { createMuiTheme, MuiThemeProvider, withStyles } from '@material-ui/core/styles';
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
 
 // TODO: Display URLs for a specific order on this page, requires new //GET /orders/order_id endpoint, could make the Order ID a link to URL list
@@ -12,6 +15,7 @@ function Orders() {
   
   const [customers, setCustomers] = useState([0])
   const [orders, setOrders] = useState([0])
+  const [open, setOpen] = useState(true);
   // const [mergedOrders, setMergedOrders] = useState([0])
   // const [filteredOrders, setFilteredOrders] = useState([0])
   const [data, setData] = useState([])
@@ -31,6 +35,7 @@ function Orders() {
     .then(function (response) {
       const dbCustomers = response.data.Items
       setCustomers(dbCustomers)
+      setOpen(false)
     })
     .catch(function (error) {
       console.log(error);
@@ -269,9 +274,16 @@ function Orders() {
 
   
   return (
+    <>
+    <Backdrop style={{zIndex:"999", color:"white"}} open={open}>
+      <CircularProgress color="inherit" />
+    </Backdrop>
+
     <div style={{marginTop:"40px"}}>
     {orders_table}
     </div>
+    </>
+
   );
 }
 

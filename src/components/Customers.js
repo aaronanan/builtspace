@@ -107,29 +107,30 @@ function Customers() {
                 <th className="text-center">Name</th>
                 <th className="text-center">Organization</th>
                 <th className="text-center">Status</th>
-                <th className="text-center">More Info</th>
-                <th className="text-center">New Order</th>
-                <th className="text-center right_radius"></th>
+                {/* <th className="text-center">More Info</th> */}
+                <th></th>
+                {/* <th></th> */}
+                <th></th>
               </tr>
             </thead>
             <tbody>
               {filteredCustomers.map((customer, index) => 
                 <tr key={index}>
                   <td className="text-center" id="customer_id">{String(customer.customer_id)}</td>
-                  <td className="text-center">{customer.contact_name}</td>
+                  <td className="text-center table-data">{customer.contact_name}</td>
                   <td className="text-center" id="name">{customer.org_name}</td>
                   <td className="text-center" id="email">{customer.cus_status}</td>
-                  <td className="text-center">
-                    <Link style={{backgroundColor:"lightgrey"}} to={{
+                  <td className="text-center" style={{width:"100px"}}>
+                    <Link to={{
                     pathname: `/profile/${customer.customer_id}`,
                     query: { customer_id: `${customer.customer_id}` }}} 
-                    className="btn btn-secondary btn-sm btn-middle">More Info</Link>
+                    className="btn btn-sm btn-theme btn-middle">More Info</Link>
                   </td>
-                  <td className="text-center" id="submitOrder"><Link to={{
+                  {/* <td style={{width:"170px"}}><Link to={{
                     pathname: `/create_order/${customer.customer_id}`,
                     query: { customer_id: `${customer.customer_id}` }
-                    }} className="btn btn-sm btn-primary btn-theme btn-middle">Submit an Order</Link>
-                  </td>
+                    }} className="btn btn-sm btn-theme btn-middle">Submit an Order</Link>
+                  </td> */}
                   <td className="text-center"><Link to={{
                     pathname: `/customer/edit/${customer.customer_id}`}}><EditIcon style={{color:"grey"}}/></Link></td>
                 </tr>

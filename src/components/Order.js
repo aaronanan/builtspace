@@ -28,7 +28,7 @@ function Order(props) {
     .then(function (response) {
       const newOrders = response.data
       newOrders.sort(function(a, b) {
-        return a.order_id - b.order_id;
+        return b.order_id - a.order_id;
       });
       setOrders(newOrders);
     })
@@ -128,7 +128,7 @@ function Order(props) {
             <td className="text-center">{order.order_id}</td>
             {/* <td className="text-center">{order.status}</td> */}
             <td className="text-center">
-              <select value={order.status} id={order.order_id} onChange={e => changeStatus(e)} className="form-control inputField" style={{height:"35px", fontSize:"16px"}}>
+              <select value={order.status} id={order.order_id} onChange={e => changeStatus(e)} className="form-control inputField" style={{height:"36px", fontSize:"16px"}}>
                   <option value="Incomplete">Incomplete</option>
                   <option value="Pending">Pending</option>
                   <option value="Complete">Complete</option>

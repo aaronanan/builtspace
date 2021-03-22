@@ -40,8 +40,8 @@ function Profile(props) {
 
   function postOrder(){
     const confirmOrder = window.confirm(`Generate ${numUrls} URLs?`)
-    setOpen(true)
     if (confirmOrder == true) {
+      setOpen(true)
       axios.post(URL + '/orders', 
         {
           customer_id: customer_id,

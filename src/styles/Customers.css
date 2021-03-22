@@ -3,3 +3,13 @@
     border: none !important;
     color: white !important;
 }
+
+.info-btn-theme {
+    background-color: rgb(160, 160, 160) !important;
+    border: none !important;
+    color: white !important;
+}
+
+.table-data {
+    width: 200px;
+}
