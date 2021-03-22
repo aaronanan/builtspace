@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import * as ReactBootStrap from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import { LinkContainer } from 'react-router-bootstrap';
@@ -49,6 +50,7 @@ const Navbar = () => {
     }
   }, []);
 
+<<<<<<< Updated upstream
   // async function getUserEmail() {
   //   try {
   //     const user = await Auth.currentSession();
@@ -107,6 +109,51 @@ const Navbar = () => {
     <ButtonToolbar className="custom-btn-toolbar">
     { isAuthenticated  ? loggedIn : notLoggedIn }
     </ButtonToolbar>
+=======
+
+
+  return (
+    
+   
+
+    <Navbar bg="light" variant="light">
+    <Navbar.Brand href="/customers"><img className="navbar_logo" src={BuiltspaceLogo} alt=""></img></Navbar.Brand>
+    <Nav>
+      <li style={{marginLeft:"10px"}} className="nav-item"><Nav.Link href="/customers">Customers</Nav.Link></li>
+      <li style={{marginLeft:"10px"}} className="nav-item"><Nav.Link href="/orders">Orders</Nav.Link></li>
+    </Nav>
+    <Nav style={{marginLeft:"auto"}}>
+      <li className="nav-item"><Nav.Link href="/login">Logout</Nav.Link></li>
+    </Nav>
+  </Navbar>
+
+//   <ReactBootStrap.Navbar collapseOnSelect expand="lg" className="color-nav" variant="dark" style={{boxShadow: "none"}}>
+//             <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" className="navDropDown" />
+            
+//             <div id="logo-href">
+// <a href={process.env.PUBLIC_URL + '/#/'} onClick={active}><img src={main_logo2} id="logo-nav" alt="main-logo" /></a>
+// </div>
+//   <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
+
+//   <ReactBootStrap.Nav className="mr-auto">
+
+// </ReactBootStrap.Nav>
+//     <ReactBootStrap.Nav className='nav-size'> 
+      
+
+//       <a href={process.env.PUBLIC_URL + '/#/'} className="nav-font" id="home" onClick={active}>HOME</a>
+//       <a href={process.env.PUBLIC_URL + '/#/faq'} className="nav-font" id="faq" onClick={active2}>FAQ</a>
+//       <a href={process.env.PUBLIC_URL + '/#/info'} className="nav-font" id="info" onClick={active3}>INFO</a>
+//       <a href={process.env.PUBLIC_URL + '/#/about'} className="nav-font" id="about" onClick={active4}>ABOUT</a>
+
+//     </ReactBootStrap.Nav>
+//   </ReactBootStrap.Navbar.Collapse>
+
+// </ReactBootStrap.Navbar>
+
+
+
+>>>>>>> Stashed changes
   );
 }
 export default Navbar;
