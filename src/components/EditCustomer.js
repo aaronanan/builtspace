@@ -138,8 +138,8 @@ const EditCustomer = (props) => {
         <div style={{padding:"20px"}}>
             <h5>Partner Information</h5>
             <div style={{marginTop:"25px"}}>
-                <TextField style={{width:"200px"}} label="Org ID" defaultValue={cus.org_id} variant="outlined" onChange={(e) => {customer.org_id = e.target.value}} />
-                <TextField style={{marginLeft:"15px"}} label="Organization Name" defaultValue={cus.org_name} variant="outlined" onChange={(e) => {customer.org_name = e.target.value}} />
+                <TextField style={{width:"200px"}} label="Org ID" defaultValue={cus.org_id} variant="outlined" onChange={(e) => {customer[0].org_id = e.target.value}} />
+                <TextField style={{marginLeft:"15px"}} label="Organization Name" defaultValue={cus.org_name} variant="outlined" onChange={(e) => {customer[0].org_name = e.target.value}} />
                 <TextField style={{width:"200px", marginLeft:"15px", marginRight:"50px"}} label="Partner ID" defaultValue={cus.partner_id} variant="outlined" onChange={(e) => {customer[0].partner_id = e.target.value}} />
                 <TextField style={{width:"300px", marginTop:"15px"}} label="Partner Name" defaultValue={cus.partner_contact.par_name} variant="outlined" onChange={(e) => {customer[0].partner_contact.par_name = e.target.value}} />
                 <TextField style={{marginLeft:"15px", width:"300px", marginTop:"15px"}} label="Partner Email" defaultValue={cus.partner_contact.email} variant="outlined" onChange={(e) => {customer[0].partner_contact.email = e.target.value}} />
