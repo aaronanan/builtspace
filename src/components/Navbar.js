@@ -9,6 +9,8 @@ import { useAppContext } from "../libs/contextLib";
 // import { Nav, Form, FormControl } from "react-bootstrap";
 import { Nav, Navbar, Form, FormControl } from 'react-bootstrap';
 import BuiltspaceLogo from '../assets/company_logo.png'
+import * as ReactBootStrap from "react-bootstrap";
+
 
 const Navbar_home = () => {
 
@@ -48,82 +50,7 @@ const Navbar_home = () => {
     }
   }, []);
 
-  // async function getUserEmail() {
-  //   try {
-  //     const user = await Auth.currentSession();
-  //     //console.log(user['idToken']['payload']['email'])
-  //     setUserEmail(user['idToken']['payload']['email']);
-  //   } catch (e) {
-  //    alert(e);
-  //   }
-  // };
-
-
-  const notLoggedIn = (
-    <>
-    <nav className="navbar container-fluid navbar-expand-lg navbar-light bg-light justify-content-between">
-        <a className="navbar-brand" href="/customers">
-          <img className="navbar_logo" src="company_logo.png" alt=""></img>
-        </a>
-        {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-
-        <div className="collapse navbar-collapse pull-right" id="navbarSupportedContent">
-        <ul className="navbar-nav mr-auto">
-          <li className="nav-item">
-              <LinkContainer to="/login">
-                <a className="nav-link" variant="outline-info" size="nav">Login</a>
-              </LinkContainer>
-              </li>
-              <li className="nav-item">
-              <LinkContainer to="/signup">
-                <a className="nav-link" variant="outline-info" size="nav">Sign-Up</a>
-              </LinkContainer>
-              </li>
-          </ul>
-        </div> */}
-        
-    </nav>
-    </>
-  );
-
-  const loggedIn = (
-    <>
-    <div className="container-fluid">
-      <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
-        <a className="navbar-brand" href="/customers">
-          <img className="navbar_logo" src="company_logo.png" alt=""></img>
-        </a>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <LinkContainer to="/customers">
-                <a className="nav-link" variant="outline-info" size="nav">Customers</a>
-              </LinkContainer>
-            </li>
-            <li className="nav-item">
-              <LinkContainer to="/orders">
-                <a className="nav-link" variant="outline-info" size="nav">Orders</a>
-              </LinkContainer>
-            </li>
-          </ul>
-        </div>
-        <div> 
-          <ul className="navbar-nav mr-auto"> 
-            <li className="nav-item"> 
-              <a className="nav-link" variant="outline-info" size="nav" onClick={handleLogout}>Logout{ userEmail }</a> 
-            </li> 
-          </ul> 
-        </div>
-      </nav>
-    </div>
-    </>
-  );
+  
 
   return (
     
@@ -137,18 +64,41 @@ const Navbar_home = () => {
     // <>
     // test
     // </>
-    <div className="navbar_header">
-    <Navbar bg="light" variant="light">
-    <Navbar.Brand href="/customers"><img className="navbar_logo" src={BuiltspaceLogo} alt=""></img></Navbar.Brand>
-    <Nav>
-      <li style={{marginLeft:"10px"}} className="nav-item"><Nav.Link href="/customers">Customers</Nav.Link></li>
-      <li style={{marginLeft:"10px"}} className="nav-item"><Nav.Link href="/orders">Orders</Nav.Link></li>
-    </Nav>
-    <Nav style={{marginLeft:"auto"}}>
-      <li className="nav-item"><Nav.Link href="/login">Logout</Nav.Link></li>
-    </Nav>
-  </Navbar>
-  </div>
+  //   <div className="navbar_header">
+  //   <Navbar bg="light" variant="light">
+  //   <Navbar.Brand href="/customers"><img className="navbar_logo" src={BuiltspaceLogo} alt=""></img></Navbar.Brand>
+  //   <Nav>
+  //     <li style={{marginLeft:"10px"}} className="nav-item"><Nav.Link href="/customers">Customers</Nav.Link></li>
+  //     <li style={{marginLeft:"10px"}} className="nav-item"><Nav.Link href="/orders">Orders</Nav.Link></li>
+  //   </Nav>
+  //   <Nav style={{marginLeft:"auto"}}>
+  //     <li className="nav-item"><Nav.Link href="/login">Logout</Nav.Link></li>
+  //   </Nav>
+  // </Navbar>
+  // </div>
+
+  <ReactBootStrap.Navbar collapseOnSelect expand="lg" className="color-nav" variant="dark" style={{boxShadow: "none"}}>
+  <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" className="navDropDown" />
+  
+  <div id="logo-href">
+<a href={process.env.PUBLIC_URL + '/#/'}><img src={BuiltspaceLogo} id="logo-nav" alt="main-logo" /></a>
+</div>
+<ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
+
+<ReactBootStrap.Nav className="mr-auto">
+
+</ReactBootStrap.Nav>
+<ReactBootStrap.Nav className='nav-size'> 
+
+<a href={process.env.PUBLIC_URL + '/customers'} className="nav-font" id="home" >Customers</a>
+<a href={process.env.PUBLIC_URL + '/orders'} className="nav-font" id="faq" >Orders</a>
+
+
+</ReactBootStrap.Nav>
+</ReactBootStrap.Navbar.Collapse>
+
+</ReactBootStrap.Navbar>
+
   );
 }
 
