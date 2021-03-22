@@ -116,7 +116,7 @@ const EditCustomer = (props) => {
                 <TextField style={{marginLeft:"15px", width:"240px"}} label="Email" defaultValue={cus.contact_person.email} variant="outlined" onChange={(e) => {customer[0].contact_person.email = e.target.value}} />
                 <TextField style={{marginLeft:"15px"}} label="Phone" defaultValue={cus.contact_person.phone} variant="outlined" onChange={(e) => {customer[0].contact_person.phone = e.target.value}} /> 
                 {/* <TextField style={{marginLeft:"15px"}} label="Status" defaultValue={cus.cus_status} variant="outlined" onChange={(e) => {customer[0].cus_status = e.target.value}} /> */}
-                <TextField style={{marginLeft:"15px", width:"200px"}} label="Status" onChange={(e) => {customer[0].cus_status = e.target.value}} value={customer.cus_status} defaultValue="test" select variant="outlined" SelectProps={{native: true,}}>
+                <TextField style={{marginLeft:"15px", width:"200px"}} label="Status" onChange={(e) => {customer[0].cus_status = e.target.value}} value={customer.cus_status} defaultValue={cus.cus_status} select variant="outlined" SelectProps={{native: true,}}>
                         <option>Pending</option>
                         <option>Confirmed</option>
                         <option>Declined</option>
