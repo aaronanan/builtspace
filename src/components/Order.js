@@ -3,7 +3,7 @@ import axios from 'axios';
 import Table from 'react-bootstrap/Table';
 import awsconfig from '../aws-exports';
 import CopyToClipboard from 'react-copy-to-clipboard';
-import { access_token } from "../aws-token" 
+import { access_token, URL } from "../aws-token" 
 import { TextField, Button } from '@material-ui/core';
 import AutorenewIcon from '@material-ui/icons/Autorenew';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 // TODO: Integrate unused Modal code to display URLs for a specific order, requires new //GET /orders/order_id endpoint
 
-const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
+// const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
 
 function Order(props) {
 
@@ -26,7 +26,7 @@ function Order(props) {
       }
     })
     .then(function (response) {
-      const newOrders = response.data
+      const newOrders = response.data.Items
       newOrders.sort(function(a, b) {
         return b.order_id - a.order_id;
       });
@@ -87,7 +87,7 @@ function Order(props) {
     const status = event.target.value
     const updatedOrders = orders.map((order) => {
       if (order.order_id == order_id) {
-        order.status = status
+        order.order_status = status
         return order;
       } else {
         return order;
@@ -96,7 +96,6 @@ function Order(props) {
     setOrders(updatedOrders)
     axios.put(URL + '/orders/', {
       order_id: order_id,
-      creation_date: creation_date,
       order_status: status,
     },{
       headers: {'x-api-key': access_token}
@@ -128,17 +127,17 @@ function Order(props) {
             <td className="text-center">{order.order_id}</td>
             {/* <td className="text-center">{order.status}</td> */}
             <td className="text-center">
-              <select value={order.status} id={order.order_id} onChange={e => changeStatus(e)} className="form-control inputField" style={{height:"36px", fontSize:"16px"}}>
+              <select value={order.order_status} id={order.order_id} onChange={e => changeStatus(e)} className="form-control inputField" style={{height:"36px", fontSize:"16px"}}>
                   <option value="Incomplete">Incomplete</option>
                   <option value="Pending">Pending</option>
                   <option value="Complete">Complete</option>
               </select>
             </td>
-            <td className="text-center">{order.num_urls}</td>
-            <td className="text-center">{String(order.creation_date).slice(0, 10)}</td>
+            <td className="text-center">{order.order_size}</td>
+            <td className="text-center">{String(order.ord_creation_date).slice(0, 10)}</td>
             {/* <td className="text-center"><CopyToClipboard text={order.urls ? order.urls.join("\n") : ""}><a className="btn btn-primary btn-theme">Copy URLs</a></CopyToClipboard></td> */}
             
-            <td className="text-center"><Button onClick={()=>{generateCodes(order.order_id, order.num_urls, order.urls)}} variant="outlined" color="primary" style={{height:"35px", backgroundColor:"#00B060", color:"white"}} endIcon={<AutorenewIcon />}>Generate</Button> 
+            <td className="text-center"><Button onClick={()=>{generateCodes(order.order_id, order.order_size, order.urls)}} variant="outlined" color="primary" style={{height:"35px", backgroundColor:"#00B060", color:"white"}} endIcon={<AutorenewIcon />}>Generate</Button> 
             </td>
 
             {/* <td className="text-center"><Button onClick={()=>deleteOrder(order.order_id)} style={{height:"35px", backgroundColor:"#00B060", color:"white"}} endIcon={<AutorenewIcon />}>Generate</Button> 

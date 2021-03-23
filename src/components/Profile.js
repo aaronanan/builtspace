@@ -3,15 +3,14 @@ import axios from 'axios';
 import Order from './Order'
 import awsconfig from '../aws-exports';
 import { Link } from "react-router-dom";
-import { access_token } from "../aws-token" 
+import { access_token, URL } from "../aws-token" 
 import "../styles/Profile.css";
 import { TextField, Button } from '@material-ui/core';
 import PublishIcon from '@material-ui/icons/Publish';
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
-
+// const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
 // TODO: Add more customer info fields, add axios.post request to update customer info
 
 function Profile(props) {
@@ -45,7 +44,7 @@ function Profile(props) {
       axios.post(URL + '/orders', 
         {
           customer_id: customer_id,
-          num_urls: numUrls,
+          order_size: numUrls,
         })
       .then(function (response) {
         console.log(response);
@@ -73,7 +72,7 @@ function Profile(props) {
               <p className="profile-info">Org. Name:</p>
             </div>
             <div className="col-md-6 profile-value">
-              {customer.org_name ? customer.org_name : "Loading.."}
+              {customer.cus_org_name ? customer.cus_org_name : "Loading.."}
             </div>
           </div>
           <div className="row">
@@ -94,7 +93,7 @@ function Profile(props) {
               <p className="profile-info">Address:</p>
             </div>
             <div className="col-md-6 profile-value">
-              {customer.ship_address.Address ? customer.ship_address.Address : "Loading.."}
+              {customer.cus_shipping.address ? customer.cus_shipping.address : "Loading.."}
             </div>
           </div>
           <div className="row">
@@ -102,7 +101,7 @@ function Profile(props) {
               <p className="profile-info">City:</p>
             </div>
             <div className="col-md-6 profile-value">
-              {customer.ship_address.City ? customer.ship_address.City : "Loading.."}
+              {customer.cus_shipping.city ? customer.cus_shipping.city : "Loading.."}
             </div>
           </div>
           <div className="row">
@@ -110,7 +109,7 @@ function Profile(props) {
               <p className="profile-info">Prov/State:</p>
             </div>
             <div className="col-md-6 profile-value">
-              {customer.ship_address.prov ? customer.ship_address.prov : "Loading.."}
+              {customer.cus_shipping.province ? customer.cus_shipping.province : "Loading.."}
             </div>
           </div>
           <div className="row">
@@ -118,7 +117,7 @@ function Profile(props) {
               <p className="profile-info">Postal Code:</p>
             </div>
             <div className="col-md-6 profile-value">
-              {customer.ship_address.post_code ? customer.ship_address.post_code : "Loading.."}
+              {customer.cus_shipping.post ? customer.cus_shipping.post : "Loading.."}
           </div>
         </div>
         <div className="row">
@@ -126,7 +125,7 @@ function Profile(props) {
             <p className="profile-info">Country</p>
           </div>
           <div className="col-md-6 profile-value">
-            {customer.ship_address.country ? customer.ship_address.country : "Loading.."}
+            {customer.cus_shipping.country ? customer.cus_shipping.country : "Loading.."}
           </div>
         </div>
         <div className="row">
@@ -139,7 +138,7 @@ function Profile(props) {
             <p className="profile-info">Name:</p>
           </div>
           <div className="col-md-6 profile-value">
-            {customer.contact_name ? customer.contact_name : "Loading.."}
+            {customer.cus_contact.c_name ? customer.cus_contact.c_name : "Loading.."}
           </div>
         </div>
         <div className="row">
@@ -147,7 +146,7 @@ function Profile(props) {
             <p className="profile-info">Email:</p>
           </div>
           <div className="col-md-6 profile-value">
-            {customer.contact_person.email ? customer.contact_person.email : "Loading.."}
+            {customer.cus_contact.c_email ? customer.cus_contact.c_email : "Loading.."}
           </div>
         </div>
         <div className="row">
@@ -155,7 +154,7 @@ function Profile(props) {
             <p className="profile-info">Phone:</p>
           </div>
           <div className="col-md-6 profile-value">
-            {customer.contact_person.phone ? customer.contact_person.phone : "Loading.."}
+            {customer.cus_contact.c_phone ? customer.cus_contact.c_phone : "Loading.."}
           </div>
         </div>
         <div className="row">
@@ -168,7 +167,7 @@ function Profile(props) {
             <p className="profile-info">Name:</p>
           </div>
           <div className="col-md-6 profile-value">
-            {customer.sales_contact.sales_name ? customer.sales_contact.sales_name : "Loading.."}
+            {customer.sales_contact.s_name ? customer.sales_contact.s_name : "Loading.."}
           </div>
         </div>
         <div className="row">
@@ -184,7 +183,7 @@ function Profile(props) {
               <p className="profile-info">Email:</p>
             </div>
             <div className="col-md-6 profile-value">
-              {customer.sales_contact.email ? customer.sales_contact.email : "Loading.."}
+              {customer.sales_contact.s_email ? customer.sales_contact.s_email : "Loading.."}
             </div>
           </div>
             

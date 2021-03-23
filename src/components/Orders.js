@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import awsconfig from '../aws-exports';
-import { access_token } from "../aws-token" 
+import { access_token, URL } from "../aws-token" 
 import MUIDataTable from "mui-datatables";
 import { createMuiTheme, MuiThemeProvider, withStyles } from '@material-ui/core/styles';
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
+// const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
 
 // TODO: Display URLs for a specific order on this page, requires new //GET /orders/order_id endpoint, could make the Order ID a link to URL list
 
@@ -22,7 +22,7 @@ function Orders() {
   // const [search, setSearch] = useState("")
 
   useEffect(getCustomers, [])
-  useEffect(getOrders, [])
+  useEffect(getOrders, [customers])
   useEffect(mergeCustomerOrder, [orders])
   // useEffect(sortOrders, [search])
 
@@ -33,6 +33,7 @@ function Orders() {
       }
     })
     .then(function (response) {
+      console.log(response)
       const dbCustomers = response.data.Items
       setCustomers(dbCustomers)
       setOpen(false)
@@ -43,7 +44,7 @@ function Orders() {
   }
 
   function getOrders() {
-    axios.get(URL + '/orders-no-urls', {
+    axios.get(URL + '/orders', {
       headers: {
         'x-api-key': access_token
       }
@@ -69,18 +70,19 @@ function Orders() {
         mergedListOfDict.push(ordCusDict)
       }
     }
-
+    
     let modified_orders = [];
     for (let i in mergedListOfDict) {
       let temp_obj = {};
       temp_obj["order_id"] = mergedListOfDict[i].order_id
       temp_obj["customer_id"] = mergedListOfDict[i].customer_id
-      temp_obj["name"] = mergedListOfDict[i].contact_name
-      temp_obj["org"] = mergedListOfDict[i].org_name
-      temp_obj["urls"] = mergedListOfDict[i].num_urls
-      temp_obj["status"] = mergedListOfDict[i].cus_status
-      temp_obj["date_created"] = String(mergedListOfDict[i].creation_date).slice(0, 10)
-      temp_obj["last_updated"] = String(mergedListOfDict[i].lastupdate_date).slice(0, 10)
+      // temp_obj["name"] = mergedListOfDict[i].cus_contact.c_name
+      temp_obj["name"] = mergedListOfDict[i].customer_id
+      temp_obj["org"] = mergedListOfDict[i].cus_org_name
+      temp_obj["urls"] = mergedListOfDict[i].order_size
+      temp_obj["status"] = mergedListOfDict[i].order_status
+      temp_obj["date_created"] = String(mergedListOfDict[i].ord_creation_date).slice(0, 10)
+      temp_obj["last_updated"] = String(mergedListOfDict[i].ord_lastupdate_date).slice(0, 10)
       temp_obj["urls_name"] = mergedListOfDict[i].urls
       modified_orders.push(Object.values(temp_obj))
     }
@@ -90,7 +92,6 @@ function Orders() {
     // for (let item in mergedListOfDict) {
     //   temp_orders.push(Object.values(mergedListOfDict[item]))
     // }
-
 
     // let modified_orders = [
     //   {
@@ -109,19 +110,19 @@ function Orders() {
     // setFilteredOrders(mergedListOfDict)
   }
 
-    const getMuiTheme = () => createMuiTheme({
-      overrides: {
-        MUIDataTableBodyRow: {
-          root: {
-            '&:nth-child(odd)': { 
-              backgroundColor: 'lightgrey'
-            }
+  const getMuiTheme = () => createMuiTheme({
+    overrides: {
+      MUIDataTableBodyRow: {
+        root: {
+          '&:nth-child(odd)': { 
+            backgroundColor: 'lightgrey'
           }
-        },
-        MUIDataTableBodyCell: {
         }
+      },
+      MUIDataTableBodyCell: {
       }
-    })
+    }
+  })
 
   const columns = [
   {

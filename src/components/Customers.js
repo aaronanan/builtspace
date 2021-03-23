@@ -4,12 +4,12 @@ import awsconfig from '../aws-exports';
 import { Link } from "react-router-dom";
 import { LinkContainer } from 'react-router-bootstrap';
 import "../styles/Customers.css";
-import { access_token } from "../aws-token" 
+import { access_token, URL } from "../aws-token" 
 import EditIcon from '@material-ui/icons/Edit';
 
 function Customers() {
 
-  const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
+  const URL = "https://hwwscimuxe.execute-api.ca-central-1.amazonaws.com/dev"
   const [customers, setCustomers] = useState([]);
   const [filteredCustomers, setFilteredCustomers] = useState([]);
   const [search, setSearch] = useState("");
@@ -18,7 +18,7 @@ function Customers() {
   useEffect(sortCustomers, [search])
 
   function getCustomers() {
-    axios.get(URL + '/customers' , {
+    axios.get(URL + '/customers/' , {
       headers: {
         'x-api-key': access_token
       }
@@ -117,8 +117,8 @@ function Customers() {
               {filteredCustomers.map((customer, index) => 
                 <tr key={index}>
                   <td className="text-center" id="customer_id">{String(customer.customer_id)}</td>
-                  <td className="text-center table-data">{customer.contact_name}</td>
-                  <td className="text-center" id="name">{customer.org_name}</td>
+                  <td className="text-center table-data">{customer.cus_contact.c_name}</td>
+                  <td className="text-center" id="name">{customer.cus_org_name}</td>
                   <td className="text-center" id="email">{customer.cus_status}</td>
                   <td className="text-center" style={{width:"100px"}}>
                     <Link to={{

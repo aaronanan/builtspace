@@ -8,11 +8,9 @@ import "../styles/form.css";
 // This form currently accepts input for Organization, Customer Name and Status and passes the rest of the data fields as blank/null
 
 
-
-
 function Form(props) {
 
-  const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
+  const URL = "https://hwwscimuxe.execute-api.ca-central-1.amazonaws.com/dev"
 
   const [ContactName, setContactName] = useState("");
   const [orgName, setOrgName] = useState("");
@@ -55,36 +53,36 @@ function Form(props) {
 
     
     function handleSubmit(e) {
-        e.preventDefault();
+      e.preventDefault();
       axios.post(URL + '/customers', {
-        "org_name": orgName,
         "cus_status": status,
-        "contact_name": ContactName, 
-        "ship_address": {
-          "Address": address,
-          "City": city,
-          "prov": province,
-          "post_code": postalCode,
+        "cus_design": pref_des,
+        "cus_org_name": orgName,
+        "cus_org_id": org_id,
+        "cus_contact": {
+          "c_name": ContactName,
+          "c_email": ContactEmail,
+          "c_phone": ContactPhone
+        }, 
+        "cus_shipping": {
+          "address": address,
+          "city": city,
+          "province": province,
+          "post": postalCode,
           "country": country
-        },
-        "pref_des": pref_des,
-        "org_id": org_id,
-        "serial_prefix": serial_prefix,
-        "contact_person": {
-          "email": ContactEmail,
-          "phone": ContactPhone
-        },
-        "sales_contact": {
-          "sales_name": sales_cont_name,
-          "email": sales_cont_email,
-          "phone": sales_cont_phone
         },
         "partner_id": partner_id,
         "partner_contact": {
-          "par_name": partner_name,
-          "email": partner_email,
-          "phone": partner_phone
-        }
+          "p_name": partner_name,
+          "p_email": partner_email,
+          "p_phone": partner_phone
+        },
+        "sales_contact": {
+          "s_name": sales_cont_name,
+          "s_email": sales_cont_email,
+          "s_phone": sales_cont_phone
+        },
+        "serial_prefix": serial_prefix
       })
       .then(function (response) {
       })
