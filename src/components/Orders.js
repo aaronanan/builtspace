@@ -71,23 +71,25 @@ function Orders() {
       }
     }
     
-    let modified_orders = [];
-    for (let i in mergedListOfDict) {
-      let temp_obj = {};
-      temp_obj["order_id"] = mergedListOfDict[i].order_id
-      temp_obj["customer_id"] = mergedListOfDict[i].customer_id
-      // temp_obj["name"] = mergedListOfDict[i].cus_contact.c_name
-      temp_obj["name"] = mergedListOfDict[i].customer_id
-      temp_obj["org"] = mergedListOfDict[i].cus_org_name
-      temp_obj["urls"] = mergedListOfDict[i].order_size
-      temp_obj["status"] = mergedListOfDict[i].order_status
-      temp_obj["date_created"] = String(mergedListOfDict[i].ord_creation_date).slice(0, 10)
-      temp_obj["last_updated"] = String(mergedListOfDict[i].ord_lastupdate_date).slice(0, 10)
-      temp_obj["urls_name"] = mergedListOfDict[i].urls
-      modified_orders.push(Object.values(temp_obj))
+    if (!mergedListOfDict[0] || Object.keys(mergedListOfDict[0]).length == 0) {
+      return
+    } else {
+      let modified_orders = [];
+      for (let i in mergedListOfDict) {
+        let temp_obj = {};
+        temp_obj["order_id"] = mergedListOfDict[i].order_id
+        temp_obj["customer_id"] = mergedListOfDict[i].customer_id
+        temp_obj["name"] = mergedListOfDict[i].cus_contact.c_name
+        temp_obj["org"] = mergedListOfDict[i].cus_org_name
+        temp_obj["urls"] = mergedListOfDict[i].order_size
+        temp_obj["status"] = mergedListOfDict[i].order_status
+        temp_obj["date_created"] = String(mergedListOfDict[i].ord_creation_date).slice(0, 10)
+        temp_obj["last_updated"] = String(mergedListOfDict[i].ord_lastupdate_date).slice(0, 10)
+        temp_obj["urls_name"] = mergedListOfDict[i].urls
+        modified_orders.push(Object.values(temp_obj))
+      }
+      setData(modified_orders)
     }
-    setData(modified_orders)
-
     // let temp_orders = [];
     // for (let item in mergedListOfDict) {
     //   temp_orders.push(Object.values(mergedListOfDict[item]))
