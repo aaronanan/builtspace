@@ -13,12 +13,12 @@ import Orders from './components/Orders';
 import Customers from './components/Customers';
 import NavBar from './components/Navbar';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
-import Create_order from "./components/create_order";
-import CreateOrder from "./components/CreateOrder";
+import Create_order from "./components/CreateOrder";
 import Profile from "./components/Profile";
 import Login from "./components/Login"
 import { onError } from "./libs/errorLib";
 import Signup from "./components/Signup";
+// import Test from "./components/DelCustomer";
 
 import EditCustomer from "./components/EditCustomer"
 
@@ -84,9 +84,9 @@ function App() {
             <Route path='/orders' component={Orders} />
             <Route path='/new_customer' component={Form} />
             <Route path='/customer/edit' component={EditCustomer} />
-            <Route path='/create_order' component={Create_order} />
-            <Route path='/creating_order' component={CreateOrder} />
-            {/* <Route path='/format' component={Format} /> */}
+            {/* <Route path='/create_order' component={Create_order} /> */}
+            {/* <Route path='/creating_order' component={CreateOrder} /> */}
+            {/* <Route path='/test' component={CreateOrder} /> */}
             <Route path='/profile' component={Profile} />
             <Route path='/login' component={Login} />
             <Route exact path="/signup">
