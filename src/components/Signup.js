@@ -215,7 +215,7 @@ export default function Signup() {
                 </div>
                 <br></br>
                   <div className="row">
-                    <a className="registered" href="/login">Already have an account?</a>
+                    <a className="registered" href="/#/login">Already have an account?</a>
                   </div>
               </div>
           </div>

@@ -60,95 +60,50 @@ const Navbar_home = () => {
 
 
   const notLoggedIn = (
-    <>
-    <nav className="navbar container-fluid navbar-expand-lg navbar-light bg-light justify-content-between">
-        <a className="navbar-brand" href="/customers">
-          <img className="navbar_logo" src="company_logo.png" alt=""></img>
-        </a>
-        {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-
-        <div className="collapse navbar-collapse pull-right" id="navbarSupportedContent">
-        <ul className="navbar-nav mr-auto">
-          <li className="nav-item">
-              <LinkContainer to="/login">
-                <a className="nav-link" variant="outline-info" size="nav">Login</a>
-              </LinkContainer>
-              </li>
-              <li className="nav-item">
-              <LinkContainer to="/signup">
-                <a className="nav-link" variant="outline-info" size="nav">Sign-Up</a>
-              </LinkContainer>
-              </li>
-          </ul>
-        </div> */}
-        
-    </nav>
-    </>
+    <div className="navbar_header">
+    <Navbar bg="light" variant="light">
+    <Navbar.Brand href="/#/customers"><img className="navbar_logo" src={BuiltspaceLogo} alt=""></img></Navbar.Brand>
+    {/* <Nav>
+      <li style={{marginLeft:"10px"}} className="nav-item"><Nav.Link href="/#/customers">Customers</Nav.Link></li>
+      <li style={{marginLeft:"10px"}} className="nav-item"><Nav.Link href="/#/orders">Orders</Nav.Link></li>
+    </Nav> */}
+    <Nav style={{marginLeft:"auto"}}>
+      <li className="nav-item"><Nav.Link href="/#/login">Login</Nav.Link></li>
+      <li className="nav-item"><Nav.Link href="/#/signup">Signup</Nav.Link></li>
+    </Nav>
+  </Navbar>
+  </div>
   );
 
   const loggedIn = (
-    <>
-    <div className="container-fluid">
-      <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
-        <a className="navbar-brand" href="/customers">
-          <img className="navbar_logo" src="company_logo.png" alt=""></img>
-        </a>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <LinkContainer to="/customers">
-                <a className="nav-link" variant="outline-info" size="nav">Customers</a>
-              </LinkContainer>
-            </li>
-            <li className="nav-item">
-              <LinkContainer to="/orders">
-                <a className="nav-link" variant="outline-info" size="nav">Orders</a>
-              </LinkContainer>
-            </li>
-          </ul>
-        </div>
-        <div> 
-          <ul className="navbar-nav mr-auto"> 
-            <li className="nav-item"> 
-              <a className="nav-link" variant="outline-info" size="nav" onClick={handleLogout}>Logout{ userEmail }</a> 
-            </li> 
-          </ul> 
-        </div>
-      </nav>
+      <div className="navbar_header">
+      <Navbar bg="light" variant="light">
+      <Navbar.Brand href="/#/customers"><img className="navbar_logo" src={BuiltspaceLogo} alt=""></img></Navbar.Brand>
+      <Nav>
+        <li style={{marginLeft:"10px"}} className="nav-item"><Nav.Link href="/#/customers">Customers</Nav.Link></li>
+        <li style={{marginLeft:"10px"}} className="nav-item"><Nav.Link href="/#/orders">Orders</Nav.Link></li>
+      </Nav>
+      <Nav style={{marginLeft:"auto"}}>
+        <li className="nav-item"><Nav.Link href="/#/login" onClick={handleLogout}>Logout</Nav.Link></li>
+      </Nav>
+    </Navbar>
     </div>
-    </>
   );
 
   return (
     
-    // <ButtonToolbar className="custom-btn-toolbar">
+    // // <ButtonToolbar className="custom-btn-toolbar">
+    // <>
     // { isAuthenticated  ? loggedIn : notLoggedIn }
-    // </ButtonToolbar>
+    // {/* // </ButtonToolbar> */}
 
     // loggedIn 
     
     
-    // <>
-    // test
-    // </>
-    <div className="navbar_header">
-    <Navbar bg="light" variant="light">
-    <Navbar.Brand href="/#/customers"><img className="navbar_logo" src={BuiltspaceLogo} alt=""></img></Navbar.Brand>
-    <Nav>
-      <li style={{marginLeft:"10px"}} className="nav-item"><Nav.Link href="/#/customers">Customers</Nav.Link></li>
-      <li style={{marginLeft:"10px"}} className="nav-item"><Nav.Link href="/#/orders">Orders</Nav.Link></li>
-    </Nav>
-    <Nav style={{marginLeft:"auto"}}>
-      <li className="nav-item"><Nav.Link href="/#/login">Logout</Nav.Link></li>
-    </Nav>
-  </Navbar>
-  </div>
+    <>
+      { isAuthenticated  ? loggedIn : notLoggedIn }
+    </>
+
   );
 }
 

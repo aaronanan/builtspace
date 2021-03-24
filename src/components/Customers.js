@@ -119,7 +119,7 @@ function Customers() {
                   <td className="text-center table-data">{customer.cus_contact.c_name}</td>
                   <td className="text-center" id="name">{customer.cus_org_name}</td>
                   <td className="text-center" id="email">{customer.cus_status}</td>
-                  <td className="text-center">{String(customer.creation_date).slice(0, 10)}</td>
+                  <td className="text-center">{String(customer.c_creation_date).slice(0, 10)}</td>
                   <td className="text-center" style={{width:"100px"}}>
                     <Link to={{
                     pathname: `/profile/${customer.customer_id}`,

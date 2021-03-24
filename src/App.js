@@ -27,7 +27,7 @@ Amplify.configure(awsconfig);
 
 function App() {
   const URL = awsconfig.aws_cloud_logic_custom.endpoint;
-  const [isAuthenticated, userHasAuthenticated] = useState(true);
+  const [isAuthenticated, userHasAuthenticated] = useState(false);
   const [isAuthenticating, setIsAuthenticating] = useState(true);
  
   // Call the onLoad function only once on page load
@@ -49,8 +49,32 @@ function App() {
     setIsAuthenticating(false);
   }
 
+  if (!isAuthenticated) {
+    return (
+      <Router>
+        <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
+        <NavBar />
+          <Switch>
+            <Route exact path='/' component={Login} />
+            <Route exact path='/signup' component={Signup} />
+            <Route exact path='/login' component={Login} />
+            {/* <Route exact path='/customers' component={Customers} />
+            <Route path='/orders' component={Orders} />
+            <Route path='/new_customer' component={Form} />
+            <Route path='/customer/edit' component={EditCustomer} />
+            <Route path='/create_order' component={Create_order} />
+            <Route path='/creating_order' component={CreateOrder} />
+            <Route path='/profile' component={Profile} />
+            <Route path='/login' component={Login} />
+            <Route exact path="/signup"><Signup /></Route> */}
+          </Switch>
+          </AppContext.Provider>
+    </Router>
+    )
+  }
+
   return (
-    !isAuthenticating && (
+    isAuthenticated && (
     <Router>
         <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
         <NavBar />

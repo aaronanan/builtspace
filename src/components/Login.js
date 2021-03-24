@@ -82,7 +82,7 @@ export default function Login() {
           </div>
           <br></br>
           <div className="row">
-            <a className="loginTag" href="/signup">Don't have an account yet?</a>
+            <a className="loginTag" href="/#/signup">Don't have an account yet?</a>
           </div>
         </div>
 
