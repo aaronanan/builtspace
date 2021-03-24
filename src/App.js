@@ -12,7 +12,7 @@ import Form from './components/Form';
 import Orders from './components/Orders';
 import Customers from './components/Customers';
 import NavBar from './components/Navbar';
-import { Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import Create_order from "./components/create_order";
 import CreateOrder from "./components/CreateOrder";
 import Profile from "./components/Profile";
@@ -51,7 +51,7 @@ function App() {
 
   return (
     !isAuthenticating && (
-    <div className="App">
+    <Router>
         <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
         <NavBar />
           <Switch>
@@ -70,7 +70,7 @@ function App() {
             </Route>
           </Switch>
           </AppContext.Provider>
-    </div>
+    </Router>
     )
   );
 }

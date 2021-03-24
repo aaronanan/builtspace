@@ -110,7 +110,7 @@ function Order(props) {
 
   const orders_list = (
     <div style={{marginRight:"auto", marginLeft:"auto", width:"700px"}}>
-    <table className="table table-bordered table-sm  hover">
+    <table className="table table-bordered table-sm hover">
       <thead className="thead-green">
         <tr>
           <th className="text-center left_radius">Order ID</th>
