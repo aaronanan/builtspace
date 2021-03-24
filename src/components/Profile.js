@@ -61,80 +61,46 @@ function Profile(props) {
     <div className="container-fluid" key={index}>
       <div className="row" key={index}>
 
-        <div className="col-md-3 cus_details mg-20 profile-sidebar">
+        <div className="col-md-3 cus_details mg-20 profile-sidebar" style={{maxWidth:"380px", marginBottom:"20px"}}>
           <div className="row">
-            <div className="col-12 text-center">
+            <div className="col-12">
               <p className="font-weight-bold profile-header">Customer Details</p>
+              <hr className="hr-line" />
             </div>
           </div>
           <div className="row">
-            <div className="col-md-6">
-              <p className="profile-info">Org. Name:</p>
+            <div className="col-md-5">
+              <p className="profile-info" style={{fontSize:"14px"}}>Org Name:</p>
             </div>
             <div className="col-md-6 profile-value">
               {customer.cus_org_name ? customer.cus_org_name : "Loading.."}
             </div>
           </div>
           <div className="row">
-            <div className="col-md-6">
-              <p className="profile-info">Customer ID:</p>
+            <div className="col-md-5">
+              <p className="profile-info" style={{fontSize:"14px"}}>Customer ID:</p>
             </div>
             <div className="col-md-6 profile-value">
               {customer.customer_id ? customer.customer_id : "Loading.."}
             </div>
           </div>
           <div className="row">
-            <div className="col-12 text-center">
-              <p className="font-weight-bold profile-header">Shipping</p>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-6">
-              <p className="profile-info">Address:</p>
+            <div className="col-md-5">
+              <p className="profile-info" style={{fontSize:"14px"}}>Template:</p>
             </div>
             <div className="col-md-6 profile-value">
-              {customer.cus_shipping.address ? customer.cus_shipping.address : "Loading.."}
+              {customer.cus_design ? customer.cus_design : "Loading.."}
             </div>
           </div>
-          <div className="row">
-            <div className="col-md-6">
-              <p className="profile-info">City:</p>
-            </div>
-            <div className="col-md-6 profile-value">
-              {customer.cus_shipping.city ? customer.cus_shipping.city : "Loading.."}
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-6">
-              <p className="profile-info">Prov/State:</p>
-            </div>
-            <div className="col-md-6 profile-value">
-              {customer.cus_shipping.province ? customer.cus_shipping.province : "Loading.."}
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-6">
-              <p className="profile-info">Postal Code:</p>
-            </div>
-            <div className="col-md-6 profile-value">
-              {customer.cus_shipping.post ? customer.cus_shipping.post : "Loading.."}
-          </div>
-        </div>
+         
         <div className="row">
-          <div className="col-md-6">
-            <p className="profile-info">Country</p>
-          </div>
-          <div className="col-md-6 profile-value">
-            {customer.cus_shipping.country ? customer.cus_shipping.country : "Loading.."}
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-12 text-center">
+          <div className="col-12">
             <p className="font-weight-bold profile-header">Contact</p>
+            <hr className="hr-line" />
           </div>
         </div>
         <div className="row">
-          <div className="col-md-6">
+          <div className="col-md-5">
             <p className="profile-info">Name:</p>
           </div>
           <div className="col-md-6 profile-value">
@@ -142,7 +108,7 @@ function Profile(props) {
           </div>
         </div>
         <div className="row">
-          <div className="col-md-6">
+          <div className="col-md-5">
             <p className="profile-info">Email:</p>
           </div>
           <div className="col-md-6 profile-value">
@@ -150,7 +116,7 @@ function Profile(props) {
           </div>
         </div>
         <div className="row">
-          <div className="col-md-6">
+          <div className="col-md-5">
             <p className="profile-info">Phone:</p>
           </div>
           <div className="col-md-6 profile-value">
@@ -158,12 +124,59 @@ function Profile(props) {
           </div>
         </div>
         <div className="row">
-          <div className="col-12 text-center">
-            <p className="font-weight-bold profile-header">Sales Contact</p>
+            <div className="col-12">
+              <p className="font-weight-bold profile-header">Shipping</p>
+              <hr className="hr-line" />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-5">
+              <p className="profile-info">Address:</p>
+            </div>
+            <div className="col-md-6 profile-value">
+              {customer.cus_shipping.address ? customer.cus_shipping.address : "Loading.."}
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-5">
+              <p className="profile-info">City:</p>
+            </div>
+            <div className="col-md-6 profile-value">
+              {customer.cus_shipping.city ? customer.cus_shipping.city : "Loading.."}
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-5">
+              <p className="profile-info">Prov/State:</p>
+            </div>
+            <div className="col-md-6 profile-value">
+              {customer.cus_shipping.province ? customer.cus_shipping.province : "Loading.."}
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-5">
+              <p className="profile-info">Postal Code:</p>
+            </div>
+            <div className="col-md-6 profile-value">
+              {customer.cus_shipping.post ? customer.cus_shipping.post : "Loading.."}
           </div>
         </div>
         <div className="row">
-          <div className="col-md-6">
+          <div className="col-md-5">
+            <p className="profile-info">Country</p>
+          </div>
+          <div className="col-md-6 profile-value">
+            {customer.cus_shipping.country ? customer.cus_shipping.country : "Loading.."}
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-12">
+            <p className="font-weight-bold profile-header">Sales Contact</p>
+            <hr className="hr-line" />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-5">
             <p className="profile-info">Name:</p>
           </div>
           <div className="col-md-6 profile-value">
@@ -171,7 +184,7 @@ function Profile(props) {
           </div>
         </div>
         <div className="row">
-          <div className="col-md-6">
+          <div className="col-md-5">
             <p className="profile-info">Emp. ID:</p>
           </div>
           <div className="col-md-6 profile-value">
@@ -179,17 +192,16 @@ function Profile(props) {
           </div>
         </div>
           <div className="row">
-            <div className="col-md-6">
+            <div className="col-md-5">
               <p className="profile-info">Email:</p>
             </div>
             <div className="col-md-6 profile-value">
               {customer.sales_contact.s_email ? customer.sales_contact.s_email : "Loading.."}
             </div>
           </div>
-            
           </div>
 
-          <div className="col-md-9 order_div" key={index}>
+          <div className="col-md-9 order_div" key={index} style={{marginTop:"10px"}}>
           <Backdrop id="backdrop" open={open}>
             <CircularProgress color="inherit" />
           </Backdrop>
@@ -203,7 +215,7 @@ function Profile(props) {
                         padding: '0 14px',
                       },
                     }}/>
-                    <Button onClick={postOrder} variant="outlined" color="primary" style={{height:"45px", backgroundColor:"#00B060", color:"white"}}>Submit</Button> 
+                    <Button onClick={postOrder} variant="outlined" color="primary" style={{height:"45px", backgroundColor:"#00B060", color:"white"}}>Create Order</Button> 
                   </div>
                 <Order customer_id={customer_id} />
               </div>
@@ -227,9 +239,9 @@ function Profile(props) {
     ));
 
   return (
-      <>
+      <div style={{marginTop:"18px"}}>
       {customers_list}
-      </>
+      </div>
   );
 }
 

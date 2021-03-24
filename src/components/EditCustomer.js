@@ -5,7 +5,7 @@ import { access_token, URL } from "../aws-token"
 import "../styles/editCustomer.css"
 import { Button } from "react-bootstrap"
 import { Link } from "react-router-dom";
-
+import "../styles/Customers.css"
 
 const EditCustomer = (props) => {
     const customer_id = parseInt(props.location.pathname.replace( /^\D+/g, ''));
@@ -79,8 +79,9 @@ const EditCustomer = (props) => {
     }
         
     const customers_list = customer.map((cus, index) => 
-    <div key={index} style={{width:"1000px", marginLeft:"auto", marginRight:"auto", backgroundColor:"whitesmoke"}}>
+    <div key={index} className="editForm">
 
+        <div>
         <div style={{padding:"20px"}}>
             <h5>Contact Information</h5>
             <div style={{marginTop:"25px"}}>
@@ -128,16 +129,17 @@ const EditCustomer = (props) => {
                 <TextField style={{marginLeft:"15px"}} label="Sales Phone" defaultValue={cus.sales_contact.s_phone} variant="outlined" onChange={(e) => {customer[0].sales_contact.s_phone = e.target.value}} />
             </div>
         </div>
+        </div>
 
-        <div>
+        <>
             <div style={{textAlign:"center", paddingBottom:"200px", backgroundColor:"white", paddingTop:"20px"}}>
                 <Button style={{width:"150px"}} onClick={updateCustomer} className="btn btn-success">Save Changes</Button>
                 {/* <a href="/customers"><Button style={{width:"150px", marginLeft:'50px'}} onClick={deleteCustomer} className="btn btn-danger">Delete</Button></a> */}
                 <Button style={{width:"150px", marginLeft:'50px'}} onClick={deleteCustomer} className="btn btn-danger">Delete</Button>
-                <Button style={{marginLeft:'50px', width:"150px"}} className="btn btn-md btn-secondary">Cancel</Button>
-                <a href="/customers"><Input type="hidden" id="deletedCustomer">Delete</Input></a>
+                <Link to="/customers"><Button style={{marginLeft:'50px', width:"150px"}} className="btn btn-md btn-secondary">Cancel</Button></Link>
+                <Link to="/customers"><Input type="hidden" id="deletedCustomer">Delete</Input></Link>
             </div>
-        </div>
+        </>
 
         
         

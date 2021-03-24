@@ -2,7 +2,7 @@
     /* border-style: solid; */
     /* border-width: 2px; */
     border-radius: 10px;
-    padding: 10px;
+    /* padding: 10px; */
     /* border-color: #00a14b; */
 }
 
@@ -62,7 +62,7 @@ th{
     font-size: 15px;
 }
 .profile-header {
-    margin-left: -35px;
+    margin-left: 15px;
     color: #00a14b;
 }
 .profile-sidebar {
@@ -70,7 +70,12 @@ th{
     margin-left: 10px;
     -webkit-box-shadow: 3px 3px 5px 4px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
     -moz-box-shadow:    3px 3px 5px 4px #ccc;  /* Firefox 3.5 - 3.6 */
-    box-shadow:         3px 3px 5px 4px #ccc; 
+    box-shadow:         3px 3px 5px 4px #ccc;
+}
+.hr-line {
+    margin-top: -10px;
+    background-color: #00a14b;
+    height: 0.1px;
 }
 #backdrop {
     z-index: 10;

@@ -13,3 +13,11 @@
 .table-data {
     width: 200px;
 }
+.editForm {
+    background-color: whitesmoke;
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    border-radius: 20px;
+}

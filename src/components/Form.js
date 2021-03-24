@@ -41,13 +41,13 @@ function Form(props) {
   }
   
   function closeModal() {
-    window.location.replace(process.env.PUBLIC_URL + '/customers')
+    window.location.replace(process.env.PUBLIC_URL + '/#/customers')
   }
   
   window.onclick = function(event) {
     let modal = document.getElementById("registerModal")
     if (event.target == modal) {
-      window.location.replace(process.env.PUBLIC_URL + '/customers');
+      window.location.replace(process.env.PUBLIC_URL + '/#/customers');
     }
   }
 
@@ -400,7 +400,7 @@ function Form(props) {
             
             
             <div className="col-5">
-              <a className="btn btn-md btn-secondary btn-secondary-form" href="/Customers">Cancel</a>
+              <a className="btn btn-md btn-secondary btn-secondary-form" href="/#/customers">Cancel</a>
             </div>
 
             <div id="registerModal" class="registerModal">

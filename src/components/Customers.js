@@ -51,14 +51,16 @@ function Customers() {
     let newFilteredCustomers = []
     if (search !== ""){
       customers.forEach(element => {
-          if (element.customer_id.toString().includes(search) 
-          || element.org_name.toUpperCase().includes(search) 
-          || element.contact_name.toUpperCase().includes(search)) {
+          if (element.customer_id.toString().includes(search)
+          || element.cus_org_name.toUpperCase().includes(search) 
+          || element.c_creation_date.toString().includes(search)
+          || element.cus_status.toUpperCase().includes(search) 
+          || element.cus_contact.c_name.toUpperCase().includes(search)) {
             newFilteredCustomers.push(element);
           }
       });
       if (newFilteredCustomers.length === 0){
-        newFilteredCustomers.push({customer_id:"No match found"})
+        newFilteredCustomers.push({customer_id:"No match found", cus_contact: ""})
       }
     } else {
       newFilteredCustomers = customers;
