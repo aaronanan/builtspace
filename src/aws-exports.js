@@ -6,25 +6,25 @@ const awsmobile = {
     "aws_cloud_logic_custom": [
         {
             "name": "qrv1API",
-            "endpoint": "https://a05rzy45k0.execute-api.ca-central-1.amazonaws.com/deploy",
+            "endpoint": "https://676ih9yj80.execute-api.ca-central-1.amazonaws.com/latashia",
             "region": "ca-central-1"
         }
     ],
     "aws_dynamodb_all_tables_region": "ca-central-1",
     "aws_dynamodb_table_schemas": [
         {
-            "tableName": "customers-deploy",
+            "tableName": "customers-latashia",
             "region": "ca-central-1"
         },
         {
-            "tableName": "sysVars-deploy",
+            "tableName": "sysVars-latashia",
             "region": "ca-central-1"
         }
     ],
-    "aws_cognito_identity_pool_id": "ca-central-1:fa2da488-3f3d-40b9-9e6b-eec9a9f5a794",
+    "aws_cognito_identity_pool_id": "ca-central-1:1fe3d0b6-7dbc-4b67-a35d-27cdc952e92c",
     "aws_cognito_region": "ca-central-1",
-    "aws_user_pools_id": "ca-central-1_nw8mLuXyy",
-    "aws_user_pools_web_client_id": "2d9mj328jtlql4tal8cst6db8c",
+    "aws_user_pools_id": "ca-central-1_NXVp4QbiC",
+    "aws_user_pools_web_client_id": "400aodde4ebgp79to85o78rh9a",
     "oauth": {}
 };
 
