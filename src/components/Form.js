@@ -5,6 +5,7 @@ import awsconfig from '../aws-exports';
 import "../styles/form.css";
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { Input, TextField } from '@material-ui/core';
 
 // TODO: Store multiple values in one state instead of having state for each field
 // This form currently accepts input for Organization, Customer Name and Status and passes the rest of the data fields as blank/null
@@ -118,6 +119,20 @@ function Form(props) {
   return (
     <>
     <form onSubmit={handleSubmit}>
+    {/* <div style={{padding:"20px"}}>
+            <h5 style={{color:"#00a14b"}}>Contact Information</h5>
+            <hr style={{backgroundColor:"#00a14b"}} />
+            <div style={{marginTop:"25px"}}>
+                <TextField style={{width:"240px"}} label="Contact Name" defaultValue={cus.cus_contact.c_name} variant="outlined" onChange={(e) => {customer[0].cus_contact.c_name = e.target.value}} />
+                <TextField style={{marginLeft:"15px", width:"240px"}} label="Email" defaultValue={cus.cus_contact.c_email} variant="outlined" onChange={(e) => {customer[0].cus_contact.c_email = e.target.value}} />
+                <TextField style={{marginLeft:"15px"}} label="Phone" defaultValue={cus.cus_contact.c_phone} variant="outlined" onChange={(e) => {customer[0].cus_contact.c_phone = e.target.value}} /> 
+                <TextField style={{marginLeft:"15px", width:"200px"}} label="Status" onChange={(e) => {customer[0].cus_status = e.target.value}} value={customer.cus_status} defaultValue={cus.cus_status} select variant="outlined" SelectProps={{native: true,}}>
+                        <option>Active</option>
+                        <option>Onboarding</option>
+                        <option>Inactive</option>
+                </TextField> 
+            </div>
+        </div> */}
         <div className="row">
         <div className="col"></div>
         <div className="col-8">
@@ -135,26 +150,17 @@ function Form(props) {
 
             <div className="col">
               <div className="row">
-                <div className="col-4">
-                  <p id="field_title">Organization Name</p>
-                </div>
                 <div className="col-7">
-                  <input className="form-control"
-                  value={orgName}
-                  onChange={e => setOrgName(e.target.value)}></input>
+                <TextField style={{width:"240px"}} label="Organization Name" variant="outlined" value={orgName} onChange={e => setOrgName(e.target.value)} />
                 </div>
               </div>
             </div>
 
             <div className="col">
               <div className="row">
-                <div className="col-4">
-                  <p id="field_title">Organization ID</p>
-                </div>
                 <div className="col-7">
-                  <input className="form-control"
-                  value={org_id}
-                  onChange={e => setOrgId(e.target.value)}></input>
+                <TextField style={{width:"240px"}} label="Organization ID" variant="outlined"
+                 value={org_id} onChange={e => setOrgId(e.target.value)}/>
                 </div>
               </div>
             </div>
@@ -164,13 +170,9 @@ function Form(props) {
           <br></br>
           <div className="row">
             <div className="col">
-              <div className="row">
-                <div className="col-4"><p id="field_title">Address</p></div>
-                <div className="col-7"><input className="form-control"
+              <TextField style={{width:"240px"}} label="Address" variant="outlined"
                 value={address}
-                onChange={e => setAddress(e.target.value)}
-                  ></input></div>
-              </div>
+                onChange={e => setAddress(e.target.value)}/>
             </div>
             
             <div className="col">
