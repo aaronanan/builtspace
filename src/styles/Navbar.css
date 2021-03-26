@@ -25,9 +25,10 @@ li a:hover{
 }
 
 tbody tr:hover{
-    background-color: #00a14b !important;
+    background-color: #bebebe !important;
     color: white !important;
 }
+
 .nav-link{
     text-align: center;
     width: 100px;

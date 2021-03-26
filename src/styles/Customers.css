@@ -20,4 +20,9 @@
     margin-right: auto;
     margin-top: 20px;
     border-radius: 20px;
+    box-shadow: 2px 2px 5px 4px #ccc;
+}
+
+.editLine {
+    background-color: "#00a14b";
 }

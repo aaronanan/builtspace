@@ -75,7 +75,7 @@ th{
 .hr-line {
     margin-top: -10px;
     background-color: #00a14b;
-    height: 0.1px;
+    /* height: 1px; */
 }
 #backdrop {
     z-index: 10;

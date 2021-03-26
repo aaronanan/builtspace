@@ -3,6 +3,8 @@ import axios from 'axios';
 import Button from 'react-bootstrap/Button'
 import awsconfig from '../aws-exports';
 import "../styles/form.css";
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 // TODO: Store multiple values in one state instead of having state for each field
 // This form currently accepts input for Organization, Customer Name and Status and passes the rest of the data fields as blank/null
@@ -11,7 +13,7 @@ import "../styles/form.css";
 function Form(props) {
 
   const URL = "https://hwwscimuxe.execute-api.ca-central-1.amazonaws.com/dev"
-
+  const [open, setOpen] = useState(true);
   const [ContactName, setContactName] = useState("");
   const [orgName, setOrgName] = useState("");
   const [status, setStatus] = useState("Active");
@@ -53,6 +55,7 @@ function Form(props) {
 
     
     function handleSubmit(e) {
+      // const confirmCreate = window.confirm(`Are you sure you want to delete Order ${order_id}?`)
       e.preventDefault();
       axios.post(URL + '/customers', {
         "cus_status": status,
@@ -121,9 +124,11 @@ function Form(props) {
         <div className="container-fluid">
           <div className="row">
             <div className="col"></div>
-            <div className="col-8 text-center"><p className="h2 formLabel">Create a Customer</p></div>
+            <div className="col-8 text-center" style={{marginTop:"40px"}}><p className="h2 formLabel" style={{color:"#00a14b"}}>Create a Customer</p></div>
+            
             <div className="col"></div>
           </div>
+          <hr style={{backgroundColor:"#00a14b"}}/>
           <br></br>
           <br></br>
           <div className="row">

@@ -156,7 +156,7 @@ function Orders() {
   const options = {
     selectableRows: "none",
     sortOrder: {
-      name: "Date Created",
+      name: "Order ID",
       direction: "desc"
     }
     // expandableRows: true,

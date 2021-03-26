@@ -55,18 +55,9 @@ function App() {
         <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
         <NavBar />
           <Switch>
-            <Route exact path='/' component={Login} />
             <Route exact path='/signup' component={Signup} />
             <Route exact path='/login' component={Login} />
-            {/* <Route exact path='/customers' component={Customers} />
-            <Route path='/orders' component={Orders} />
-            <Route path='/new_customer' component={Form} />
-            <Route path='/customer/edit' component={EditCustomer} />
-            <Route path='/create_order' component={Create_order} />
-            <Route path='/creating_order' component={CreateOrder} />
-            <Route path='/profile' component={Profile} />
-            <Route path='/login' component={Login} />
-            <Route exact path="/signup"><Signup /></Route> */}
+            <Route path='/' component={Login} />
           </Switch>
           </AppContext.Provider>
     </Router>

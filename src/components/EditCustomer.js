@@ -79,11 +79,13 @@ const EditCustomer = (props) => {
     }
         
     const customers_list = customer.map((cus, index) => 
+    <div style={{paddingBottom:"200px"}}>
     <div key={index} className="editForm">
 
         <div>
         <div style={{padding:"20px"}}>
-            <h5>Contact Information</h5>
+            <h5 style={{color:"#00a14b"}}>Contact Information</h5>
+            <hr style={{backgroundColor:"#00a14b"}} />
             <div style={{marginTop:"25px"}}>
                 <TextField style={{width:"240px"}} label="Contact Name" defaultValue={cus.cus_contact.c_name} variant="outlined" onChange={(e) => {customer[0].cus_contact.c_name = e.target.value}} />
                 <TextField style={{marginLeft:"15px", width:"240px"}} label="Email" defaultValue={cus.cus_contact.c_email} variant="outlined" onChange={(e) => {customer[0].cus_contact.c_email = e.target.value}} />
@@ -98,7 +100,8 @@ const EditCustomer = (props) => {
         </div>
 
         <div style={{padding:"20px"}}>
-            <h5>Shipping Information</h5>
+            <h5 style={{color:"#00a14b"}}>Shipping Information</h5>
+            <hr style={{backgroundColor:"#00a14b"}}/>
             <div style={{marginTop:"25px"}}>
                 <TextField style={{width:"300px"}} label="Address" defaultValue={cus.cus_shipping.address} variant="outlined" onChange={(e) => {customer[0].cus_shipping.address = e.target.value}} />
                 <TextField style={{marginLeft:"15px"}} label="City" defaultValue={cus.cus_shipping.city} variant="outlined" onChange={(e) => {customer[0].cus_shipping.city = e.target.value}} />
@@ -109,7 +112,8 @@ const EditCustomer = (props) => {
         </div>
 
         <div style={{padding:"20px"}}>
-            <h5>Partner Information</h5>
+            <h5 style={{color:"#00a14b"}}>Partner Information</h5>
+            <hr style={{backgroundColor:"#00a14b"}}/>
             <div style={{marginTop:"25px"}}>
                 <TextField style={{width:"200px"}} label="Org ID" defaultValue={cus.cus_org_id} variant="outlined" onChange={(e) => {customer[0].org_id = e.target.value}} />
                 <TextField style={{marginLeft:"15px"}} label="Organization Name" defaultValue={cus.cus_org_name} variant="outlined" onChange={(e) => {customer[0].cus_org_name = e.target.value}} />
@@ -122,7 +126,8 @@ const EditCustomer = (props) => {
 
 
         <div style={{padding:"20px"}}>
-            <h5>Sales Contact</h5>
+            <h5 style={{color:"#00a14b"}}>Sales Contact</h5>
+            <hr style={{backgroundColor:"#00a14b"}}/>
             <div style={{marginTop:"25px"}}>
                 <TextField style={{width:"300px"}} label="Sales Name" defaultValue={cus.sales_contact.s_name} variant="outlined" onChange={(e) => {customer[0].sales_contact.s_name = e.target.value}} />
                 <TextField style={{marginLeft:"15px"}} label="Sales Email" defaultValue={cus.sales_contact.s_email} variant="outlined" onChange={(e) => {customer[0].sales_contact.s_email = e.target.value}} />
@@ -132,7 +137,7 @@ const EditCustomer = (props) => {
         </div>
 
         <>
-            <div style={{textAlign:"center", paddingBottom:"200px", backgroundColor:"white", paddingTop:"20px"}}>
+            <div style={{textAlign:"center", paddingTop:"20px", paddingBottom:"40px"}}>
                 <Button style={{width:"150px"}} onClick={updateCustomer} className="btn btn-success">Save Changes</Button>
                 {/* <a href="/customers"><Button style={{width:"150px", marginLeft:'50px'}} onClick={deleteCustomer} className="btn btn-danger">Delete</Button></a> */}
                 <Button style={{width:"150px", marginLeft:'50px'}} onClick={deleteCustomer} className="btn btn-danger">Delete</Button>
@@ -143,6 +148,7 @@ const EditCustomer = (props) => {
 
         
         
+    </div>
     </div>
     );
       
