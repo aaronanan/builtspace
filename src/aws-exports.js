@@ -6,37 +6,25 @@ const awsmobile = {
     "aws_cloud_logic_custom": [
         {
             "name": "qrv1API",
-            "endpoint": "https://a05rzy45k0.execute-api.ca-central-1.amazonaws.com/deploy",
+            "endpoint": "https://676ih9yj80.execute-api.ca-central-1.amazonaws.com/latashia",
             "region": "ca-central-1"
         }
     ],
     "aws_dynamodb_all_tables_region": "ca-central-1",
     "aws_dynamodb_table_schemas": [
         {
-            "tableName": "customers-prod",
+            "tableName": "customers-latashia",
             "region": "ca-central-1"
         },
         {
-            "tableName": "urls-prod",
-            "region": "ca-central-1"
-        },
-        {
-            "tableName": "builtOrders-prod",
-            "region": "ca-central-1"
-        },
-        {
-            "tableName": "spaceOrders-prod",
-            "region": "ca-central-1"
-        },
-        {
-            "tableName": "sysVars-prod",
+            "tableName": "sysVars-latashia",
             "region": "ca-central-1"
         }
     ],
-    "aws_cognito_identity_pool_id": "ca-central-1:3ab9e410-4c8a-47a2-899b-f6d1ced082f5",
+    "aws_cognito_identity_pool_id": "ca-central-1:1fe3d0b6-7dbc-4b67-a35d-27cdc952e92c",
     "aws_cognito_region": "ca-central-1",
-    "aws_user_pools_id": "ca-central-1_6MCN0Shm4",
-    "aws_user_pools_web_client_id": "133jalu4m6a0lgct5ido91mugk",
+    "aws_user_pools_id": "ca-central-1_NXVp4QbiC",
+    "aws_user_pools_web_client_id": "400aodde4ebgp79to85o78rh9a",
     "oauth": {}
 };
 

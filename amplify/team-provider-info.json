@@ -1,0 +1,64 @@
+{
+    "latashia": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-qrv1-latashia-194636-authRole",
+            "UnauthRoleArn": "arn:aws:iam::294151973366:role/amplify-qrv1-latashia-194636-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::294151973366:role/amplify-qrv1-latashia-194636-authRole",
+            "Region": "ca-central-1",
+            "DeploymentBucketName": "amplify-qrv1-latashia-194636-deployment",
+            "UnauthRoleName": "amplify-qrv1-latashia-194636-unauthRole",
+            "StackName": "amplify-qrv1-latashia-194636",
+            "StackId": "arn:aws:cloudformation:ca-central-1:294151973366:stack/amplify-qrv1-latashia-194636/50393f40-8b47-11eb-bf7b-0ab8f2ac2b3e",
+            "AmplifyAppId": "d2xmkos6jccwcl"
+        },
+        "categories": {
+            "auth": {
+                "qrv1d412f63e": {}
+            },
+            "function": {
+                "qrv1Lambda": {
+                    "deploymentBucketName": "amplify-qrv1-latashia-194636-deployment",
+                    "s3Key": "amplify-builds/qrv1Lambda-354e2f58354c326a6135-build.zip"
+                },
+                "createOrder": {
+                    "deploymentBucketName": "amplify-qrv1-latashia-194636-deployment",
+                    "s3Key": "amplify-builds/createOrder-457457446a6759635062-build.zip"
+                },
+                "createCustomer": {
+                    "deploymentBucketName": "amplify-qrv1-latashia-194636-deployment",
+                    "s3Key": "amplify-builds/createCustomer-754178594b2b42634133-build.zip"
+                },
+                "getCustomers": {
+                    "deploymentBucketName": "amplify-qrv1-latashia-194636-deployment",
+                    "s3Key": "amplify-builds/getCustomers-4a7235477853646c506b-build.zip"
+                },
+                "deleteCustomer": {
+                    "deploymentBucketName": "amplify-qrv1-latashia-194636-deployment",
+                    "s3Key": "amplify-builds/deleteCustomer-44744f58376f356c316d-build.zip"
+                },
+                "getOrders": {
+                    "deploymentBucketName": "amplify-qrv1-latashia-194636-deployment",
+                    "s3Key": "amplify-builds/getOrders-2f7036726c5464757976-build.zip"
+                },
+                "getCustomer": {
+                    "deploymentBucketName": "amplify-qrv1-latashia-194636-deployment",
+                    "s3Key": "amplify-builds/getCustomer-3235644c6774566e4873-build.zip"
+                },
+                "updateCustomer": {
+                    "deploymentBucketName": "amplify-qrv1-latashia-194636-deployment",
+                    "s3Key": "amplify-builds/updateCustomer-7a467a352b585a2b716b-build.zip"
+                },
+                "updateOrder": {
+                    "deploymentBucketName": "amplify-qrv1-latashia-194636-deployment",
+                    "s3Key": "amplify-builds/updateOrder-30694d554c554b724b54-build.zip"
+                }
+            },
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "d2xmkos6jccwcl",
+                    "type": "cicd"
+                }
+            }
+        }
+    }
+}

@@ -3,245 +3,224 @@ import axios from 'axios';
 import Order from './Order'
 import awsconfig from '../aws-exports';
 import { Link } from "react-router-dom";
+import { access_token, URL } from "../aws-token" 
 import "../styles/Profile.css";
+import { TextField, Button } from '@material-ui/core';
+import PublishIcon from '@material-ui/icons/Publish';
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
-
-
+// const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
 // TODO: Add more customer info fields, add axios.post request to update customer info
 
 function Profile(props) {
-    let customer_id = parseInt(props.location.query.customer_id);
-    const [customers, setCustomers] = useState([0]);
-    const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
-    const [conName, setContactName] = useState([0]);
-    const [email, setContactEmail] = useState([0]);
-    const [phone, setContactPhone] = useState([0]);
-    const [address, setAddress] = useState([0]);
-    const [city, setCity] = useState([0]);
-    const [prov, setProv] = useState([0]);
-    const [postal, SetPostal] = useState([0]);
-    const [country, setCountry] = useState([0]);
-    const [empName, setEmpName] = useState([0]);
-    const [empEmail, setEmpEmail] = useState([0]);
-    // let [org_name,address,city,prov,postalcode,country,name,email,phone] = ["","","","","","","","",""]
+  let customer_id = parseInt(props.location.pathname.replace( /^\D+/g, ''))
 
-    useEffect(() => {
-      setCustomers([0]);
-    }, []);
+  const [customer, setCustomer] = useState([]);
+  const [numUrls, setNumUrls] = useState(256);
+  const [open, setOpen] = useState(false);
 
-    axios.get(URL + '/customers/' + customer_id, 
-      {
-      "customer_id": customer_id 
-      })
-    .then(function (response) {
-      setCustomers([response.data.Item]);
-      console.log(response.data.Item)
-      setAddress([response.data.Item.ship_address.Address]);
-      setCity([response.data.Item.ship_address.City]);
-      setProv([response.data.Item.ship_address.prov]);
-      SetPostal([response.data.Item.ship_address.post_code]);
-      setCountry([response.data.Item.ship_address.country]);
-      setContactName([response.data.Item.contact_name]);
-      setContactEmail([response.data.Item.contact_person.email]);
-      setContactPhone([response.data.Item.contact_person.phone]);
-      setEmpName([response.data.Item.partner_contact.name])
-      setEmpEmail([response.data.Item.partner_contact.email])
-        // let org_name = response.data.Item.contact_name
-        // let name= response.data.Item.contact_name
-        // let email = response.data.Item.contact_person.email
-        // let phone = response.data.Item.contact_person.phone
-        // let address = response.data.Item.ship_address.Address
-        // let ity = response.data.Item.ship_address.City
-        // let country = response.data.Item.ship_address.country
-        // let postalcode = response.data.Item.ship_address.post_code
-        // let prov = response.data.Item.ship_address.prov
-        
+  useEffect(getCustomers, [])
+
+  function getCustomers () {
+    axios.get(URL + '/customers/' + customer_id, {
+      headers: {
+        'x-api-key': access_token
       }
-      )
+    })  
+    .then(function (response) {
+      setCustomer([response.data.Item])
+      }
+    )
     .catch(function (error) {
       console.log(error);
     });
-    const customers_list = customers.map(customer => (
-      <>
-      <div className="container-fluid mg-20">
-        <div className="row mg-20">
-          <div className="col-md-3 cus_details mg-20">
-            <div className="row">
-              <div className="col-12 text-center">
-              <p className="font-weight-bold">Customer Details</p>
-              </div>
+  }
+
+  function postOrder(){
+    const confirmOrder = window.confirm(`Generate ${numUrls} URLs?`)
+    if (confirmOrder == true) {
+      setOpen(true)
+      axios.post(URL + '/orders', 
+        {
+          customer_id: customer_id,
+          order_size: numUrls,
+        })
+      .then(function (response) {
+        console.log(response);
+        window.location.reload();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
+  }
+
+  const customers_list = customer.map((customer, index) => (
+    <>
+    <div className="container-fluid" key={index}>
+      <div className="row" key={index}>
+
+        <div className="col-md-3 cus_details mg-20 profile-sidebar" style={{maxWidth:"380px", marginBottom:"20px"}}>
+          <div className="row">
+            <div className="col-12">
+              <p className="font-weight-bold profile-header">Customer Details</p>
+              <hr className="hr-line" />
             </div>
-            <div className="row">
-              <div className="col-md-6">
-              <p>Org. Name:</p>
-              </div>
-              <div className="col-md-6 text-center">
-              {customer.org_name ? customer.org_name : "Loading.."}
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-6">
-              <p>Customer ID:</p>
-              </div>
-              <div className="col-md-6 text-center">
-              {customer.customer_id ? customer.customer_id : "Loading.."}
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-12 text-center">
-              <p className="font-weight-bold">Shipping</p>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-6">
-              <p>Address:</p>
-              </div>
-              <div className="col-md-6 text-center">
-              {address ? address : "Loading.."}
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-6">
-              <p>City:</p>
-              </div>
-              <div className="col-md-6 text-center">
-              {city ? city : "Loading.."}
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-6">
-              <p>Prov/State:</p>
-              </div>
-              <div className="col-md-6 text-center">
-              {prov ? prov : "Loading.."}
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-6">
-              <p>Postal Code:</p>
-              </div>
-              <div className="col-md-6 text-center">
-              {postal ? postal : "Loading.."}
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-6">
-              <p>Country</p>
-              </div>
-              <div className="col-md-6 text-center">
-              {country ? country : "Loading.."}
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-12 text-center">
-              <p className="font-weight-bold">Contact</p>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-6">
-              <p>Name:</p>
-              </div>
-              <div className="col-md-6 text-center">
-              {conName ? conName : "Loading.."}
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-6">
-              <p>Email:</p>
-              </div>
-              <div className="col-md-6 text-center">
-              {email ? email : "Loading.."}
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-6">
-              <p>Phone:</p>
-              </div>
-              <div className="col-md-6 text-center">
-              {phone ? phone : "Loading.."}
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-12 text-center">
-              <p className="font-weight-bold">BuiltSpace Sales Contact</p>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-6">
-              <p>Name:</p>
-              </div>
-              <div className="col-md-6 text-center">
-              {empName ? empName : "Loading.."}
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-6">
-              <p>Emp. ID:</p>
-              </div>
-              <div className="col-md-6 text-center">
-              {customer.partner_id ? customer.partner_id : "Loading.."}
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-6">
-              <p>Email:</p>
-              </div>
-              <div className="col-md-6 text-center">
-              {empEmail ? empEmail : "Loading.."}
-              </div>
-            </div>
-              {/* <div className="col">
-            <p className="font-weight-bold">Customer Details</p>
-            <p>Org. Name:</p>
-            <p>Customer ID:</p>
-            <br></br>
-            <p className="font-weight-bold">Shipping</p>
-            <p>Address: </p>
-            <p>City:</p>
-            <p>Prov/State: </p>
-            <p>Postal Code: </p>
-            <p>Country: </p>
-            <br></br>
-            <p className="font-weight-bold">Contact</p>
-            <p>Name: </p>
-            <p>Email:</p>
-            <p>Phone: </p>
-            <p className="font-weight-bold">BuiltSpace Sales Contact</p>
-            <p>Name: </p>
-            <p>Emp ID: </p>
-            <p>Email: </p>
-              </div>
-              <div className="col">
-              <p> '</p>
-              <p>{customer.org_name}</p>
-              <p>{customer.customer_id}</p>
-              <br></br>
-              <p className="font-weight-bold">'</p>
-              <p>TEMP</p>
-              <p>TEMP</p>
-              <p>TEMP</p>
-              <p>TEMP</p>
-              <p>TEMP</p>
-              <br></br>
-              <p className="font-weight-bold">'</p>
-              <p>TEMP</p>
-              <p>TEMP</p>
-              <p>PTEMP</p>
-              <p className="font-weight-bold">'</p>
-              <p>TEMP</p>
-              <p>Emp ID:</p>
-              <p>Email:</p>
-            </div> */}
-            
           </div>
-          <div className="col-md-9 order_div">
+          <div className="row">
+            <div className="col-md-5">
+              <p className="profile-info" style={{fontSize:"14px"}}>Org Name:</p>
+            </div>
+            <div className="col-md-6 profile-value">
+              {customer.cus_org_name ? customer.cus_org_name : "Loading.."}
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-5">
+              <p className="profile-info" style={{fontSize:"14px"}}>Customer ID:</p>
+            </div>
+            <div className="col-md-6 profile-value">
+              {customer.customer_id ? customer.customer_id : "Loading.."}
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-5">
+              <p className="profile-info" style={{fontSize:"14px"}}>Template:</p>
+            </div>
+            <div className="col-md-6 profile-value">
+              {customer.cus_design ? customer.cus_design : "Loading.."}
+            </div>
+          </div>
+         
+        <div className="row">
+          <div className="col-12">
+            <p className="font-weight-bold profile-header">Contact</p>
+            <hr className="hr-line" />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-5">
+            <p className="profile-info">Name:</p>
+          </div>
+          <div className="col-md-6 profile-value">
+            {customer.cus_contact.c_name ? customer.cus_contact.c_name : "Loading.."}
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-5">
+            <p className="profile-info">Email:</p>
+          </div>
+          <div className="col-md-6 profile-value">
+            {customer.cus_contact.c_email ? customer.cus_contact.c_email : "Loading.."}
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-5">
+            <p className="profile-info">Phone:</p>
+          </div>
+          <div className="col-md-6 profile-value">
+            {customer.cus_contact.c_phone ? customer.cus_contact.c_phone : "Loading.."}
+          </div>
+        </div>
+        <div className="row">
+            <div className="col-12">
+              <p className="font-weight-bold profile-header">Shipping</p>
+              <hr className="hr-line" />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-5">
+              <p className="profile-info">Address:</p>
+            </div>
+            <div className="col-md-6 profile-value">
+              {customer.cus_shipping.address ? customer.cus_shipping.address : "Loading.."}
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-5">
+              <p className="profile-info">City:</p>
+            </div>
+            <div className="col-md-6 profile-value">
+              {customer.cus_shipping.city ? customer.cus_shipping.city : "Loading.."}
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-5">
+              <p className="profile-info">Prov/State:</p>
+            </div>
+            <div className="col-md-6 profile-value">
+              {customer.cus_shipping.province ? customer.cus_shipping.province : "Loading.."}
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-5">
+              <p className="profile-info">Postal Code:</p>
+            </div>
+            <div className="col-md-6 profile-value">
+              {customer.cus_shipping.post ? customer.cus_shipping.post : "Loading.."}
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-5">
+            <p className="profile-info">Country</p>
+          </div>
+          <div className="col-md-6 profile-value">
+            {customer.cus_shipping.country ? customer.cus_shipping.country : "Loading.."}
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-12">
+            <p className="font-weight-bold profile-header">Sales Contact</p>
+            <hr className="hr-line" />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-5">
+            <p className="profile-info">Name:</p>
+          </div>
+          <div className="col-md-6 profile-value">
+            {customer.sales_contact.s_name ? customer.sales_contact.s_name : "Loading.."}
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-5">
+            <p className="profile-info">Emp. ID:</p>
+          </div>
+          <div className="col-md-6 profile-value">
+            {customer.partner_id ? customer.partner_id : "Loading.."}
+          </div>
+        </div>
+          <div className="row">
+            <div className="col-md-5">
+              <p className="profile-info">Email:</p>
+            </div>
+            <div className="col-md-6 profile-value">
+              {customer.sales_contact.s_email ? customer.sales_contact.s_email : "Loading.."}
+            </div>
+          </div>
+          </div>
+
+          <div className="col-md-9 order_div" key={index} style={{marginTop:"10px"}}>
+          <Backdrop id="backdrop" open={open}>
+            <CircularProgress color="inherit" />
+          </Backdrop>
             <div className="row">
-              <div className="container-fluid ord_table">
-              <Order
-              customer_id={customer_id} />
+              <div className="container-fluid">
+                  <div style={{textAlign:"center", marginBottom:"20px"}}> 
+                    <TextField type="number" onChange={(e)=>{setNumUrls(e.target.value)}} label="Quantity of URLs" defaultValue="256" variant="outlined" inputProps={{
+                      style: {
+                        height: "45px",
+                        // width: "100px",
+                        padding: '0 14px',
+                      },
+                    }}/>
+                    <Button onClick={postOrder} variant="outlined" color="primary" style={{height:"45px", backgroundColor:"#00B060", color:"white"}}>Create Order</Button> 
+                  </div>
+                <Order customer_id={customer_id} />
               </div>
             </div>
-            <div className="row">
+            {/* <div className="row">
               <div className="col"></div>
               <div className="col">
               <Link to={{
@@ -249,19 +228,20 @@ function Profile(props) {
                 query: { customer_id: `${customer.customer_id}` }
               }} className="btn btn-md btn-primary btn-profile">New Order</Link>
               </div>
-              <div className="col"></div>
-            </div>
-          </div>
+            <div className="col"></div>
+          </div> */}
         </div>
-
+        </div>
+          
       </div>
-    
+
     </>
     ));
+
   return (
-      <>
+      <div style={{marginTop:"18px"}}>
       {customers_list}
-      </>
+      </div>
   );
 }
 

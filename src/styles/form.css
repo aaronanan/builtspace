@@ -10,7 +10,10 @@
     width: 50%;
 }
 .btn-secondary-form:hover{
-    width: 55%;
+    width: 50%;
+    text-decoration: none;
+    color: white !important;
+
 }
 .btn-theme-form:hover{
     width: 55%;
@@ -30,3 +33,49 @@ td{
     border-left: none !important;
     border-right: none !important;
 }
+
+#field_title{
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.registerModal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+
+  .registerModal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  .registerModalText {
+    color: #000;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    width: auto;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }

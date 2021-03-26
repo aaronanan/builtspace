@@ -3,3 +3,26 @@
     border: none !important;
     color: white !important;
 }
+
+.info-btn-theme {
+    background-color: rgb(160, 160, 160) !important;
+    border: none !important;
+    color: white !important;
+}
+
+.table-data {
+    width: 200px;
+}
+.editForm {
+    background-color: whitesmoke;
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px 4px #ccc;
+}
+
+.editLine {
+    background-color: "#00a14b";
+}
