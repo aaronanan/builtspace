@@ -18,7 +18,7 @@ exports.handler = (event, context, callback) => {
     // TODO implement
     console.log(event)
     var params = {
-        TableName: 'customers-prod',
+        TableName: 'customers-deploy',
         Limit: 100
     };
     

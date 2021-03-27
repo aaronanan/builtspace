@@ -21,7 +21,7 @@ exports.handler = (event, context, callback) => {
 	console.log(event.pathParameters.customer_id)
 	// const body = JSON.parse(event.body)
     var params = {
-		TableName: 'customers-prod',
+		TableName: 'customers-deploy',
 		Key: {
 			"customer_id": parseInt(event.pathParameters.customer_id)
 		}

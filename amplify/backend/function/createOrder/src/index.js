@@ -16,7 +16,7 @@ const response = (statusCode, body, additionalHeaders) => ({
 
 function getId(){
   const cust_params = {
-		TableName: 'sysVars-prod',
+		TableName: 'sysVars-deploy',
 		Key: {
 			"tableVars": "orderVars"
 		}
@@ -27,7 +27,7 @@ function getId(){
 
 function updateId(id){
   const cust_params = {
-		TableName: 'sysVars-prod',
+		TableName: 'sysVars-deploy',
 		Item: {
 			"tableVars": "orderVars",
 		  "next_id": id + 1
@@ -40,7 +40,7 @@ function updateId(id){
 
 function getUrl(){
   const url_params = {
-		TableName: 'sysVars-prod',
+		TableName: 'sysVars-deploy',
 		Key: {
 			"tableVars": "urlVars"
 		}
@@ -51,7 +51,7 @@ function getUrl(){
 
 function updateUrl(id){
   const url_params = {
-		TableName: 'sysVars-prod',
+		TableName: 'sysVars-deploy',
 		Item: {
 			"tableVars": "urlVars",
 		  "next_id": parseInt(id) + 1
@@ -69,37 +69,11 @@ function updateUrl(id){
     var url_list = []
     console.log(next_url)
     var i;
-    // for (i = 0; i < num_urls; i++) { 
-    //     console.log("Generate url", next_url)
-    //     const url_pad = String(next_url).padStart(6, '0')
-    //     let d = new Date()
-    //     let dISO = d.toISOString()
-    //     let cust_id_padd = String(cust_id).padStart(4, '0');
-    //     let auto_fields = {
-    //         "url": "Https://builtspace.com/i/" + cust_id_padd + url_pad,
-    //         "cust_id": cust_id,
-    //         "order_id": order_id,
-    //         "creation_date": dISO,
-    //         "lastupdate_date": dISO
-    //     }
-        
-    //     let item_body = {...auto_fields }
-        
-        
-    //     const params = {
-    //         TableName: 'urls-dev',
-    //         Item: item_body,
-    //         ReturnConsumedCapacity: "TOTAL", 
-    
-    //     }
-    //     await docClient.put(params).promise()
-    //     next_url += 1
-    // }
     
     for (i = 0; i < num_urls; i++) { 
         const url_pad = String(next_url).padStart(6, '0');
         let cust_id_padd = String(cust_id).padStart(4, '0');
-        const url = "https://builtspace.com/i/" + cust_id_padd + url_pad
+        const url = "Https://builtspace.com/i/" + cust_id_padd + url_pad
         url_list.push(url)
         next_url += 1
     }
@@ -177,87 +151,4 @@ exports.handler = async (event, context, callback) => {
         return response(400, {message: err.message})
     }
     
- 
-//   var id =  Math.floor(Math.random() * 1000);
-//     const str_id = String(id)
-//     var some_urls = []
-//     console.log("NUMBER--------", body.num_urls);
-//     var serial = Math.floor(Math.random() * 100000);
-//     const order_id =  Math.floor(Math.random() * 11);
-//     var m = new Date();
-//     const num = body.num_urls;
-//     var i;
-//     console.log("num", num)
-//     for (i = 0; i < num; i++) {
-//         serial += 1;
-//         const str_serial = String(serial);
-//         const padded_serial = str_serial.padStart(6, '0');
-//         console.log("In Loop--------", i);
-//         var url = 'https://www.builtspace.com/i/' + padded_cust_id + padded_serial;
-//         some_urls.push(url)
-//     }
-//     console.log(some_urls)
-//         var url_params = {
-//             TableName: "urls-dev",
-//             Item: {
-//                 "url": "fff",
-//                 "cust_id": parseInt(cust_id),
-//                 "order_id": str_id,
-//                 "date_created": dateString,
-//                 "serial": JSON.stringify(some_urls)
-                
-//             }
-//         };
-//         docClient.put(url_params, function(err, data) {
-//             if (err) {
-//                 console.log(err);
-//                 callback(err, null);
-//             }
-//             else {
-//                 console.log("Url Created");
-//             }
-//         });
-    
-
-//         var order_params = {
-//             Item: {
-//           "cust_idorder_id": str_id, 
-//           "status": "Incomplete",
-//           "date_created": m.getUTCFullYear() +"/"+ (m.getUTCMonth()+1) +"/"+ m.getUTCDate() + " " + m.getUTCHours() + ":" + m.getUTCMinutes() + ":" + m.getUTCSeconds(),
-//           "date_completed": '',
-//           "customer_id": parseInt(body.customer_id),
-//           "num_urls": parseInt(body.num_urls),
-//             }, 
-//             ReturnConsumedCapacity: "TOTAL", 
-//             TableName: "spaceOrders-dev"
-//  }; 
-     
-    
-     
- 
-//     docClient.put(order_params, function(err, data) {
-//         if (err) {
-//             callback(err, null);
-//         }
-//         else {
-//             var response = {
-//                 "statusCode": 200,
-//                 "headers": {
-//                 "Access-Control-Allow-Origin": "*"
-//             },
-//             "body": JSON.stringify(data),
-//             "isBase64Encoded": false
-//             };
-           
-//         }
-//     });
-//   var response = {
-//                 "statusCode": 200,
-//                 "headers": {
-//                 "Access-Control-Allow-Origin": "*"
-//             },
-//             "body": JSON.stringify(some_urls),
-//             "isBase64Encoded": false
-//             };
-//  callback(null, response);
 };

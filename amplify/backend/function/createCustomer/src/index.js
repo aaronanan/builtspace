@@ -16,7 +16,7 @@ function isValidRequest(context, event) {
 
 function getId(){
   const cust_params = {
-		TableName: 'sysVars-prod',
+		TableName: 'sysVars-deploy',
 		Key: {
 			"tableVars": "custVars"
 		}
@@ -27,7 +27,7 @@ function getId(){
 
 function updateId(id){
   const cust_params = {
-		TableName: 'sysVars-prod',
+		TableName: 'sysVars-deploy',
 		Item: {
 			"tableVars": "custVars",
 		  "next_id": id + 1
@@ -53,7 +53,7 @@ function addRecord(event, id) {
   
   //final params to DynamoDB
   const params = {
-      TableName: "customers-prod",
+      TableName: "customers-deploy",
       Item: item_body,
       ReturnValues: "ALL_OLD"
   }

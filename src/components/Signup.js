@@ -10,6 +10,7 @@ import { Auth } from "aws-amplify";
 
 
 export default function Signup() {
+
   const [fields, handleFieldChange] = useFormFields({
     email: "",
     password: "",
@@ -70,6 +71,7 @@ export default function Signup() {
 
   function renderConfirmationForm() {
     return (
+      <div style={{width:"400px", marginLeft:"auto", marginRight:"auto", marginTop:"50px"}}>
       <Form onSubmit={handleConfirmationSubmit}>
         <Form.Group controlId="confirmationCode" size="lg">
           <Form.Label>Confirmation Code</Form.Label>
@@ -92,48 +94,113 @@ export default function Signup() {
           Verify
         </LoaderButton>
       </Form>
+      </div>
     );
   }
 
   function renderForm() {
     return (
-      <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="email" size="lg">
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            autoFocus
-            type="email"
-            value={fields.email}
-            onChange={handleFieldChange}
-          />
-        </Form.Group>
-        <Form.Group controlId="password" size="lg">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            value={fields.password}
-            onChange={handleFieldChange}
-          />
-        </Form.Group>
-        <Form.Group controlId="confirmPassword" size="lg">
-          <Form.Label>Confirm Password</Form.Label>
-          <Form.Control
-            type="password"
-            onChange={handleFieldChange}
-            value={fields.confirmPassword}
-          />
-        </Form.Group>
-        <LoaderButton
-          block
-          size="lg"
-          type="submit"
-          variant="success"
-          isLoading={isLoading}
-          disabled={!validateForm()}
-        >
-          Signup
-        </LoaderButton>
-      </Form>
+      <>
+      <div className="container-fluid wrapper" style={{marginTop:"50px", maxWidth:"700px"}}>
+        <div className="container login-card">
+          <div className="row">
+            <div className="col">
+            <div className="container-fluid formContainer">
+              <div className="row">
+                    <div className="container-fluid">
+                      <div className="row">
+                        <div className="col"></div>
+                        <div className="col-10 formLabel text-center">
+                          <h3>Sign Up</h3>
+                        </div>
+                        <div className="col"></div>
+                      </div>
+                    <Form onSubmit={handleSubmit}>
+                      <div className="row">
+                        <div className="col col-4">
+                          <p>Email Address</p>
+                        </div>
+                        <div className="col col-8">
+                          <Form.Group className="form-group" controlId="email" size="lg">
+                            <Form.Control
+                              autoFocus
+                              type="email"
+                              value={fields.email}
+                              onChange={handleFieldChange}
+                            />
+                          </Form.Group>
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="col col-4">
+                          <p>Password</p>
+                        </div>
+                        <div className="col col-8">
+                          <Form.Group controlId="password" size="lg">
+                          <Form.Control
+                            type="password"
+                            value={fields.password}
+                            onChange={handleFieldChange}
+                          />
+                        </Form.Group>
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="col col-4">
+                          <p>Confirm Password</p>
+                        </div>
+                        <div className="col col-8">
+                          <Form.Group controlId="confirmPassword" size="lg">
+                            <Form.Control
+                              type="password"
+                              onChange={handleFieldChange}
+                              value={fields.confirmPassword}
+                            />
+                          </Form.Group>
+                        </div>
+                      </div>
+                      <br></br>
+                      <div className="row">
+                        <div className="col text-center">
+                          <LoaderButton
+                          className="btn btn-md submitBtn"
+                          type="submit"
+                          variant="success"
+                          isLoading={isLoading}
+                          style={{width: "400px"}}
+                        >
+                          Signup
+                        </LoaderButton>
+                        </div>
+                        {/* <div className="col text-center">
+                        <LoaderButton
+                          className="btn btn-md btn-secondary cancelBtn"
+                          href="/login"
+                        >
+                          Cancel
+                        </LoaderButton>
+                        </div> */}
+                      </div>
+                      
+                      
+                    </Form>
+                    </div>
+                </div>
+                <br></br>
+                  <div className="row" style={{paddingBottom:"30px", textAlign:"center"}}>
+                    <a className="registered" href="/#/login">Already have an account?</a>
+                  </div>
+              </div>
+          </div>
+            {/* <div className="col text-center">
+              <img className="login_logo" src="logo.png" alt=""></img>
+            </div> */}
+            </div>
+          
+        </div>
+      </div>
+      
+      </>
     );
   }
 

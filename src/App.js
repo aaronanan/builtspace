@@ -12,23 +12,22 @@ import Form from './components/Form';
 import Orders from './components/Orders';
 import Customers from './components/Customers';
 import NavBar from './components/Navbar';
-import { Route, Switch } from 'react-router-dom';
-import Customer from "./components/Customer";
-import CreateOrder from "./components/CreateOrder";
-import Format from "./components/Format";
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import Create_order from "./components/CreateOrder";
 import Profile from "./components/Profile";
 import Login from "./components/Login"
 import { onError } from "./libs/errorLib";
 import Signup from "./components/Signup";
+// import Test from "./components/DelCustomer";
 
+import EditCustomer from "./components/EditCustomer"
 
 
 Amplify.configure(awsconfig);
 
 function App() {
   const URL = awsconfig.aws_cloud_logic_custom.endpoint;
-  console.log(URL)
-  const [isAuthenticated, userHasAuthenticated] = useState(true);
+  const [isAuthenticated, userHasAuthenticated] = useState(false);
   const [isAuthenticating, setIsAuthenticating] = useState(true);
  
   // Call the onLoad function only once on page load
@@ -50,18 +49,35 @@ function App() {
     setIsAuthenticating(false);
   }
 
-  return (
-    !isAuthenticating && (
-    <div className="App">
+  if (!isAuthenticated) {
+    return (
+      <Router>
         <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
         <NavBar />
           <Switch>
-            <Route path='/customers' component={Customers} />
+            <Route exact path='/signup' component={Signup} />
+            <Route exact path='/login' component={Login} />
+            <Route path='/' component={Login} />
+          </Switch>
+          </AppContext.Provider>
+    </Router>
+    )
+  }
+
+  return (
+    isAuthenticated && (
+    <Router>
+        <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
+        <NavBar />
+          <Switch>
+            <Route exact path='/' component={Customers} />
+            <Route exact path='/customers' component={Customers} />
             <Route path='/orders' component={Orders} />
             <Route path='/new_customer' component={Form} />
-            <Route path='/find_customer' component={Customer} />
-            <Route path='/create_order' component={CreateOrder} />
-            <Route path='/format' component={Format} />
+            <Route path='/customer/edit' component={EditCustomer} />
+            {/* <Route path='/create_order' component={Create_order} /> */}
+            {/* <Route path='/creating_order' component={CreateOrder} /> */}
+            {/* <Route path='/test' component={CreateOrder} /> */}
             <Route path='/profile' component={Profile} />
             <Route path='/login' component={Login} />
             <Route exact path="/signup">
@@ -69,7 +85,7 @@ function App() {
             </Route>
           </Switch>
           </AppContext.Provider>
-    </div>
+    </Router>
     )
   );
 }

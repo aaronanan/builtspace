@@ -4,14 +4,13 @@ import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link, useHistory } from "react-router-dom";
 import { Auth  } from "aws-amplify";
-
-
+import "../styles/Navbar.css";
 import { useAppContext } from "../libs/contextLib";
+// import { Nav, Form, FormControl } from "react-bootstrap";
+import { Nav, Navbar, Form, FormControl } from 'react-bootstrap';
+import BuiltspaceLogo from '../assets/company_logo.png'
 
-
-
-
-const Navbar = () => {
+const Navbar_home = () => {
 
   const { userHasAuthenticated } = useAppContext();
   const isAuthenticated = useAppContext().isAuthenticated;
@@ -60,53 +59,52 @@ const Navbar = () => {
   // };
 
 
-  const ActionButtons = (
-    <div className="actionButtons">
-        <Link to="/new_customer">
-          <img className="imgNav" alt="plus" src={ require('../plus_icon.png')} />
-        </Link>
-
-        <Link to="/find_customer">
-          <img className="imgNav" alt="qr" src={require('../qr_code.png')} />
-        </Link>
-    </div>
-  );
-
   const notLoggedIn = (
-    <>
-      <LinkContainer to="/login">
-        <Button variant="outline-info" size="nav">Login </Button>
-      </LinkContainer>
-      <LinkContainer to="/signup">
-        <Button variant="outline-info" size="nav">Sign-Up </Button>
-      </LinkContainer>
-    </>
+    <div className="navbar_header">
+    <Navbar bg="light" variant="light">
+    <Navbar.Brand href="/#/customers"><img className="navbar_logo" src={BuiltspaceLogo} alt=""></img></Navbar.Brand>
+    {/* <Nav>
+      <li style={{marginLeft:"10px"}} className="nav-item"><Nav.Link href="/#/customers">Customers</Nav.Link></li>
+      <li style={{marginLeft:"10px"}} className="nav-item"><Nav.Link href="/#/orders">Orders</Nav.Link></li>
+    </Nav> */}
+    <Nav style={{marginLeft:"auto"}}>
+      <li className="nav-item"><Nav.Link href="/#/login">Login</Nav.Link></li>
+      <li className="nav-item"><Nav.Link href="/#/signup">Signup</Nav.Link></li>
+    </Nav>
+  </Navbar>
+  </div>
   );
 
   const loggedIn = (
-    <>
-    <Button variant="outline-info" size="nav" onClick={handleLogout}>Logout || { userEmail } </Button>
-    <LinkContainer to="/customers">
-      <Button variant="outline-info" size="nav">Customers </Button>
-    </LinkContainer>
-    <LinkContainer to="/orders">
-      <Button variant="outline-info" size="nav">Orders </Button>
-    </LinkContainer>
-    <LinkContainer to="/format">
-      <Button variant="outline-info" size="nav">Format </Button>
-    </LinkContainer>
-    {ActionButtons}
-    </>
+      <div className="navbar_header">
+      <Navbar bg="light" variant="light">
+      <Navbar.Brand href="/#/customers"><img className="navbar_logo" src={BuiltspaceLogo} alt=""></img></Navbar.Brand>
+      <Nav>
+        <li style={{marginLeft:"10px"}} className="nav-item"><Nav.Link href="/#/customers">Customers</Nav.Link></li>
+        <li style={{marginLeft:"10px"}} className="nav-item"><Nav.Link href="/#/orders">Orders</Nav.Link></li>
+      </Nav>
+      <Nav style={{marginLeft:"auto"}}>
+        <li className="nav-item"><Nav.Link href="/#/login" onClick={handleLogout}>Logout</Nav.Link></li>
+      </Nav>
+    </Navbar>
+    </div>
   );
-
-
-
 
   return (
     
-    <ButtonToolbar className="custom-btn-toolbar">
-    { isAuthenticated  ? loggedIn : notLoggedIn }
-    </ButtonToolbar>
+    // // <ButtonToolbar className="custom-btn-toolbar">
+    // <>
+    // { isAuthenticated  ? loggedIn : notLoggedIn }
+    // {/* // </ButtonToolbar> */}
+
+    // loggedIn 
+    
+    
+    <>
+      { isAuthenticated  ? loggedIn : notLoggedIn }
+    </>
+
   );
 }
-export default Navbar;
+
+export default Navbar_home;

@@ -27,7 +27,7 @@ exports.handler = (event, context, callback) => {
         Key: {
          "customer_id": parseInt(event.queryStringParameters.customer_id),
         },
-        TableName: "customers-prod"
+        TableName: "customers-deploy"
         
     };
 
