@@ -87,13 +87,13 @@ const EditCustomer = (props) => {
             <h5 style={{color:"#00a14b"}}>Contact Information</h5>
             <hr style={{backgroundColor:"#00a14b"}} />
             <div style={{marginTop:"25px"}}>
-                <TextField style={{width:"240px"}} label="Contact Name" defaultValue={cus.cus_contact.c_name} variant="outlined" onChange={(e) => {customer[0].cus_contact.c_name = e.target.value}} />
-                <TextField style={{marginLeft:"15px", width:"240px"}} label="Email" defaultValue={cus.cus_contact.c_email} variant="outlined" onChange={(e) => {customer[0].cus_contact.c_email = e.target.value}} />
-                <TextField style={{marginLeft:"15px"}} label="Phone" defaultValue={cus.cus_contact.c_phone} variant="outlined" onChange={(e) => {customer[0].cus_contact.c_phone = e.target.value}} /> 
+                <TextField style={{width:"240px"}} label="Contact Name" size="small" defaultValue={cus.cus_contact.c_name} variant="outlined" onChange={(e) => {customer[0].cus_contact.c_name = e.target.value}} />
+                <TextField style={{marginLeft:"15px", width:"240px"}} size="small" label="Email" defaultValue={cus.cus_contact.c_email} variant="outlined" onChange={(e) => {customer[0].cus_contact.c_email = e.target.value}} />
+                <TextField style={{marginLeft:"15px"}} label="Phone" size="small" defaultValue={cus.cus_contact.c_phone} variant="outlined" onChange={(e) => {customer[0].cus_contact.c_phone = e.target.value}} /> 
                 {/* <TextField style={{marginLeft:"15px"}} label="Status" defaultValue={cus.cus_status} variant="outlined" onChange={(e) => {customer[0].cus_status = e.target.value}} /> */}
-                <TextField style={{marginLeft:"15px", width:"200px"}} label="Status" onChange={(e) => {customer[0].cus_status = e.target.value}} value={customer.cus_status} defaultValue={cus.cus_status} select variant="outlined" SelectProps={{native: true,}}>
+                <TextField style={{marginLeft:"15px", width:"200px"}} size="small" label="Status" onChange={(e) => {customer[0].cus_status = e.target.value}} value={customer.cus_status} defaultValue={cus.cus_status} select variant="outlined" SelectProps={{native: true,}}>
                         <option>Active</option>
-                        <option>Onboarding</option>
+                        <option>On-Boarding</option>
                         <option>Inactive</option>
                 </TextField> 
             </div>
@@ -103,11 +103,11 @@ const EditCustomer = (props) => {
             <h5 style={{color:"#00a14b"}}>Shipping Information</h5>
             <hr style={{backgroundColor:"#00a14b"}}/>
             <div style={{marginTop:"25px"}}>
-                <TextField style={{width:"300px"}} label="Address" defaultValue={cus.cus_shipping.address} variant="outlined" onChange={(e) => {customer[0].cus_shipping.address = e.target.value}} />
-                <TextField style={{marginLeft:"15px"}} label="City" defaultValue={cus.cus_shipping.city} variant="outlined" onChange={(e) => {customer[0].cus_shipping.city = e.target.value}} />
-                <TextField style={{marginLeft:"15px"}} label="Country" defaultValue={cus.cus_shipping.country} variant="outlined" onChange={(e) => {customer[0].cus_shipping.country = e.target.value}} />
-                <TextField style={{marginTop:"15px"}} label="Postal Code" defaultValue={cus.cus_shipping.post} variant="outlined" onChange={(e) => {customer[0].cus_shipping.post_code = e.target.value}} />
-                <TextField style={{marginTop:"15px", marginLeft:"15px"}} label="Province" defaultValue={cus.cus_shipping.province} variant="outlined" onChange={(e) => {customer[0].cus_shipping.province = e.target.value}} />
+                <TextField style={{width:"300px"}} label="Address" size="small" defaultValue={cus.cus_shipping.address} variant="outlined" onChange={(e) => {customer[0].cus_shipping.address = e.target.value}} />
+                <TextField style={{marginLeft:"15px"}} label="City" size="small" defaultValue={cus.cus_shipping.city} variant="outlined" onChange={(e) => {customer[0].cus_shipping.city = e.target.value}} />
+                <TextField style={{marginLeft:"15px"}} label="Country" size="small" defaultValue={cus.cus_shipping.country} variant="outlined" onChange={(e) => {customer[0].cus_shipping.country = e.target.value}} />
+                <TextField style={{marginTop:"15px"}} label="Postal Code" size="small" defaultValue={cus.cus_shipping.post} variant="outlined" onChange={(e) => {customer[0].cus_shipping.post_code = e.target.value}} />
+                <TextField style={{marginTop:"15px", marginLeft:"15px"}} label="Province" size="small" defaultValue={cus.cus_shipping.province} variant="outlined" onChange={(e) => {customer[0].cus_shipping.province = e.target.value}} />
             </div>
         </div>
 
@@ -115,12 +115,12 @@ const EditCustomer = (props) => {
             <h5 style={{color:"#00a14b"}}>Partner Information</h5>
             <hr style={{backgroundColor:"#00a14b"}}/>
             <div style={{marginTop:"25px"}}>
-                <TextField style={{width:"200px"}} label="Org ID" defaultValue={cus.cus_org_id} variant="outlined" onChange={(e) => {customer[0].org_id = e.target.value}} />
-                <TextField style={{marginLeft:"15px"}} label="Organization Name" defaultValue={cus.cus_org_name} variant="outlined" onChange={(e) => {customer[0].cus_org_name = e.target.value}} />
-                <TextField style={{width:"200px", marginLeft:"15px", marginRight:"50px"}} label="Partner ID" defaultValue={cus.partner_id} variant="outlined" onChange={(e) => {customer[0].partner_id = e.target.value}} />
-                <TextField style={{width:"300px", marginTop:"15px"}} label="Partner Name" defaultValue={cus.partner_contact.p_name} variant="outlined" onChange={(e) => {customer[0].partner_contact.p_name = e.target.value}} />
-                <TextField style={{marginLeft:"15px", width:"300px", marginTop:"15px"}} label="Partner Email" defaultValue={cus.partner_contact.p_email} variant="outlined" onChange={(e) => {customer[0].partner_contact.p_email = e.target.value}} />
-                <TextField style={{marginLeft:"15px", width:"300px", marginTop:"15px"}} label="Partner Phone" defaultValue={cus.partner_contact.p_phone} variant="outlined" onChange={(e) => {customer[0].partner_contact.p_phone = e.target.value}} />
+                <TextField style={{width:"200px"}} label="Org ID" size="small" defaultValue={cus.cus_org_id} variant="outlined" onChange={(e) => {customer[0].org_id = e.target.value}} />
+                <TextField style={{marginLeft:"15px"}} label="Organization Name" size="small" defaultValue={cus.cus_org_name} variant="outlined" onChange={(e) => {customer[0].cus_org_name = e.target.value}} />
+                <TextField style={{width:"200px", marginLeft:"15px", marginRight:"50px"}} size="small" label="Partner ID" defaultValue={cus.partner_id} variant="outlined" onChange={(e) => {customer[0].partner_id = e.target.value}} />
+                <TextField style={{width:"300px", marginTop:"15px"}} label="Partner Name" size="small" defaultValue={cus.partner_contact.p_name} variant="outlined" onChange={(e) => {customer[0].partner_contact.p_name = e.target.value}} />
+                <TextField style={{marginLeft:"15px", width:"300px", marginTop:"15px"}} size="small" label="Partner Email" defaultValue={cus.partner_contact.p_email} variant="outlined" onChange={(e) => {customer[0].partner_contact.p_email = e.target.value}} />
+                <TextField style={{marginLeft:"15px", width:"300px", marginTop:"15px"}} size="small" label="Partner Phone" defaultValue={cus.partner_contact.p_phone} variant="outlined" onChange={(e) => {customer[0].partner_contact.p_phone = e.target.value}} />
             </div>
         </div>
 
@@ -129,9 +129,9 @@ const EditCustomer = (props) => {
             <h5 style={{color:"#00a14b"}}>Sales Contact</h5>
             <hr style={{backgroundColor:"#00a14b"}}/>
             <div style={{marginTop:"25px"}}>
-                <TextField style={{width:"300px"}} label="Sales Name" defaultValue={cus.sales_contact.s_name} variant="outlined" onChange={(e) => {customer[0].sales_contact.s_name = e.target.value}} />
-                <TextField style={{marginLeft:"15px"}} label="Sales Email" defaultValue={cus.sales_contact.s_email} variant="outlined" onChange={(e) => {customer[0].sales_contact.s_email = e.target.value}} />
-                <TextField style={{marginLeft:"15px"}} label="Sales Phone" defaultValue={cus.sales_contact.s_phone} variant="outlined" onChange={(e) => {customer[0].sales_contact.s_phone = e.target.value}} />
+                <TextField style={{width:"300px"}} label="Sales Name" size="small" defaultValue={cus.sales_contact.s_name} variant="outlined" onChange={(e) => {customer[0].sales_contact.s_name = e.target.value}} />
+                <TextField style={{marginLeft:"15px"}} label="Sales Email" size="small" defaultValue={cus.sales_contact.s_email} variant="outlined" onChange={(e) => {customer[0].sales_contact.s_email = e.target.value}} />
+                <TextField style={{marginLeft:"15px"}} label="Sales Phone" size="small" defaultValue={cus.sales_contact.s_phone} variant="outlined" onChange={(e) => {customer[0].sales_contact.s_phone = e.target.value}} />
             </div>
         </div>
         </div>
