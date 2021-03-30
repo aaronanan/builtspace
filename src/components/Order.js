@@ -124,20 +124,20 @@ function Order(props) {
       <tbody>
         {orders.map((order, index) =>
           <tr key={index}>
-            <td className="text-center">{order.order_id}</td>
+            <td className="text-center align-middle">{order.order_id}</td>
             {/* <td className="text-center">{order.status}</td> */}
-            <td className="text-center">
+            <td className="text-center align-middle">
               <select value={order.order_status} id={order.order_id} onChange={e => changeStatus(e)} className="form-control inputField" style={{height:"36px", fontSize:"16px"}}>
                   <option value="Incomplete">Incomplete</option>
                   <option value="Pending">Pending</option>
                   <option value="Complete">Complete</option>
               </select>
             </td>
-            <td className="text-center">{order.order_size}</td>
-            <td className="text-center">{String(order.ord_creation_date).slice(0, 10)}</td>
+            <td className="text-center align-middle">{order.order_size}</td>
+            <td className="text-center align-middle">{String(order.ord_creation_date).slice(0, 10)}</td>
             {/* <td className="text-center"><CopyToClipboard text={order.urls ? order.urls.join("\n") : ""}><a className="btn btn-primary btn-theme">Copy URLs</a></CopyToClipboard></td> */}
             
-            <td className="text-center"><Button onClick={()=>{generateCodes(order.order_id, order.order_size, order.urls)}} variant="outlined" color="primary" style={{height:"35px", backgroundColor:"#00B060", color:"white"}} endIcon={<AutorenewIcon />}>Generate</Button> 
+            <td className="text-center align-middle"><Button className="pushButton align-middle" onClick={()=>{generateCodes(order.order_id, order.order_size, order.urls)}}   style={{height:"35px", backgroundColor:"#00B060", color:"white"}} endIcon={<AutorenewIcon />}>Generate</Button> 
             </td>
 
             {/* <td className="text-center"><Button onClick={()=>deleteOrder(order.order_id)} style={{height:"35px", backgroundColor:"#00B060", color:"white"}} endIcon={<AutorenewIcon />}>Generate</Button> 
@@ -145,7 +145,7 @@ function Order(props) {
             {/* <td className="text-center"><a className="btn btn-primary btn-theme" onClick={()=>{generateCodes(order.order_id, order.num_urls, order.urls)}}>Generate</a></td> */}
             {/* <td className="text-center"><button id={order.order_id} onClick={deleteOrder}>Delete</button></td> */}
             {/* <td className="text-center"><button id={order.order_id} onClick={deleteOrder}><DeleteIcon style={{color:"grey"}}/></button></td> */}
-            <td className="text-center"><Link onClick={()=>deleteOrder(order.order_id)}><DeleteIcon style={{color:"grey"}}/></Link></td>
+            <td className="text-center align-middle"><Link onClick={()=>deleteOrder(order.order_id)}><DeleteIcon style={{color:"grey"}}/></Link></td>
           </tr>
         )}
       </tbody>

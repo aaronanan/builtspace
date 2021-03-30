@@ -81,7 +81,7 @@ function Profile(props) {
               <p className="profile-info" style={{fontSize:"14px"}}>Org Name:</p>
             </div>
             <div className="col-md-6 profile-value text-break">
-              {customer.cus_org_name ? customer.cus_org_name : "Loading.."}
+            <p className=" align-middle">{customer.cus_org_name ? customer.cus_org_name : "Loading.."}</p>
             </div>
           </div>
           <div className="row">
@@ -89,7 +89,7 @@ function Profile(props) {
               <p className="profile-info" style={{fontSize:"14px"}}>Customer ID:</p>
             </div>
             <div className="col-md-6 profile-value text-break">
-              {customer.customer_id ? customer.customer_id : "Loading.."}
+            <p className=" align-middle">{customer.customer_id ? customer.customer_id : "Loading.."}</p>
             </div>
           </div>
           <div className="row">
@@ -97,7 +97,7 @@ function Profile(props) {
               <p className="profile-info" style={{fontSize:"14px"}}>Template:</p>
             </div>
             <div className="col-md-6 profile-value text-break">
-              {customer.cus_design ? customer.cus_design : "Loading.."}
+            <p className=" align-middle">{customer.cus_design ? customer.cus_design : "Loading.."}</p>
             </div>
           </div>
          
@@ -112,7 +112,7 @@ function Profile(props) {
             <p className="profile-info">Name:</p>
           </div>
           <div className="col-md-6 profile-value text-break">
-            {customer.cus_contact.c_name ? customer.cus_contact.c_name : "Loading.."}
+          <p className=" align-middle">{customer.cus_contact.c_name ? customer.cus_contact.c_name : "Loading.."}</p>
           </div>
         </div>
         <div className="row">
@@ -120,7 +120,7 @@ function Profile(props) {
             <p className="profile-info">Email:</p>
           </div>
           <div className="col-md-6 profile-value text-break">
-            {customer.cus_contact.c_email ? customer.cus_contact.c_email : "Loading.."}
+            <p className=" align-middle">{customer.cus_contact.c_email ? customer.cus_contact.c_email : "Loading.."}</p>
           </div>
         </div>
         <div className="row">
@@ -128,7 +128,7 @@ function Profile(props) {
             <p className="profile-info">Phone:</p>
           </div>
           <div className="col-md-6 profile-value text-break">
-            {customer.cus_contact.c_phone ? customer.cus_contact.c_phone : "Loading.."}
+          <p className=" align-middle">{customer.cus_contact.c_phone ? customer.cus_contact.c_phone : "Loading.."}</p>
           </div>
         </div>
         <div className="row">
@@ -142,7 +142,7 @@ function Profile(props) {
               <p className="profile-info">Address:</p>
             </div>
             <div className="col-md-6 profile-value text-break">
-              {customer.cus_shipping.address ? customer.cus_shipping.address : "Loading.."}
+            <p className=" align-middle">{customer.cus_shipping.address ? customer.cus_shipping.address : "Loading.."}</p>
             </div>
           </div>
           <div className="row">
@@ -150,7 +150,7 @@ function Profile(props) {
               <p className="profile-info">City:</p>
             </div>
             <div className="col-md-6 profile-value text-break">
-              {customer.cus_shipping.city ? customer.cus_shipping.city : "Loading.."}
+            <p className=" align-middle">{customer.cus_shipping.city ? customer.cus_shipping.city : "Loading.."}</p>
             </div>
           </div>
           <div className="row">
@@ -158,7 +158,7 @@ function Profile(props) {
               <p className="profile-info">Prov/State:</p>
             </div>
             <div className="col-md-6 profile-value text-break">
-              {customer.cus_shipping.province ? customer.cus_shipping.province : "Loading.."}
+            <p className=" align-middle">{customer.cus_shipping.province ? customer.cus_shipping.province : "Loading.."}</p>
             </div>
           </div>
           <div className="row">
@@ -166,7 +166,7 @@ function Profile(props) {
               <p className="profile-info">Postal Code:</p>
             </div>
             <div className="col-md-6 profile-value text-break">
-              {customer.cus_shipping.post ? customer.cus_shipping.post : "Loading.."}
+            <p className=" align-middle">{customer.cus_shipping.post ? customer.cus_shipping.post : "Loading.."}</p>
           </div>
         </div>
         <div className="row">
@@ -174,7 +174,7 @@ function Profile(props) {
             <p className="profile-info">Country</p>
           </div>
           <div className="col-md-6 profile-value text-break">
-            {customer.cus_shipping.country ? customer.cus_shipping.country : "Loading.."}
+          <p className=" align-middle">{customer.cus_shipping.country ? customer.cus_shipping.country : "Loading.."}</p>
           </div>
         </div>
         <div className="row">
@@ -188,7 +188,7 @@ function Profile(props) {
             <p className="profile-info">Name:</p>
           </div>
           <div className="col-md-6 profile-value  text-break">
-            {customer.sales_contact.s_name ? customer.sales_contact.s_name : "Loading.."}
+          <p className=" align-middle">{customer.sales_contact.s_name ? customer.sales_contact.s_name : "Loading.."}</p>
           </div>
         </div>
         <div className="row">
@@ -196,7 +196,7 @@ function Profile(props) {
             <p className="profile-info">Emp. ID:</p>
           </div>
           <div className="col-md-6 profile-value  text-break">
-            {customer.partner_id ? customer.partner_id : "Loading.."}
+          <p className=" align-middle">{customer.partner_id ? customer.partner_id : "Loading.."}</p>
           </div>
         </div>
           <div className="row">
@@ -204,7 +204,7 @@ function Profile(props) {
               <p className="profile-info">Email:</p>
             </div>
             <div className="col-md-6 profile-value  text-break">
-              <p>{customer.sales_contact.s_email ? customer.sales_contact.s_email : "Loading.."}</p>
+            <p className=" align-middle">{customer.sales_contact.s_email ? customer.sales_contact.s_email : "Loading.."}</p>
             </div>
           </div>
           </div>
@@ -223,7 +223,7 @@ function Profile(props) {
                         padding: '0 14px',
                       },
                     }}/>
-                    <Button onClick={postOrder} variant="outlined" color="primary" style={{height:"45px", backgroundColor:"#00B060", color:"white"}}>Create Order</Button> 
+                    <Button className="pushButton align-middle" onClick={postOrder} variant="outlined" color="primary" style={{height:"45px", backgroundColor:"#00B060", color:"white"}}>Create Order</Button> 
                   </div>
                 <Order customer_id={customer_id} />
               </div>

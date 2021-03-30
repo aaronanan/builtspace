@@ -117,12 +117,12 @@ function Customers() {
             <tbody>
               {filteredCustomers.map((customer, index) => 
                 <tr key={index}>
-                  <td className="text-center" id="customer_id">{String(customer.customer_id)}</td>
-                  <td className="text-center table-data">{customer.cus_contact.c_name}</td>
-                  <td className="text-center" id="name">{customer.cus_org_name}</td>
-                  <td className="text-center" id="email">{customer.cus_status}</td>
-                  <td className="text-center">{String(customer.c_creation_date).slice(0, 10)}</td>
-                  <td className="text-center" style={{width:"100px"}}>
+                  <td className="text-center align-middle" id="customer_id">{String(customer.customer_id)}</td>
+                  <td className="text-center table-data align-middle">{customer.cus_contact.c_name}</td>
+                  <td className="text-center align-middle" id="name">{customer.cus_org_name}</td>
+                  <td className="text-center align-middle" id="email">{customer.cus_status}</td>
+                  <td className="text-center align-middle">{String(customer.c_creation_date).slice(0, 10)}</td>
+                  <td className="text-center align-middle" style={{maxwidth:"100px"}}>
                     <Link to={{
                     pathname: `/profile/${customer.customer_id}`,
                     query: { customer_id: `${customer.customer_id}` }}} 
@@ -133,7 +133,7 @@ function Customers() {
                     query: { customer_id: `${customer.customer_id}` }
                     }} className="btn btn-sm btn-theme btn-middle">Submit an Order</Link>
                   </td> */}
-                  <td className="text-center"><Link to={{
+                  <td className="text-center align-middle"><Link to={{
                     pathname: `/customer/edit/${customer.customer_id}`}}><EditIcon style={{color:"grey"}}/></Link></td>
                 </tr>
               )}

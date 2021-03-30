@@ -5,7 +5,9 @@
     /* padding: 10px; */
     /* border-color: #00a14b; */
 }
-
+.pushButton {
+    text-transform: unset !important;
+}
 .order_div{
     margin-left: -30px;
 }
