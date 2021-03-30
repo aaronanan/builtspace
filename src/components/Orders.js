@@ -165,6 +165,10 @@ function Orders() {
     sortOrder: {
       name: "Order ID",
       direction: "desc"
+    },
+    onRowClick: (rowData) => {
+      // console.log(rowData[1])
+      window.location.href = `/#/profile/${rowData[1]}`;
     }
     // expandableRows: true,
     // filterType: "dropdown",

@@ -201,12 +201,13 @@ function Profile(props) {
           </div>
           </div>
 
-          <div className="col-md-9 order_div" key={index} style={{marginTop:"10px"}}>
+          <div className="col-md-9 order_div" key={index}>
           <Backdrop id="backdrop" open={open}>
             <CircularProgress color="inherit" />
           </Backdrop>
             <div className="row">
               <div className="container-fluid">
+              <h3 className="header-sub" style={{marginBottom:"-10px"}}>Create Order</h3>
                   <div style={{textAlign:"center", marginBottom:"20px"}}> 
                     <TextField type="number" onChange={(e)=>{setNumUrls(e.target.value)}} label="Quantity of URLs" defaultValue="256" variant="outlined" inputProps={{
                       style: {
@@ -217,7 +218,8 @@ function Profile(props) {
                     }}/>
                     <Button onClick={postOrder} variant="outlined" color="primary" style={{height:"45px", backgroundColor:"#00B060", color:"white"}}>Create Order</Button> 
                   </div>
-                <Order customer_id={customer_id} />
+                  <h3 className="header-sub" style={{marginBottom:"-10px"}}>List of Orders</h3>
+                <Order customer_id={customer_id}/>
               </div>
             </div>
             {/* <div className="row">
