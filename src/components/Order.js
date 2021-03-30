@@ -122,7 +122,19 @@ function Order(props) {
         </tr>
       </thead>
       <tbody>
-        {orders.map((order, index) =>
+        {orders.map((order, index) => {
+          // const [disabled, setDisabled] = useState(true)
+          var disabled = false;
+          if (order.order_status == "Complete" || order.order_status == "Pending") {
+            disabled = true
+          }
+          if (disabled) {
+            var generateButton = <td className="text-center"><Button disabled={disabled} onClick={()=>{generateCodes(order.order_id, order.order_size, order.urls)}} variant="contained" style={{height:"35px"}} endIcon={<AutorenewIcon />}>Generate</Button></td>
+          } else {
+            var generateButton = <td className="text-center"><Button disabled={disabled} onClick={()=>{generateCodes(order.order_id, order.order_size, order.urls)}} variant="contained" style={{height:"35px", backgroundColor:"#00B060", color:"white"}} endIcon={<AutorenewIcon />}>Generate</Button></td>
+          }
+
+          return (
           <tr key={index}>
             <td className="text-center">{order.order_id}</td>
             {/* <td className="text-center">{order.status}</td> */}
@@ -136,18 +148,17 @@ function Order(props) {
             <td className="text-center">{order.order_size}</td>
             <td className="text-center">{String(order.ord_creation_date).slice(0, 10)}</td>
             {/* <td className="text-center"><CopyToClipboard text={order.urls ? order.urls.join("\n") : ""}><a className="btn btn-primary btn-theme">Copy URLs</a></CopyToClipboard></td> */}
-            
-            <td className="text-center"><Button onClick={()=>{generateCodes(order.order_id, order.order_size, order.urls)}} variant="outlined" color="primary" style={{height:"35px", backgroundColor:"#00B060", color:"white"}} endIcon={<AutorenewIcon />}>Generate</Button> 
-            </td>
+            {generateButton}
 
             {/* <td className="text-center"><Button onClick={()=>deleteOrder(order.order_id)} style={{height:"35px", backgroundColor:"#00B060", color:"white"}} endIcon={<AutorenewIcon />}>Generate</Button> 
             </td> */}
             {/* <td className="text-center"><a className="btn btn-primary btn-theme" onClick={()=>{generateCodes(order.order_id, order.num_urls, order.urls)}}>Generate</a></td> */}
             {/* <td className="text-center"><button id={order.order_id} onClick={deleteOrder}>Delete</button></td> */}
             {/* <td className="text-center"><button id={order.order_id} onClick={deleteOrder}><DeleteIcon style={{color:"grey"}}/></button></td> */}
-            <td className="text-center"><Link onClick={()=>deleteOrder(order.order_id)}><DeleteIcon style={{color:"grey"}}/></Link></td>
+            <td className="text-center"><Link onClick={()=>deleteOrder(order.order_id)}><DeleteIcon style={{color:"#00B060"}}/></Link></td>
           </tr>
-        )}
+         )
+        })}
       </tbody>
     </table>
     </div>
