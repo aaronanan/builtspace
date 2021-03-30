@@ -113,12 +113,12 @@ function Order(props) {
     <table className="table table-bordered table-sm hover">
       <thead className="thead-green">
         <tr>
-          <th className="text-center left_radius">Order ID</th>
-          <th className="text-center">Status</th>
-          <th className="text-center">Amount</th>
-          <th className="text-center">Date Created</th>
-          <th className="text-center"></th>
-          <th className="text-center right_radius"></th>
+          <th style={{padding:"10px", fontSize:"15px"}} className="text-center">Order ID</th>
+          <th style={{padding:"10px", fontSize:"15px"}} className="text-center">Status</th>
+          <th style={{padding:"10px", fontSize:"15px"}} className="text-center">Amount</th>
+          <th style={{padding:"10px", fontSize:"15px"}} className="text-center">Date Created</th>
+          <th style={{padding:"10px", fontSize:"15px"}} className="text-center"></th>
+          <th style={{padding:"10px", fontSize:"15px"}} className="text-center"></th>
         </tr>
       </thead>
       <tbody>

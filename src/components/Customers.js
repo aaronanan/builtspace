@@ -78,9 +78,14 @@ function Customers() {
 
 
   return (
+    <>
+
       <div className="container">
-      <br></br>
-      
+        <br></br>
+        {/* <div className="row justify-content-center"> */}
+          <h3 className="header">Customers</h3>  
+        {/* </div> */}
+
       <div className="row justify-content-center">
         <div className="col-9">
           <div className="input-group input-group-md mb-3">
@@ -104,15 +109,15 @@ function Customers() {
         <div className="col-12">
           <table className="table table-sm table-hover table-striped">
               <tr className="thead-green">
-                <th className="text-center left_radius">ID</th>
-                <th className="text-center">Name</th>
-                <th className="text-center">Organization</th>
-                <th className="text-center">Status</th>
-                <th className="text-center">Creation Date</th>
+                <th style={{padding:"10px", fontSize:"15px"}} className="text-center">ID</th>
+                <th style={{padding:"10px", fontSize:"15px"}} className="text-center">Name</th>
+                <th style={{padding:"10px", fontSize:"15px"}} className="text-center">Organization</th>
+                <th style={{padding:"10px", fontSize:"15px"}} className="text-center">Status</th>
+                <th style={{padding:"10px", fontSize:"15px"}} className="text-center">Creation Date</th>
                 {/* <th className="text-center">More Info</th> */}
                 <th></th>
                 {/* <th></th> */}
-                <th className="text-center right_radius"></th>
+                <th className="text-center"></th>
               </tr>
             <tbody>
               {filteredCustomers.map((customer, index) => 
@@ -122,11 +127,11 @@ function Customers() {
                   <td className="text-center" id="name">{customer.cus_org_name}</td>
                   <td className="text-center" id="email">{customer.cus_status}</td>
                   <td className="text-center">{String(customer.c_creation_date).slice(0, 10)}</td>
-                  <td className="text-center" style={{width:"100px"}}>
+                  <td className="text-center" style={{width:"150px"}}>
                     <Link to={{
                     pathname: `/profile/${customer.customer_id}`,
                     query: { customer_id: `${customer.customer_id}` }}} 
-                    className="btn btn-sm btn-theme btn-middle">More Info</Link>
+                    className="btn btn-sm btn-theme btn-middle" style={{height:"30px"}}>More Info / Order</Link>
                   </td>
                   {/* <td style={{width:"170px"}}><Link to={{
                     pathname: `/create_order/${customer.customer_id}`,
@@ -134,14 +139,15 @@ function Customers() {
                     }} className="btn btn-sm btn-theme btn-middle">Submit an Order</Link>
                   </td> */}
                   <td className="text-center"><Link to={{
-                    pathname: `/customer/edit/${customer.customer_id}`}}><EditIcon style={{color:"grey"}}/></Link></td>
+                    pathname: `/customer/edit/${customer.customer_id}`}}><EditIcon style={{color:"#00b060"}}/></Link></td>
                 </tr>
               )}
             </tbody>
           </table>
         </div>
       </div>
-    </div>    
+    </div>
+    </>    
   );
 }
 

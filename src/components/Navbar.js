@@ -48,6 +48,7 @@ const Navbar_home = () => {
     }
   }, []);
 
+
   // async function getUserEmail() {
   //   try {
   //     const user = await Auth.currentSession();
@@ -89,6 +90,9 @@ const Navbar_home = () => {
     </Navbar>
     </div>
   );
+
+  // useEffect(()=>document.getElementById("customers_page").focus(), [])
+
 
   return (
     

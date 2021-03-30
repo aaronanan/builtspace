@@ -1,5 +1,5 @@
 .btn-theme{
-    background-color: #00B060 !important;
+    background-color: #00b060 !important;
     border: none !important;
     color: white !important;
 }
@@ -13,6 +13,12 @@
 .table-data {
     width: 200px;
 }
+
+.table-header {
+    padding: 10px;
+    font-size: 15px;
+}
+
 .editForm {
     background-color: whitesmoke;
     width: 1000px;
@@ -25,4 +31,15 @@
 
 .editLine {
     background-color: "#00a14b";
+}
+
+.header {
+    font-size: 40px;
+    line-height: 70px;
+    font-weight: 700;
+    letter-spacing: 0px;
+    color: #00b060;
+    /* background-color: white; */
+    width: 100%;
+    text-align: center;
 }

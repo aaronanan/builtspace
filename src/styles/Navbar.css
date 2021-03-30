@@ -3,10 +3,15 @@
     height: 60px;
 }
 
-li :hover{
+.nav-item :hover{
     background-color: #00a14b;
     color: white !important;
 }
+
+/* .nav-item :focus {
+    background-color: #00a14b;
+    color: white !important;
+  } */
 
 li a{
     border-radius: 10px;
