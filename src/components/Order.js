@@ -14,9 +14,7 @@ import { Link } from "react-router-dom";
 // const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
 
 function Order(props) {
-
   const [orders, setOrders] = useState([0]);
-
   useEffect(getSpecificOrders, [])
   // const folderName = "00" + props.customer_id.toString() + "-" + orders.order_id.toString();
   function getSpecificOrders() {
@@ -57,7 +55,7 @@ function Order(props) {
     const order_id = id
     const creation_date = orders.find(order => order.order_id == order_id).creation_date
     const confirmDelete = window.confirm(`Are you sure you want to delete Order ${order_id}?`)
-    if (confirmDelete == true) {
+    if (confirmDelete === true) {
       axios.delete(URL + '/orders/', {
         data: {
           order_id: order_id,
@@ -68,7 +66,7 @@ function Order(props) {
         }
       })
       .then(function (response) {
-        if (response.status == 200) {
+        if (response.status === 200) {
           const newOrders = orders.filter((order) => {
             return order != orders.find(order => order.order_id == order_id)
           })
@@ -80,11 +78,22 @@ function Order(props) {
       })
     }
   }
-
+  function loadButton(e,status){
+    console.log(e)
+    console.log("this that")
+    if(status === "Pending"){
+      console.log("true")
+      e.style.backgroundColor="#111111"
+    }
+  }
   function changeStatus(event) {
     const order_id = event.target.id
     const creation_date = orders.find(order => order.order_id == event.target.id).creation_date
     const status = event.target.value
+    // if (status === "Pending" || status === "Complete"){
+    //   classDicts["genButtonOn"] = false;
+    //   classDicts["genButtonOff"] = true;
+    // };
     const updatedOrders = orders.map((order) => {
       if (order.order_id == order_id) {
         order.order_status = status
@@ -137,7 +146,7 @@ function Order(props) {
             <td className="text-center align-middle">{String(order.ord_creation_date).slice(0, 10)}</td>
             {/* <td className="text-center"><CopyToClipboard text={order.urls ? order.urls.join("\n") : ""}><a className="btn btn-primary btn-theme">Copy URLs</a></CopyToClipboard></td> */}
             
-            <td className="text-center align-middle"><Button className="pushButton align-middle" onClick={()=>{generateCodes(order.order_id, order.order_size, order.urls)}}   style={{height:"35px", backgroundColor:"#00B060", color:"white"}} endIcon={<AutorenewIcon />}>Generate</Button> 
+            <td className="text-center align-middle"><Button className="pushButton align-middle" onClick={()=>{generateCodes(order.order_id,order.order_size, order.urls)}}   style={{height:"35px", backgroundColor:"#00B060" ,color:"white"}} endIcon={<AutorenewIcon />}>Generate</Button> 
             </td>
 
             {/* <td className="text-center"><Button onClick={()=>deleteOrder(order.order_id)} style={{height:"35px", backgroundColor:"#00B060", color:"white"}} endIcon={<AutorenewIcon />}>Generate</Button> 
@@ -145,7 +154,7 @@ function Order(props) {
             {/* <td className="text-center"><a className="btn btn-primary btn-theme" onClick={()=>{generateCodes(order.order_id, order.num_urls, order.urls)}}>Generate</a></td> */}
             {/* <td className="text-center"><button id={order.order_id} onClick={deleteOrder}>Delete</button></td> */}
             {/* <td className="text-center"><button id={order.order_id} onClick={deleteOrder}><DeleteIcon style={{color:"grey"}}/></button></td> */}
-            <td className="text-center align-middle"><Link onClick={()=>deleteOrder(order.order_id)}><DeleteIcon style={{color:"grey"}}/></Link></td>
+            <td className="text-center align-middle"><Link  onClick={()=>deleteOrder(order.order_id)}><DeleteIcon style={{color:"grey"}}/></Link></td>
           </tr>
         )}
       </tbody>

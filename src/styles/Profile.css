@@ -85,6 +85,14 @@ th{
     /* z-index: zIndex.drawer + 1;
     color: '#fff'; */
   }
+
+.genButtonOn{
+    background-color:"#00B060";
+}
+.genButtonOff{
+    background-color: brown;
+    
+}
 /* 
 @media (max-width: 1320px) {
     #cus-orders {

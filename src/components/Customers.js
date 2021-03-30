@@ -104,11 +104,11 @@ function Customers() {
         <div className="col-12">
           <table className="table table-sm table-hover table-striped">
               <tr className="thead-green">
-                <th className="text-center left_radius">ID</th>
-                <th className="text-center">Name</th>
-                <th className="text-center">Organization</th>
-                <th className="text-center">Status</th>
-                <th className="text-center">Creation Date</th>
+                <th className="text-center left_radius align-middle">ID</th>
+                <th className="text-center align-middle">Customer</th>
+                <th className="text-center align-middle">Main Contact Name</th>
+                <th className="text-center align-middle">Status</th>
+                <th className="text-center align-middle">Creation Date</th>
                 {/* <th className="text-center">More Info</th> */}
                 <th></th>
                 {/* <th></th> */}
@@ -118,15 +118,15 @@ function Customers() {
               {filteredCustomers.map((customer, index) => 
                 <tr key={index}>
                   <td className="text-center align-middle" id="customer_id">{String(customer.customer_id)}</td>
-                  <td className="text-center table-data align-middle">{customer.cus_contact.c_name}</td>
                   <td className="text-center align-middle" id="name">{customer.cus_org_name}</td>
+                  <td className="text-center table-data align-middle">{customer.cus_contact.c_name}</td>
                   <td className="text-center align-middle" id="email">{customer.cus_status}</td>
                   <td className="text-center align-middle">{String(customer.c_creation_date).slice(0, 10)}</td>
                   <td className="text-center align-middle" style={{maxwidth:"100px"}}>
                     <Link to={{
                     pathname: `/profile/${customer.customer_id}`,
                     query: { customer_id: `${customer.customer_id}` }}} 
-                    className="btn btn-sm btn-theme btn-middle">More Info</Link>
+                    className="btn btn-sm btn-theme btn-middle">More Info / Order</Link>
                   </td>
                   {/* <td style={{width:"170px"}}><Link to={{
                     pathname: `/create_order/${customer.customer_id}`,
