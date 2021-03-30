@@ -93,7 +93,7 @@ const EditCustomer = (props) => {
                 {/* <TextField style={{marginLeft:"15px"}} label="Status" defaultValue={cus.cus_status} variant="outlined" onChange={(e) => {customer[0].cus_status = e.target.value}} /> */}
                 <TextField style={{marginLeft:"15px", width:"200px"}} label="Status" onChange={(e) => {customer[0].cus_status = e.target.value}} value={customer.cus_status} defaultValue={cus.cus_status} select variant="outlined" SelectProps={{native: true,}}>
                         <option>Active</option>
-                        <option>Onboarding</option>
+                        <option>On-boarding</option>
                         <option>Inactive</option>
                 </TextField> 
             </div>

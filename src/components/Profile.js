@@ -9,6 +9,8 @@ import { TextField, Button } from '@material-ui/core';
 import PublishIcon from '@material-ui/icons/Publish';
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import EditIcon from '@material-ui/icons/Edit';
+
 
 // const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
 // TODO: Add more customer info fields, add axios.post request to update customer info
@@ -61,18 +63,24 @@ function Profile(props) {
     <div className="container-fluid" key={index}>
       <div className="row" key={index}>
 
-        <div className="col-md-3 cus_details mg-20 profile-sidebar" style={{maxWidth:"380px", marginBottom:"20px"}}>
+        <div className="col-md-4 cus_details mg-20 profile-sidebar" style={{marginBottom:"20px"}}>
           <div className="row">
-            <div className="col-12">
+            <div className="col-10">
               <p className="font-weight-bold profile-header">Customer Details</p>
-              <hr className="hr-line" />
+            </div>
+            <div className="col-2">
+            <Link to={{
+                    pathname: `/customer/edit/${customer.customer_id}`}}><EditIcon style={{color:"grey"}}/></Link>
+            </div>
+            <div className="col-12">
+            <hr className="hr-line" />
             </div>
           </div>
           <div className="row">
             <div className="col-md-5">
               <p className="profile-info" style={{fontSize:"14px"}}>Org Name:</p>
             </div>
-            <div className="col-md-6 profile-value">
+            <div className="col-md-6 profile-value text-break">
               {customer.cus_org_name ? customer.cus_org_name : "Loading.."}
             </div>
           </div>
@@ -80,7 +88,7 @@ function Profile(props) {
             <div className="col-md-5">
               <p className="profile-info" style={{fontSize:"14px"}}>Customer ID:</p>
             </div>
-            <div className="col-md-6 profile-value">
+            <div className="col-md-6 profile-value text-break">
               {customer.customer_id ? customer.customer_id : "Loading.."}
             </div>
           </div>
@@ -88,7 +96,7 @@ function Profile(props) {
             <div className="col-md-5">
               <p className="profile-info" style={{fontSize:"14px"}}>Template:</p>
             </div>
-            <div className="col-md-6 profile-value">
+            <div className="col-md-6 profile-value text-break">
               {customer.cus_design ? customer.cus_design : "Loading.."}
             </div>
           </div>
@@ -103,7 +111,7 @@ function Profile(props) {
           <div className="col-md-5">
             <p className="profile-info">Name:</p>
           </div>
-          <div className="col-md-6 profile-value">
+          <div className="col-md-6 profile-value text-break">
             {customer.cus_contact.c_name ? customer.cus_contact.c_name : "Loading.."}
           </div>
         </div>
@@ -111,7 +119,7 @@ function Profile(props) {
           <div className="col-md-5">
             <p className="profile-info">Email:</p>
           </div>
-          <div className="col-md-6 profile-value">
+          <div className="col-md-6 profile-value text-break">
             {customer.cus_contact.c_email ? customer.cus_contact.c_email : "Loading.."}
           </div>
         </div>
@@ -119,7 +127,7 @@ function Profile(props) {
           <div className="col-md-5">
             <p className="profile-info">Phone:</p>
           </div>
-          <div className="col-md-6 profile-value">
+          <div className="col-md-6 profile-value text-break">
             {customer.cus_contact.c_phone ? customer.cus_contact.c_phone : "Loading.."}
           </div>
         </div>
@@ -133,7 +141,7 @@ function Profile(props) {
             <div className="col-md-5">
               <p className="profile-info">Address:</p>
             </div>
-            <div className="col-md-6 profile-value">
+            <div className="col-md-6 profile-value text-break">
               {customer.cus_shipping.address ? customer.cus_shipping.address : "Loading.."}
             </div>
           </div>
@@ -141,7 +149,7 @@ function Profile(props) {
             <div className="col-md-5">
               <p className="profile-info">City:</p>
             </div>
-            <div className="col-md-6 profile-value">
+            <div className="col-md-6 profile-value text-break">
               {customer.cus_shipping.city ? customer.cus_shipping.city : "Loading.."}
             </div>
           </div>
@@ -149,7 +157,7 @@ function Profile(props) {
             <div className="col-md-5">
               <p className="profile-info">Prov/State:</p>
             </div>
-            <div className="col-md-6 profile-value">
+            <div className="col-md-6 profile-value text-break">
               {customer.cus_shipping.province ? customer.cus_shipping.province : "Loading.."}
             </div>
           </div>
@@ -157,7 +165,7 @@ function Profile(props) {
             <div className="col-md-5">
               <p className="profile-info">Postal Code:</p>
             </div>
-            <div className="col-md-6 profile-value">
+            <div className="col-md-6 profile-value text-break">
               {customer.cus_shipping.post ? customer.cus_shipping.post : "Loading.."}
           </div>
         </div>
@@ -165,7 +173,7 @@ function Profile(props) {
           <div className="col-md-5">
             <p className="profile-info">Country</p>
           </div>
-          <div className="col-md-6 profile-value">
+          <div className="col-md-6 profile-value text-break">
             {customer.cus_shipping.country ? customer.cus_shipping.country : "Loading.."}
           </div>
         </div>
@@ -179,7 +187,7 @@ function Profile(props) {
           <div className="col-md-5">
             <p className="profile-info">Name:</p>
           </div>
-          <div className="col-md-6 profile-value">
+          <div className="col-md-6 profile-value  text-break">
             {customer.sales_contact.s_name ? customer.sales_contact.s_name : "Loading.."}
           </div>
         </div>
@@ -187,7 +195,7 @@ function Profile(props) {
           <div className="col-md-5">
             <p className="profile-info">Emp. ID:</p>
           </div>
-          <div className="col-md-6 profile-value">
+          <div className="col-md-6 profile-value  text-break">
             {customer.partner_id ? customer.partner_id : "Loading.."}
           </div>
         </div>
@@ -195,18 +203,18 @@ function Profile(props) {
             <div className="col-md-5">
               <p className="profile-info">Email:</p>
             </div>
-            <div className="col-md-6 profile-value">
-              {customer.sales_contact.s_email ? customer.sales_contact.s_email : "Loading.."}
+            <div className="col-md-6 profile-value  text-break">
+              <p>{customer.sales_contact.s_email ? customer.sales_contact.s_email : "Loading.."}</p>
             </div>
           </div>
           </div>
 
-          <div className="col-md-9 order_div" key={index} style={{marginTop:"10px"}}>
+          <div className="col-md-8 order_div" key={index} style={{marginTop:"10px"}}>
           <Backdrop id="backdrop" open={open}>
             <CircularProgress color="inherit" />
           </Backdrop>
             <div className="row">
-              <div className="container-fluid">
+              <div className="col-12">
                   <div style={{textAlign:"center", marginBottom:"20px"}}> 
                     <TextField type="number" onChange={(e)=>{setNumUrls(e.target.value)}} label="Quantity of URLs" defaultValue="256" variant="outlined" inputProps={{
                       style: {
