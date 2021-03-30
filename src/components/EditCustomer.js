@@ -103,10 +103,10 @@ const EditCustomer = (props) => {
             <h5 style={{color:"#00a14b"}}>Shipping Information</h5>
             <hr style={{backgroundColor:"#00a14b"}}/>
             <div style={{marginTop:"25px"}}>
-                <TextField style={{width:"300px"}} label="Address" defaultValue={cus.cus_shipping.address} variant="outlined" onChange={(e) => {customer[0].cus_shipping.address = e.target.value}} />
+                <TextField style={{width:"700px"}} label="Address" defaultValue={cus.cus_shipping.address} variant="outlined" onChange={(e) => {customer[0].cus_shipping.address = e.target.value}} />
                 <TextField style={{marginLeft:"15px"}} label="City" defaultValue={cus.cus_shipping.city} variant="outlined" onChange={(e) => {customer[0].cus_shipping.city = e.target.value}} />
-                <TextField style={{marginLeft:"15px"}} label="Country" defaultValue={cus.cus_shipping.country} variant="outlined" onChange={(e) => {customer[0].cus_shipping.country = e.target.value}} />
-                <TextField style={{marginTop:"15px"}} label="Postal Code" defaultValue={cus.cus_shipping.post} variant="outlined" onChange={(e) => {customer[0].cus_shipping.post_code = e.target.value}} />
+                <TextField style={{marginTop:"15px"}} label="Country" defaultValue={cus.cus_shipping.country} variant="outlined" onChange={(e) => {customer[0].cus_shipping.country = e.target.value}} />
+                <TextField style={{marginTop:"15px", marginLeft:"15px"}} label="Postal Code" defaultValue={cus.cus_shipping.post} variant="outlined" onChange={(e) => {customer[0].cus_shipping.post_code = e.target.value}} />
                 <TextField style={{marginTop:"15px", marginLeft:"15px"}} label="Province" defaultValue={cus.cus_shipping.province} variant="outlined" onChange={(e) => {customer[0].cus_shipping.province = e.target.value}} />
             </div>
         </div>

@@ -79,8 +79,8 @@ function Orders() {
         let temp_obj = {};
         temp_obj["order_id"] = mergedListOfDict[i].order_id
         temp_obj["customer_id"] = mergedListOfDict[i].customer_id
-        temp_obj["name"] = mergedListOfDict[i].cus_contact.c_name
         temp_obj["org"] = mergedListOfDict[i].cus_org_name
+        temp_obj["name"] = mergedListOfDict[i].cus_contact.c_name
         temp_obj["urls"] = mergedListOfDict[i].order_size
         temp_obj["status"] = mergedListOfDict[i].order_status
         temp_obj["date_created"] = String(mergedListOfDict[i].ord_creation_date).slice(0, 10)
@@ -150,7 +150,7 @@ function Orders() {
   //     }
   //   }
   // }, 
-  "Customer ID", "Name", "Organization", "# URLs", "Status", "Date Created", "Date Updated"];
+  "Customer ID", "Customer", "Main Contact", "# URLs", "Status", "Date Created", "Date Updated"];
 
 
   const options = {
