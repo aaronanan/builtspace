@@ -155,6 +155,18 @@ const EditCustomer = (props) => {
 
     return (
         <>
+              <div className="row">
+        <div className="col"></div>
+        <div className="col-8 text-center" style={{marginTop:"40px"}}>
+        <p className="h2 formLabel" style={{color:"#00a14b"}}>Edit Customer</p>
+        <br></br>
+        <hr style={{backgroundColor:"#00a14b"}}/>
+
+        </div>
+        <div className="col"></div>
+      </div>
+        <br></br>
+        <br></br>
         {customers_list}
         {/* <input type="button" value="Test" onClick={()=>{console.log(customer)}} /> */}
         

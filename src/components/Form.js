@@ -117,10 +117,11 @@ function Form(props) {
 
   return (
     <>
+    <div className="container-fluid customerRegisteration">
     <form onSubmit={handleSubmit}>
         <div className="row">
         <div className="col"></div>
-        <div className="col-8">
+        <div className="col-10">
         <div className="container-fluid">
           <div className="row">
             <div className="col"></div>
@@ -421,7 +422,7 @@ function Form(props) {
         <div className="col"></div>
         </div>
     </form>
-    
+    </div>
     </>
   );
 }

@@ -278,11 +278,21 @@ function Orders() {
   
   return (
     <>
+    <div className="row">
+        <div className="col"></div>
+        <div className="col-8 text-center" style={{marginTop:"40px"}}>
+          <p className="h2 formLabel" style={{color:"#00a14b"}}>Orders</p>
+          <br></br>
+          <hr style={{backgroundColor:"#00a14b"}}/>
+          </div>
+        <div className="col"></div>
+      </div>
+          <br></br>
     <Backdrop style={{zIndex:"999", color:"white"}} open={open}>
       <CircularProgress color="inherit" />
     </Backdrop>
 
-    <div style={{marginTop:"40px"}}>
+    <div style={{marginTop:"40px", marginBottom:"100px"}}>
     {orders_table}
     </div>
     </>

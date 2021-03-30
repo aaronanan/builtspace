@@ -80,7 +80,18 @@ function Customers() {
   return (
       <div className="container">
       <br></br>
-      
+      <div className="row">
+        <div className="col"></div>
+        <div className="col-8 text-center" style={{marginTop:"40px"}}>
+        <p className="h2 formLabel" style={{color:"#00a14b"}}>Customers</p>
+        <br></br>
+        <hr style={{backgroundColor:"#00a14b"}}/>
+
+        </div>
+        <div className="col"></div>
+      </div>
+        <br></br>
+        <br></br>
       <div className="row justify-content-center">
         <div className="col-9">
           <div className="input-group input-group-md mb-3">
