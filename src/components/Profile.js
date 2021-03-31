@@ -9,6 +9,7 @@ import { TextField, Button } from '@material-ui/core';
 import PublishIcon from '@material-ui/icons/Publish';
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import EditIcon from '@material-ui/icons/Edit';
 
 // const URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
 // TODO: Add more customer info fields, add axios.post request to update customer info
@@ -62,31 +63,38 @@ function Profile(props) {
       <div className="row" key={index}>
 
         <div className="col-md-3 cus_details mg-20 profile-sidebar" style={{maxWidth:"380px", marginBottom:"20px"}}>
+        
           <div className="row">
-            <div className="col-12">
+            {/* <div className="col-12"> */}
               <p className="font-weight-bold profile-header">Customer Details</p>
-              <hr className="hr-line" />
-            </div>
+              <div style={{width:"fit-content", marginLeft:"auto", marginRight:"20px", marginTop:"-5px", zIndex:"100"}}>
+              <Link to={{pathname: `/customer/edit/${customer.customer_id}`}}><div style={{width:"20px"}}><EditIcon style={{color:"#00b060"}}/></div></Link>
+              </div>
+
+            {/* </div> */}
           </div>
+          <hr className="hr-line" />
+
+
           <div className="row">
-            <div className="col-md-5">
-              <p className="profile-info" style={{fontSize:"14px"}}>Org Name:</p>
+            <div className="col-md-4">
+              <p className="profile-info">Org Name:</p>
             </div>
             <div className="col-md-6 profile-value">
               {customer.cus_org_name ? customer.cus_org_name : "Loading.."}
             </div>
           </div>
           <div className="row">
-            <div className="col-md-5">
-              <p className="profile-info" style={{fontSize:"14px"}}>Customer ID:</p>
+            <div className="col-md-4">
+              <p className="profile-info">Customer ID:</p>
             </div>
             <div className="col-md-6 profile-value">
               {customer.customer_id ? customer.customer_id : "Loading.."}
             </div>
           </div>
           <div className="row">
-            <div className="col-md-5">
-              <p className="profile-info" style={{fontSize:"14px"}}>Template:</p>
+            <div className="col-md-4">
+              <p className="profile-info">Template:</p>
             </div>
             <div className="col-md-6 profile-value">
               {customer.cus_design ? customer.cus_design : "Loading.."}
@@ -94,13 +102,12 @@ function Profile(props) {
           </div>
          
         <div className="row">
-          <div className="col-12">
             <p className="font-weight-bold profile-header">Contact</p>
-            <hr className="hr-line" />
-          </div>
         </div>
+        <hr className="hr-line" />
+
         <div className="row">
-          <div className="col-md-5">
+          <div className="col-md-4">
             <p className="profile-info">Name:</p>
           </div>
           <div className="col-md-6 profile-value">
@@ -108,7 +115,7 @@ function Profile(props) {
           </div>
         </div>
         <div className="row">
-          <div className="col-md-5">
+          <div className="col-md-4">
             <p className="profile-info">Email:</p>
           </div>
           <div className="col-md-6 profile-value">
@@ -116,7 +123,7 @@ function Profile(props) {
           </div>
         </div>
         <div className="row">
-          <div className="col-md-5">
+          <div className="col-md-4">
             <p className="profile-info">Phone:</p>
           </div>
           <div className="col-md-6 profile-value">
@@ -124,13 +131,12 @@ function Profile(props) {
           </div>
         </div>
         <div className="row">
-            <div className="col-12">
               <p className="font-weight-bold profile-header">Shipping</p>
-              <hr className="hr-line" />
-            </div>
           </div>
+          <hr className="hr-line" />
+
           <div className="row">
-            <div className="col-md-5">
+            <div className="col-md-4">
               <p className="profile-info">Address:</p>
             </div>
             <div className="col-md-6 profile-value">
@@ -138,7 +144,7 @@ function Profile(props) {
             </div>
           </div>
           <div className="row">
-            <div className="col-md-5">
+            <div className="col-md-4">
               <p className="profile-info">City:</p>
             </div>
             <div className="col-md-6 profile-value">
@@ -146,7 +152,7 @@ function Profile(props) {
             </div>
           </div>
           <div className="row">
-            <div className="col-md-5">
+            <div className="col-md-4">
               <p className="profile-info">Prov/State:</p>
             </div>
             <div className="col-md-6 profile-value">
@@ -154,7 +160,7 @@ function Profile(props) {
             </div>
           </div>
           <div className="row">
-            <div className="col-md-5">
+            <div className="col-md-4">
               <p className="profile-info">Postal Code:</p>
             </div>
             <div className="col-md-6 profile-value">
@@ -162,7 +168,7 @@ function Profile(props) {
           </div>
         </div>
         <div className="row">
-          <div className="col-md-5">
+          <div className="col-md-4">
             <p className="profile-info">Country</p>
           </div>
           <div className="col-md-6 profile-value">
@@ -170,13 +176,12 @@ function Profile(props) {
           </div>
         </div>
         <div className="row">
-          <div className="col-12">
             <p className="font-weight-bold profile-header">Sales Contact</p>
-            <hr className="hr-line" />
-          </div>
         </div>
+        <hr className="hr-line" />
+
         <div className="row">
-          <div className="col-md-5">
+          <div className="col-md-4">
             <p className="profile-info">Name:</p>
           </div>
           <div className="col-md-6 profile-value">
@@ -184,7 +189,7 @@ function Profile(props) {
           </div>
         </div>
         <div className="row">
-          <div className="col-md-5">
+          <div className="col-md-4">
             <p className="profile-info">Emp. ID:</p>
           </div>
           <div className="col-md-6 profile-value">
@@ -192,7 +197,7 @@ function Profile(props) {
           </div>
         </div>
           <div className="row">
-            <div className="col-md-5">
+            <div className="col-md-4">
               <p className="profile-info">Email:</p>
             </div>
             <div className="col-md-6 profile-value">
@@ -219,7 +224,7 @@ function Profile(props) {
                     <Button onClick={postOrder} variant="outlined" color="primary" style={{height:"45px", backgroundColor:"#00B060", color:"white"}}>Create Order</Button> 
                   </div>
                   <h3 className="header-sub" style={{marginBottom:"-10px"}}>List of Orders</h3>
-                <Order customer_id={customer_id}/>
+                <Order customer_id={customer_id} customer={customer.cus_org_name}/>
               </div>
             </div>
             {/* <div className="row">

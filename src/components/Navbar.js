@@ -48,6 +48,20 @@ const Navbar_home = () => {
     }
   }, []);
 
+  // useEffect(()=>{document.getElementById("test1").style.color = "red"}, [])
+  const activeCustomers = () => {
+    document.getElementById("customers-nav-text").style.color = "white";
+    document.getElementById("customers-nav").style.backgroundColor = "#00a14b";
+    document.getElementById("orders-nav-text").style.color = "black"
+    document.getElementById("orders-nav").style.backgroundColor = "white";
+  }
+  const activeOrders = () => {
+    document.getElementById("orders-nav-text").style.color = "white"
+    document.getElementById("orders-nav").style.backgroundColor = "#00a14b";
+    document.getElementById("customers-nav-text").style.color = "black";
+    document.getElementById("customers-nav").style.backgroundColor = "white";
+  }
+
 
   // async function getUserEmail() {
   //   try {
@@ -69,8 +83,8 @@ const Navbar_home = () => {
       <li style={{marginLeft:"10px"}} className="nav-item"><Nav.Link href="/#/orders">Orders</Nav.Link></li>
     </Nav> */}
     <Nav style={{marginLeft:"auto"}}>
-      <li className="nav-item"><Nav.Link href="/#/login">Login</Nav.Link></li>
-      <li className="nav-item"><Nav.Link href="/#/signup">Signup</Nav.Link></li>
+      <li className="nav-item"><Nav.Link href="/#/login" className="nav-item-link">Login</Nav.Link></li>
+      <li className="nav-item"><Nav.Link href="/#/signup" className="nav-item-link">Signup</Nav.Link></li>
     </Nav>
   </Navbar>
   </div>
@@ -81,8 +95,8 @@ const Navbar_home = () => {
       <Navbar bg="light" variant="light">
       <Navbar.Brand href="/#/customers"><img className="navbar_logo" src={BuiltspaceLogo} alt=""></img></Navbar.Brand>
       <Nav>
-        <li style={{marginLeft:"10px"}} className="nav-item"><Nav.Link href="/#/customers">Customers</Nav.Link></li>
-        <li style={{marginLeft:"10px"}} className="nav-item"><Nav.Link href="/#/orders">Orders</Nav.Link></li>
+        <li style={{marginLeft:"10px"}} className="nav-item" id="customers-nav-text"><Nav.Link href="/#/customers" onClick={activeCustomers} id="customers-nav">Customers</Nav.Link></li>
+        <li style={{marginLeft:"10px"}} className="nav-item" id="orders-nav-text"><Nav.Link href="/#/orders" onClick={activeOrders} id="orders-nav">Orders</Nav.Link></li>
       </Nav>
       <Nav style={{marginLeft:"auto"}}>
         <li className="nav-item"><Nav.Link href="/#/login" onClick={handleLogout}>Logout</Nav.Link></li>

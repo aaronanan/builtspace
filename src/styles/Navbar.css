@@ -8,10 +8,10 @@
     color: white !important;
 }
 
-/* .nav-item :focus {
-    background-color: #00a14b;
-    color: white !important;
-  } */
+.nav-item-link {
+    background-color: #f8f9fa !important;
+    color: black !important;
+  }
 
 li a{
     border-radius: 10px;
@@ -21,6 +21,7 @@ li a{
 
 li a:hover{
     color: white !important;
+    background-color: #00a14b !important;
     
 }
 
@@ -43,4 +44,10 @@ tbody tr:hover{
     /* background-color: whitesmoke; */
     /* box-shadow:         3px 3px 5px 4px #ccc; */
     box-shadow:         2px 2px 5px 2px #ccc; 
+}
+#customers-nav {
+    background-color: #00a14b;
+}
+#customers-nav-text {
+    color: white;
 }

@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
 function Order(props) {
 
   const [orders, setOrders] = useState([0]);
-
+  // console.log(props)
   useEffect(getSpecificOrders, [])
   // const folderName = "00" + props.customer_id.toString() + "-" + orders.order_id.toString();
   function getSpecificOrders() {
@@ -37,9 +37,15 @@ function Order(props) {
     });
   };
 
-  function generateCodes(id, num, urls) {
-    var folderName = "00" + props.customer_id.toString() + "-" + id.toString() + "-" + num.toString();
-    
+  function generateCodes(order) {
+    const id = order.order_id;
+    const num = order.order_size; 
+    const urls = order.urls;
+    const name = props.customer;
+    // var folderName = name.replace(" ", "_").toLowerCase() + "_"+ props.customer_id.toString() + "-" + id.toString() + "-" + num.toString();
+    var folderName = name.replace(" ", "_").toLowerCase() + "_" + id.toString() + "_" + num.toString();
+    // console.log(folderName)
+
     let inputValues = "[";
     for (let i in urls) {
       inputValues += "[" + urls[i] + "],"
@@ -129,9 +135,9 @@ function Order(props) {
             disabled = true
           }
           if (disabled) {
-            var generateButton = <td className="text-center"><Button disabled={disabled} onClick={()=>{generateCodes(order.order_id, order.order_size, order.urls)}} variant="contained" style={{height:"35px"}} endIcon={<AutorenewIcon />}>Generate</Button></td>
+            var generateButton = <td className="text-center"><Button disabled={disabled} onClick={()=>{generateCodes(order)}} variant="contained" style={{height:"35px"}} endIcon={<AutorenewIcon />}>Generate</Button></td>
           } else {
-            var generateButton = <td className="text-center"><Button disabled={disabled} onClick={()=>{generateCodes(order.order_id, order.order_size, order.urls)}} variant="contained" style={{height:"35px", backgroundColor:"#00B060", color:"white"}} endIcon={<AutorenewIcon />}>Generate</Button></td>
+            var generateButton = <td className="text-center"><Button disabled={disabled} onClick={()=>{generateCodes(order)}} variant="contained" style={{height:"35px", backgroundColor:"#00B060", color:"white"}} endIcon={<AutorenewIcon />}>Generate</Button></td>
           }
 
           return (

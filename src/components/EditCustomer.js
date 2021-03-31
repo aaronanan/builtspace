@@ -47,8 +47,8 @@ const EditCustomer = (props) => {
             },
         })  
         .then(function (response) {
-            console.log("test", response);
-            props.history.push('/profile/' + customer_id)
+            // props.history.push('/profile/' + customer_id)
+            window.history.back();
             }
         )
         .catch(function (error) {
@@ -142,7 +142,8 @@ const EditCustomer = (props) => {
                 <Button style={{width:"150px"}} onClick={updateCustomer} className="btn btn-success">Save Changes</Button>
                 {/* <a href="/customers"><Button style={{width:"150px", marginLeft:'50px'}} onClick={deleteCustomer} className="btn btn-danger">Delete</Button></a> */}
                 <Button style={{width:"150px", marginLeft:'50px'}} onClick={deleteCustomer} className="btn btn-danger">Delete</Button>
-                <Link to="/customers"><Button style={{marginLeft:'50px', width:"150px"}} className="btn btn-md btn-secondary">Cancel</Button></Link>
+                {/* <Link to="/customers"><Button style={{marginLeft:'50px', width:"150px"}} className="btn btn-md btn-secondary">Cancel</Button></Link> */}
+                <Button onClick={()=>window.history.back()} style={{marginLeft:'50px', width:"150px"}} className="btn btn-md btn-secondary">Cancel</Button>
                 <Link to="/customers"><Input type="hidden" id="deletedCustomer">Delete</Input></Link>
             </div>
         </>

@@ -6,6 +6,8 @@ import { LinkContainer } from 'react-router-bootstrap';
 import "../styles/Customers.css";
 import { access_token, URL } from "../aws-token" 
 import EditIcon from '@material-ui/icons/Edit';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Backdrop from '@material-ui/core/Backdrop';
 
 function Customers() {
 
@@ -13,6 +15,7 @@ function Customers() {
   const [customers, setCustomers] = useState([]);
   const [filteredCustomers, setFilteredCustomers] = useState([]);
   const [search, setSearch] = useState("");
+  const [open, setOpen] = useState(true);
 
   
   useEffect(sortCustomers, [search])
@@ -27,6 +30,7 @@ function Customers() {
       const dbCustomers = orderCustomers(response.data.Items)
       setCustomers(dbCustomers)
       setFilteredCustomers(dbCustomers)
+      setOpen(false)
     })
     .catch(function (error) {
       console.log(error);
@@ -81,6 +85,9 @@ function Customers() {
     <>
 
       <div className="container">
+      <Backdrop id="backdrop" open={open}>
+            <CircularProgress color="inherit" />            
+          </Backdrop>
         <br></br>
         {/* <div className="row justify-content-center"> */}
           <h3 className="header">Customers</h3>  
@@ -110,8 +117,8 @@ function Customers() {
           <table className="table table-sm table-hover table-striped">
               <tr className="thead-green">
                 <th style={{padding:"10px", fontSize:"15px"}} className="text-center">ID</th>
-                <th style={{padding:"10px", fontSize:"15px"}} className="text-center">Name</th>
-                <th style={{padding:"10px", fontSize:"15px"}} className="text-center">Organization</th>
+                <th style={{padding:"10px", fontSize:"15px"}} className="text-center">Customer</th>
+                <th style={{padding:"10px", fontSize:"15px"}} className="text-center">Main Contact Name</th>
                 <th style={{padding:"10px", fontSize:"15px"}} className="text-center">Status</th>
                 <th style={{padding:"10px", fontSize:"15px"}} className="text-center">Creation Date</th>
                 {/* <th className="text-center">More Info</th> */}
@@ -123,8 +130,8 @@ function Customers() {
               {filteredCustomers.map((customer, index) => 
                 <tr key={index}>
                   <td className="text-center" id="customer_id">{String(customer.customer_id)}</td>
-                  <td className="text-center table-data">{customer.cus_contact.c_name}</td>
                   <td className="text-center" id="name">{customer.cus_org_name}</td>
+                  <td className="text-center table-data">{customer.cus_contact.c_name}</td>
                   <td className="text-center" id="email">{customer.cus_status}</td>
                   <td className="text-center">{String(customer.c_creation_date).slice(0, 10)}</td>
                   <td className="text-center" style={{width:"150px"}}>
