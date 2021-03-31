@@ -114,7 +114,7 @@ function Customers() {
 
       <div className="row justify-content-center">
         <div className="col-12">
-          <table className="table table-sm table-hover table-striped">
+          <table className="table table-sm table-hover table-striped table-shadow">
               <tr className="thead-green">
                 <th style={{padding:"10px", fontSize:"15px"}} className="text-center">ID</th>
                 <th style={{padding:"10px", fontSize:"15px"}} className="text-center">Customer</th>

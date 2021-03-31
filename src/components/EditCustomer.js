@@ -157,6 +157,7 @@ const EditCustomer = (props) => {
 
     return (
         <>
+        <h3 className="header" style={{marginTop:"10px"}}>Edit Customer</h3>
         {customers_list}
         {/* <input type="button" value="Test" onClick={()=>{console.log(customer)}} /> */}
         
