@@ -62,11 +62,13 @@ td{
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 40%;
+    margin-top: 20px;
   }
   
   .registerModalText {
-    color: #000;
+    color: green;
+    font-size: 18px;
   }
   
   /* The Close Button */

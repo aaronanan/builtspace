@@ -406,20 +406,22 @@ const EditCustomer = (props) => {
           <div
             style={{
               textAlign: "center",
-              paddingTop: "20px",
+              paddingTop: "30px",
               paddingBottom: "40px",
+              marginTop:"50px"
             }}
           >
             <Button
-              style={{ width: "150px" }}
+              style={{ width: "150px", fontSize:"18px", borderRadius:"10px" }}
               onClick={updateCustomer}
               className="btn btn-success"
+              variant="contained"
             >
               Save Changes
             </Button>
             {/* <a href="/customers"><Button style={{width:"150px", marginLeft:'50px'}} onClick={deleteCustomer} className="btn btn-danger">Delete</Button></a> */}
             <Button
-              style={{ width: "150px", marginLeft: "50px" }}
+              style={{ width: "150px", fontSize:"18px", marginLeft: "50px", borderRadius:"10px", backgroundColor:"red" }}
               onClick={deleteCustomer}
               className="btn btn-danger"
             >
@@ -428,7 +430,7 @@ const EditCustomer = (props) => {
             {/* <Link to="/customers"><Button style={{marginLeft:'50px', width:"150px"}} className="btn btn-md btn-secondary">Cancel</Button></Link> */}
             <Button
               onClick={() => window.history.back()}
-              style={{ marginLeft: "50px", width: "150px" }}
+              style={{ marginLeft: "50px", width: "150px", fontSize:"18px", marginLeft: "50px", borderRadius:"10px" }}
               className="btn btn-md btn-secondary"
             >
               Cancel

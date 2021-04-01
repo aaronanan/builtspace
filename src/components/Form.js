@@ -52,6 +52,7 @@ function Form(props) {
   function handleSubmit(e) {
     // const confirmCreate = window.confirm(`Are you sure you want to delete Order ${order_id}?`)
     e.preventDefault();
+    // const confirmDelete = window.confirm(`Are you sure you want to delete Order ${order_id}?`)
     axios
       .post(URL + "/customers", {
         cus_status: status,
@@ -234,7 +235,7 @@ function Form(props) {
                             marginLeft: "15px",
                             width: "400px",
                           }}
-                          label="Preferred template"
+                          label="Preferred Template"
                           variant="outlined"
                           size="small"
                           value={pref_des}
@@ -427,22 +428,23 @@ function Form(props) {
                 textAlign: "center",
                 paddingTop: "20px",
                 paddingBottom: "40px",
+                marginTop:"50px"
               }}
             >
               <div>
                 <Button
                   className="btn btn-success"
-                  style={{ width: "150px" }}
+                  style={{ width: "150px", fontSize:"18px", borderRadius:"10px" }}
                   type="submit"
                   onClick={(e) => {
                     musicianRegisterModal();
                   }}
                 >
-                  Create Customer
+                  Create
                 </Button>
                 <a
                   className="btn btn-md btn-secondary btn-secondary-form"
-                  style={{ width: "150px", marginLeft: "50px" }}
+                  style={{ width: "150px", fontSize:"18px", borderRadius:"10px", marginLeft: "50px" }}
                   href="/#/customers"
                 >
                   Cancel

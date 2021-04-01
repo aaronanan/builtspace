@@ -75,15 +75,6 @@ function Profile(props) {
           </div>
           <hr className="hr-line" />
 
-
-          <div className="row">
-            <div className="col-md-4">
-              <p className="profile-info">Name:</p>
-            </div>
-            <div className="col-md-6 profile-value">
-              {customer.cus_org_name ? customer.cus_org_name : "Loading.."}
-            </div>
-          </div>
           <div className="row">
             <div className="col-md-4">
               <p className="profile-info">ID:</p>
@@ -92,6 +83,15 @@ function Profile(props) {
               {customer.customer_id ? customer.customer_id : "Loading.."}
             </div>
           </div>
+          <div className="row">
+            <div className="col-md-4">
+              <p className="profile-info">Customer:</p>
+            </div>
+            <div className="col-md-6 profile-value">
+              {customer.cus_org_name ? customer.cus_org_name : "Loading.."}
+            </div>
+          </div>
+         
           <div className="row">
             <div className="col-md-4">
               <p className="profile-info">Template:</p>
@@ -221,7 +221,7 @@ function Profile(props) {
                         padding: '0 14px',
                       },
                     }}/>
-                    <Button onClick={postOrder} variant="outlined" color="primary" style={{height:"45px", backgroundColor:"#00B060", color:"white"}}>Create Order</Button> 
+                    <Button onClick={postOrder} color="primary" variant="contained" style={{height:"45px", backgroundColor:"#00B060", color:"white"}}>Create Order</Button> 
                   </div>
                   <h3 className="header-sub" style={{marginBottom:"-10px"}}>List of Orders</h3>
                 <Order customer_id={customer_id} customer={customer.cus_org_name}/>

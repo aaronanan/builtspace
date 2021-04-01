@@ -53,13 +53,13 @@ const Navbar_home = () => {
     document.getElementById("customers-nav-text").style.color = "white";
     document.getElementById("customers-nav").style.backgroundColor = "#00a14b";
     document.getElementById("orders-nav-text").style.color = "black"
-    document.getElementById("orders-nav").style.backgroundColor = "white";
+    document.getElementById("orders-nav").style.backgroundColor = "#f8f9fa";
   }
   const activeOrders = () => {
     document.getElementById("orders-nav-text").style.color = "white"
     document.getElementById("orders-nav").style.backgroundColor = "#00a14b";
     document.getElementById("customers-nav-text").style.color = "black";
-    document.getElementById("customers-nav").style.backgroundColor = "white";
+    document.getElementById("customers-nav").style.backgroundColor = "#f8f9fa";
   }
 
 
