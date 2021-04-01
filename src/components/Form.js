@@ -145,23 +145,23 @@ function Form(props) {
                           onChange={(e) => setOrgName(e.target.value)}
                         />
                       </td>
-                    </tr>
-                    <br />
-                    <tr>
                       <td>
                         <TextField
                           style={{
                             width: "200px",
-                            marginLeft: "15px",
+                            // marginLeft: "15px",
                             width: "400px",
                           }}
                           variant="outlined"
                           size="small"
-                          label="Contact Name"
+                          label="Main Contact Name"
                           value={ContactName}
                           onChange={(e) => setContactName(e.target.value)}
                         />
                       </td>
+                    </tr>
+                    <br />
+                    <tr>
                       <td>
                         <TextField
                           style={{
@@ -176,13 +176,9 @@ function Form(props) {
                           onChange={(e) => setContactEmail(e.target.value)}
                         />
                       </td>
-                    </tr>
-                    <tr>
                       <td>
                         <TextField
                           style={{
-                            marginTop: "15px",
-                            marginLeft: "15px",
                             width: "400px",
                           }}
                           variant="outlined"
@@ -192,12 +188,15 @@ function Form(props) {
                           onChange={(e) => setContactPhone(e.target.value)}
                         />
                       </td>
+                    </tr>
+                    <br />
+
+                    <tr>
                       <td>
                         <TextField
                           style={{
                             marginLeft: "15px",
                             width: "400px",
-                            marginTop: "15px",
                           }}
                           variant="outlined"
                           label="Status"
@@ -213,14 +212,10 @@ function Form(props) {
                           <option>Inactive</option>
                         </TextField>
                       </td>
-                    </tr>
-                    <tr>
                       <td>
                         <TextField
                           style={{
-                            marginLeft: "15px",
                             width: "400px",
-                            marginTop: "15px",
                           }}
                           label="Serial Prefix"
                           variant="outlined"
@@ -229,12 +224,15 @@ function Form(props) {
                           onChange={(e) => setSerialPrefix(e.target.value)}
                         />
                       </td>
+                    </tr>
+                    <br />
+
+                    <tr>
                       <td>
                         <TextField
                           style={{
                             marginLeft: "15px",
                             width: "400px",
-                            marginTop: "15px",
                           }}
                           label="Preferred template"
                           variant="outlined"
@@ -300,11 +298,12 @@ function Form(props) {
                         />
                       </td>
                     </tr>
+                    <br />
+
                     <tr>
                       <td>
                         <TextField
                           style={{
-                            marginTop: "15px",
                             marginLeft: "15px",
                             width: "400px",
                           }}
@@ -328,7 +327,7 @@ function Form(props) {
                 <div style={{ marginTop: "25px" }}>
                   <table style={{ width: "100%" }}>
                     <tr>
-                      <td>
+                      {/* <td>
                         <TextField
                           style={{ width: "400px", marginLeft: "15px" }}
                           label="Partner ID"
@@ -337,7 +336,7 @@ function Form(props) {
                           value={partner_id}
                           onChange={(e) => setPartnerId(e.target.value)}
                         />
-                      </td>
+                      </td> */}
                       <td>
                         <TextField
                           style={{ width: "400px", marginLeft: "15px" }}
@@ -348,8 +347,6 @@ function Form(props) {
                           onChange={(e) => setPartnerName(e.target.value)}
                         />
                       </td>
-                    </tr>
-                    <tr>
                       <td>
                         <TextField
                           style={{ marginLeft: "15px", width: "400px" }}
@@ -360,12 +357,14 @@ function Form(props) {
                           onChange={(e) => setPartnerEmail(e.target.value)}
                         />
                       </td>
+                    </tr>
+                    <br />
+                    <tr>
                       <td>
                         <TextField
                           style={{
                             marginLeft: "15px",
                             width: "400px",
-                            marginTop: "15px",
                           }}
                           label="Partner Phone"
                           variant="outlined"
@@ -383,40 +382,43 @@ function Form(props) {
                 <h5 style={{ color: "#00a14b" }}>Sales Contact</h5>
                 <hr style={{ backgroundColor: "#00a14b" }} />
                 <div style={{ marginTop: "25px" }}>
-                  <table style={{width: "100%"}}>
+                  <table style={{ width: "100%" }}>
                     <tr>
-                      <td><TextField
-                    style={{ width: "400px", marginLeft: "15px" }}
-                    label="Sales Name"
-                    variant="outlined"
-                    size="small"
-                    value={sales_cont_name}
-                    onChange={(e) => setSalesContName(e.target.value)}
-                  /></td>
-                      <td><TextField
-                    style={{ marginLeft: "15px", width: "400px" }}
-                    label="Sales Email"
-                    size="small"
-                    variant="outlined"
-                    value={sales_cont_email}
-                    onChange={(e) => setSalesContEmail(e.target.value)}
-                  /></td>
+                      <td>
+                        <TextField
+                          style={{ width: "400px", marginLeft: "15px" }}
+                          label="Sales Name"
+                          variant="outlined"
+                          size="small"
+                          value={sales_cont_name}
+                          onChange={(e) => setSalesContName(e.target.value)}
+                        />
+                      </td>
+                      <td>
+                        <TextField
+                          style={{ marginLeft: "15px", width: "400px" }}
+                          label="Sales Email"
+                          size="small"
+                          variant="outlined"
+                          value={sales_cont_email}
+                          onChange={(e) => setSalesContEmail(e.target.value)}
+                        />
+                      </td>
                     </tr>
-                    <br/>
+                    <br />
                     <tr>
-                      <td><TextField
-                    style={{ marginLeft: "15px", width: "400px" }}
-                    label="Sales Phone"
-                    variant="outlined"
-                    size="small"
-                    value={sales_cont_phone}
-                    onChange={(e) => setSalesContPhone(e.target.value)}
-                  /></td>
+                      <td>
+                        <TextField
+                          style={{ marginLeft: "15px", width: "400px" }}
+                          label="Sales Phone"
+                          variant="outlined"
+                          size="small"
+                          value={sales_cont_phone}
+                          onChange={(e) => setSalesContPhone(e.target.value)}
+                        />
+                      </td>
                     </tr>
                   </table>
-                  
-                  
-                  
                 </div>
               </div>
             </div>

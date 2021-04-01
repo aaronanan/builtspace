@@ -15,7 +15,8 @@ const EditCustomer = (props) => {
   useEffect(getCustomer, []);
 
   function getCustomer() {
-    axios.get(URL + "/customers/" + customer_id, {
+    axios
+      .get(URL + "/customers/" + customer_id, {
         headers: {
           "x-api-key": access_token,
         },
@@ -30,7 +31,8 @@ const EditCustomer = (props) => {
   }
 
   function updateCustomer() {
-    axios.put(
+    axios
+      .put(
         URL + "/customers/",
         {
           customer_id: customer[0].customer_id,
@@ -42,7 +44,7 @@ const EditCustomer = (props) => {
           partner_contact: customer[0].partner_contact,
           partner_id: customer[0].partner_id,
           sales_contact: customer[0].sales_contact,
-          serial_prefix: customer[0].serial_prefix
+          serial_prefix: customer[0].serial_prefix,
         },
         {
           headers: {
@@ -85,14 +87,10 @@ const EditCustomer = (props) => {
 
   const customers_list = customer.map((cus, index) => (
     <div style={{ paddingBottom: "200px" }}>
-        
       <div key={index} className="editForm">
-
         <div>
           <div style={{ padding: "20px" }}>
-          <h3 className="header">
-        Edit Customer
-      </h3>
+            <h3 className="header">Edit Customer</h3>
             <h5 style={{ color: "#00a14b" }}>Contact Information</h5>
             <hr style={{ backgroundColor: "#00a14b" }} />
             <div style={{ marginTop: "25px" }}>
@@ -100,7 +98,7 @@ const EditCustomer = (props) => {
                 <tr>
                   <td>
                     <TextField
-                      style={{ width: "400px" }}
+                      style={{ width: "400px", marginLeft: "15px" }}
                       label="Customer"
                       size="small"
                       defaultValue={cus.cus_org_name}
@@ -110,12 +108,9 @@ const EditCustomer = (props) => {
                       }}
                     />
                   </td>
-                </tr>
-                <br />
-                <tr>
                   <td>
                     <TextField
-                      style={{ width: "400px" }}
+                      style={{ width: "400px", marginLeft: "15px" }}
                       label="Contact Name"
                       size="small"
                       defaultValue={cus.cus_contact.c_name}
@@ -125,9 +120,12 @@ const EditCustomer = (props) => {
                       }}
                     />
                   </td>
+                </tr>
+                <br />
+                <tr>
                   <td>
                     <TextField
-                      style={{ width: "400px" }}
+                      style={{ width: "400px", marginLeft: "15px" }}
                       size="small"
                       label="Email"
                       defaultValue={cus.cus_contact.c_email}
@@ -137,12 +135,9 @@ const EditCustomer = (props) => {
                       }}
                     />
                   </td>
-                </tr>
-                <br />
-                <tr>
                   <td>
                     <TextField
-                      style={{ width: "400px" }}
+                      style={{ width: "400px", marginLeft: "15px" }}
                       label="Phone"
                       size="small"
                       defaultValue={cus.cus_contact.c_phone}
@@ -152,9 +147,12 @@ const EditCustomer = (props) => {
                       }}
                     />
                   </td>
+                </tr>
+                <br />
+                <tr>
                   <td>
                     <TextField
-                      style={{ width: "400px" }}
+                      style={{ width: "400px", marginLeft: "15px" }}
                       size="small"
                       label="Status"
                       onChange={(e) => {
@@ -171,11 +169,9 @@ const EditCustomer = (props) => {
                       <option>Inactive</option>
                     </TextField>
                   </td>
-                </tr>
-                <br/>
-                <tr>
-                    <td><TextField
-                      style={{ width: "400px" }}
+                  <td>
+                    <TextField
+                      style={{ width: "400px", marginLeft: "15px" }}
                       label="Serial Prefix"
                       size="small"
                       defaultValue={cus.serial_prefix}
@@ -183,9 +179,14 @@ const EditCustomer = (props) => {
                       onChange={(e) => {
                         customer[0].serial_prefix = e.target.value;
                       }}
-                    /></td>
-                    <td><TextField
-                      style={{ width: "400px" }}
+                    />
+                  </td>
+                </tr>
+                <br />
+                <tr>
+                  <td>
+                    <TextField
+                      style={{ width: "400px", marginLeft: "15px" }}
                       label="Preferred Template"
                       size="small"
                       defaultValue={cus.cus_design}
@@ -193,7 +194,8 @@ const EditCustomer = (props) => {
                       onChange={(e) => {
                         customer[0].cus_design = e.target.value;
                       }}
-                    /></td>
+                    />
+                  </td>
                 </tr>
               </table>
 
@@ -209,7 +211,7 @@ const EditCustomer = (props) => {
                 <tr>
                   <td>
                     <TextField
-                      style={{ width: "400px" }}
+                      style={{ width: "400px", marginLeft: "15px" }}
                       label="Address"
                       size="small"
                       defaultValue={cus.cus_shipping.address}
@@ -221,7 +223,7 @@ const EditCustomer = (props) => {
                   </td>
                   <td>
                     <TextField
-                      style={{ width: "400px" }}
+                      style={{ width: "400px", marginLeft: "15px" }}
                       label="City"
                       size="small"
                       defaultValue={cus.cus_shipping.city}
@@ -236,7 +238,7 @@ const EditCustomer = (props) => {
                 <tr>
                   <td>
                     <TextField
-                      style={{ width: "400px" }}
+                      style={{ width: "400px", marginLeft: "15px" }}
                       label="Country"
                       size="small"
                       defaultValue={cus.cus_shipping.country}
@@ -248,7 +250,7 @@ const EditCustomer = (props) => {
                   </td>
                   <td>
                     <TextField
-                      style={{ width: "400px" }}
+                      style={{ width: "400px", marginLeft: "15px" }}
                       label="Postal Code"
                       size="small"
                       defaultValue={cus.cus_shipping.post}
@@ -263,7 +265,7 @@ const EditCustomer = (props) => {
                 <tr>
                   <td>
                     <TextField
-                      style={{width:"400px"}}
+                      style={{ width: "400px", marginLeft: "15px" }}
                       label="Province"
                       size="small"
                       defaultValue={cus.cus_shipping.province}
@@ -284,10 +286,11 @@ const EditCustomer = (props) => {
             <div style={{ marginTop: "25px" }}>
               <table style={{ width: "100%" }}>
                 <tr>
-                  <td>
+                  {/* <td>
                     <TextField
                       style={{
                         width: "400px",
+                        marginLeft:"15px"
                       }}
                       size="small"
                       label="Partner ID"
@@ -297,10 +300,10 @@ const EditCustomer = (props) => {
                         customer[0].partner_id = e.target.value;
                       }}
                     />
-                  </td>
+                  </td> */}
                   <td>
                     <TextField
-                      style={{ width: "400px" }}
+                      style={{ width: "400px", marginLeft: "15px" }}
                       label="Partner Name"
                       size="small"
                       defaultValue={cus.partner_contact.p_name}
@@ -310,13 +313,11 @@ const EditCustomer = (props) => {
                       }}
                     />
                   </td>
-                </tr>
-                <br />
-                <tr>
                   <td>
                     <TextField
                       style={{
                         width: "400px",
+                        marginLeft: "15px",
                       }}
                       size="small"
                       label="Partner Email"
@@ -327,10 +328,14 @@ const EditCustomer = (props) => {
                       }}
                     />
                   </td>
+                </tr>
+                <br />
+                <tr>
                   <td>
                     <TextField
                       style={{
                         width: "400px",
+                        marginLeft: "15px",
                       }}
                       size="small"
                       label="Partner Phone"
@@ -354,7 +359,7 @@ const EditCustomer = (props) => {
                 <tr>
                   <td>
                     <TextField
-                      style={{ width: "400px" }}
+                      style={{ width: "400px", marginLeft: "15px" }}
                       label="Sales Name"
                       size="small"
                       defaultValue={cus.sales_contact.s_name}
@@ -366,7 +371,7 @@ const EditCustomer = (props) => {
                   </td>
                   <td>
                     <TextField
-                      style={{ width: "400px" }}
+                      style={{ width: "400px", marginLeft: "15px" }}
                       label="Sales Email"
                       size="small"
                       defaultValue={cus.sales_contact.s_email}
@@ -381,7 +386,7 @@ const EditCustomer = (props) => {
                 <tr>
                   <td>
                     <TextField
-                      style={{ width: "400px" }}
+                      style={{ width: "400px", marginLeft: "15px" }}
                       label="Sales Phone"
                       size="small"
                       defaultValue={cus.sales_contact.s_phone}
@@ -441,7 +446,6 @@ const EditCustomer = (props) => {
 
   return (
     <>
-
       {customers_list}
       {/* <input type="button" value="Test" onClick={()=>{console.log(customer)}} /> */}
     </>
