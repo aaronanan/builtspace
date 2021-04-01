@@ -78,7 +78,7 @@ function Profile(props) {
 
           <div className="row">
             <div className="col-md-4">
-              <p className="profile-info">Org Name:</p>
+              <p className="profile-info">Name:</p>
             </div>
             <div className="col-md-6 profile-value">
               {customer.cus_org_name ? customer.cus_org_name : "Loading.."}
@@ -86,7 +86,7 @@ function Profile(props) {
           </div>
           <div className="row">
             <div className="col-md-4">
-              <p className="profile-info">Customer ID:</p>
+              <p className="profile-info">ID:</p>
             </div>
             <div className="col-md-6 profile-value">
               {customer.customer_id ? customer.customer_id : "Loading.."}

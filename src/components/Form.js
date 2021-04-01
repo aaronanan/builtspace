@@ -24,7 +24,6 @@ function Form(props) {
   const [ContactEmail, setContactEmail] = useState("");
   const [ContactPhone, setContactPhone] = useState("");
   const [pref_des, setPrefDes] = useState("");
-  const [org_id, setOrgId] = useState("");
   const [serial_prefix, setSerialPrefix] = useState("");
   const [sales_cont_name, setSalesContName] = useState("");
   const [sales_cont_email, setSalesContEmail] = useState("");
@@ -58,7 +57,6 @@ function Form(props) {
         cus_status: status,
         cus_design: pref_des,
         cus_org_name: orgName,
-        cus_org_id: org_id,
         cus_contact: {
           c_name: ContactName,
           c_email: ContactEmail,
@@ -100,7 +98,6 @@ function Form(props) {
     setContactEmail("");
     setContactPhone("");
     setPrefDes("");
-    setOrgId("");
     setSerialPrefix("");
     setSalesContName("");
     setSalesContEmail("");
@@ -140,22 +137,8 @@ function Form(props) {
                     <tr>
                       <td>
                         <TextField
-                          style={{
-                            width: "150px",
-                            marginLeft: "15px",
-                            width: "400px",
-                          }}
-                          label="Organization ID"
-                          variant="outlined"
-                          size="small"
-                          value={org_id}
-                          onChange={(e) => setOrgId(e.target.value)}
-                        />
-                      </td>
-                      <td>
-                        <TextField
                           style={{ marginLeft: "15px", width: "400px" }}
-                          label="Organization Name"
+                          label="Customer Name"
                           variant="outlined"
                           size="small"
                           value={orgName}
@@ -253,7 +236,7 @@ function Form(props) {
                             width: "400px",
                             marginTop: "15px",
                           }}
-                          label="Prefered template"
+                          label="Preferred template"
                           variant="outlined"
                           size="small"
                           value={pref_des}

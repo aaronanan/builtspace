@@ -36,7 +36,6 @@ const EditCustomer = (props) => {
           customer_id: customer[0].customer_id,
           cus_contact: customer[0].cus_contact,
           cus_design: customer[0].cus_design,
-          cus_org_id: customer[0].cus_org_id,
           cus_org_name: customer[0].cus_org_name,
           cus_shipping: customer[0].cus_shipping,
           cus_status: customer[0].cus_status,
@@ -102,19 +101,7 @@ const EditCustomer = (props) => {
                   <td>
                     <TextField
                       style={{ width: "400px" }}
-                      label="Customer ID"
-                      size="small"
-                      defaultValue={cus.cus_org_id}
-                      variant="outlined"
-                      onChange={(e) => {
-                        customer[0].cus_org_id = e.target.value;
-                      }}
-                    />
-                  </td>
-                  <td>
-                    <TextField
-                      style={{ width: "400px" }}
-                      label="Customer Name"
+                      label="Customer"
                       size="small"
                       defaultValue={cus.cus_org_name}
                       variant="outlined"
