@@ -21,7 +21,7 @@ const EditCustomer = (props) => {
         },
       })
       .then(function (response) {
-        console.log(response.data.Item);
+        // console.log(response.data.Item);
         setCustomer([response.data.Item]);
       })
       .catch(function (error) {
@@ -43,6 +43,7 @@ const EditCustomer = (props) => {
           partner_contact: customer[0].partner_contact,
           partner_id: customer[0].partner_id,
           sales_contact: customer[0].sales_contact,
+          serial_prefix: customer[0].serial_prefix
         },
         {
           headers: {
@@ -74,7 +75,7 @@ const EditCustomer = (props) => {
           },
         })
         .then(function (response) {
-          console.log(response);
+          // console.log(response);
           document.getElementById("deletedCustomer").click();
         })
         .catch(function (error) {
@@ -101,19 +102,19 @@ const EditCustomer = (props) => {
                   <td>
                     <TextField
                       style={{ width: "400px" }}
-                      label="Org ID"
+                      label="Customer ID"
                       size="small"
                       defaultValue={cus.cus_org_id}
                       variant="outlined"
                       onChange={(e) => {
-                        customer[0].org_id = e.target.value;
+                        customer[0].cus_org_id = e.target.value;
                       }}
                     />
                   </td>
                   <td>
                     <TextField
                       style={{ width: "400px" }}
-                      label="Organization Name"
+                      label="Customer Name"
                       size="small"
                       defaultValue={cus.cus_org_name}
                       variant="outlined"
@@ -190,21 +191,21 @@ const EditCustomer = (props) => {
                       style={{ width: "400px" }}
                       label="Serial Prefix"
                       size="small"
-                    //   defaultValue={cus.cus_contact.c_phone}
+                      defaultValue={cus.serial_prefix}
                       variant="outlined"
-                    //   onChange={(e) => {
-                    //     customer[0].cus_contact.c_phone = e.target.value;
-                    //   }}
+                      onChange={(e) => {
+                        customer[0].serial_prefix = e.target.value;
+                      }}
                     /></td>
                     <td><TextField
                       style={{ width: "400px" }}
-                      label="Prefered Template"
+                      label="Preferred Template"
                       size="small"
-                    //   defaultValue={cus.cus_contact.c_phone}
+                      defaultValue={cus.cus_design}
                       variant="outlined"
-                    //   onChange={(e) => {
-                    //     customer[0].cus_contact.c_phone = e.target.value;
-                    //   }}
+                      onChange={(e) => {
+                        customer[0].cus_design = e.target.value;
+                      }}
                     /></td>
                 </tr>
               </table>
@@ -266,7 +267,7 @@ const EditCustomer = (props) => {
                       defaultValue={cus.cus_shipping.post}
                       variant="outlined"
                       onChange={(e) => {
-                        customer[0].cus_shipping.post_code = e.target.value;
+                        customer[0].cus_shipping.post = e.target.value;
                       }}
                     />
                   </td>
